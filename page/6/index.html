@@ -166,6 +166,99 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-全景项目制作步骤" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/23/全景项目制作步骤/">全景项目制作步骤</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/23/全景项目制作步骤/" class="archive-article-date">
+  	<time datetime="2019-03-23T11:53:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前期准备工作"><a href="#前期准备工作" class="headerlink" title="前期准备工作"></a>前期准备工作</h2><ol>
+<li>目前市面全景项目对比</li>
+<li>全景图拍摄预研</li>
+<li>全景云台预研与使用，相机调研与使用，鱼眼镜头选择，照片拍摄后期处理等</li>
+<li>开源软件全景制作方式，付费软件全景制作方式</li>
+<li>对比开源项目与付费项目投入产出比确定技术方案等…</li>
+</ol>
+        
+          <a class="article-more-a" href="/2019/03/23/全景项目制作步骤/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">全景</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/23/全景项目制作步骤/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-什么叫ocpm、ocpc、ocpa？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1014,114 +1107,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/04/11/nginx设置cookie点滴感悟/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Node-js-Sequelize如何实现数据库的读写分离" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/11/Node-js-Sequelize如何实现数据库的读写分离/">Node.js Sequelize如何实现数据库的读写分离</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/11/Node-js-Sequelize如何实现数据库的读写分离/" class="archive-article-date">
-  	<time datetime="2018-04-11T04:05:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、前言</p>
-<p>在构建高并发的Web应用时，除了应用层要采取负载均衡方案外，数据库也要支持高可用和高并发性。使用较多的数据库优化方案是：通过主从复制(Master-Slave)的方式来同步数据，再通过读写分离(MySQL-Proxy)来提升数据库的并发负载能力。</p>
-<ol>
-<li>replication选项与读写分离</li>
-</ol>
-<p>Sequelize 支持读/写分离，要实现读/写分离可以分别为读和写各创建一个Sequelize实例，更方便的使用方式是在创建实例时，通过replication选项分别指定读/写数据库。</p>
-<p>要在Sequelize中使用读/写复制，可以在初始化Sequelize时有时向其replication选项传递一个对象.这个对象read、write两个属性。write是一个单一的对象(即：由单台服务器处理写入)，而read是一个包含对象的数组(即：由多台服务器处理读取)。每台read、write服务器都可以包含以下属性：</p>
-<p>· host - 数据库服务器的主机</p>
-<p>· port - 数据库服务器的主机端口</p>
-<p>· username - 验证用户名</p>
-<p>· password - 验证密码</p>
-<p>· database - 要连接的数据库</p>
-<ol start="2">
-<li>Sequelize读/写分离示例</li>
-</ol>
-<p>在使用主从复制的多台数据库集群中，可以通过在replication对象的read属性中设置，该属性是一个数组，可以在其中传入一个或多个服务器连接副本。读操作相当于对数据库集群中的从节点进行操作，它会处理所有SELECT查询操作(读操作)。而replication对象的write属性是一个表示服务器连接的对象，写操作相当于主节点，它会处理所有插入、更新、删除操作(写操作)。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var sequelize = new Sequelize(&apos;database&apos;, null, null, &#123;</span><br><span class="line"> dialect: &apos;mysql&apos;,</span><br><span class="line"> port: 3306</span><br><span class="line"> replication: &#123;</span><br><span class="line">  read: [</span><br><span class="line">   &#123; host: &apos;192.168.1.33&apos;, username: &apos;itbilu.com&apos;, password: &apos;pwd&apos; &#125;,</span><br><span class="line">   &#123; host: &apos;localhost&apos;, username: &apos;root&apos;, password: null &#125;</span><br><span class="line">  ],</span><br><span class="line">  write: &#123; host: &apos;localhost&apos;, username: &apos;root&apos;, password: null &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> pool: &#123; // 如果需要重写链接池，请在 pool 选项中修改</span><br><span class="line">  maxConnections: 20,</span><br><span class="line">  maxIdleTime: 30000</span><br><span class="line"> &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>我这边的真实代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import Sequelize from &apos;sequelize&apos;</span><br><span class="line">import &#123; DB as DBConfig, System as SystemConfig &#125; from &apos;../config&apos;</span><br><span class="line"></span><br><span class="line">export default new Sequelize(DBConfig.database, null, null, &#123;</span><br><span class="line">  dialect: SystemConfig.db_type,</span><br><span class="line">  port: DBConfig.port,</span><br><span class="line">  replication: &#123;</span><br><span class="line">    read: [</span><br><span class="line">      &#123;</span><br><span class="line">        host: DBConfig.read.host,</span><br><span class="line">        username: DBConfig.read.username,</span><br><span class="line">        password: DBConfig.read.passwd</span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    write: &#123;</span><br><span class="line">      host: DBConfig.write.host,</span><br><span class="line">      username: DBConfig.write.username,</span><br><span class="line">      password: DBConfig.write.passwd</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  dialectOptions: &#123; // MySQL &gt; 5.5，其它数据库删除此项</span><br><span class="line">    charset: &apos;utf8mb4&apos;,</span><br><span class="line">    collate: &apos;utf8mb4_unicode_520_ci&apos;,</span><br><span class="line">    supportBigNumbers: true,</span><br><span class="line">    bigNumberStrings: true</span><br><span class="line">  &#125;,</span><br><span class="line">  pool: &#123;</span><br><span class="line">    max: 50,</span><br><span class="line">    min: 0,</span><br><span class="line">    idle: 10000</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>所有的整体性设置，都会适用于所有节点副本，所以并不需要为每个实例单独指定。在上例中，数据库名和端口号会应用于所有节点副本，用户名和密码选项也同样适用。如果某一节点副本不使用全局设置，则需要在replication选项中单独指定。</p>
-<p>注意：Sequelize 并不会设置主从复制节点及节点间的数据同步(复制)，这些操作实际由MySQL(或你所使用的数据库)完成。而 Sequelize 只负责从主从节点写入或读取数据。</p>
-<p>Sequelize 会使用连接池来管理节点副本。</p>
-<p>默认选项是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> maxConnections: 10,</span><br><span class="line"> minConnections: 0,</span><br><span class="line"> maxIdleTime:1000</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端开发//" class="article-tag-list-link color5">后端开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/11/Node-js-Sequelize如何实现数据库的读写分离/">展开全文 >></a>
         </p>
       
 
