@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
-  <title>后记忆</title>
+  <title>JS中call()和apply() | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="健康、生活、工作">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="后记忆">
-<meta property="og:url" content="https://www.houjiyi.com/page/2/index.html">
+  <meta name="description" content="每个函数都包含两个非继承而来的方法：call()和apply()；在JavaScript中，call和apply作用是一样的，都是为了改变某个函数运行时的上下文（context）而存在的，换句话说，就是为了改变函数体内部this的指向。1234567891011function fruits()&amp;#123;&amp;#125;        fruits.prototype = &amp;#123;    col">
+<meta name="keywords" content="知识点备忘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS中call()和apply()">
+<meta property="og:url" content="https://www.houjiyi.com/2020/07/23/JS中call-和apply/index.html">
 <meta property="og:site_name" content="后记忆">
-<meta property="og:description" content="健康、生活、工作">
+<meta property="og:description" content="每个函数都包含两个非继承而来的方法：call()和apply()；在JavaScript中，call和apply作用是一样的，都是为了改变某个函数运行时的上下文（context）而存在的，换句话说，就是为了改变函数体内部this的指向。1234567891011function fruits()&amp;#123;&amp;#125;        fruits.prototype = &amp;#123;    col">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2020-07-23T07:24:41.111Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="后记忆">
-<meta name="twitter:description" content="健康、生活、工作">
+<meta name="twitter:title" content="JS中call()和apply()">
+<meta name="twitter:description" content="每个函数都包含两个非继承而来的方法：call()和apply()；在JavaScript中，call和apply作用是一样的，都是为了改变某个函数运行时的上下文（context）而存在的，换句话说，就是为了改变函数体内部this的指向。1234567891011function fruits()&amp;#123;&amp;#125;        fruits.prototype = &amp;#123;    col">
   
     <link rel="alternative" href="/atom.xml" title="后记忆" type="application/atom+xml">
   
@@ -164,48 +165,68 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-防抖与节流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-JS中call-和apply" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/04/防抖与节流/">防抖与节流</a>
+    <h1 class="article-title" itemprop="name">
+      JS中call()和apply()
     </h1>
   
 
         
-        <a href="/2019/09/04/防抖与节流/" class="archive-article-date">
-  	<time datetime="2019-09-04T03:48:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-04</time>
+        <a href="/2020/07/23/JS中call-和apply/" class="archive-article-date">
+  	<time datetime="2020-07-23T07:24:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="防抖与节流的应用"><a href="#防抖与节流的应用" class="headerlink" title="防抖与节流的应用"></a>防抖与节流的应用</h2><p>首先这是一道面试题，我对面试题不感兴趣，但我对面试题的应用比较感兴趣，这两个词听着高大上，其实在业务应用中用的还是很多的，举两个例子更好理解：</p>
-<ol>
-<li>防抖应用 </li>
-</ol>
-<p>后端防抖：一个token两个小时内没有新的请求则失效</p>
-<blockquote>
-<p>token经常存在redis缓存里，有失效时间，如果两个小时没有新请求自动失效，如果有新的请求，调整这个token失效时间</p>
-</blockquote>
-<ol start="2">
-<li>节流应用 </li>
-</ol>
-<p>前端节流：浏览器的resize触发事件控制执行频率</p>
-<blockquote>
-<p>不解释</p>
-</blockquote>
-<p>防抖：debounce<br>debounce time 去抖动时间</p>
-<p>节流：throttle<br>n. 节流阀；[车辆] 风门；喉咙<br>vt. 压制，扼杀；使……窒息；使……节流<br>vi. 节流，减速；窒息</p>
+        <h2 id="每个函数都包含两个非继承而来的方法：call-和apply-；"><a href="#每个函数都包含两个非继承而来的方法：call-和apply-；" class="headerlink" title="每个函数都包含两个非继承而来的方法：call()和apply()；"></a>每个函数都包含两个非继承而来的方法：call()和apply()；</h2><p>在JavaScript中，call和apply作用是一样的，都是为了改变某个函数运行时的上下文（context）而存在的，换句话说，就是为了改变函数体内部this的指向。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fruits</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">        </span><br><span class="line">fruits.prototype = &#123;</span><br><span class="line">    color: <span class="string">"red"</span>,</span><br><span class="line">    say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"My color is "</span> + <span class="keyword">this</span>.color);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> apple = <span class="keyword">new</span> fruits;</span><br><span class="line">apple.say();                <span class="comment">//My color is red</span></span><br></pre></td></tr></table></figure></p>
+<p>当想另外一个对象想使用fruits中的say方法时不用重新写，使用call和apply可以实现“劫持”别人的方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fruits</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">            </span><br><span class="line">fruits.prototype = &#123;</span><br><span class="line">    color: <span class="string">"red"</span>,</span><br><span class="line">    say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"My color is "</span> + <span class="keyword">this</span>.color);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> another = &#123;</span><br><span class="line">    color: <span class="string">"yellow"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> apple = <span class="keyword">new</span> fruits;</span><br><span class="line">apple.say();                <span class="comment">//My color is red</span></span><br><span class="line">apple.say.call(another);    <span class="comment">//My color is yellow</span></span><br><span class="line">apple.say.apply(another);   <span class="comment">//My color is yellow</span></span><br></pre></td></tr></table></figure>
+<h2 id="区别：参数书写方式不同"><a href="#区别：参数书写方式不同" class="headerlink" title="区别：参数书写方式不同"></a>区别：参数书写方式不同</h2><p>call(thisObj, arg1, arg2, arg3, arg4);<br>apply(thisObj, [args]);<br>thisObj：call和apply第一个参数是一样的，该参数将替代Function类里面的this对象。<br>arg1,arg2….：是一个个的参数，<br>args：一个数组或类数组，是一个参数列表。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>改变函数作用域</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"小白"</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">"小红"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sayName.call(<span class="keyword">this</span>));   <span class="comment">//小白</span></span><br><span class="line"><span class="built_in">console</span>.log(sayName.call(obj));    <span class="comment">//小红</span></span><br></pre></td></tr></table></figure>
+<h2 id="实现继承"><a href="#实现继承" class="headerlink" title="实现继承"></a>实现继承</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现js继承</span></span><br><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, height</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.sayInfo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"姓名："</span> + name + <span class="string">", 身高："</span> + height + <span class="string">", 体重："</span> + <span class="keyword">this</span>.weight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Chinese</span>(<span class="params">name, height, weight</span>) </span>&#123;</span><br><span class="line">    Person.call(<span class="keyword">this</span>, name, height);</span><br><span class="line">    <span class="keyword">this</span>.weight = weight;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">this</span>.nation = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"我是中国人"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">America</span>(<span class="params">name, height, weight</span>) </span>&#123;</span><br><span class="line">    Person.apply(<span class="keyword">this</span>, [name, height]);</span><br><span class="line">    <span class="keyword">this</span>.weight = weight;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> chiness = <span class="keyword">new</span> Chinese(<span class="string">"成龙"</span>, <span class="string">"178cm"</span>, <span class="string">"60kg"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(chiness.sayInfo());    <span class="comment">//姓名：成龙, 身高：178cm, 体重：60kg</span></span><br><span class="line"><span class="keyword">let</span> america = <span class="keyword">new</span> America(<span class="string">"jack"</span>, <span class="string">"180cm"</span>, <span class="string">"55kg"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(america.sayInfo());    <span class="comment">//姓名：jack, 身高：180cm, 体重：55kg</span></span><br></pre></td></tr></table></figure>
+<p>作者：书虫和泰迪熊<br>链接：<a href="https://www.jianshu.com/p/aa2eeecd8b4f" target="_blank" rel="noopener">https://www.jianshu.com/p/aa2eeecd8b4f</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wxpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -236,16 +257,75 @@ var _hmt = _hmt || [];
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/04/防抖与节流/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.houjiyi.com/2020/07/23/JS中call-和apply/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/21/全网最详bpmn-js简介/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">全网最详bpmn.js简介</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -260,831 +340,32 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-10-分钟理解-BFC-原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/03/10-分钟理解-BFC-原理/">10 分钟理解 BFC 原理</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/03/10-分钟理解-BFC-原理/" class="archive-article-date">
-  	<time datetime="2019-09-03T10:32:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://blogimage.houjiyi.com/FrrAxLwA48BYSAzFn79bOmBnIvUX" alt="image.png"></p>
-<h2 id="一、常见定位方案"><a href="#一、常见定位方案" class="headerlink" title="一、常见定位方案"></a>一、常见定位方案</h2><p>在讲 BFC 之前，我们先来了解一下常见的定位方案，定位方案是控制元素的布局，有三种常见方案:</p>
-<p>普通流 (normal flow)</p>
-<blockquote>
-<p>在普通流中，元素按照其在 HTML 中的先后位置至上而下布局，在这个过程中，行内元素水平排列，直到当行被占满然后换行，块级元素则会被渲染为完整的一个新行，除非另外指定，否则所有元素默认都是普通流定位，也可以说，普通流中元素的位置由该元素在 HTML 文档中的位置决定。</p>
-</blockquote>
-<p>浮动 (float)</p>
-<blockquote>
-<p>在浮动布局中，元素首先按照普通流的位置出现，然后根据浮动的方向尽可能的向左边或右边偏移，其效果与印刷排版中的文本环绕相似。</p>
-</blockquote>
-<p>绝对定位 (absolute positioning)</p>
-<blockquote>
-<p>在绝对定位布局中，元素会整体脱离普通流，因此绝对定位元素不会对其兄弟元素造成影响，而元素具体的位置由绝对定位的坐标决定。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2019/09/03/10-分钟理解-BFC-原理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/03/10-分钟理解-BFC-原理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#每个函数都包含两个非继承而来的方法：call-和apply-；"><span class="toc-number">1.</span> <span class="toc-text">每个函数都包含两个非继承而来的方法：call()和apply()；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区别：参数书写方式不同"><span class="toc-number">2.</span> <span class="toc-text">区别：参数书写方式不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用法"><span class="toc-number">3.</span> <span class="toc-text">用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现继承"><span class="toc-number">4.</span> <span class="toc-text">实现继承</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-Jenkins定时构建-轮询SCM设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/19/Jenkins定时构建-轮询SCM设置/">Jenkins定时构建,轮询SCM设置</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/19/Jenkins定时构建-轮询SCM设置/" class="archive-article-date">
-  	<time datetime="2019-08-19T06:44:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://blogimage.houjiyi.com/FkFfiapXNN013Hc1qHZYz_82e7zF" alt="image.png"></p>
-<p>一、定时构建：不管SVN或Git中数据有无变化，均执行定时化的构建任务 ；</p>
-<p>二、轮询SCM：只要SVN或Git中数据有更新，则执行构建任务；</p>
-<p>三、构建语法说明：</p>
-<p>首先格式为：<em> </em> <em> </em> <em>（五个星）；<br>第一个表示分钟，取值0~59<br>第二个表示小时，取值0~23<br>第三个表示一个月的第几天，取值1~31<br>第四个表示第几月，取值1~12<br>第五个</em>表示一周中的第几天，取值0~7，其中0和7代表的都是周日<br>使用举例：<br>每隔1分钟检查一次源码: <em> </em> <em> </em> <em><br>每5分钟执行一次: </em>/5 <em> </em> <em> </em><br>每天20点执行定时build: 0 20 <em> </em> *</p>
-<p>四、定时构建和轮询SCM使用互不冲突，具体如何组合，需要根据项目情况合理配置；</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/19/Jenkins定时构建-轮询SCM设置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-centos7对普通用户授权sudo权限" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/14/centos7对普通用户授权sudo权限/">centos7对普通用户授权sudo权限</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/14/centos7对普通用户授权sudo权限/" class="archive-article-date">
-  	<time datetime="2019-08-14T07:18:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>centos7 默认普通用户没有sudo权限，因此需要我们手动设置<br>步骤：<br>1、su进入root用户，<code>vi /etc/sudoers</code><br>2、找到文件中的下列文字：<br><code>###Allow root to run any commands anywhere</code><br><code>root ALL=(ALL) ALL</code><br>在该行下面添加如下即可<br><code>xxx ALL=(ALL) NOPASSWD: ALL</code><br>xxx代表用户名<br>3、然后保存退出，再次切换到普通用户下，执行sudo命令就可以看到相应的信息了。<br>而且<em>不用输密码</em></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/14/centos7对普通用户授权sudo权限/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-提示错误：jenkins-不在-sudoers-文件中。此事将被报告。" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/14/提示错误：jenkins-不在-sudoers-文件中。此事将被报告。/">提示错误：jenkins 不在 sudoers 文件中。此事将被报告。</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/14/提示错误：jenkins-不在-sudoers-文件中。此事将被报告。/" class="archive-article-date">
-  	<time datetime="2019-08-14T06:14:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>说明本地服务器jenkins没有root的部分执行权限：</p>
-<p>#su    </p>
-<p>#cd /etc    </p>
-<p>#chmod 740 sudoers    </p>
-<p>#vim sudoers<br>末尾加上<br>jenkins   ALL=(root) ALL, !/usr/bin/passwd [A-Za-z]*, !/usr/bin/passwd root  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/14/提示错误：jenkins-不在-sudoers-文件中。此事将被报告。/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-解决在Centos系统中无法切换到jenkins用户" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/14/解决在Centos系统中无法切换到jenkins用户/">解决在Centos系统中无法切换到jenkins用户</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/14/解决在Centos系统中无法切换到jenkins用户/" class="archive-article-date">
-  	<time datetime="2019-08-14T06:13:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天在Centos上安装好了jenkins后，由于jenkins会自动创建一个用户，所以我想切换到jenkins用户，模拟执行一些脚本，<br>我执行下面语句<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su jenkins</span><br></pre></td></tr></table></figure></p>
-<p>虽然不报错，但是就是切换不过去。原来/etc/passwd文件中的/bin/bash被yum安装的时候变成了/bin/false，需要修改回去。接着执行sudo vim /etc/passwd命令,把false改为bash</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/passwd</span><br></pre></td></tr></table></figure>
-<p>给jenkins用户添加一个密码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd jenkins</span><br></pre></td></tr></table></figure></p>
-<p> 修改完毕后，执行su jenkins命令。结果新的问题又来啦，当我切换到jenkins用户后，命令提示符的用户名不是jenkins而变成了如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-bash-4.1<span class="comment">#</span></span><br></pre></td></tr></table></figure></p>
-<p>原因是在安装jenkins时，jenkins只是创建了jenkins用户，并没有为其创建home目录。所以系统就不会在创建用户的时候，自动拷贝/etc/skel目录下的用户环境变量文件到用户家目录，也就导致这些文件不存在，出现-bash-4.1#的问题了<br>以下命令是在切换到jenkins用户下执行的！（只是用户现在显示的是-bash-4.1）</p>
-<p>这个时候呢，参考网上的做法我执行下面步骤：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bash_profile</span><br></pre></td></tr></table></figure></p>
-<p>执行上面的命令，即使没有.bash_profile文件，linux会自动创建。<br>然后再添加这句</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PS1=<span class="string">'[\u@\h \W]\$'</span></span><br></pre></td></tr></table></figure>
-<p> PS1：命令行提示符环境变量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/14/解决在Centos系统中无法切换到jenkins用户/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-How-To-Install-Jenkins-on-CentOS-7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/14/How-To-Install-Jenkins-on-CentOS-7/">How To Install Jenkins on CentOS 7</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/14/How-To-Install-Jenkins-on-CentOS-7/" class="archive-article-date">
-  	<time datetime="2019-08-14T05:39:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://blogimage.houjiyi.com/FqxHz-9hRWp535eOZdqOoFW0ysEz" alt="image.png"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install java-1.8.0-openjdk-devel</span><br><span class="line"></span><br><span class="line">curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo</span><br><span class="line"></span><br><span class="line">sudo rpm --import http://pkg.jenkins.io/redhat-stable/jenkins.io.key</span><br><span class="line"></span><br><span class="line">sudo yum install jenkins</span><br><span class="line"></span><br><span class="line">sudo systemctl start jenkins</span><br><span class="line"></span><br><span class="line">sudo systemctl <span class="built_in">enable</span> jenkins</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/14/How-To-Install-Jenkins-on-CentOS-7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux下使用npm-install无法安装成功的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/linux下使用npm-install无法安装成功的问题/">linux下使用npm install无法安装成功的问题</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/13/linux下使用npm-install无法安装成功的问题/" class="archive-article-date">
-  	<time datetime="2019-08-13T08:44:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install</span><br></pre></td></tr></table></figure>
-<p>可能是权限问题</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">nodejs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/13/linux下使用npm-install无法安装成功的问题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【Linuc-CentOS-】通过yum安装-指定版本的nodejs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/【Linuc-CentOS-】通过yum安装-指定版本的nodejs/">【Linuc-CentOS 】通过yum安装 指定版本的nodejs</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/13/【Linuc-CentOS-】通过yum安装-指定版本的nodejs/" class="archive-article-date">
-  	<time datetime="2019-08-13T08:40:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -</span><br><span class="line">sudo yum -y install nodejs</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/13/【Linuc-CentOS-】通过yum安装-指定版本的nodejs/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-去掉页面的title标题，同时不显示默认链接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/07/去掉页面的title标题，同时不显示默认链接/">去掉页面的title标题，同时不显示默认链接</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/07/去掉页面的title标题，同时不显示默认链接/" class="archive-article-date">
-  	<time datetime="2019-08-07T01:43:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有时候我们需要页面的title不显示，尤其在移动端APP内嵌一个网页的时候，有个标题或者标题为空默认显示页面链接都不太友好，这时候有个简单方式可以处理：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.title = <span class="string">'\u200E'</span></span><br></pre></td></tr></table></figure></p>
-<p>加了以后就没了，亲测可行。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/移动开发//" class="article-tag-list-link color5">移动开发</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/移动开发/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/07/去掉页面的title标题，同时不显示默认链接/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1108,8 +389,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
