@@ -17,7 +17,8 @@
 <meta property="og:description" content="事件循环与任务队列是JS中比较重要的两个概念。这两个概念在ES5和ES6两个标准中有不同的实现。尤其在ES6标准中，清楚的区分宏观任务队列和微观任务队列才能解释Promise一些看似奇怪的表现。  事件循环事件循环是什么？为什么要有事件循环这个东西？我们都知道JS是单线程的，但是像Ajax，或是DOM事件这种很耗时的操作，需要用并发处理，否则单线程会长时间等待，什么也做不了。而单线程循环就是并发">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="http://blogimage.houjiyi.com/Fi7kY-opsziat9CP7EDIFXyBJv7q">
-<meta property="og:updated_time" content="2020-07-24T12:08:34.224Z">
+<meta property="og:image" content="http://blogimage.houjiyi.com/FjCRN3mV4dCrtliRgJ2AMED6VGr3">
+<meta property="og:updated_time" content="2020-07-24T12:09:54.859Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="详解事件循环与任务队列">
 <meta name="twitter:description" content="事件循环与任务队列是JS中比较重要的两个概念。这两个概念在ES5和ES6两个标准中有不同的实现。尤其在ES6标准中，清楚的区分宏观任务队列和微观任务队列才能解释Promise一些看似奇怪的表现。  事件循环事件循环是什么？为什么要有事件循环这个东西？我们都知道JS是单线程的，但是像Ajax，或是DOM事件这种很耗时的操作，需要用并发处理，否则单线程会长时间等待，什么也做不了。而单线程循环就是并发">
@@ -199,7 +200,7 @@ var _hmt = _hmt || [];
 <li>WebAPIs：浏览器的接口。比如一个Ajax操作，主线程会把收发Ajax交给浏览器的API，之后就继续做别的事情，浏览器在接收到Ajax返回的数据之后，会把一个Ajax完成的事件排到相应的任务队列后边。</li>
 <li>任务队列们：主线程中有多个任务队列，同源的任务排在属于自己的任务队列。</li>
 </ul>
-<p>一个具体点的栗子。比如现在打开了一个页面，里边有一段<script>，其中有Ajax，DOM操作等等。这段JS是在浏览器提供的全局环境（浏览器中是window）里执行的，执行中遇到函数调用时会压入执行栈。</p>
+<p>一个具体点的栗子。比如现在打开了一个页面，里边有一段script，其中有Ajax，DOM操作等等。这段JS是在浏览器提供的全局环境（浏览器中是window）里执行的，执行中遇到函数调用时会压入执行栈。</p>
 <ol>
 <li>主线程在遇到Ajax或是setTimeout这种异步操作时会交给浏览器的WebAPIs，然后继续执行后边的代码，直到最后执行栈为空。</li>
 <li>浏览器会在不确定的时间将完成的任务返回，排到相应的任务队列后。</li>
@@ -222,11 +223,11 @@ var _hmt = _hmt || [];
 </ul>
 <p>所以最后的输出顺序是1,2,3,5,4，而不是1,2,3,4,5。如果不清楚微观任务队列的执行机制，很容易将两个异步任务归为一类，将执行顺序判断错误。</p>
 <blockquote>
-<p>到这里算是把事件循环和任务队列说的比较清楚了，参考了很多大佬的博客与讨论：<br><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html">http://www.ruanyifeng.com/blog/2014/10/event-loop.html</a><br><a href="https://www.zhihu.com/question/36972010">https://www.zhihu.com/question/36972010</a><br><a href="http://www.jianshu.com/p/12b9f73c5a4f">http://www.jianshu.com/p/12b9f73c5a4f</a><br><a href="http://www.cnblogs.com/hity-tt/p/6733062.html">http://www.cnblogs.com/hity-tt/p/6733062.html</a></p>
+<p>到这里算是把事件循环和任务队列说的比较清楚了，参考了很多大佬的博客与讨论：<br><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/10/event-loop.html</a><br><a href="https://www.zhihu.com/question/36972010" target="_blank" rel="noopener">https://www.zhihu.com/question/36972010</a><br><a href="http://www.jianshu.com/p/12b9f73c5a4f" target="_blank" rel="noopener">http://www.jianshu.com/p/12b9f73c5a4f</a><br><a href="http://www.cnblogs.com/hity-tt/p/6733062.html" target="_blank" rel="noopener">http://www.cnblogs.com/hity-tt/p/6733062.html</a></p>
 </blockquote>
 <p>如果你有不同的理解请到博客下方留言，这是我的github，欢迎来访，你的star就是我的动力。</p>
-<p>作者：空_城__<br>链接：<a href="https://www.jianshu.com/p/4516ad4b3048">https://www.jianshu.com/p/4516ad4b3048</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-</script></p>
+<p>作者：空_城__<br>链接：<a href="https://www.jianshu.com/p/4516ad4b3048" target="_blank" rel="noopener">https://www.jianshu.com/p/4516ad4b3048</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
       
 
       
@@ -380,7 +381,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件循环"><span class="toc-number">1.</span> <span class="toc-text">事件循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#任务队列"><span class="toc-number">2.</span> <span class="toc-text">任务队列</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件循环"><span class="toc-number">1.</span> <span class="toc-text">事件循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#任务队列"><span class="toc-number">2.</span> <span class="toc-text">任务队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微观任务队列"><span class="toc-number">3.</span> <span class="toc-text">微观任务队列</span></a></li></ol>
                     </div>
                 </span>
             </div>
