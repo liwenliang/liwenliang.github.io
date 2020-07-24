@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
-  <title>后记忆</title>
+  <title>详解事件循环与任务队列 | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="健康、生活、工作">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="后记忆">
-<meta property="og:url" content="https://www.houjiyi.com/page/11/index.html">
+  <meta name="description" content="段落引用事件循环与任务队列是JS中比较重要的两个概念。这两个概念在ES5和ES6两个标准中有不同的实现。尤其在ES6标准中，清楚的区分宏观任务队列和微观任务队列才能解释Promise一些看似奇怪的表现。  事件循环事件循环是什么？为什么要有事件循环这个东西？我们都知道JS是单线程的，但是像Ajax，或是DOM事件这种很耗时的操作，需要用并发处理，否则单线程会长时间等待，什么也做不了。而单线程循环">
+<meta name="keywords" content="知识点备忘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="详解事件循环与任务队列">
+<meta property="og:url" content="https://www.houjiyi.com/2020/07/24/详解事件循环与任务队列/index.html">
 <meta property="og:site_name" content="后记忆">
-<meta property="og:description" content="健康、生活、工作">
+<meta property="og:description" content="段落引用事件循环与任务队列是JS中比较重要的两个概念。这两个概念在ES5和ES6两个标准中有不同的实现。尤其在ES6标准中，清楚的区分宏观任务队列和微观任务队列才能解释Promise一些看似奇怪的表现。  事件循环事件循环是什么？为什么要有事件循环这个东西？我们都知道JS是单线程的，但是像Ajax，或是DOM事件这种很耗时的操作，需要用并发处理，否则单线程会长时间等待，什么也做不了。而单线程循环">
 <meta property="og:locale" content="zh">
+<meta property="og:image" content="http://blogimage.houjiyi.com/Fi7kY-opsziat9CP7EDIFXyBJv7q">
+<meta property="og:updated_time" content="2020-07-24T12:03:30.740Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="后记忆">
-<meta name="twitter:description" content="健康、生活、工作">
+<meta name="twitter:title" content="详解事件循环与任务队列">
+<meta name="twitter:description" content="段落引用事件循环与任务队列是JS中比较重要的两个概念。这两个概念在ES5和ES6两个标准中有不同的实现。尤其在ES6标准中，清楚的区分宏观任务队列和微观任务队列才能解释Promise一些看似奇怪的表现。  事件循环事件循环是什么？为什么要有事件循环这个东西？我们都知道JS是单线程的，但是像Ajax，或是DOM事件这种很耗时的操作，需要用并发处理，否则单线程会长时间等待，什么也做不了。而单线程循环">
+<meta name="twitter:image" content="http://blogimage.houjiyi.com/Fi7kY-opsziat9CP7EDIFXyBJv7q">
   
     <link rel="alternative" href="/atom.xml" title="后记忆" type="application/atom+xml">
   
@@ -164,561 +167,103 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-每个人都背负这一个十字架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-详解事件循环与任务队列" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/13/每个人都背负这一个十字架/">每个人都背负这一个十字架</a>
+    <h1 class="article-title" itemprop="name">
+      详解事件循环与任务队列
     </h1>
   
 
         
-        <a href="/2017/10/13/每个人都背负这一个十字架/" class="archive-article-date">
-  	<time datetime="2017-10-13T07:09:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-13</time>
+        <a href="/2020/07/24/详解事件循环与任务队列/" class="archive-article-date">
+  	<time datetime="2020-07-24T12:03:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<p><img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/%E6%AF%8F%E4%B8%AA%E4%BA%BA%E9%83%BD%E8%83%8C%E8%B4%9F%E7%9D%80%E5%8D%81%E5%AD%97%E6%9E%B6.jpg" alt="每个人都背负着一个沉重的十字架"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">plan</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/生活玩乐//" class="article-tag-list-link color5">生活玩乐</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/13/每个人都背负这一个十字架/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-马云团队" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/13/马云团队/">马云团队</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/13/马云团队/" class="archive-article-date">
-  	<time datetime="2017-10-13T07:05:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这也是以前收藏的一张图片，放在这里自己做个备忘吧</p>
-        
-          <a class="article-more-a" href="/2017/10/13/马云团队/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">plan</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/生活玩乐//" class="article-tag-list-link color5">生活玩乐</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/13/马云团队/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-留不住的心就让他飞吧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/13/留不住的心就让他飞吧/">留不住的心就让他飞吧</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/13/留不住的心就让他飞吧/" class="archive-article-date">
-  	<time datetime="2017-10-13T06:22:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>图片是很久以前存下来的了，看到后放到日志里边</p>
-        
-          <a class="article-more-a" href="/2017/10/13/留不住的心就让他飞吧/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">plan</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/生活玩乐//" class="article-tag-list-link color5">生活玩乐</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/13/留不住的心就让他飞吧/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每天读一遍，不就你就会有改变" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/13/每天读一遍，不就你就会有改变/">每天读一遍，不久你就会有改变</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/13/每天读一遍，不就你就会有改变/" class="archive-article-date">
-  	<time datetime="2017-10-13T06:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>很久以前记录的一个文章，具体来源也不知道了，今天看到觉得应该记下来：</p>
-        
-          <a class="article-more-a" href="/2017/10/13/每天读一遍，不就你就会有改变/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">plan</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/生活玩乐//" class="article-tag-list-link color5">生活玩乐</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/13/每天读一遍，不就你就会有改变/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-20171012工作日记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/12/20171012工作日记/">20171012工作日记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/12/20171012工作日记/" class="archive-article-date">
-  	<time datetime="2017-10-12T06:22:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天给广告部门做一个代理层接口，目的是为了记录第三方接口请求日志，由于第三方与我们以及百度统计到的数据都不同，因此需要通过增加代理层验证准确性。</p>
-        
-          <a class="article-more-a" href="/2017/10/12/20171012工作日记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/项目总结//" class="article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/12/20171012工作日记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-nodejs-redis-doc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/nodejs-redis-doc/">nodejs redis doc</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/nodejs-redis-doc/" class="archive-article-date">
-  	<time datetime="2017-10-10T14:48:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="redis-a-node-js-redis-client"><a href="#redis-a-node-js-redis-client" class="headerlink" title="redis - a node.js redis client"></a>redis - a node.js redis client</h1><p><a href="https://travis-ci.org/NodeRedis/node_redis" target="_blank" rel="noopener"><img src="https://travis-ci.org/NodeRedis/node_redis.svg?branch=master" alt="Build Status"></a><br><a href="https://coveralls.io/r/NodeRedis/node_redis?branch=" target="_blank" rel="noopener"><img src="https://coveralls.io/repos/NodeRedis/node_redis/badge.svg?branch=" alt="Coverage Status"></a><br><a href="https://ci.appveyor.com/project/BridgeAR/node-redis/branch/master" target="_blank" rel="noopener"><img src="https://img.shields.io/appveyor/ci/BridgeAR/node-redis/master.svg?label=Windows%20Tests" alt="Windows Tests"></a><br><a href="https://gitter.im/NodeRedis/node_redis?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge" target="_blank" rel="noopener"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter"></a></p>
-<p>This is a complete and feature rich Redis client for node.js. <strong>It supports all<br>Redis commands</strong> and focuses on high performance.</p>
-        
-          <a class="article-more-a" href="/2017/10/10/nodejs-redis-doc/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">nodejs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/NodeJS//" class="article-tag-list-link color2">NodeJS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/nodejs-redis-doc/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-centos6.7 安装 redis并配置开机启动" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/centos6.7 安装 redis并配置开机启动/">centos6.7 安装 redis并配置开机启动</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/centos6.7 安装 redis并配置开机启动/" class="archive-article-date">
-  	<time datetime="2017-10-10T10:20:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在实际开发中有时候我们生产环境使用的服务器并不是centos7，这样造成我们安装软件需要使用更加通用的方式。</p>
+        <blockquote>
+<p>段落引用事件循环与任务队列是JS中比较重要的两个概念。这两个概念在ES5和ES6两个标准中有不同的实现。尤其在ES6标准中，清楚的区分宏观任务队列和微观任务队列才能解释Promise一些看似奇怪的表现。</p>
+</blockquote>
+<h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><p>事件循环是什么？为什么要有事件循环这个东西？我们都知道JS是单线程的，但是像Ajax，或是DOM事件这种很耗时的操作，需要用并发处理，否则单线程会长时间等待，什么也做不了。而单线程循环就是并发的一种形式，一个线程中只有一个事件循环。而任务队列是用来配合事件循环完成操作的，一个线程可以拥有多个任务队列。</p>
+<h2 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h2><p>任务队列是什么？故名思意，排着任务的队列。所谓任务是WebAPIs返回的一个个通知，让JS主线程在读取任务队列的时候得知这个异步任务已经完成，下一步该执行这个任务的回调函数了。主线程拥有多个任务队列，不同的任务队列用来排列来自不同任务源的任务。任务源是什么？像setTimeout/Promise/DOM事件等都是任务源，来自同类任务源的任务我们称它们是同源的，比如setTimeout与setInterval就是同源的。在ES6标准中任务队列又分为宏观任务队列和微观任务队列，我们后边再详细讨论。</p>
+<p>下面先通俗的讲述一下ES5中事件循环到底是怎么循环的，如图（据阮一峰前辈的教程）：<br><img src="http://blogimage.houjiyi.com/Fi7kY-opsziat9CP7EDIFXyBJv7q" alt="image.png"><br>::: hljs-center</p>
+<p>事件循环1</p>
+<p>:::</p>
+<p>图中有三大块：</p>
+<ul>
+<li>函数调用栈：即执行栈。</li>
+<li>WebAPIs：浏览器的接口。比如一个Ajax操作，主线程会把收发Ajax交给浏览器的API，之后就继续做别的事情，浏览器在接收到Ajax返回的数据之后，会把一个Ajax完成的事件排到相应的任务队列后边。</li>
+<li>任务队列们：主线程中有多个任务队列，同源的任务排在属于自己的任务队列。</li>
+</ul>
+<p>一个具体点的栗子。比如现在打开了一个页面，里边有一段<script>，其中有Ajax，DOM操作等等。这段JS是在浏览器提供的全局环境（浏览器中是window）里执行的，执行中遇到函数调用时会压入执行栈。</p>
 <ol>
-<li><p>首先安装wget工具，下载redis包，我们在github下载release包，官网地址目前无法访问</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install wget -y</span><br><span class="line">wget https://github.com/antirez/redis/archive/4.0.2.tar.gz</span><br></pre></td></tr></table></figure>
-</li>
+<li>主线程在遇到Ajax或是setTimeout这种异步操作时会交给浏览器的WebAPIs，然后继续执行后边的代码，直到最后执行栈为空。</li>
+<li>浏览器会在不确定的时间将完成的任务返回，排到相应的任务队列后。</li>
+<li>执行栈为空后，主线程会到任务队列中去取任务，这些任务会告诉下一步应该执行哪些回调函数。任务队列是具有优先级的，按照优先级决定访问的先后顺序。而优先级在不同的环境中会有所不同，所以不能给出一个固定的优先级。</li>
+<li>每访问一个队列，执行栈会执行完这个任务队列的所有的代码，然后再取下一个任务队列需要执行的的代码。如果在执行中遇到了当前属于任务队列的异步任务时。此次任务的返回不会直接排到当前任务队列之后。因为这属于两次不同的事件循环，会被区分开来。<br>就这样循环执行，直到三大块全为空，这称为事件循环。</li>
 </ol>
-        
-          <a class="article-more-a" href="/2017/10/10/centos6.7 安装 redis并配置开机启动/#more">more >></a>
-        
+<h2 id="微观任务队列"><a href="#微观任务队列" class="headerlink" title="微观任务队列"></a>微观任务队列</h2><p>ES6标准中任务队列存在两种类型，一种就是上边提到的一些队列，比如setTimeout、网络请求Ajax、用户I\O等都属于宏观任务队列（macrotask queue），另一种是微观任务队列（microtask queue），Promise就属于微观任务队列。<br>  添加了微观任务队列之后事件循环有什么变化呢？在执行栈执行的过程中会把属于微观任务队列的任务分配到相应的微观任务队列中去。而在调用栈执行空之后，主线程读取任务队列时，会先读取所有微观任务队列，然后读取一个宏观任务队列，再读取所有的微观任务队列。如图：<br><img src="http://blogimage.houjiyi.com/FjCRN3mV4dCrtliRgJ2AMED6VGr3" alt="image.png"><br>::: hljs-center</p>
+<p>事件循环2</p>
+<p>:::</p>
+<p>好了，说了很多概念上的东西，不如一段代码来的清晰：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">4</span>)&#125;,<span class="number">0</span>);</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span> ; i&lt;<span class="number">10000</span> ; i++ )&#123;</span><br><span class="line">        i==<span class="number">9999</span> &amp;&amp; resolve()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">5</span>)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>脚本开始执行，最先遇到setTimeout，交给浏览器去计时，达到setTimeout限制最短计时之后，把这个任务推入setTimeout队列。</li>
+<li>遇到Promise构造函数，构造函数参数执行，输出1，调用resolve改变Promise对象的状态，然后输出2。</li>
+<li>Promise对象调用then方法，将这个任务推入Promise任务队列。</li>
+<li>执行console.log(3)，输出3。</li>
+<li>调用栈为空，读取任务队列，按照</li>
+</ul>
+<p>读取所有微观任务队列 -&gt; 执行 -&gt;<br>读取一个宏观任务队列 -&gt; 执行 -&gt;<br>读取所有微观任务队列 -&gt; 执行 -&gt;<br>再读取一个宏观任务队列…的顺序。</p>
+<ul>
+<li>读取所有微观任务队列中的任务，执行这些任务指定的回调函数。执行then指定的回调函数，输出5（微观任务队列也具有优先级）。</li>
+<li>最后读取到setTimeout的任务，执行回调函数，输出4。</li>
+</ul>
+<p>所以最后的输出顺序是1,2,3,5,4，而不是1,2,3,4,5。如果不清楚微观任务队列的执行机制，很容易将两个异步任务归为一类，将执行顺序判断错误。</p>
+<blockquote>
+<p>到这里算是把事件循环和任务队列说的比较清楚了，参考了很多大佬的博客与讨论：<br><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html">http://www.ruanyifeng.com/blog/2014/10/event-loop.html</a><br><a href="https://www.zhihu.com/question/36972010">https://www.zhihu.com/question/36972010</a><br><a href="http://www.jianshu.com/p/12b9f73c5a4f">http://www.jianshu.com/p/12b9f73c5a4f</a><br><a href="http://www.cnblogs.com/hity-tt/p/6733062.html">http://www.cnblogs.com/hity-tt/p/6733062.html</a></p>
+</blockquote>
+<p>如果你有不同的理解请到博客下方留言，这是我的github，欢迎来访，你的star就是我的动力。</p>
+<p>作者：空_城__<br>链接：<a href="https://www.jianshu.com/p/4516ad4b3048">https://www.jianshu.com/p/4516ad4b3048</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</script></p>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wxpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -729,7 +274,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
         		</li>
       		
 		</ul>
@@ -741,7 +286,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/NodeJS//" class="article-tag-list-link color2">NodeJS</a>
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
         		</li>
       		
 		</ul>
@@ -749,16 +294,75 @@ var _hmt = _hmt || [];
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/centos6.7 安装 redis并配置开机启动/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.houjiyi.com/2020/07/24/详解事件循环与任务队列/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/24/JS中的异步操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS中的异步操作</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -773,281 +377,32 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-centos7 安装 redis并配置开机启动" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/centos7 安装 redis并配置开机启动/">centos7 安装 redis并配置开机启动</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/centos7 安装 redis并配置开机启动/" class="archive-article-date">
-  	<time datetime="2017-10-10T06:20:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>由于centos7系统已经出现很久，所以优先使用centos7来安装redis，这里做个记录。这里我使用的centos7是通过vagrant创建的一个虚拟机，能够让我最大限度的还原真实服务器环境。</p>
-        
-          <a class="article-more-a" href="/2017/10/10/centos7 安装 redis并配置开机启动/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/NodeJS//" class="article-tag-list-link color2">NodeJS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/centos7 安装 redis并配置开机启动/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件循环"><span class="toc-number">1.</span> <span class="toc-text">事件循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#任务队列"><span class="toc-number">2.</span> <span class="toc-text">任务队列</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-nodejs+redis应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/nodejs+redis应用/">nodejs+redis应用</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/nodejs+redis应用/" class="archive-article-date">
-  	<time datetime="2017-10-10T03:20:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>什么是Redis</p>
-<p> Redis是一个基于BSD开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API.</p>
-        
-          <a class="article-more-a" href="/2017/10/10/nodejs+redis应用/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/NodeJS//" class="article-tag-list-link color2">NodeJS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/nodejs+redis应用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-高性能网站性能进阶指南-笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/09/高性能网站性能进阶指南-笔记/">高性能网站性能进阶指南-笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/09/高性能网站性能进阶指南-笔记/" class="archive-article-date">
-  	<time datetime="2017-10-09T10:46:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>大部分Javascript引擎的优化是为了快速抢占市场而不是性能，所以JavaScript一直很自然地被认为是瓶颈。但通常情况下，瓶颈不是JavaScript而是DOM，所以倒腾脚本收效甚微。</p>
-<p>尽量避免倒腾脚本，要正确并清晰的编写程序。倒腾往往越整越乱，它只会让程序更容易产生bug。</p>
-        
-          <a class="article-more-a" href="/2017/10/09/高性能网站性能进阶指南-笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/性能优化//" class="article-tag-list-link color5">性能优化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/09/高性能网站性能进阶指南-笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/12/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1071,8 +426,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
