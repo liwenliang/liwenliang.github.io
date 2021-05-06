@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="后记忆">
 <meta property="og:description" content="锋物物管系统-子应用模板名词解释： 主应用===基座应用；子应用===需要运行在主应用下的应用，同时支持独立运行  希望达到的目的  代码库更小，更内聚、可维护性更高 松耦合、自治的团队可扩展性更好 渐进地升级、更新甚至重写部分前端功能成为了可能 可以独立开发部署   特点：  独立开发运行部署。 子应用的路由配置对应基座应用的路由配置上，以此方式来复用头部和侧边菜单。 状态之间的传递，原则上是通">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2021-05-06T07:29:02.098Z">
+<meta property="og:updated_time" content="2021-05-06T07:41:42.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FE微前端架构实施">
 <meta name="twitter:description" content="锋物物管系统-子应用模板名词解释： 主应用===基座应用；子应用===需要运行在主应用下的应用，同时支持独立运行  希望达到的目的  代码库更小，更内聚、可维护性更高 松耦合、自治的团队可扩展性更好 渐进地升级、更新甚至重写部分前端功能成为了可能 可以独立开发部署   特点：  独立开发运行部署。 子应用的路由配置对应基座应用的路由配置上，以此方式来复用头部和侧边菜单。 状态之间的传递，原则上是通">
@@ -261,7 +261,7 @@ var _hmt = _hmt || [];
 </blockquote>
 <blockquote>
 <ol start="2">
-<li>子应用中vue.config.js中<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">const</span> publicPath = <span class="string">'/'</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<li>子应用中vue.config.js中,线上访问需要将静态资源上传到CDN上<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">const</span> publicPath = process.env.NODE_ENV === <span class="string">'production'</span> &amp;&amp; process.env.VUE_APP_PREVIEW !== <span class="string">'true'</span> ? <span class="string">'https://pms-static.gmtech.top/fe/src/fpms_microapp/dist/'</span> : <span class="string">'/microapp/'</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </blockquote>
@@ -284,13 +284,13 @@ var _hmt = _hmt || [];
 <p>如果每个项目都要有独立域名才能使用的话，目前的微前端架构实际上是有缺陷的，因为我可能是想把一个系统<br>的多个模块进行拆分，方便维护，因此，通过path来区分子项目也应该支持：由于这种方式使用的是相同的域名<br>实际操作起来会节省掉很多由于资源跨域导致的无法加载的问题。也更适合把一个独立的大项目拆分成小应用的<br>场景。</p>
 <p>相关需要调整文件的地方：</p>
 <ol>
-<li>主应用里AppList.js中的entry的写法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; entry: isDev ? &apos;http://localhost:10001/microapp/&apos; : `/microapp/`</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<li>主应用里AppList.js中的entry的写法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; entry: getAppLoadUri(&apos;microapp&apos;, 10001),</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </blockquote>
 <blockquote>
 <ol start="2">
-<li>子应用中vue.config.js中<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">const</span> publicPath = <span class="string">'/microapp/'</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<li>子应用中vue.config.js中,线上访问需要将静态资源上传到CDN上<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">const</span> publicPath = process.env.NODE_ENV === <span class="string">'production'</span> &amp;&amp; process.env.VUE_APP_PREVIEW !== <span class="string">'true'</span> ? <span class="string">'https://pms-static.gmtech.top/fe/src/fpms_microapp/dist/'</span> : <span class="string">'/microapp/'</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </blockquote>
@@ -604,7 +604,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计划</a>
+                <a href="javascript:void(0)" class="js-tag color4">apicloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,15 +620,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基本知识</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">apicloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">计划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,7 +632,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">基本知识</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,7 +644,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
               </li>
              
               <li class="article-tag-list-item">
