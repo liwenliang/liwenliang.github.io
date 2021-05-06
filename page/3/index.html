@@ -166,6 +166,96 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Jenkins定时构建-轮询SCM设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/19/Jenkins定时构建-轮询SCM设置/">Jenkins定时构建,轮询SCM设置</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/19/Jenkins定时构建-轮询SCM设置/" class="archive-article-date">
+  	<time datetime="2019-08-19T06:44:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://blogimage.houjiyi.com/FkFfiapXNN013Hc1qHZYz_82e7zF" alt="image.png"></p>
+<p>一、定时构建：不管SVN或Git中数据有无变化，均执行定时化的构建任务 ；</p>
+<p>二、轮询SCM：只要SVN或Git中数据有更新，则执行构建任务；</p>
+<p>三、构建语法说明：</p>
+<p>首先格式为：<em> </em> <em> </em> <em>（五个星）；<br>第一个表示分钟，取值0~59<br>第二个表示小时，取值0~23<br>第三个表示一个月的第几天，取值1~31<br>第四个表示第几月，取值1~12<br>第五个</em>表示一周中的第几天，取值0~7，其中0和7代表的都是周日<br>使用举例：<br>每隔1分钟检查一次源码: <em> </em> <em> </em> <em><br>每5分钟执行一次: </em>/5 <em> </em> <em> </em><br>每天20点执行定时build: 0 20 <em> </em> *</p>
+<p>四、定时构建和轮询SCM使用互不冲突，具体如何组合，需要根据项目情况合理配置；</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/19/Jenkins定时构建-轮询SCM设置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-centos7对普通用户授权sudo权限" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -946,96 +1036,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/07/23/CSS3实现波浪进度球/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-移动设备上Touchmove获取当前触摸的Dom节点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/18/移动设备上Touchmove获取当前触摸的Dom节点/">移动设备上Touchmove获取当前触摸的Dom节点</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/18/移动设备上Touchmove获取当前触摸的Dom节点/" class="archive-article-date">
-  	<time datetime="2019-07-18T01:58:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们通过touchmove事件返回的event对象，可以获取当前手指触摸元素的clientX和clientY的值，将值传入document.elementFromPoint就可获取当前触摸的值，这里需要注意的是此方法返回的是最顶层的Dom，所以务必将你需要的Dom的z-index设置为最高，分享些许我在此项目的核心代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 获取存储当前Dom位置的对象</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">var</span> myLocation = e.originalEvent.changedTouches[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 取clientX及clientY并传入elementFromPoint获取当前手指触摸的Dom</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="keyword">var</span> realTarget = <span class="built_in">document</span>.elementFromPoint(myLocation.clientX, myLocation.clientY);</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/移动开发//" class="article-tag-list-link color5">移动开发</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/移动开发/H5开发//" class="article-tag-list-link color5">H5开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/18/移动设备上Touchmove获取当前触摸的Dom节点/">展开全文 >></a>
         </p>
       
 
