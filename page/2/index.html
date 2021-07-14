@@ -166,6 +166,116 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-什么时候会发送options请求" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/13/什么时候会发送options请求/">什么时候会发送options请求</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/13/什么时候会发送options请求/" class="archive-article-date">
+  	<time datetime="2020-10-13T07:22:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="偶然的相遇——options请求"><a href="#偶然的相遇——options请求" class="headerlink" title="偶然的相遇——options请求"></a>偶然的相遇——options请求</h2><p>最近写的项目，应用里所有的ajax请求都发送了2遍。由于新项目，基础模块是新搭的，所以出现一些奇葩问题也是意料之中，啊终于第一次在chrome的devTools遇见了活的options请求。<br><img src="http://blogimage.houjiyi.com/FkgRteTQ_wnfq1a29ShCE0Ph4qgu" alt="image.png"></p>
+<h3 id="第1次请求"><a href="#第1次请求" class="headerlink" title="第1次请求"></a>第1次请求</h3><p>这里首先发送了一次额外的options请求，在浏览器里看到请求request header 和 response header的信息如下：<br>（1）预检请求头request header的关键字段：</p>
+<p><img src="http://blogimage.houjiyi.com/FkKwSEWOU0ceTe7k1j6J983PYvAM" alt="image.png"></p>
+<p>服务器基于从预检请求头部获得的信息来判断，是否接受接下来的实际请求。</p>
+<p><img src="http://blogimage.houjiyi.com/FnB1j43wZ3d6dDKgTJsklbG9D09g" alt="image.png"></p>
+<p>（2）预检响应头response header的关键字段：</p>
+<p><img src="http://blogimage.houjiyi.com/Fq3-PVNUSp-NMYLDCuP7lPxmiDkb" alt="image.png"></p>
+<p>此次OPTIONS请求返回了响应头的内容，但没有返回响应实体response body内容。</p>
+<p><img src="http://blogimage.houjiyi.com/Foxiw5ZheTGsDyWu0LNlRPA6ONBr" alt="image.png"></p>
+<h3 id="第2次请求"><a href="#第2次请求" class="headerlink" title="第2次请求"></a>第2次请求</h3><p>这是本来要发送的请求，如图所示是普通的post请求。其中Content-Type的application/json是此次和后端约定的请求内容格式，这个也是后面讲到为什么会发送options请求的原因之一。</p>
+<p><img src="http://blogimage.houjiyi.com/Fv7OldspEH5iE7AWTWJjW0Sh6Pab" alt="image.png"></p>
+<h2 id="关于OPTIONS请求"><a href="#关于OPTIONS请求" class="headerlink" title="关于OPTIONS请求"></a>关于OPTIONS请求</h2><p>从很多资料我们可以了解到使用OPTIONS方法对服务器发起请求，可以检测服务器支持哪些 HTTP 方法。但是这次我们并没有主动去发起OPTIONS请求，那OPTIONS请求为何会自动发起？</p>
+<h3 id="OPTIONS请求自动发起"><a href="#OPTIONS请求自动发起" class="headerlink" title="OPTIONS请求自动发起"></a>OPTIONS请求自动发起</h3><p>MDN的CORS一文中提到：</p>
+<blockquote>
+<p>规范要求，对那些可能对服务器数据产生副作用的 HTTP 请求方法（特别是 GET 以外的 HTTP 请求，或者搭配某些 MIME 类型的 POST 请求），浏览器必须首先使用 OPTIONS 方法发起一个预检请求（preflight request），从而获知服务端是否允许该跨域请求。</p>
+</blockquote>
+<p>所以这个跨域请求触发了浏览器自动发起OPTIONS请求，看看此次跨域请求具体触发了哪些条件。</p>
+<h3 id="跨域请求时，OPTIONS请求触发条件"><a href="#跨域请求时，OPTIONS请求触发条件" class="headerlink" title="跨域请求时，OPTIONS请求触发条件"></a>跨域请求时，OPTIONS请求触发条件</h3><p><img src="http://blogimage.houjiyi.com/FqM0rzrxnL_ZBzFmTgVYgINtVbUj" alt="image.png"></p>
+<p>由于修改了Content-Type为application/json，触发了CORS预检请求。</p>
+<h2 id="优化OPTIONS请求：Access-Control-Max-Age-或者-避免触发"><a href="#优化OPTIONS请求：Access-Control-Max-Age-或者-避免触发" class="headerlink" title="优化OPTIONS请求：Access-Control-Max-Age 或者 避免触发"></a>优化OPTIONS请求：Access-Control-Max-Age 或者 避免触发</h2><p>可见一旦达到触发条件，跨域请求便会一直发送2次请求，这样增加的请求数是否可优化呢？答案是可以，OPTIONS预检请求的结果可以被缓存。</p>
+<blockquote>
+<p>Access-Control-Max-Age这个响应首部表示 preflight request  （预检请求）的返回结果（即 Access-Control-Allow-Methods 和Access-Control-Allow-Headers 提供的信息） 可以被缓存的最长时间，单位是秒。(MDN)</p>
+</blockquote>
+<p>如果值为 -1，则表示禁用缓存，每一次请求都需要提供预检请求，即用OPTIONS请求进行检测。<br>评论区的朋友提醒了，尽量避免不要触发OPTIONS请求，上面例子中把content-type改掉是可以的。在其他场景，比如跨域并且业务有自定义请求头的话就很难避免了。现在使用的axios或者superagent等第三方ajax插件，如果出现CORS预检请求，可以看看默认配置或者二次封装是否规范。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>OPTIONS请求即预检请求，可用于检测服务器允许的http方法。当发起跨域请求时，由于安全原因，触发一定条件时浏览器会在正式请求之前自动先发起OPTIONS请求，即CORS预检请求，服务器若接受该跨域请求，浏览器才继续发起正式请求。</p>
+<p>作者：熊也抱抱<br>链接：<a href="https://juejin.im/post/6844903821634699277" target="_blank" rel="noopener">https://juejin.im/post/6844903821634699277</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/13/什么时候会发送options请求/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-长时间Running-flutter-pub-get没反应" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1122,91 +1232,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/10/JS中typeof的用法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-二分查找" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/17/二分查找/">二分查找</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/17/二分查找/" class="archive-article-date">
-  	<time datetime="2019-12-17T15:09:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 二分查找，也称为折半查找，是指在有序的数组里找出指定的值，返回该值在数组中的索引。查找步骤如下：</span></span><br><span class="line"><span class="comment"> *（1）从有序数组的最中间元素开始查找，如果该元素正好是指定查找的值，则查找过程结束。否则进行下一步;</span></span><br><span class="line"><span class="comment"> *（2）如果指定要查找的元素大于或者小于中间元素，则在数组大于或小于中间元素的那一半区域查找，然后重复第一步的操作;</span></span><br><span class="line"><span class="comment"> *（3）重复以上过程，直到找到目标元素的索引，查找成功;或者直到子数组为空，查找失败。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 优点是比较次数少，查找速度快，平均性能好；其缺点是要求待查表为有序表，且插入删除困难。因此，折半查找方法适用于不经常变动而查找频繁的有序列表。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">binary_search</span>(<span class="params">arr, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> low = <span class="number">0</span></span><br><span class="line">  <span class="keyword">var</span> high = arr.length - <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">    <span class="keyword">var</span> mid = <span class="built_in">parseInt</span>((high + low) / <span class="number">2</span>)</span><br><span class="line">    <span class="comment">// console.log(mid + 'h' + high + 'l' + low)</span></span><br><span class="line">    <span class="keyword">if</span> (target === arr[mid]) &#123;</span><br><span class="line">      <span class="keyword">return</span> mid</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &gt; arr[mid]) &#123;</span><br><span class="line">      low = mid + <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      high = mid - <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 递归的方式实现二分查找</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">arr</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">low</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">high</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">binary_search_dg</span>(<span class="params">arr, low, high, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (low &gt; high) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> mid = <span class="built_in">parseInt</span>((high + low) / <span class="number">2</span>)</span><br><span class="line">  <span class="keyword">if</span> (arr[mid] === target) &#123;</span><br><span class="line">    <span class="keyword">return</span> mid</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (target &gt; arr[mid]) &#123;</span><br><span class="line">      low = mid + <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      high = mid - <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> binary_search_dg(arr, low, high, target)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/17/二分查找/">展开全文 >></a>
         </p>
       
 
