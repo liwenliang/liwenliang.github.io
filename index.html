@@ -166,6 +166,133 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Cypress端到端自动化测试学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/17/Cypress端到端自动化测试学习笔记/">Cypress端到端自动化测试学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/17/Cypress端到端自动化测试学习笔记/" class="archive-article-date">
+  	<time datetime="2021-09-17T03:46:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言<br>一直以来，端到端的测试都是前端开发最头疼的事情。如果没有好的测试工具，一旦需求发生改变，就需要手工测试，费时费力，还会有漏网的 bug。最近接触了一款开箱即用的端到端测试工具——Cypress，真心不错，Cypress可以对在浏览器中运行的任何东西进行快速、简单和可靠的测试。</p>
+<p>windows环境安装<br>1.安装node.js<br>官网下载地址：</p>
+<p><a href="https://nodejs.org/en/download/nodejs.org" target="_blank" rel="noopener">https://nodejs.org/en/download/nodejs.org</a></p>
+<p>下载后一路傻瓜式安装，安装完成后，运行cmd，输入node –v查看版本号，然后输入npm -v 出现如下图说明安装成功<br><img src="https://blogimage.houjiyi.com/Fg2xrY3zEEndo1ypZfjZcoyDQUHf" alt="image.png"></p>
+<p>2.安装Cypress<br>自己本地电脑新建一个目录Ui_test，cd 到目录，执行 npm 指令安装</p>
+<p>cd D:\workspace\Ui_test</p>
+<p>npm install cypress  –save-dev (默认安装最新版)</p>
+<p>npm install –save-dev <a href="mailto:cypress@4.5.0" target="_blank" rel="noopener">cypress@4.5.0</a> （指定4.5.0版本）</p>
+<p>这里博主安装的是4.5.0版本，安装会很慢，耐心等待会。</p>
+<p>出现如下说明安装成功了<br><img src="https://blogimage.houjiyi.com/FkrSmBk8N5LFiuv_l6YylCFGi3ZI" alt="image.png"></p>
+<p>启动cypress<br>首先在D:\workspace\UI_test目录下新建一个 package.json 文件配置如下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"cypress:open"</span>: <span class="string">"cypress open"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>现在，您可以在D:\workspace\Ui_test目下用如下命令启动</p>
+<p>npm run cypress:open或者npx cypress open</p>
+<p>启动成功展示：<br><img src="https://blogimage.houjiyi.com/Fj-IVIG9QZONZpNZYavqx8zxHDuR" alt="image.png"></p>
+<p>2.现在我们开始写第一个自动化示例程序：<br>官方文档：</p>
+<p><a href="https://docs.cypress.io/guidesdocs.cypress.io" target="_blank" rel="noopener">https://docs.cypress.io/guidesdocs.cypress.io</a></p>
+<p>先说一下cypress的目录结构。cypress共有七个目录，还有一个cypress.json文件<br><img src="https://blogimage.houjiyi.com/Ft4kgPU-46v5BCH2imu4efP3l4oI" alt="image.png"></p>
+<p>编写测试case<br>脚本实现功能：</p>
+<p>1.输入访问地址</p>
+<p>2.获取元素</p>
+<p>3.输入账号密码</p>
+<p>4.登陆</p>
+<p>5.断言</p>
+<p>在 integration 目录下新建你的工程目录，如demo，下面拿login.js文件为实例<br><img src="https://blogimage.houjiyi.com/FgMS8UpmF9icCA9QDIQJ5pKnZUA8" alt="image.png"></p>
+<p>describe 声明一个测试用例集</p>
+<p>beforeEach 测试用例前置操作，相当于setup</p>
+<p>it声明了一个测试用例</p>
+<p>cy.get 定位元素，用css selector定位选择器</p>
+<p>should 断言控件含有内容</p>
+<p>cy.visit(“/地址”)</p>
+<p>case编写完切换到项目根目录执行命令npm run cypress:open或者npx cypress open<br><img src="https://blogimage.houjiyi.com/FrJBEiXzhuuoWF67h7Jyug20xiaW" alt="image.png"></p>
+<p>运行效果<br><img src="https://blogimage.houjiyi.com/FgnOmLWCz0CwHNI64o7xjuN-dywa" alt="image.png"></p>
+<p>生成测试报告<br>npm安装 npm install –save-dev mocha mochawesome mochawesome-merge mochawesome-report-generator</p>
+<p>在 cypress.json 设置相关参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"env"</span>: &#123;</span><br><span class="line">        <span class="string">"search"</span>:<span class="string">"Cypress e2e"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"reporter"</span>: <span class="string">"mochawesome"</span>,</span><br><span class="line">    <span class="string">"reporterOptions"</span>: &#123;</span><br><span class="line">        <span class="string">"reportDir"</span>: <span class="string">"cypress/results"</span>,</span><br><span class="line">        <span class="string">"overwrite"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">"html"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">"json"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>执行 npx cypress run或者npm run cypress:open</p>
+<p>出现如下图说明执行成功了<br><img src="https://blogimage.houjiyi.com/FooN1XsXEbVup7f2naYlN6rKAa5g" alt="image.png"></p>
+<p>生成html测试报告<br><img src="https://blogimage.houjiyi.com/FvK__kmZnKNn7UKG2M5KUdkR6VPj" alt="image.png"></p>
+<p>生成xxx.mp4视频<br><img src="https://blogimage.houjiyi.com/Fu4jcwq_BXgnOAbZbXu9l6kBbjmx" alt="image.png"></p>
+<p>想转行做自动化测试的朋友们，想追求新技术助力公司成长的朋友们，未来5年弯道超车的机会，也许就在今天！</p>
+<p>推荐几个好的学习素材</p>
+<p><a href="https://github.com/cypress-io/cypressgithub.com" target="_blank" rel="noopener">https://github.com/cypress-io/cypressgithub.com</a></p>
+<p><a href="https://github.com/cypress-io/cypress-example-recipes/github.com" target="_blank" rel="noopener">https://github.com/cypress-io/cypress-example-recipes/github.com</a></p>
+<p><a href="https://github.com/cypress-io/cypress-example-kitchensink/github.com" target="_blank" rel="noopener">https://github.com/cypress-io/cypress-example-kitchensink/github.com</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/17/Cypress端到端自动化测试学习笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-开发排期及开发过程的一些思考" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1052,92 +1179,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/03/19/要做的/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-getaddrinfo-ENOTFOUND-localhost解决办法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/15/getaddrinfo-ENOTFOUND-localhost解决办法/">getaddrinfo ENOTFOUND localhost解决办法</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/15/getaddrinfo-ENOTFOUND-localhost解决办法/" class="archive-article-date">
-  	<time datetime="2021-03-15T06:05:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>mpvue npm run dev 报错Error: getaddrinfo ENOTFOUND localhost解决办法</p>
-<p>打开hosts文件 添加127.0.0.1 localhost</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/H5开发//" class="article-tag-list-link color5">H5开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/15/getaddrinfo-ENOTFOUND-localhost解决办法/">展开全文 >></a>
         </p>
       
 

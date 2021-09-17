@@ -166,6 +166,93 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-java-lang-UnsatisfiedLinkError-dlopen-failed" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/03/java-lang-UnsatisfiedLinkError-dlopen-failed/">java.lang.UnsatisfiedLinkError: dlopen failed</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/03/java-lang-UnsatisfiedLinkError-dlopen-failed/" class="archive-article-date">
+  	<time datetime="2019-04-03T15:16:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在做一个SDK开发的时候，因为library中用到了.so库文件，所以我直接从之前的项目中复制过来对应的.so文件到libs中，但是开发完成后，运行直接到native方法处就崩溃。。。我一脸蒙蔽哈。。。<br>这TM什么情况，在native处崩溃后，没有任何错误提示，搞的我1个小时定位问题。。。<br>最后实在搞不了了，还是写了个日志输出代码，发现这个错误：<br>
+        
+          <a class="article-more-a" href="/2019/04/03/java-lang-UnsatisfiedLinkError-dlopen-failed/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">apicloud</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/移动开发//" class="article-tag-list-link color5">移动开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/03/java-lang-UnsatisfiedLinkError-dlopen-failed/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-APICloud打包Vue单页应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -937,96 +1024,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/03/22/什么叫ocpm、ocpc、ocpa？/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-如何使用electron自动更新功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/22/如何使用electron自动更新功能/">如何使用electron自动更新功能</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/22/如何使用electron自动更新功能/" class="archive-article-date">
-  	<time datetime="2019-03-22T10:13:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近做了个项目，要用到electron的自动更新功能。</p>
-<p>直接贴代码：</p>
-<p>update.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检测更新，在你想要检查更新的时候执行，renderer事件触发后的操作自行编写</span></span><br><span class="line"><span class="keyword">import</span> &#123; autoUpdater &#125; <span class="keyword">from</span> <span class="string">'electron-updater'</span></span><br><span class="line"><span class="keyword">import</span> &#123; ipcMain &#125; <span class="keyword">from</span> <span class="string">'electron'</span></span><br><span class="line"></span><br><span class="line">autoUpdater.autoDownload = <span class="literal">false</span></span><br><span class="line"><span class="keyword">const</span> uploadUrl = <span class="string">'http://xxx.xxx.xxx/soft/download/'</span> <span class="comment">// 下载地址，不加后面的**.exe</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">updateHandle</span>(<span class="params">mainWindow</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> message = &#123;</span><br><span class="line">    error: <span class="string">'检查更新出错，请稍后再试！'</span>,</span><br><span class="line">    checking: <span class="string">'正在检查更新……'</span>,</span><br><span class="line">    updateAva: <span class="string">'检测到新版本'</span>,</span><br><span class="line">    updateNotAva: <span class="string">'现在使用的是最新版本，无需更新！'</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 通过main进程发送事件给renderer进程，提示更新信息</span></span><br><span class="line">  <span class="keyword">const</span> sendUpdateMessage = <span class="function">(<span class="params">text</span>) =&gt;</span> &#123;</span><br><span class="line">    mainWindow.webContents.send(<span class="string">'message'</span>, text)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  autoUpdater.setFeedURL(uploadUrl)</span><br><span class="line"></span><br><span class="line">  autoUpdater.on(<span class="string">'error'</span>, () =&gt; &#123;</span><br><span class="line">    sendUpdateMessage(message.error)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  autoUpdater.on(<span class="string">'checking-for-update'</span>, () =&gt; &#123;</span><br><span class="line">    sendUpdateMessage(message.checking)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  autoUpdater.on(<span class="string">'update-available'</span>, (info) =&gt; &#123;</span><br><span class="line">    sendUpdateMessage(message.updateAva, info)</span><br><span class="line">    mainWindow.webContents.send(<span class="string">'update-available'</span>, info)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  autoUpdater.on(<span class="string">'update-not-available'</span>, (info) =&gt; &#123;</span><br><span class="line">    sendUpdateMessage(message.updateNotAva)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 更新下载进度事件</span></span><br><span class="line">  autoUpdater.on(<span class="string">'download-progress'</span>, (downloadObj) =&gt; &#123;</span><br><span class="line">    mainWindow.webContents.send(<span class="string">'downloadProgress'</span>, downloadObj)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  autoUpdater.on(<span class="string">'update-downloaded'</span>, (event, releaseNotes) =&gt; &#123;</span><br><span class="line">    mainWindow.webContents.send(<span class="string">'update-downloaded'</span>, event, releaseNotes)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  ipcMain.on(<span class="string">'checkForUpdate'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// 执行自动更新检查</span></span><br><span class="line">    autoUpdater.checkForUpdates()</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  ipcMain.on(<span class="string">'downloadUpdate'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// 下载更新</span></span><br><span class="line">    autoUpdater.downloadUpdate()</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  ipcMain.on(<span class="string">'quitAndInstall'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// 退出并更新</span></span><br><span class="line">    autoUpdater.quitAndInstall()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>update.vue</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center;"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">style</span>=<span class="string">"height: 5em;"</span> <span class="attr">:loading</span>=<span class="string">"loading"</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">icon</span>=<span class="string">"el-icon-refresh"</span> @<span class="attr">click</span>=<span class="string">"checkoutUpdate"</span>&gt;</span></span><br><span class="line">        &#123;&#123; btnText &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"margin-top: 1em;"</span>&gt;</span></span><br><span class="line">        &#123;&#123; tip &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-dialog</span> <span class="attr">:title</span>=<span class="string">"`已下载新版本$&#123;newVersion&#125;`"</span> <span class="attr">:visible.sync</span>=<span class="string">"dialogVisible"</span> <span class="attr">width</span>=<span class="string">"30%"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-for</span>=<span class="string">"(item, idx) in features"</span> <span class="attr">:key</span>=<span class="string">"idx"</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></span><br><span class="line">        &#123;&#123; idx+1 &#125;&#125;.&#123;&#123; item &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">slot</span>=<span class="string">"footer"</span> <span class="attr">class</span>=<span class="string">"dialog-footer"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-button</span> @<span class="attr">click</span>=<span class="string">"onCancel"</span>&gt;</span>稍后更新<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">"primary"</span> @<span class="attr">click</span>=<span class="string">"updateNow"</span>&gt;</span>立即更新<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-dialog</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; ipcRenderer &#125; <span class="keyword">from</span> <span class="string">'electron'</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  name: <span class="string">'SettingUpdate'</span>,</span></span><br><span class="line">  data() &#123;</span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">      tip: <span class="string">''</span>,</span></span><br><span class="line"><span class="javascript">      btnText: <span class="string">'检查最新版本！'</span>,</span></span><br><span class="line"><span class="javascript">      dialogVisible: <span class="literal">false</span>,</span></span><br><span class="line">      features: [],</span><br><span class="line"><span class="javascript">      newVersion: <span class="string">''</span>,</span></span><br><span class="line"><span class="javascript">      loading: <span class="literal">false</span></span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;</span><br><span class="line"><span class="javascript">    ipcRenderer.on(<span class="string">'message'</span>, (event, text) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.tip = text</span></span><br><span class="line">    &#125;)</span><br><span class="line"><span class="javascript">    ipcRenderer.on(<span class="string">'downloadProgress'</span>, (event, downloadObj) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.loading = <span class="literal">true</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> downloadPercent = downloadObj.percent.toFixed(<span class="number">2</span>)</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.btnText = <span class="string">`正在下载(<span class="subst">$&#123;downloadPercent&#125;</span>%)`</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">    ipcRenderer.on(<span class="string">'update-available'</span>, (event, info) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.$confirm(<span class="string">`检测到新版本<span class="subst">$&#123;info.version&#125;</span>，是否下载更新?`</span>, <span class="string">'新版本提示'</span>, &#123;</span></span><br><span class="line"><span class="javascript">        confirmButtonText: <span class="string">'下载'</span>,</span></span><br><span class="line"><span class="javascript">        cancelButtonText: <span class="string">'取消'</span>,</span></span><br><span class="line"><span class="javascript">        type: <span class="string">'warning'</span></span></span><br><span class="line"><span class="javascript">      &#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">        ipcRenderer.send(<span class="string">'downloadUpdate'</span>)</span></span><br><span class="line"><span class="javascript">      &#125;).catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">    ipcRenderer.on(<span class="string">'update-downloaded'</span>, (event, releaseNotes) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">'--------releaseNotes--------'</span>)</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(releaseNotes)</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">'--------releaseNotes--------'</span>)</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.btnText - <span class="string">'检查最新版本！'</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.loading = <span class="literal">false</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.dialogVisible = <span class="literal">true</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.tip = <span class="string">''</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.newVersion = releaseNotes.version</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.features = releaseNotes.features</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    checkoutUpdate() &#123;</span><br><span class="line"><span class="javascript">      ipcRenderer.send(<span class="string">'checkForUpdate'</span>)</span></span><br><span class="line">    &#125;,</span><br><span class="line">    onCancel() &#123;</span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.dialogVisible = <span class="literal">false</span></span></span><br><span class="line">    &#125;,</span><br><span class="line">    updateNow() &#123;</span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.dialogVisible = <span class="literal">false</span></span></span><br><span class="line"><span class="javascript">      ipcRenderer.send(<span class="string">'quitAndInstall'</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span> <span class="attr">lang</span>=<span class="string">"scss"</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.item</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">line-height</span>: 1<span class="selector-class">.5em</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">font-size</span>: 1<span class="selector-class">.2em</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">electron</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/22/如何使用electron自动更新功能/">展开全文 >></a>
         </p>
       
 

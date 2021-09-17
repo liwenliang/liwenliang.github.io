@@ -6,19 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
-  <title>Archives | 后记忆</title>
+  <title>Cypress端到端自动化测试学习笔记 | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="健康、生活、工作">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="后记忆">
-<meta property="og:url" content="https://www.houjiyi.com/archives/page/2/index.html">
+  <meta name="description" content="前言一直以来，端到端的测试都是前端开发最头疼的事情。如果没有好的测试工具，一旦需求发生改变，就需要手工测试，费时费力，还会有漏网的 bug。最近接触了一款开箱即用的端到端测试工具——Cypress，真心不错，Cypress可以对在浏览器中运行的任何东西进行快速、简单和可靠的测试。 windows环境安装1.安装node.js官网下载地址： https://nodejs.org/en/downloa">
+<meta name="keywords" content="Web开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cypress端到端自动化测试学习笔记">
+<meta property="og:url" content="https://www.houjiyi.com/2021/09/17/Cypress端到端自动化测试学习笔记/index.html">
 <meta property="og:site_name" content="后记忆">
-<meta property="og:description" content="健康、生活、工作">
+<meta property="og:description" content="前言一直以来，端到端的测试都是前端开发最头疼的事情。如果没有好的测试工具，一旦需求发生改变，就需要手工测试，费时费力，还会有漏网的 bug。最近接触了一款开箱即用的端到端测试工具——Cypress，真心不错，Cypress可以对在浏览器中运行的任何东西进行快速、简单和可靠的测试。 windows环境安装1.安装node.js官网下载地址： https://nodejs.org/en/downloa">
 <meta property="og:locale" content="zh">
+<meta property="og:image" content="https://blogimage.houjiyi.com/Fg2xrY3zEEndo1ypZfjZcoyDQUHf">
+<meta property="og:image" content="https://blogimage.houjiyi.com/FkrSmBk8N5LFiuv_l6YylCFGi3ZI">
+<meta property="og:image" content="https://blogimage.houjiyi.com/Fj-IVIG9QZONZpNZYavqx8zxHDuR">
+<meta property="og:image" content="https://blogimage.houjiyi.com/Ft4kgPU-46v5BCH2imu4efP3l4oI">
+<meta property="og:image" content="https://blogimage.houjiyi.com/FgMS8UpmF9icCA9QDIQJ5pKnZUA8">
+<meta property="og:image" content="https://blogimage.houjiyi.com/FrJBEiXzhuuoWF67h7Jyug20xiaW">
+<meta property="og:image" content="https://blogimage.houjiyi.com/FgnOmLWCz0CwHNI64o7xjuN-dywa">
+<meta property="og:image" content="https://blogimage.houjiyi.com/FooN1XsXEbVup7f2naYlN6rKAa5g">
+<meta property="og:image" content="https://blogimage.houjiyi.com/FvK__kmZnKNn7UKG2M5KUdkR6VPj">
+<meta property="og:image" content="https://blogimage.houjiyi.com/Fu4jcwq_BXgnOAbZbXu9l6kBbjmx">
+<meta property="og:updated_time" content="2021-09-17T03:46:44.502Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="后记忆">
-<meta name="twitter:description" content="健康、生活、工作">
+<meta name="twitter:title" content="Cypress端到端自动化测试学习笔记">
+<meta name="twitter:description" content="前言一直以来，端到端的测试都是前端开发最头疼的事情。如果没有好的测试工具，一旦需求发生改变，就需要手工测试，费时费力，还会有漏网的 bug。最近接触了一款开箱即用的端到端测试工具——Cypress，真心不错，Cypress可以对在浏览器中运行的任何东西进行快速、简单和可靠的测试。 windows环境安装1.安装node.js官网下载地址： https://nodejs.org/en/downloa">
+<meta name="twitter:image" content="https://blogimage.houjiyi.com/Fg2xrY3zEEndo1ypZfjZcoyDQUHf">
   
     <link rel="alternative" href="/atom.xml" title="后记忆" type="application/atom+xml">
   
@@ -164,36 +176,108 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Cypress端到端自动化测试学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/15/getaddrinfo-ENOTFOUND-localhost解决办法/" class="archive-article-date">
-  	<time datetime="2021-03-15T06:05:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/15/getaddrinfo-ENOTFOUND-localhost解决办法/">getaddrinfo ENOTFOUND localhost解决办法</a>
+    <h1 class="article-title" itemprop="name">
+      Cypress端到端自动化测试学习笔记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/09/17/Cypress端到端自动化测试学习笔记/" class="archive-article-date">
+  	<time datetime="2021-09-17T03:46:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言<br>一直以来，端到端的测试都是前端开发最头疼的事情。如果没有好的测试工具，一旦需求发生改变，就需要手工测试，费时费力，还会有漏网的 bug。最近接触了一款开箱即用的端到端测试工具——Cypress，真心不错，Cypress可以对在浏览器中运行的任何东西进行快速、简单和可靠的测试。</p>
+<p>windows环境安装<br>1.安装node.js<br>官网下载地址：</p>
+<p><a href="https://nodejs.org/en/download/nodejs.org" target="_blank" rel="noopener">https://nodejs.org/en/download/nodejs.org</a></p>
+<p>下载后一路傻瓜式安装，安装完成后，运行cmd，输入node –v查看版本号，然后输入npm -v 出现如下图说明安装成功<br><img src="https://blogimage.houjiyi.com/Fg2xrY3zEEndo1ypZfjZcoyDQUHf" alt="image.png"></p>
+<p>2.安装Cypress<br>自己本地电脑新建一个目录Ui_test，cd 到目录，执行 npm 指令安装</p>
+<p>cd D:\workspace\Ui_test</p>
+<p>npm install cypress  –save-dev (默认安装最新版)</p>
+<p>npm install –save-dev <a href="mailto:cypress@4.5.0" target="_blank" rel="noopener">cypress@4.5.0</a> （指定4.5.0版本）</p>
+<p>这里博主安装的是4.5.0版本，安装会很慢，耐心等待会。</p>
+<p>出现如下说明安装成功了<br><img src="https://blogimage.houjiyi.com/FkrSmBk8N5LFiuv_l6YylCFGi3ZI" alt="image.png"></p>
+<p>启动cypress<br>首先在D:\workspace\UI_test目录下新建一个 package.json 文件配置如下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"cypress:open"</span>: <span class="string">"cypress open"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>现在，您可以在D:\workspace\Ui_test目下用如下命令启动</p>
+<p>npm run cypress:open或者npx cypress open</p>
+<p>启动成功展示：<br><img src="https://blogimage.houjiyi.com/Fj-IVIG9QZONZpNZYavqx8zxHDuR" alt="image.png"></p>
+<p>2.现在我们开始写第一个自动化示例程序：<br>官方文档：</p>
+<p><a href="https://docs.cypress.io/guidesdocs.cypress.io" target="_blank" rel="noopener">https://docs.cypress.io/guidesdocs.cypress.io</a></p>
+<p>先说一下cypress的目录结构。cypress共有七个目录，还有一个cypress.json文件<br><img src="https://blogimage.houjiyi.com/Ft4kgPU-46v5BCH2imu4efP3l4oI" alt="image.png"></p>
+<p>编写测试case<br>脚本实现功能：</p>
+<p>1.输入访问地址</p>
+<p>2.获取元素</p>
+<p>3.输入账号密码</p>
+<p>4.登陆</p>
+<p>5.断言</p>
+<p>在 integration 目录下新建你的工程目录，如demo，下面拿login.js文件为实例<br><img src="https://blogimage.houjiyi.com/FgMS8UpmF9icCA9QDIQJ5pKnZUA8" alt="image.png"></p>
+<p>describe 声明一个测试用例集</p>
+<p>beforeEach 测试用例前置操作，相当于setup</p>
+<p>it声明了一个测试用例</p>
+<p>cy.get 定位元素，用css selector定位选择器</p>
+<p>should 断言控件含有内容</p>
+<p>cy.visit(“/地址”)</p>
+<p>case编写完切换到项目根目录执行命令npm run cypress:open或者npx cypress open<br><img src="https://blogimage.houjiyi.com/FrJBEiXzhuuoWF67h7Jyug20xiaW" alt="image.png"></p>
+<p>运行效果<br><img src="https://blogimage.houjiyi.com/FgnOmLWCz0CwHNI64o7xjuN-dywa" alt="image.png"></p>
+<p>生成测试报告<br>npm安装 npm install –save-dev mocha mochawesome mochawesome-merge mochawesome-report-generator</p>
+<p>在 cypress.json 设置相关参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"env"</span>: &#123;</span><br><span class="line">        <span class="string">"search"</span>:<span class="string">"Cypress e2e"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"reporter"</span>: <span class="string">"mochawesome"</span>,</span><br><span class="line">    <span class="string">"reporterOptions"</span>: &#123;</span><br><span class="line">        <span class="string">"reportDir"</span>: <span class="string">"cypress/results"</span>,</span><br><span class="line">        <span class="string">"overwrite"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">"html"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">"json"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>执行 npx cypress run或者npm run cypress:open</p>
+<p>出现如下图说明执行成功了<br><img src="https://blogimage.houjiyi.com/FooN1XsXEbVup7f2naYlN6rKAa5g" alt="image.png"></p>
+<p>生成html测试报告<br><img src="https://blogimage.houjiyi.com/FvK__kmZnKNn7UKG2M5KUdkR6VPj" alt="image.png"></p>
+<p>生成xxx.mp4视频<br><img src="https://blogimage.houjiyi.com/Fu4jcwq_BXgnOAbZbXu9l6kBbjmx" alt="image.png"></p>
+<p>想转行做自动化测试的朋友们，想追求新技术助力公司成长的朋友们，未来5年弯道超车的机会，也许就在今天！</p>
+<p>推荐几个好的学习素材</p>
+<p><a href="https://github.com/cypress-io/cypressgithub.com" target="_blank" rel="noopener">https://github.com/cypress-io/cypressgithub.com</a></p>
+<p><a href="https://github.com/cypress-io/cypress-example-recipes/github.com" target="_blank" rel="noopener">https://github.com/cypress-io/cypress-example-recipes/github.com</a></p>
+<p><a href="https://github.com/cypress-io/cypress-example-kitchensink/github.com" target="_blank" rel="noopener">https://github.com/cypress-io/cypress-example-kitchensink/github.com</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wxpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -205,500 +289,129 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/H5开发//" class="article-tag-list-link color5">H5开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/12/FE微前端架构实施/" class="archive-article-date">
-  	<time datetime="2021-03-12T12:20:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/12/FE微前端架构实施/">FE微前端架构实施</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发/性能优化//" class="article-tag-list-link color5">性能优化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/13/什么时候会发送options请求/" class="archive-article-date">
-  	<time datetime="2020-10-13T07:22:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/13/什么时候会发送options请求/">什么时候会发送options请求</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.houjiyi.com/2021/09/17/Cypress端到端自动化测试学习笔记/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/10/长时间Running-flutter-pub-get没反应/" class="archive-article-date">
-  	<time datetime="2020-08-10T09:47:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-10</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/09/06/开发排期及开发过程的一些思考/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">开发排期及开发过程的一些思考</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/10/长时间Running-flutter-pub-get没反应/">长时间Running flutter pub get没反应</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/移动开发//" class="article-tag-list-link color5">移动开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/24/详解事件循环与任务队列/" class="archive-article-date">
-  	<time datetime="2020-07-24T12:03:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/24/详解事件循环与任务队列/">详解事件循环与任务队列</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/24/JS中的异步操作/" class="archive-article-date">
-  	<time datetime="2020-07-24T01:56:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/24/JS中的异步操作/">JS中的异步操作</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/23/JS中call-和apply/" class="archive-article-date">
-  	<time datetime="2020-07-23T07:24:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/23/JS中call-和apply/">JS中call()和apply()</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/21/全网最详bpmn-js简介/" class="archive-article-date">
-  	<time datetime="2020-07-21T01:51:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/21/全网最详bpmn-js简介/">全网最详bpmn.js简介</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/16/JS原始值转换算法-toPrimitive/" class="archive-article-date">
-  	<time datetime="2020-07-16T02:58:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/16/JS原始值转换算法-toPrimitive/">JS原始值转换算法---toPrimitive()</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/13/PWA-入门-写个非常简单的-PWA-页面/" class="archive-article-date">
-  	<time datetime="2020-07-13T06:53:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/13/PWA-入门-写个非常简单的-PWA-页面/">PWA 入门: 写个非常简单的 PWA 页面</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PWA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/15/">15</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -723,8 +436,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
