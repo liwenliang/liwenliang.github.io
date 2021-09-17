@@ -166,6 +166,626 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-java-lang-UnsatisfiedLinkError-dlopen-failed" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/03/java-lang-UnsatisfiedLinkError-dlopen-failed/">java.lang.UnsatisfiedLinkError: dlopen failed</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/03/java-lang-UnsatisfiedLinkError-dlopen-failed/" class="archive-article-date">
+  	<time datetime="2019-04-03T15:16:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在做一个SDK开发的时候，因为library中用到了.so库文件，所以我直接从之前的项目中复制过来对应的.so文件到libs中，但是开发完成后，运行直接到native方法处就崩溃。。。我一脸蒙蔽哈。。。<br>这TM什么情况，在native处崩溃后，没有任何错误提示，搞的我1个小时定位问题。。。<br>最后实在搞不了了，还是写了个日志输出代码，发现这个错误：<br>
+        
+          <a class="article-more-a" href="/2019/04/03/java-lang-UnsatisfiedLinkError-dlopen-failed/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">apicloud</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/移动开发//" class="article-tag-list-link color5">移动开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/03/java-lang-UnsatisfiedLinkError-dlopen-failed/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-APICloud打包Vue单页应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/30/APICloud打包Vue单页应用/">APICloud打包Vue单页应用</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/30/APICloud打包Vue单页应用/" class="archive-article-date">
+  	<time datetime="2019-03-30T06:05:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>APICloud新建项目后，会生成以下目录结构</p>
+<p><img src="http://blogimage.houjiyi.com/Fr2qGfMeERsyzXVXNvD2fKfBvoXV" alt="image.png"></p>
+<p>其中index.html是入口文件，而vue-cli打包生成的文件是在dist目录下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">├─dist</span><br><span class="line">│ └─static</span><br><span class="line">│ 　　 ├─css</span><br><span class="line">│ 　　 └─js</span><br><span class="line">│ └─index.html</span><br></pre></td></tr></table></figure></p>
+<p>把dist目录中的static文件夹和index.html复制到apicloud的项目文件中即可，覆盖原来的index.html。最终apicloud的目录结构只是比原来多了一个static目录。</p>
+        
+          <a class="article-more-a" href="/2019/03/30/APICloud打包Vue单页应用/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">apicloud</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/移动开发//" class="article-tag-list-link color5">移动开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/30/APICloud打包Vue单页应用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-electron静默打印不生效" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/29/electron静默打印不生效/">electron静默打印不生效</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/29/electron静默打印不生效/" class="archive-article-date">
+  	<time datetime="2019-03-29T01:40:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Electron静默打印始终是不生效的，不知道网上那么多教程最后有没有真正生效，先记录下，继续研究。<br>
+        
+          <a class="article-more-a" href="/2019/03/29/electron静默打印不生效/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">electron</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/29/electron静默打印不生效/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vue条形码和二维码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/28/vue条形码和二维码/">vue条形码和二维码</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/28/vue条形码和二维码/" class="archive-article-date">
+  	<time datetime="2019-03-28T09:43:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先上效果图：</p>
+<p><img src="http://blogimage.houjiyi.com/Fj469wO3rqk9MbPqM0lh4bVQusYO" alt="image.png"><br>
+        
+          <a class="article-more-a" href="/2019/03/28/vue条形码和二维码/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/28/vue条形码和二维码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-electron-vue项目实现打印小票功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/27/electron-vue项目实现打印小票功能/">electron + vue项目实现打印小票功能</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/27/electron-vue项目实现打印小票功能/" class="archive-article-date">
+  	<time datetime="2019-03-27T15:13:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言：该文章需要一定的electron基础同学。如需了解更多相关信息，请移步electron官方文档。<br>一、需求：<br>公司项目需要通过electron调用系统打印机，实现打印小票的功能。</p>
+        
+          <a class="article-more-a" href="/2019/03/27/electron-vue项目实现打印小票功能/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">electron</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/27/electron-vue项目实现打印小票功能/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-apicloud结合vue快速开发移动应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/26/apicloud结合vue快速开发移动应用/">apicloud结合vue快速开发移动应用</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/26/apicloud结合vue快速开发移动应用/" class="archive-article-date">
+  	<time datetime="2019-03-26T08:57:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当我们使用apicloud开发移动app的时候，如果使用官方推荐的方式，引入一些脚本文件，会觉得非常蹩脚，毕竟vue单页应用已经非常熟悉并且效率极高。</p>
+<p>这时候就需要一种方式来吧apicloud跟vue单页应用项目结合起来进行开发，技能发挥vue单页应用的效率，也能同时使用apicloud提供的移动端接口，简直非常方便。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">apicloud</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/移动开发//" class="article-tag-list-link color5">移动开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/26/apicloud结合vue快速开发移动应用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-科学上网配置服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/26/科学上网配置服务器/">科学上网配置服务器</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/26/科学上网配置服务器/" class="archive-article-date">
+  	<time datetime="2019-03-26T02:00:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>说实话，很多优秀的技术和知识在谷歌上是很方便能找到的，不像国内一堆广告，需要自己去筛选。而作为一名开发，能够上外网学习先进的技术也是必不可少的技能。老实说，国内这种一棒子打死的做法只能体现相关安全部门的无能与懒惰，做法简单粗暴，完全不考虑好的一面会给人们带来的益处。牢骚发完了，记录下自己的使用方式，仅作为自己的一个备忘吧：</p>
+<ol>
+<li>租用国外的一台服务器</li>
+</ol>
+<p>阿里云是不能用了，于是找了这个网站，还好可以用，没准哪天就也不能用了，所以充值就冲最少的就行了：<a href="https://www.vultr.com/?ref=7961451" target="_blank" rel="noopener">vultr</a>，你点了这个链接如果充值以后我也会得到奖励，如果你不想让我得到奖励，可以自己输入：<a href="https://www.vultr.com/" target="_blank" rel="noopener">https://www.vultr.com/</a> 访问即可。注册的时候使用复杂密码。</p>
+        
+          <a class="article-more-a" href="/2019/03/26/科学上网配置服务器/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">科学上网</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/项目总结//" class="article-tag-list-link color5">项目总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/26/科学上网配置服务器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-将静态资源放到七牛服务器上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -433,696 +1053,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-如何使用electron自动更新功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/22/如何使用electron自动更新功能/">如何使用electron自动更新功能</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/22/如何使用electron自动更新功能/" class="archive-article-date">
-  	<time datetime="2019-03-22T10:13:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近做了个项目，要用到electron的自动更新功能。</p>
-<p>直接贴代码：</p>
-<p>update.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检测更新，在你想要检查更新的时候执行，renderer事件触发后的操作自行编写</span></span><br><span class="line"><span class="keyword">import</span> &#123; autoUpdater &#125; <span class="keyword">from</span> <span class="string">'electron-updater'</span></span><br><span class="line"><span class="keyword">import</span> &#123; ipcMain &#125; <span class="keyword">from</span> <span class="string">'electron'</span></span><br><span class="line"></span><br><span class="line">autoUpdater.autoDownload = <span class="literal">false</span></span><br><span class="line"><span class="keyword">const</span> uploadUrl = <span class="string">'http://xxx.xxx.xxx/soft/download/'</span> <span class="comment">// 下载地址，不加后面的**.exe</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">updateHandle</span>(<span class="params">mainWindow</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> message = &#123;</span><br><span class="line">    error: <span class="string">'检查更新出错，请稍后再试！'</span>,</span><br><span class="line">    checking: <span class="string">'正在检查更新……'</span>,</span><br><span class="line">    updateAva: <span class="string">'检测到新版本'</span>,</span><br><span class="line">    updateNotAva: <span class="string">'现在使用的是最新版本，无需更新！'</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 通过main进程发送事件给renderer进程，提示更新信息</span></span><br><span class="line">  <span class="keyword">const</span> sendUpdateMessage = <span class="function">(<span class="params">text</span>) =&gt;</span> &#123;</span><br><span class="line">    mainWindow.webContents.send(<span class="string">'message'</span>, text)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  autoUpdater.setFeedURL(uploadUrl)</span><br><span class="line"></span><br><span class="line">  autoUpdater.on(<span class="string">'error'</span>, () =&gt; &#123;</span><br><span class="line">    sendUpdateMessage(message.error)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  autoUpdater.on(<span class="string">'checking-for-update'</span>, () =&gt; &#123;</span><br><span class="line">    sendUpdateMessage(message.checking)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  autoUpdater.on(<span class="string">'update-available'</span>, (info) =&gt; &#123;</span><br><span class="line">    sendUpdateMessage(message.updateAva, info)</span><br><span class="line">    mainWindow.webContents.send(<span class="string">'update-available'</span>, info)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  autoUpdater.on(<span class="string">'update-not-available'</span>, (info) =&gt; &#123;</span><br><span class="line">    sendUpdateMessage(message.updateNotAva)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 更新下载进度事件</span></span><br><span class="line">  autoUpdater.on(<span class="string">'download-progress'</span>, (downloadObj) =&gt; &#123;</span><br><span class="line">    mainWindow.webContents.send(<span class="string">'downloadProgress'</span>, downloadObj)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  autoUpdater.on(<span class="string">'update-downloaded'</span>, (event, releaseNotes) =&gt; &#123;</span><br><span class="line">    mainWindow.webContents.send(<span class="string">'update-downloaded'</span>, event, releaseNotes)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  ipcMain.on(<span class="string">'checkForUpdate'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// 执行自动更新检查</span></span><br><span class="line">    autoUpdater.checkForUpdates()</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  ipcMain.on(<span class="string">'downloadUpdate'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// 下载更新</span></span><br><span class="line">    autoUpdater.downloadUpdate()</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  ipcMain.on(<span class="string">'quitAndInstall'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// 退出并更新</span></span><br><span class="line">    autoUpdater.quitAndInstall()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>update.vue</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center;"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">style</span>=<span class="string">"height: 5em;"</span> <span class="attr">:loading</span>=<span class="string">"loading"</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">icon</span>=<span class="string">"el-icon-refresh"</span> @<span class="attr">click</span>=<span class="string">"checkoutUpdate"</span>&gt;</span></span><br><span class="line">        &#123;&#123; btnText &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"margin-top: 1em;"</span>&gt;</span></span><br><span class="line">        &#123;&#123; tip &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-dialog</span> <span class="attr">:title</span>=<span class="string">"`已下载新版本$&#123;newVersion&#125;`"</span> <span class="attr">:visible.sync</span>=<span class="string">"dialogVisible"</span> <span class="attr">width</span>=<span class="string">"30%"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-for</span>=<span class="string">"(item, idx) in features"</span> <span class="attr">:key</span>=<span class="string">"idx"</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></span><br><span class="line">        &#123;&#123; idx+1 &#125;&#125;.&#123;&#123; item &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">slot</span>=<span class="string">"footer"</span> <span class="attr">class</span>=<span class="string">"dialog-footer"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-button</span> @<span class="attr">click</span>=<span class="string">"onCancel"</span>&gt;</span>稍后更新<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">"primary"</span> @<span class="attr">click</span>=<span class="string">"updateNow"</span>&gt;</span>立即更新<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-dialog</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; ipcRenderer &#125; <span class="keyword">from</span> <span class="string">'electron'</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  name: <span class="string">'SettingUpdate'</span>,</span></span><br><span class="line">  data() &#123;</span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">      tip: <span class="string">''</span>,</span></span><br><span class="line"><span class="javascript">      btnText: <span class="string">'检查最新版本！'</span>,</span></span><br><span class="line"><span class="javascript">      dialogVisible: <span class="literal">false</span>,</span></span><br><span class="line">      features: [],</span><br><span class="line"><span class="javascript">      newVersion: <span class="string">''</span>,</span></span><br><span class="line"><span class="javascript">      loading: <span class="literal">false</span></span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;</span><br><span class="line"><span class="javascript">    ipcRenderer.on(<span class="string">'message'</span>, (event, text) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.tip = text</span></span><br><span class="line">    &#125;)</span><br><span class="line"><span class="javascript">    ipcRenderer.on(<span class="string">'downloadProgress'</span>, (event, downloadObj) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.loading = <span class="literal">true</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> downloadPercent = downloadObj.percent.toFixed(<span class="number">2</span>)</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.btnText = <span class="string">`正在下载(<span class="subst">$&#123;downloadPercent&#125;</span>%)`</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">    ipcRenderer.on(<span class="string">'update-available'</span>, (event, info) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.$confirm(<span class="string">`检测到新版本<span class="subst">$&#123;info.version&#125;</span>，是否下载更新?`</span>, <span class="string">'新版本提示'</span>, &#123;</span></span><br><span class="line"><span class="javascript">        confirmButtonText: <span class="string">'下载'</span>,</span></span><br><span class="line"><span class="javascript">        cancelButtonText: <span class="string">'取消'</span>,</span></span><br><span class="line"><span class="javascript">        type: <span class="string">'warning'</span></span></span><br><span class="line"><span class="javascript">      &#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">        ipcRenderer.send(<span class="string">'downloadUpdate'</span>)</span></span><br><span class="line"><span class="javascript">      &#125;).catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">    ipcRenderer.on(<span class="string">'update-downloaded'</span>, (event, releaseNotes) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">'--------releaseNotes--------'</span>)</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(releaseNotes)</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">'--------releaseNotes--------'</span>)</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.btnText - <span class="string">'检查最新版本！'</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.loading = <span class="literal">false</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.dialogVisible = <span class="literal">true</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.tip = <span class="string">''</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.newVersion = releaseNotes.version</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.features = releaseNotes.features</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    checkoutUpdate() &#123;</span><br><span class="line"><span class="javascript">      ipcRenderer.send(<span class="string">'checkForUpdate'</span>)</span></span><br><span class="line">    &#125;,</span><br><span class="line">    onCancel() &#123;</span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.dialogVisible = <span class="literal">false</span></span></span><br><span class="line">    &#125;,</span><br><span class="line">    updateNow() &#123;</span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.dialogVisible = <span class="literal">false</span></span></span><br><span class="line"><span class="javascript">      ipcRenderer.send(<span class="string">'quitAndInstall'</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span> <span class="attr">lang</span>=<span class="string">"scss"</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.item</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">line-height</span>: 1<span class="selector-class">.5em</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">font-size</span>: 1<span class="selector-class">.2em</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">electron</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/22/如何使用electron自动更新功能/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2019新目标-新里程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/2019新目标-新里程/">2019新目标 新里程</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/03/2019新目标-新里程/" class="archive-article-date">
-  	<time datetime="2019-01-03T02:09:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="2019年新目标"><a href="#2019年新目标" class="headerlink" title="2019年新目标"></a>2019年新目标</h2><p>新的一年开始了，虽然今天已经三号，但还是要在年初定一个基本目标</p>
-<ol>
-<li>移动端应用开发</li>
-<li>熟练使用后端服务开发各种业务场景</li>
-<li>桌面版应用程序开发</li>
-</ol>
-<h2 id="2019年新里程"><a href="#2019年新里程" class="headerlink" title="2019年新里程"></a>2019年新里程</h2><ol>
-<li>家庭为主，事业为辅</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/项目总结//" class="article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/03/2019新目标-新里程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-一些广告术语汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/25/一些广告术语汇总/">一些广告术语汇总</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/25/一些广告术语汇总/" class="archive-article-date">
-  	<time datetime="2018-07-25T04:47:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/adImage/1.jpeg" alt></p>
-<p>AdNetwork、AdExchange、DSP、SSP、RTB、DMP这些模式之间存在着内在的关系，所以在理解的时候，我们需要联系起来进行理解，不能分开。</p>
-<ol>
-<li>RTB（RealTimeBidding，实时竞价）</li>
-</ol>
-<p>定义：是一种利用第三方技术在数以百万计的网站上针对每一个用户展示行为进行评估以及出价的竞价技术。</p>
-<p>个人理解：如果把互联网比作蜘蛛网，那么当任何一只小生物触碰到这张网上的某个节点，它的每一个细微的动作都会带来一系列的反馈。与此同时，这张网的主人就会自动对闯入领域的访客进行信息分析。这张网的主人不断的记录着各种数据，当你第二次碰到这张网的时候，它从它的数据库发现访客的信息与它的数据库的某个信息相匹配，这时，它就可以根据这个信息进行相应的回应。每一天，这张网都在不断的进化，它在不断的储存新的数据，它越来越聪明，它试图了解每一个外来访客的行为和目的，最终它从被动的诱惑转向精准的捕捉。这就是RTB，也就是实时竞价。通过记录cookies,来解析用户的行为，从而实现精准投放广告的目的。<br><img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/adImage/2.jpeg" alt></p>
-<ol start="2">
-<li>DSP（DemandSidePlatform，需求方平台）</li>
-</ol>
-<p>定义：需求方平台允许广告客户和广告机构更方便地访问，以及更有效地购买广告库存，因为该平台汇集了各种广告交易平台的库存。有了这一平台，就不需要再出现另一个繁琐的购买步骤——购买请求。</p>
-<p>个人理解：互联网里有成千上万的广告主，他们急需推广自己的产品，寻找优质的媒介和精准的目标用户，优化广告投放策略，提高投入产出比。简单的讲，DSP就是广告主服务平台，广告主可以在平台上设置广告的目标受众、投放地域、广告出价等等。</p>
-<p><img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/adImage/3.jpeg" alt></p>
-<ol start="3">
-<li>SSP（Sell-SidePlatform，供应方平台）</li>
-</ol>
-<p>定义：供应方平台能够让出版商也介入广告交易，从而使它们的库存广告可用。通过这一平台，出版商希望他们的库存广告可以获得最高的有效每千次展示费用，而不必以低价销售出去。</p>
-<p>个人理解：供应方平台，是站长服务平台。站长们可以在SSP上管理自己的广告位，控制广告的展现等。</p>
-<p>DSP和SSP的对比图如下：<br><img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/adImage/4.jpeg" alt></p>
-<ol start="4">
-<li>AdExchange（广告交易平台）</li>
-</ol>
-<p>定义：一个开放的、能够将出版商和广告商联系在一起的在线广告市场(类似于股票交易所)。交易平台里的广告存货并不一定都是溢价库存，只要出版商想要提供的，都可以在里面找到。</p>
-<p>个人理解：所谓的广告交易平台，就是一个能够让广告主在对的时间，对的地点接触到对的用户的地方。它可以为每一次广告的Impression(广告收视次数)来赋予一个独立的价值，其运用的实时竞价技术可以让广告主竞拍每一次广告显示在用户面前的机会。</p>
-<p><img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/adImage/5.jpeg" alt></p>
-<p>AdExchange相对于传统模式还是有比较大的好处的，一方面节省了广告主的成本，另外一方面让站长的收益增加了，最重要的是让合适的广告展现给合适的用户，提升了用户体验。</p>
-<p><img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/adImage/6.jpeg" alt></p>
-<ol start="5">
-<li>DMP（Data-ManagementPlatform，数据管理平台）</li>
-</ol>
-<p>定义：数据管理平台能够帮助所有涉及广告库存购买和出售的各方管理其数据、更方便地使用第三方数据、增强他们对所有这些数据的理解、传回数据或将定制数据传入某一平台，以进行更好地定位。</p>
-<p>个人理解：是把分散的数据进行整合纳入统一的技术平台。<br><img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/adImage/6.1.jpeg" alt></p>
-<ol start="6">
-<li>AdNetwork（广告网络平台）</li>
-</ol>
-<p>定义：广告网络是一个封闭的网络广告市场，网络业主作为中间环节先向出版商采购广告库存，然后再转售给买家，虽然有时候出版商也可以创建自己的广告网络。</p>
-<p>个人理解：是一个连接广告主和网络媒体的广告系统平台，一方面为广告主提供广告管理、发布和监测服务，另一方面为媒体兑现部分广告存货的价值。<br><img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/adImage/7.jpeg" alt></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">广告</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/项目总结//" class="article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/25/一些广告术语汇总/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git仓库完全迁移，包括所有的分支和标签，当然也包括日志" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/11/Git仓库完全迁移，包括所有的分支和标签，当然也包括日志/">Git仓库完全迁移，包括所有的分支和标签，当然也包括日志</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/11/Git仓库完全迁移，包括所有的分支和标签，当然也包括日志/" class="archive-article-date">
-  	<time datetime="2018-07-11T09:27:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>度娘了一堆git仓库迁移的内容，一个个都比较麻烦，而且本地下了代码，还要删去库地址，再切换到新库的地址上传。</p>
-<p>一般这种操作都只是master分支，其他分支还要一个一个来，后来在51CTO上找了一个文章，简单明了，一下就全搞定了。</p>
-<p>包括所有的分支、标签、日志，一个不少。</p>
-<p>当然账号对应的事就没办法了。</p>
-<p>四行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone --mirror &lt;URL to my OLD repo location&gt;</span><br><span class="line">cd &lt;New directory where your OLD repo was cloned&gt;</span><br><span class="line">git remote set-url origin &lt;URL to my NEW repo location&gt;</span><br><span class="line">git push -f origin</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">git迁移</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/项目总结//" class="article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/11/Git仓库完全迁移，包括所有的分支和标签，当然也包括日志/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用js判断浏览器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/08/使用js判断浏览器/">使用js判断浏览器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/08/使用js判断浏览器/" class="archive-article-date">
-  	<time datetime="2018-06-08T12:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>直接看代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;</span><br><span class="line">&lt;script &gt;</span><br><span class="line">    var userAgent = navigator.userAgent;</span><br><span class="line">    var isOpera = userAgent.indexOf(&quot;Opera&quot;) &gt; -1;</span><br><span class="line">    var isMaxthon = userAgent.indexOf(&quot;Maxthon&quot;) &gt; -1 ;</span><br><span class="line">    var isIE = userAgent.indexOf(&quot;compatible&quot;) &gt; -1 &amp;&amp; userAgent.indexOf(&quot;MSIE&quot;) &gt; -1 &amp;&amp; !isOpera ;</span><br><span class="line">    var isFF = userAgent.indexOf(&quot;Firefox&quot;) &gt; -1 ;</span><br><span class="line">    var isSafari = userAgent.indexOf(&quot;Safari&quot;) &gt; -1 &amp;&amp; userAgent.indexOf(&quot;Chrome&quot;) &lt; 1 ;</span><br><span class="line">    var isChrome = userAgent.indexOf(&quot;Chrome&quot;) &gt; -1 ;</span><br><span class="line">    var isIE5 = isIE55 = isIE6 = isIE7 = isIE8 = false;</span><br><span class="line"></span><br><span class="line">    if(isFF)&#123;document.write(&quot;当前浏览器是  Firefox&quot;);&#125;</span><br><span class="line">    if(isMaxthon)&#123;document.write(&quot;当前浏览器是 傲游(webkit核心)&quot;);&#125;</span><br><span class="line">    if(isOpera)&#123;document.write(&quot;当前浏览器是  Opera&quot;);&#125;</span><br><span class="line">    if(isSafari)&#123;document.write(&quot;当前浏览器是  Safari&quot;);&#125;</span><br><span class="line">    if(isChrome)&#123;document.write(&quot;当前浏览器是  Chrome&quot;);&#125;</span><br><span class="line">    if(isIE)&#123;document.write(&quot;当前浏览器是  IE&quot;);&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/08/使用js判断浏览器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-移动端开发调试工具神器-Weinre使用方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/17/移动端开发调试工具神器-Weinre使用方法/">移动端开发调试工具神器--Weinre使用方法</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/17/移动端开发调试工具神器-Weinre使用方法/" class="archive-article-date">
-  	<time datetime="2018-04-17T06:06:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前端开发调试必备：</p>
-<ol>
-<li>DOM操作断点调试；</li>
-<li>debugger断点调试；</li>
-<li>native方法hook（个人暂时还没有试过，不知效果如何）；</li>
-<li>远程映射本地测试；</li>
-<li>Weinre移动调试（详细介绍）；</li>
-</ol>
-<p>像Dom断点调试和debugger断点调试我认为是大家经常用到的方法，或者是当前比较火狐下比较流行的Fiexbug调试工具；今天我们主要是研究Weinre调试工具的；</p>
-<p>当然，作为前端开发人员，令人比较乏味的即使手机端各个版本的支持程度，例如就拿iphone来说，虽然都是-webkit内核，如果你添加的动画，如-webkit-translate…….当然考虑到兼容性问题，你会带上前缀-webkit，但你本想手机端大多是支持HTML5和css3的，所以就试下了不带前缀-webkit，结果，呵呵，那么问题来了，iphone5s以下会有问题，以上就没有问题，所以你懂得，最好加上前缀-webkit，不过像最近比较新的版本的Andirod对CSS3的属性支持度还是不错的；</p>
-<p>接下来，我们介绍下重点：</p>
-<p>安装weinre</p>
-<p>weinre可以通过npm按照（个人也是比较推荐的）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g weinre  (按照完成后，可以在cmd上，查看下版本号，看是否按照成功)</span><br></pre></td></tr></table></figure>
-<p>按照之后，可以执行下面的命令来启动：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">weinre --httpPort 8080 --boundHost -all-</span><br></pre></td></tr></table></figure>
-<p>ok!如果没有什么问题的话，我们打开谷歌浏览器（-webkit内核）输入：<a href="http://127.0.0.1:8080/" target="_blank" rel="noopener">http://127.0.0.1:8080/</a>   会看到以下界面</p>
-<p>以上这个便是庐山正面目了，上图的“debug client user interface”是weinre的Debug客户端，点击进入后看到目前还没有被测试的网页：</p>
-<p>Targets显示的none</p>
-<p>OK!那么我们继续，添加Debug Target</p>
-<p>有两种方式：</p>
-<ol>
-<li>Target Script（需要向页面中添加一个js）：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;http://192.168.1.69:8080/target/target-script-min.js#anonymous&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>注意：标红的部分是你自己的IP地址和端口号，自己适配去调；</p>
-<ol start="2">
-<li>我们也可以将一段js保存到移动设备的书签中<br>javascript:(function(e){e.setAttribute(“src”,”<a href="http://127.0.0.1:8080/target/target-script-min.js#anonymous&quot;);document.getElementsByTagName(&quot;body&quot;)[0].appendChild(e);})(document.createElement(&quot;script&quot;));void(0)" target="_blank" rel="noopener">http://127.0.0.1:8080/target/target-script-min.js#anonymous&quot;);document.getElementsByTagName(&quot;body&quot;)[0].appendChild(e);})(document.createElement(&quot;script&quot;));void(0)</a>;</li>
-</ol>
-<p>最后：手机测试：</p>
-<ol>
-<li>手机连接Wifi,必须和电脑在同一段网络，我用的是XAMPP模拟服务器，大家可以上网查用法，然后用自己的手机测试你要测试的网页即可；<br>现在回到电脑端  <a href="http://127.0.0.1:8080" target="_blank" rel="noopener">http://127.0.0.1:8080</a>    点击“debug client user interface:”  如果没有问题的话，就已经成功添加了Debug Target:</li>
-</ol>
-<p>提示：注意手机不要锁屏，不然调试会断开！</p>
-<ol start="2">
-<li>调试开始：</li>
-</ol>
-<p>自己可以查查各个组件！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发调试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/H5开发//" class="article-tag-list-link color5">H5开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/17/移动端开发调试工具神器-Weinre使用方法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-设置webstorm自动删除行尾分号" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/11/设置webstorm自动删除行尾分号/">设置webstorm自动删除行尾分号</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/11/设置webstorm自动删除行尾分号/" class="archive-article-date">
-  	<time datetime="2018-04-11T10:11:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://houjiyi.oss-cn-beijing.aliyuncs.com/images/blog/WX20180411-181304.png" alt></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发调试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/11/设置webstorm自动删除行尾分号/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
   
 

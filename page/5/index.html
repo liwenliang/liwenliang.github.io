@@ -166,6 +166,626 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-提示错误：jenkins-不在-sudoers-文件中。此事将被报告。" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/14/提示错误：jenkins-不在-sudoers-文件中。此事将被报告。/">提示错误：jenkins 不在 sudoers 文件中。此事将被报告。</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/14/提示错误：jenkins-不在-sudoers-文件中。此事将被报告。/" class="archive-article-date">
+  	<time datetime="2019-08-14T06:14:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>说明本地服务器jenkins没有root的部分执行权限：</p>
+<p>#su    </p>
+<p>#cd /etc    </p>
+<p>#chmod 740 sudoers    </p>
+<p>#vim sudoers<br>末尾加上<br>jenkins   ALL=(root) ALL, !/usr/bin/passwd [A-Za-z]*, !/usr/bin/passwd root  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/14/提示错误：jenkins-不在-sudoers-文件中。此事将被报告。/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-解决在Centos系统中无法切换到jenkins用户" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/14/解决在Centos系统中无法切换到jenkins用户/">解决在Centos系统中无法切换到jenkins用户</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/14/解决在Centos系统中无法切换到jenkins用户/" class="archive-article-date">
+  	<time datetime="2019-08-14T06:13:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在Centos上安装好了jenkins后，由于jenkins会自动创建一个用户，所以我想切换到jenkins用户，模拟执行一些脚本，<br>我执行下面语句<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su jenkins</span><br></pre></td></tr></table></figure></p>
+<p>虽然不报错，但是就是切换不过去。原来/etc/passwd文件中的/bin/bash被yum安装的时候变成了/bin/false，需要修改回去。接着执行sudo vim /etc/passwd命令,把false改为bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>给jenkins用户添加一个密码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd jenkins</span><br></pre></td></tr></table></figure></p>
+<p> 修改完毕后，执行su jenkins命令。结果新的问题又来啦，当我切换到jenkins用户后，命令提示符的用户名不是jenkins而变成了如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-bash-4.1<span class="comment">#</span></span><br></pre></td></tr></table></figure></p>
+<p>原因是在安装jenkins时，jenkins只是创建了jenkins用户，并没有为其创建home目录。所以系统就不会在创建用户的时候，自动拷贝/etc/skel目录下的用户环境变量文件到用户家目录，也就导致这些文件不存在，出现-bash-4.1#的问题了<br>以下命令是在切换到jenkins用户下执行的！（只是用户现在显示的是-bash-4.1）</p>
+<p>这个时候呢，参考网上的做法我执行下面步骤：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bash_profile</span><br></pre></td></tr></table></figure></p>
+<p>执行上面的命令，即使没有.bash_profile文件，linux会自动创建。<br>然后再添加这句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PS1=<span class="string">'[\u@\h \W]\$'</span></span><br></pre></td></tr></table></figure>
+<p> PS1：命令行提示符环境变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/14/解决在Centos系统中无法切换到jenkins用户/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-How-To-Install-Jenkins-on-CentOS-7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/14/How-To-Install-Jenkins-on-CentOS-7/">How To Install Jenkins on CentOS 7</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/14/How-To-Install-Jenkins-on-CentOS-7/" class="archive-article-date">
+  	<time datetime="2019-08-14T05:39:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://blogimage.houjiyi.com/FqxHz-9hRWp535eOZdqOoFW0ysEz" alt="image.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install java-1.8.0-openjdk-devel</span><br><span class="line"></span><br><span class="line">curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo</span><br><span class="line"></span><br><span class="line">sudo rpm --import http://pkg.jenkins.io/redhat-stable/jenkins.io.key</span><br><span class="line"></span><br><span class="line">sudo yum install jenkins</span><br><span class="line"></span><br><span class="line">sudo systemctl start jenkins</span><br><span class="line"></span><br><span class="line">sudo systemctl <span class="built_in">enable</span> jenkins</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/14/How-To-Install-Jenkins-on-CentOS-7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-linux下使用npm-install无法安装成功的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/13/linux下使用npm-install无法安装成功的问题/">linux下使用npm install无法安装成功的问题</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/13/linux下使用npm-install无法安装成功的问题/" class="archive-article-date">
+  	<time datetime="2019-08-13T08:44:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install</span><br></pre></td></tr></table></figure>
+<p>可能是权限问题</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">nodejs</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/13/linux下使用npm-install无法安装成功的问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-【Linuc-CentOS-】通过yum安装-指定版本的nodejs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/13/【Linuc-CentOS-】通过yum安装-指定版本的nodejs/">【Linuc-CentOS 】通过yum安装 指定版本的nodejs</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/13/【Linuc-CentOS-】通过yum安装-指定版本的nodejs/" class="archive-article-date">
+  	<time datetime="2019-08-13T08:40:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -</span><br><span class="line">sudo yum -y install nodejs</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/13/【Linuc-CentOS-】通过yum安装-指定版本的nodejs/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-去掉页面的title标题，同时不显示默认链接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/07/去掉页面的title标题，同时不显示默认链接/">去掉页面的title标题，同时不显示默认链接</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/07/去掉页面的title标题，同时不显示默认链接/" class="archive-article-date">
+  	<time datetime="2019-08-07T01:43:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有时候我们需要页面的title不显示，尤其在移动端APP内嵌一个网页的时候，有个标题或者标题为空默认显示页面链接都不太友好，这时候有个简单方式可以处理：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.title = <span class="string">'\u200E'</span></span><br></pre></td></tr></table></figure></p>
+<p>加了以后就没了，亲测可行。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/移动开发//" class="article-tag-list-link color5">移动开发</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/移动开发/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/07/去掉页面的title标题，同时不显示默认链接/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-NGINX-SSH-Tunnel-把本地开发环境公布到互联网上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/26/NGINX-SSH-Tunnel-把本地开发环境公布到互联网上/">NGINX + SSH Tunnel 把本地开发环境公布到互联网上</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/26/NGINX-SSH-Tunnel-把本地开发环境公布到互联网上/" class="archive-article-date">
+  	<time datetime="2019-07-26T03:09:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在调试一些接口的时候，你的网站应用要跟其它的一些外部服务进行交流，你发给它一点数据，它也会返回给你一点数据。但是如果是在本地开发环境上调试，你只能发送给外部服务数据，而外部服务返回来的数据你的本地环境是收不到的。因为你的本地环境并没有一个固定的公网 IP 地址。</p>
+<p>我不想直接在服务器上去调试，因为复杂而且不方便，忽然想到了之前用过的 BrowserSync 工具，有一个 Tunnel 选项，可以把在本地创建的服务器公布到互联网上。我又想到了 SSH 有个 Tunnel 功能，原来用它作为本地电脑的代理用，我想大概可以用它，让我的在公网上的一台服务器接待请求，再把请求转到我的本地开发环境上，然后就去搜索关键词 NGINX，SSH，Tunnel ，找到了答案。</p>
+<p>用 SSH 在本地电脑与公网服务器之间打开一个通道，配置公网服务器的 NGINX，把收到的请求转到本地电脑与公网服务器的这个通道上。</p>
+        
+          <a class="article-more-a" href="/2019/07/26/NGINX-SSH-Tunnel-把本地开发环境公布到互联网上/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/26/NGINX-SSH-Tunnel-把本地开发环境公布到互联网上/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-CSS3实现波浪进度球" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -440,656 +1060,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-vue源码中有ts语法，vscode查看提示错误问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/05/vue源码中有ts语法，vscode查看提示错误问题/">vue源码中有ts语法，vscode查看提示错误问题</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/05/vue源码中有ts语法，vscode查看提示错误问题/" class="archive-article-date">
-  	<time datetime="2019-07-05T06:17:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://blogimage.houjiyi.com/FgAljCtSYWGdSzOMaARnwcGI80gg" alt="image.png"></p>
-<p>这个原因是因为vscode默认开启了对js文件的验证检查，可以在用户设置区禁用它，如图最后一行</p>
-<p><img src="http://blogimage.houjiyi.com/FvlhISS_7KW8RUIaNJ2zNXY1B0ir" alt="image.png"></p>
-<p>这样即可让vscode不再错误的验证了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/05/vue源码中有ts语法，vscode查看提示错误问题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-export-default-和-export-区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/export-default-和-export-区别/">export default 和 export 区别</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/04/export-default-和-export-区别/" class="archive-article-date">
-  	<time datetime="2019-07-04T05:08:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>export 与 export default 均可用于导出常量、函数、文件、模块等</li>
-<li>你可以在其它文件或模块中通 import 导入</li>
-<li>在一个文件或模块中，export、import可以有多个，export default仅有一个</li>
-<li>通过 export 方式导出，在导入时要加{ }，export default 则不需要</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// export</span></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Login</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;...&#125;</span><br><span class="line"><span class="keyword">import</span> &#123;Login&#125; <span class="keyword">from</span> <span class="string">'./login'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//export default</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;...&#125;</span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">'./home'</span>;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/04/export-default-和-export-区别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-把一件事坚持30天（结果惊人）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/03/把一件事坚持30天（结果惊人）/">把一件事坚持30天（结果惊人）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/03/把一件事坚持30天（结果惊人）/" class="archive-article-date">
-  	<time datetime="2019-07-03T10:04:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>国外有一个叫摩根的青年，每天很闲，有天突发奇想——连续吃三十天麦当劳会怎样？</p>
-<p>他说干就干，一日三餐都吃麦当劳，连吃三十天。</p>
-<p>他还用摄像机记录下了这一过程。</p>
-<p>三十天后，摩根的体重增加了25磅（约23斤），而且还出现了轻度抑郁和肝脏衰竭现象。</p>
-<p>要知道，之前摩根可是非常健康的，真是no zuo no die why you try。<br><img src="http://blogimage.houjiyi.com/Ft3amoag_Tr0FYui86uwKoVg9rTU" alt="image.png"></p>
-        
-          <a class="article-more-a" href="/2019/07/03/把一件事坚持30天（结果惊人）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">意义</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/生活玩乐//" class="article-tag-list-link color5">生活玩乐</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/03/把一件事坚持30天（结果惊人）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-electron开发实践-快速了解electron是什么" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/02/electron开发实践-快速了解electron是什么/">electron开发实践-快速了解electron是什么</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/02/electron开发实践-快速了解electron是什么/" class="archive-article-date">
-  	<time datetime="2019-07-02T06:08:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><ul>
-<li>目的</li>
-<li>electron能做什么</li>
-<li>为什么使用electron</li>
-<li>如何更好的使用electron</li>
-</ul>
-<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>当有人问你能不能开发桌面应用的时候你的回答应该是：“可以，目前我们已经可以使用web技术通过electron框架，创建交互和体验都非常不错的桌面应用了”</p>
-        
-          <a class="article-more-a" href="/2019/07/02/electron开发实践-快速了解electron是什么/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/02/electron开发实践-快速了解electron是什么/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-webpack之proxyTable设置跨域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/01/webpack之proxyTable设置跨域/">webpack之proxyTable设置跨域</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/01/webpack之proxyTable设置跨域/" class="archive-article-date">
-  	<time datetime="2019-07-01T07:23:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这里我简单说明下自己需要记住的地方就是怎么实现跨域，当我们在开发的时候使用的是第三方的api，如果这个api不支持跨域，那么我们就要做一层代理，这个代理工作通常是由后端人员来完成的，原理也很简单就是搭建一个服务器，提供一个接口透传的机制，将跨域数据请求过来以后在传给自己的接口返回，换句话说跨域是浏览器里出现的，服务端是没有跨域这一说的，只要你有服务器就可以解决这个问题。当然在实际开发中我们后端可能还没搭建这个服务，那么前端在开发的时候完全可以使用proxyTable来实现自己跨域拿数据的目的。最后上线还是要接口支持跨域的，因为这时候没有本地开发环境也就没法实现跨域了。</p>
-<p>详细内容如下：</p>
-        
-          <a class="article-more-a" href="/2019/07/01/webpack之proxyTable设置跨域/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/01/webpack之proxyTable设置跨域/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-APICloud开发实践-快速了解APICloud是什么" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/25/APICloud开发实践-快速了解APICloud是什么/">APICloud开发实践-快速了解APICloud是什么</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/25/APICloud开发实践-快速了解APICloud是什么/" class="archive-article-date">
-  	<time datetime="2019-06-25T03:09:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><ul>
-<li>目的 - <code>可以通过使用APICloud提供的框架，利用web前端技术开发Android和IOS移动应用</code></li>
-<li>AC能做什么 - <code>知道AC能做什么也就了解了它是什么</code></li>
-<li>为什么使用AC - <code>了解为什么使用AC进行移动应用开发以及适用场景，AC是在某种场景下的一种手段，去掉炒作的成分，留下的才是实用的部分</code></li>
-<li>如何更好的使用AC - <code>AC为我们提供了开发方法，对于当前的前端开发方式来说已经有点过时了，我们应该用更高效的方式进行开发，更好的达到‘为什么使用AC’的目的</code></li>
-</ul>
-<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>看完这个分享以后：知道什么是APICloud并且当有人问你能不能开发移动应用的时候，你应该说<code>我可以通过使用APICloud快速的开发出效果还不错的移动应用</code></p>
-<ul>
-<li>技术要求：web前端基础 - <code>html、css、javascript</code></li>
-<li>注：APICloud对我们最有用的部分就是能够使用web技术开发移动应用</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/06/25/APICloud开发实践-快速了解APICloud是什么/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/移动开发//" class="article-tag-list-link color5">移动开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/25/APICloud开发实践-快速了解APICloud是什么/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2019年中计划" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/25/2019年中计划/">2019年中计划</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/25/2019年中计划/" class="archive-article-date">
-  	<time datetime="2019-06-25T02:12:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2019年过去一半多了，计划下下半年的工作之余的内容吧：</p>
-<h2 id="PPT组内分享"><a href="#PPT组内分享" class="headerlink" title="PPT组内分享"></a>PPT组内分享</h2><ul>
-<li>apicloud</li>
-<li>electron</li>
-<li>微信小程序</li>
-<li>vue</li>
-<li>adonisjs</li>
-<li>Fluter</li>
-</ul>
-<h2 id="开发工作"><a href="#开发工作" class="headerlink" title="开发工作"></a>开发工作</h2><ul>
-<li>基于websocket的对弈类多人在线游戏</li>
-<li>基于websocket的简易在线聊天工具</li>
-<li>建站工具的开发与优化</li>
-</ul>
-<p>暂时这些，多退少补吧~</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/25/2019年中计划/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 
