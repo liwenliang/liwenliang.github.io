@@ -166,6 +166,327 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Cypress-获取table内容动态tr和td" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/17/Cypress-获取table内容动态tr和td/">Cypress 获取table内容动态tr和td</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/17/Cypress-获取table内容动态tr和td/" class="archive-article-date">
+  	<time datetime="2021-09-17T05:09:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言<br>如何获取table内容动态tr和td的dom对象，今天给大家总结了方法。</p>
+<p>获取table中DOM元素方法总结<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">id</span>=<span class="string">"projectstatus"</span> <span class="attr">class</span>=<span class="string">"sortable pane bigtable stripped-odd"</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">tooltip</span>=<span class="string">"上次构建状态"</span> <span class="attr">title</span>=<span class="string">"上次构建状态"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span>S<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">tooltip</span>=<span class="string">"构建晴雨表"</span> <span class="attr">title</span>=<span class="string">"构建晴雨表"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span>W<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">initialsortdir</span>=<span class="string">"down"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span>名称<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span>↓<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span>上次成功<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span>上次失败<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span>上次持续时间<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">width</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span> <span class="attr">id</span>=<span class="string">"job_FCA玛莎拉蒂自动化测试"</span> <span class="attr">class</span>=<span class="string">" job-status-blue"</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/blue.png"</span> <span class="attr">alt</span>=<span class="string">"成功"</span> <span class="attr">tooltip</span>=<span class="string">"成功"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-blue icon-md"</span> <span class="attr">title</span>=<span class="string">"成功"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"100"</span> <span class="attr">class</span>=<span class="string">"healthReport"</span> <span class="attr">onmouseover</span>=<span class="string">"this.className='healthReport hover';return true;</span></span></span><br><span class="line"><span class="tag"><span class="string">        "</span> <span class="attr">onmouseout</span>=<span class="string">"this.className='healthReport';return true;"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/lastBuild"</span> <span class="attr">class</span>=<span class="string">"build-health-link"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/health-80plus.png"</span> <span class="attr">alt</span>=<span class="string">"100%"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-80plus icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"healthReportDetails"</span>&gt;</span><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>W<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>%<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/16x16/health-80plus.png"</span> <span class="attr">style</span>=<span class="string">"width: 16px; height: 16px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-80plus icon-sm"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>构建稳定性: 最近没有失败的构建。<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>100<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-07-17T02:00:14Z"</span>&gt;</span></span><br><span class="line">        2 小时 56 分</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/lastSuccessfulBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#26<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-07-15T01:48:39Z"</span>&gt;</span></span><br><span class="line">        2 天 3 小时</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/lastFailedBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#7<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"1767243"</span>&gt;</span>29 分<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/build?delay=0sec"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/clock.png"</span> <span class="attr">onclick</span>=<span class="string">"return build_id2549(this)"</span> <span class="attr">alt</span>=<span class="string">"Schedule a 构建 for1"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">title</span>=<span class="string">"Schedule a 构建 for FCA玛莎拉蒂自动化测试"</span> <span class="attr">class</span>=<span class="string">"icon-clock icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">build_id2549</span>(<span class="params">img</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">new</span> Ajax.Request(img.parentNode.href);</span></span><br><span class="line"><span class="javascript">                  hoverNotification(<span class="string">'构建 scheduled'</span>, img, <span class="number">-100</span>);</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">                &#125;<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span> <span class="attr">id</span>=<span class="string">"job_2"</span> <span class="attr">class</span>=<span class="string">" job-status-blue"</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/blue.png"</span> <span class="attr">alt</span>=<span class="string">"成功"</span> <span class="attr">tooltip</span>=<span class="string">"成功"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-blue icon-md"</span> <span class="attr">title</span>=<span class="string">"成功"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"40"</span> <span class="attr">class</span>=<span class="string">"healthReport"</span> <span class="attr">onmouseover</span>=<span class="string">"this.className='healthReport hover';return true;</span></span></span><br><span class="line"><span class="tag"><span class="string">        "</span> <span class="attr">onmouseout</span>=<span class="string">"this.className='healthReport';return true;"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/lastBuild"</span> <span class="attr">class</span>=<span class="string">"build-health-link"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/health-20to39.png"</span> <span class="attr">alt</span>=<span class="string">"40%"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-20to39 icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"healthReportDetails"</span>&gt;</span><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>W<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>%<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/16x16/health-20to39.png"</span> <span class="attr">style</span>=<span class="string">"width: 16px; height: 16px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-20to39 icon-sm"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>构建稳定性: 最近 5 次构建中有 3 次失败。<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>40<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-06-12T02:16:03Z"</span>&gt;</span></span><br><span class="line">        1 月 5 天</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/lastSuccessfulBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#16<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-06-12T01:58:43Z"</span>&gt;</span></span><br><span class="line">        1 月 5 天</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/lastFailedBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#14<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"18773"</span>&gt;</span>18 秒<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/build?delay=0sec"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/clock.png"</span> <span class="attr">onclick</span>=<span class="string">"return build_id2550(this)"</span> <span class="attr">alt</span>=<span class="string">"Schedule a 构建 for 一汽数据运营接口"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">title</span>=<span class="string">"Schedule a 构建 for 一2"</span> <span class="attr">class</span>=<span class="string">"icon-clock icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">build_id2550</span>(<span class="params">img</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">new</span> Ajax.Request(img.parentNode.href);</span></span><br><span class="line"><span class="javascript">                  hoverNotification(<span class="string">'构建 scheduled'</span>, img, <span class="number">-100</span>);</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">                &#125;<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span> <span class="attr">id</span>=<span class="string">"job_3"</span> <span class="attr">class</span>=<span class="string">" job-status-blue"</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/blue.png"</span> <span class="attr">alt</span>=<span class="string">"成功"</span> <span class="attr">tooltip</span>=<span class="string">"成功"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-blue icon-md"</span> <span class="attr">title</span>=<span class="string">"成功"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"100"</span> <span class="attr">class</span>=<span class="string">"healthReport"</span> <span class="attr">onmouseover</span>=<span class="string">"this.className='healthReport hover';return true;</span></span></span><br><span class="line"><span class="tag"><span class="string">        "</span> <span class="attr">onmouseout</span>=<span class="string">"this.className='healthReport';return true;"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/lastBuild"</span> <span class="attr">class</span>=<span class="string">"build-health-link"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/health-80plus.png"</span> <span class="attr">alt</span>=<span class="string">"100%"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-80plus icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"healthReportDetails"</span>&gt;</span><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>W<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>%<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/16x16/health-80plus.png"</span> <span class="attr">style</span>=<span class="string">"width: 16px; height: 16px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-80plus icon-sm"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>构建稳定性: 最近没有失败的构建。<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>100<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-07-17T02:30:49Z"</span>&gt;</span></span><br><span class="line">        2 小时 25 分</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/lastSuccessfulBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#55<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-07-14T08:29:55Z"</span>&gt;</span></span><br><span class="line">        2 天 20 小时</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/lastFailedBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#50<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"26883"</span>&gt;</span>26 秒<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/build?delay=0sec"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/clock.png"</span> <span class="attr">onclick</span>=<span class="string">"return build_id2551(this)"</span> <span class="attr">alt</span>=<span class="string">"Schedule a 构建 for 3"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">title</span>=<span class="string">"Schedule a 构建 for3"</span> <span class="attr">class</span>=<span class="string">"icon-clock icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">build_id2551</span>(<span class="params">img</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">new</span> Ajax.Request(img.parentNode.href);</span></span><br><span class="line"><span class="javascript">                  hoverNotification(<span class="string">'构建 scheduled'</span>, img, <span class="number">-100</span>);</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">                &#125;<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="https://blogimage.houjiyi.com/Frp6LrxgnFrDQPbDrjYWfNkruSwW" alt="image.png"><br>1.获取动态tr个数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">'处理table方法总结'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    beforeEach(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> username = <span class="string">"admin"</span></span><br><span class="line">        <span class="keyword">var</span> password = <span class="string">""</span></span><br><span class="line">        <span class="comment">//登陆地址</span></span><br><span class="line">        cy.visit(<span class="string">'http://xx.xx.xxx.xx:xxxx/login?from=%2F'</span>)</span><br><span class="line">        cy.get(<span class="string">'#j_username'</span>).type(username)</span><br><span class="line">        cy.get(<span class="string">'body &gt; div &gt; div &gt; form &gt; div:nth-child(2) &gt; input'</span>).type(password)</span><br><span class="line">        cy.get(<span class="string">'body &gt; div &gt; div &gt; form &gt; div.submit.formRow &gt; input'</span>).click()</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">    it(<span class="string">'动态获取tr'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        cy.get(<span class="string">'#projectstatus &gt; tbody &gt;tr'</span>).then(<span class="function">(<span class="params">$el</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> tr_total = $el.length</span><br><span class="line">            cy.log(tr_total)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://blogimage.houjiyi.com/FilWXH4zt8W2n0a29C72zQb8eJpQ" alt="image.png"><br>2.获取动态tr去断言td内容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">'处理table方法总结'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    beforeEach(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> username = <span class="string">"admin"</span></span><br><span class="line">        <span class="keyword">var</span> password = <span class="string">""</span></span><br><span class="line">        <span class="comment">//登陆地址</span></span><br><span class="line">        cy.visit(<span class="string">'http://xx.xx.xxx.xx:xxxx/login?from=%2F'</span>)</span><br><span class="line">        cy.get(<span class="string">'#j_username'</span>).type(username)</span><br><span class="line">        cy.get(<span class="string">'body &gt; div &gt; div &gt; form &gt; div:nth-child(2) &gt; input'</span>).type(password)</span><br><span class="line">        cy.get(<span class="string">'body &gt; div &gt; div &gt; form &gt; div.submit.formRow &gt; input'</span>).click()</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">    it(<span class="string">'动态获取tr'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        cy.get(<span class="string">'#projectstatus &gt; tbody &gt;tr'</span>).then(<span class="function">(<span class="params">$el</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> tr_total = $el.length</span><br><span class="line">            cy.log(tr_total)</span><br><span class="line">            <span class="keyword">var</span> list =[<span class="string">'29 分'</span>,<span class="string">'18 秒'</span>,<span class="string">"26 秒"</span>]</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; tr_total; i++) &#123;</span><br><span class="line">                cy.get(<span class="string">'#projectstatus &gt; tbody &gt;tr'</span>).eq(i).find(<span class="string">'td:nth-child(6)'</span>)</span><br><span class="line">                    .should(<span class="string">'contain'</span>, list[i<span class="number">-1</span>])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://blogimage.houjiyi.com/Fo_OZgN9gABXL9Ne5UfJd_dk9vuX" alt="image.png"></p>
+<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
+<p>更多文章关注小编公众号：自动化测试 To share</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/17/Cypress-获取table内容动态tr和td/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Cypress-元素定位" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/17/Cypress-元素定位/">Cypress 元素定位</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/17/Cypress-元素定位/" class="archive-article-date">
+  	<time datetime="2021-09-17T04:33:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言<br>Cypress含有多种定位方式我们无需担心因为定位导致测试失败，Cypress有独一无二的定位策略能使你摆脱元素定位的噩梦。</p>
+<p>Cypress专有选择器</p>
+<ul>
+<li>data-cy</li>
+<li>data-test</li>
+<li>data-testid</li>
+</ul>
+<p>举例：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'main'</span> <span class="attr">class</span> = <span class="string">'btn'</span> <span class="attr">data-cy</span> = <span class="string">'submit'</span>&gt;</span>submit<span class="tag">&lt;<span class="name">button</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'main'</span> <span class="attr">class</span> = <span class="string">'btn'</span> <span class="attr">data-test</span>= <span class="string">'submit'</span>&gt;</span>submit<span class="tag">&lt;<span class="name">button</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'main'</span> <span class="attr">class</span> = <span class="string">'btn'</span> <span class="attr">data-testid</span>= <span class="string">'submit'</span>&gt;</span>submit<span class="tag">&lt;<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>获取元素方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'[data-cy=submit]'</span>).click()</span><br><span class="line">cy.get(<span class="string">'[data-test=submit]'</span>).click()</span><br><span class="line">cy.get(<span class="string">'[data-testid=submit]'</span>).click()</span><br></pre></td></tr></table></figure>
+<p>举例：<br><img src="https://blogimage.houjiyi.com/FsKusJefzm2L4lb709CcCjijV4ND" alt="image.png"><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>用户名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"account"</span> <span class="attr">id</span>=<span class="string">"account"</span> <span class="attr">autofocus</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>密码<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"keeplogin"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"checkbox-primary"</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"keepLogin[]"</span> <span class="attr">value</span>=<span class="string">"on"</span> <span class="attr">id</span>=<span class="string">"keepLoginon"</span>&gt;</span> <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"keepLoginon"</span>&gt;</span>保持登录<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"form-actions"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">id</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">data-loading</span>=<span class="string">"稍候..."</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"referer"</span> <span class="attr">id</span>=<span class="string">"referer"</span> <span class="attr">value</span>=<span class="string">"/zentao/"</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"verifyRand"</span> <span class="attr">id</span>=<span class="string">"verifyRand"</span> <span class="attr">value</span>=<span class="string">"1281275466"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/zentao/user-reset.html"</span>&gt;</span>忘记密码<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>#d选择器</li>
+</ul>
+<p>#id选择器通过html元素id属性来获取DMO</p>
+<p>获取用户名input元素方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'#account'</span>).click()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>class类选择器</li>
+</ul>
+<p>类选择器通过html元素class属性来获取DMO</p>
+<p>获取用户名input元素方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'.form-control'</span>).click()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>attributes属性选择器</li>
+</ul>
+<p>类选择器通过html元素class属性来获取DMO</p>
+<p>获取用户名input元素方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'[input[id = "account"]]'</span>).click()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>:nth-child(n)选择器</li>
+</ul>
+<p>:nth-child(n)选择器匹配属于其父元素的第n个子元素，不论元素的类型。</p>
+<p>获取用户名DOM元素方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cy.get(tbody &gt; tr:nth-child(<span class="number">1</span>) &gt; th<span class="string">')</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>Cypress.$定位器</li>
+</ul>
+<p>Cypress可以使用jQuery选择器定位</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cypress.$(<span class="string">'#account'</span>) 等价于 cy.get(<span class="string">'#account'</span>)</span><br></pre></td></tr></table></figure>
+<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/17/Cypress-元素定位/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Cypress-页面元素基本操作方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/17/Cypress-页面元素基本操作方式/">Cypress 页面元素基本操作方式</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/17/Cypress-页面元素基本操作方式/" class="archive-article-date">
+  	<time datetime="2021-09-17T04:27:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取DOM元素基本方式</p>
+<ol>
+<li>.find(selector) 搜索定位元素</li>
+<li>.get(selector) 搜索定位元素</li>
+<li>.contains(selector) 搜索定位元素</li>
+<li>.children() 方法用来获取DON元素的子元素</li>
+<li>.parents() 用来获取DOM元素的所有父元素</li>
+<li>.parent() 用来获取DOM元素第一层元素</li>
+<li>.siblings() 用来获取DOM元素的所有同级元素</li>
+<li>.first() 用来获取指定DOM对象的第一个元素</li>
+<li>.last() 用来获取指定DOM对象的最后一个元素</li>
+<li>.next() 用来匹配DOM对象紧跟着的下一个同级元素</li>
+<li>.nextAll() 用来匹配给定的DOM对象的所有同级元素</li>
+<li>.nextUntil() 用来匹配给定DOM对象之后的所有同级元素直到遇到Until里定义的元素为止</li>
+<li>.prev() 用来匹配给定DOM对象紧跟着的上一个同级元素</li>
+<li>.prevAll() 用来匹配给定的DOM对象之前的所有同级元素</li>
+<li>.prevUntil() 用来匹配给定DOM对象之后的所有同级元素直到遇到Until里定义的元素为止</li>
+<li>.each() 用来遍历数组及其类似结果</li>
+<li>.eq() 用来在元素或者数组中的特定索引处获取DOM元素。类似于Jquery中nth:child()</li>
+</ol>
+<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/17/Cypress-页面元素基本操作方式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Cypress端到端自动化测试学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -870,315 +1191,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/05/25/当我们遇到一个需求不明确，高度定制化的需求的时候～/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-公共组件库实施" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/07/公共组件库实施/">公共组件库实施</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/07/公共组件库实施/" class="archive-article-date">
-  	<time datetime="2021-05-07T08:35:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="底层原则"><a href="#底层原则" class="headerlink" title="底层原则"></a>底层原则</h2><blockquote>
-<p>随着系统应用越来越多，我们对系统进行了微前端的改造，同时改造带来一个组件复用的问题需要解决，经过调研，最终还是决定使用npm包的形式进行公共组件的开发维护工作</p>
-</blockquote>
-<blockquote>
-<p>npm 包所在位置：<a href="https://www.npmjs.com/package/pms_components" target="_blank" rel="noopener">https://www.npmjs.com/package/pms_components</a></p>
-</blockquote>
-<blockquote>
-<p>源代码所在位置：<a href="http://gitlab.aiforward.cn/fe/pms_components" target="_blank" rel="noopener">http://gitlab.aiforward.cn/fe/pms_components</a></p>
-</blockquote>
-<blockquote>
-<p>组件库组件分两类：业务组件和基础组件</p>
-</blockquote>
-<blockquote>
-<p>为了保证与迁移之前使用方式一致，还对部分组件进行了写法上的调整</p>
-</blockquote>
-<h2 id="组件分类-基础组件-amp-业务组件"><a href="#组件分类-基础组件-amp-业务组件" class="headerlink" title="组件分类:基础组件&amp;业务组件"></a>组件分类:基础组件&amp;业务组件</h2><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i pms_components</span><br></pre></td></tr></table></figure>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import PmsComponents from <span class="string">'pms_components'</span></span><br><span class="line"></span><br><span class="line">import <span class="string">'pms_components/lib/theme/index.css'</span></span><br><span class="line"></span><br><span class="line">Vue.use(PmsComponents)</span><br></pre></td></tr></table></figure>
-<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vue-virtual-scroller</span><br><span class="line"></span><br><span class="line">v-viewer</span><br><span class="line"></span><br><span class="line">vue-resize-observer  <span class="comment">## 组件的更新及发布</span></span><br></pre></td></tr></table></figure>
-<h2 id="基础组件"><a href="#基础组件" class="headerlink" title="基础组件"></a>基础组件</h2><blockquote>
-<p>基础组件的使用可以直接像上边的方式去用，通过引入pms_components和css即可，也可以进行按需引用<br>基础组件就是不依赖项目环境的组件，他可以放在任意的项目中去使用，使用方法比较简单。</p>
-<p>EmptyLayout  组件–空页面</p>
-<p>ImportModal  组件–导入弹层</p>
-<p>FwAffixTable  组件–表格</p>
-<p>FwBadge  组件–徽章</p>
-<p>FwBreadcrumb  组件–面包屑</p>
-<p>FwFlexCard  组件–卡片展示</p>
-<p>FwRadioTab  组件–标签选项卡</p>
-<p>FwSteps  组件–步骤展示</p>
-<p>InputNumberWithAddon  组件–数字带后缀</p>
-<p>ImageHolder  组件–图片展示</p>
-<p>ImageViewer  组件–图片查看组件</p>
-<p>TitleAndOperate  组件–标题隔离</p>
-<p>LongTextPopover  组件–长文本弹窗</p>
-</blockquote>
-<h2 id="业务组件"><a href="#业务组件" class="headerlink" title="业务组件"></a>业务组件</h2><blockquote>
-<p>业务组件的使用稍微麻烦些，由于它依赖项目的运行环境，这里主要是请求中的token等信息，所以需要在项目中<br>重新定义一下对应的组件，在我们的项目中fpms_app_template有这几个的基本示例代码，我们将业务组件进行<br>简单的二次包装，同时将项目的request方法默认传入组件，这样不同项目请求方式就是统一的了。<br><img src="http://blogimage.houjiyi.com/Fk1kiZGj4AqwHbp1qxarj6NfsS-_" alt="image.png"></p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> FwCascader <span class="keyword">from</span> <span class="string">'pms_components/packages/FwCascader/FwCascader.vue'</span></span><br><span class="line"><span class="keyword">import</span> &#123; axios &#125; <span class="keyword">from</span> <span class="string">'@/utils/request'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'FwCascader'</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    FwCascader</span><br><span class="line">  &#125;,</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">const</span> props = &#123; ...this.$attrs &#125;</span><br><span class="line">    props.axios = axios</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;FwCascader props=&#123; props &#125; on=&#123; <span class="keyword">this</span>.$listeners &#125; scopedSlots=&#123; <span class="keyword">this</span>.$scopedSlots &#125;&gt;</span><br><span class="line">        &#123; <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.$slots).map(<span class="function"><span class="params">name</span> =&gt;</span> (&lt;template slot=&#123;name&#125;&gt;&#123;this.$slots[name]&#125;&lt;/template&gt;)) &#125;</span><br><span class="line">      &lt;<span class="regexp">/FwCascader&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这里主要作用是把项目的request方法传进组件，使用具体项目的请求方式。</p>
-<p>LocationCascader  组件–位置选择组件</p>
-<p>UnionLocationCascade  组件–组合位置选择</p>
-<p>RegionCascader  组件–地区选择组件</p>
-<p>upload  组件–上传</p>
-<p>FwCascader  组件–房屋选择</p>
-</blockquote>
-<h2 id="组件打包"><a href="#组件打包" class="headerlink" title="组件打包"></a>组件打包</h2><blockquote>
-<p>基础组件会打包，业务组件不打包，业务组件打包时间会很长也是个问题，通过区别基础组件和业务组件的使用方式， 可以避免这一情况</p>
-</blockquote>
-<blockquote>
-<p>打开pms_components项目</p>
-<p>控制台输入npm login,输入帐号和密码即可登录</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm run uv <span class="comment"># 增加版本号</span></span><br><span class="line"></span><br><span class="line">npm run lib:cli <span class="comment"># 对项目进行打包</span></span><br><span class="line"></span><br><span class="line">npm publish <span class="comment"># 将包发布到npm仓库</span></span><br></pre></td></tr></table></figure>
-<h2 id="新组件开发及使用"><a href="#新组件开发及使用" class="headerlink" title="新组件开发及使用"></a>新组件开发及使用</h2><blockquote>
-<p>新组件开发完，在fpms_components中增加示例代码</p>
-<p>同时确保在项目fpms_app_template中使用没问题的情况下再发布,可以直接吧libs目录放在fpms_app_template的node_modules对应的包中测试</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/07/公共组件库实施/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-微前端架构下腾讯云K8S的部署方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/06/微前端架构下腾讯云K8S的部署方式/">微前端架构下腾讯云K8S的部署方式</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/06/微前端架构下腾讯云K8S的部署方式/" class="archive-article-date">
-  	<time datetime="2021-05-06T09:05:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="微前端架构下腾讯云K8S的部署方式"><a href="#微前端架构下腾讯云K8S的部署方式" class="headerlink" title="微前端架构下腾讯云K8S的部署方式"></a>微前端架构下腾讯云K8S的部署方式</h1><h2 id="总体思路"><a href="#总体思路" class="headerlink" title="总体思路"></a>总体思路</h2><blockquote>
-<p>每个应用都对应一个镜像，这个镜像有版本的概念，每次打包都是创建一个新版本</p>
-</blockquote>
-<blockquote>
-<p>K8S存在集群的概念，不同环境可以有不同的集群，比如预发布环境可以有3台机器和生产环境可以有7台机器<br><img src="http://blogimage.houjiyi.com/Fnr9oyazc53y7ZA9caBjP-f8LKWB" alt="image.png"><br>
-        
-          <a class="article-more-a" href="/2021/05/06/微前端架构下腾讯云K8S的部署方式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/06/微前端架构下腾讯云K8S的部署方式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-要做的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/19/要做的/">要做的</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/19/要做的/" class="archive-article-date">
-  	<time datetime="2021-03-19T05:29:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>微前端架构的实施已经完成，下一步是在项目级别完成组件的复用。如何方便有效的使用组件是方向。</p>
-<p>远程组件、subModules、npm包等我比较倾向于类似微前端架构的远程组件调用。因此也是超这个方向努力～</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/19/要做的/">展开全文 >></a>
         </p>
       
 

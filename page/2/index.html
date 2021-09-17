@@ -166,6 +166,315 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-公共组件库实施" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/07/公共组件库实施/">公共组件库实施</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/07/公共组件库实施/" class="archive-article-date">
+  	<time datetime="2021-05-07T08:35:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="底层原则"><a href="#底层原则" class="headerlink" title="底层原则"></a>底层原则</h2><blockquote>
+<p>随着系统应用越来越多，我们对系统进行了微前端的改造，同时改造带来一个组件复用的问题需要解决，经过调研，最终还是决定使用npm包的形式进行公共组件的开发维护工作</p>
+</blockquote>
+<blockquote>
+<p>npm 包所在位置：<a href="https://www.npmjs.com/package/pms_components" target="_blank" rel="noopener">https://www.npmjs.com/package/pms_components</a></p>
+</blockquote>
+<blockquote>
+<p>源代码所在位置：<a href="http://gitlab.aiforward.cn/fe/pms_components" target="_blank" rel="noopener">http://gitlab.aiforward.cn/fe/pms_components</a></p>
+</blockquote>
+<blockquote>
+<p>组件库组件分两类：业务组件和基础组件</p>
+</blockquote>
+<blockquote>
+<p>为了保证与迁移之前使用方式一致，还对部分组件进行了写法上的调整</p>
+</blockquote>
+<h2 id="组件分类-基础组件-amp-业务组件"><a href="#组件分类-基础组件-amp-业务组件" class="headerlink" title="组件分类:基础组件&amp;业务组件"></a>组件分类:基础组件&amp;业务组件</h2><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i pms_components</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import PmsComponents from <span class="string">'pms_components'</span></span><br><span class="line"></span><br><span class="line">import <span class="string">'pms_components/lib/theme/index.css'</span></span><br><span class="line"></span><br><span class="line">Vue.use(PmsComponents)</span><br></pre></td></tr></table></figure>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vue-virtual-scroller</span><br><span class="line"></span><br><span class="line">v-viewer</span><br><span class="line"></span><br><span class="line">vue-resize-observer  <span class="comment">## 组件的更新及发布</span></span><br></pre></td></tr></table></figure>
+<h2 id="基础组件"><a href="#基础组件" class="headerlink" title="基础组件"></a>基础组件</h2><blockquote>
+<p>基础组件的使用可以直接像上边的方式去用，通过引入pms_components和css即可，也可以进行按需引用<br>基础组件就是不依赖项目环境的组件，他可以放在任意的项目中去使用，使用方法比较简单。</p>
+<p>EmptyLayout  组件–空页面</p>
+<p>ImportModal  组件–导入弹层</p>
+<p>FwAffixTable  组件–表格</p>
+<p>FwBadge  组件–徽章</p>
+<p>FwBreadcrumb  组件–面包屑</p>
+<p>FwFlexCard  组件–卡片展示</p>
+<p>FwRadioTab  组件–标签选项卡</p>
+<p>FwSteps  组件–步骤展示</p>
+<p>InputNumberWithAddon  组件–数字带后缀</p>
+<p>ImageHolder  组件–图片展示</p>
+<p>ImageViewer  组件–图片查看组件</p>
+<p>TitleAndOperate  组件–标题隔离</p>
+<p>LongTextPopover  组件–长文本弹窗</p>
+</blockquote>
+<h2 id="业务组件"><a href="#业务组件" class="headerlink" title="业务组件"></a>业务组件</h2><blockquote>
+<p>业务组件的使用稍微麻烦些，由于它依赖项目的运行环境，这里主要是请求中的token等信息，所以需要在项目中<br>重新定义一下对应的组件，在我们的项目中fpms_app_template有这几个的基本示例代码，我们将业务组件进行<br>简单的二次包装，同时将项目的request方法默认传入组件，这样不同项目请求方式就是统一的了。<br><img src="http://blogimage.houjiyi.com/Fk1kiZGj4AqwHbp1qxarj6NfsS-_" alt="image.png"></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> FwCascader <span class="keyword">from</span> <span class="string">'pms_components/packages/FwCascader/FwCascader.vue'</span></span><br><span class="line"><span class="keyword">import</span> &#123; axios &#125; <span class="keyword">from</span> <span class="string">'@/utils/request'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'FwCascader'</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    FwCascader</span><br><span class="line">  &#125;,</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">const</span> props = &#123; ...this.$attrs &#125;</span><br><span class="line">    props.axios = axios</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;FwCascader props=&#123; props &#125; on=&#123; <span class="keyword">this</span>.$listeners &#125; scopedSlots=&#123; <span class="keyword">this</span>.$scopedSlots &#125;&gt;</span><br><span class="line">        &#123; <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.$slots).map(<span class="function"><span class="params">name</span> =&gt;</span> (&lt;template slot=&#123;name&#125;&gt;&#123;this.$slots[name]&#125;&lt;/template&gt;)) &#125;</span><br><span class="line">      &lt;<span class="regexp">/FwCascader&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里主要作用是把项目的request方法传进组件，使用具体项目的请求方式。</p>
+<p>LocationCascader  组件–位置选择组件</p>
+<p>UnionLocationCascade  组件–组合位置选择</p>
+<p>RegionCascader  组件–地区选择组件</p>
+<p>upload  组件–上传</p>
+<p>FwCascader  组件–房屋选择</p>
+</blockquote>
+<h2 id="组件打包"><a href="#组件打包" class="headerlink" title="组件打包"></a>组件打包</h2><blockquote>
+<p>基础组件会打包，业务组件不打包，业务组件打包时间会很长也是个问题，通过区别基础组件和业务组件的使用方式， 可以避免这一情况</p>
+</blockquote>
+<blockquote>
+<p>打开pms_components项目</p>
+<p>控制台输入npm login,输入帐号和密码即可登录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm run uv <span class="comment"># 增加版本号</span></span><br><span class="line"></span><br><span class="line">npm run lib:cli <span class="comment"># 对项目进行打包</span></span><br><span class="line"></span><br><span class="line">npm publish <span class="comment"># 将包发布到npm仓库</span></span><br></pre></td></tr></table></figure>
+<h2 id="新组件开发及使用"><a href="#新组件开发及使用" class="headerlink" title="新组件开发及使用"></a>新组件开发及使用</h2><blockquote>
+<p>新组件开发完，在fpms_components中增加示例代码</p>
+<p>同时确保在项目fpms_app_template中使用没问题的情况下再发布,可以直接吧libs目录放在fpms_app_template的node_modules对应的包中测试</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/07/公共组件库实施/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-微前端架构下腾讯云K8S的部署方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/06/微前端架构下腾讯云K8S的部署方式/">微前端架构下腾讯云K8S的部署方式</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/06/微前端架构下腾讯云K8S的部署方式/" class="archive-article-date">
+  	<time datetime="2021-05-06T09:05:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="微前端架构下腾讯云K8S的部署方式"><a href="#微前端架构下腾讯云K8S的部署方式" class="headerlink" title="微前端架构下腾讯云K8S的部署方式"></a>微前端架构下腾讯云K8S的部署方式</h1><h2 id="总体思路"><a href="#总体思路" class="headerlink" title="总体思路"></a>总体思路</h2><blockquote>
+<p>每个应用都对应一个镜像，这个镜像有版本的概念，每次打包都是创建一个新版本</p>
+</blockquote>
+<blockquote>
+<p>K8S存在集群的概念，不同环境可以有不同的集群，比如预发布环境可以有3台机器和生产环境可以有7台机器<br><img src="http://blogimage.houjiyi.com/Fnr9oyazc53y7ZA9caBjP-f8LKWB" alt="image.png"><br>
+        
+          <a class="article-more-a" href="/2021/05/06/微前端架构下腾讯云K8S的部署方式/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/06/微前端架构下腾讯云K8S的部署方式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-要做的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/19/要做的/">要做的</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/19/要做的/" class="archive-article-date">
+  	<time datetime="2021-03-19T05:29:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>微前端架构的实施已经完成，下一步是在项目级别完成组件的复用。如何方便有效的使用组件是方向。</p>
+<p>远程组件、subModules、npm包等我比较倾向于类似微前端架构的远程组件调用。因此也是超这个方向努力～</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计划</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/19/要做的/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-getaddrinfo-ENOTFOUND-localhost解决办法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -986,379 +1295,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/23/JS中call-和apply/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-全网最详bpmn-js简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/21/全网最详bpmn-js简介/">全网最详bpmn.js简介</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/21/全网最详bpmn-js简介/" class="archive-article-date">
-  	<time datetime="2020-07-21T01:51:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>bpmn.js简介<br>bpmn.js是一个BPMN2.0渲染工具包和web建模器.</p>
-<p>它使用JavaScript编写，在不需要后端服务器支持的前提下向现代浏览器内嵌入BPMN2.0流程图.</p>
-<p>简单来说, 就是能使得前端来画流程图, 它可能长成这样:</p>
-<p><img src="http://blogimage.houjiyi.com/Ft_9DmQ7rMIU1jEOm1Ra-6HjCauG" alt="image.png"></p>
-<p>也可能长成这样:</p>
-<p><img src="http://blogimage.houjiyi.com/Foxjmeg_Q7nZBpmuUQ2nbA7v7ZtY" alt="image.png"></p>
-<p>或许你可以亲自试试: <a href="在线绘制bpmn流程图">在线绘制bpmn流程图</a></p>
-<p>全部目录<br><a href="bpmn.js教材目录">bpmn.js教材目录</a></p>
-<p>几个问题</p>
-<blockquote>
-<p>Q: bpmn.js是什么? 🤔️</p>
-</blockquote>
-<p>bpmn.js是一个BPMN2.0渲染工具包和web建模器, 使得画流程图的功能在前端来完成.</p>
-<blockquote>
-<p>Q: 我为什么要写该系列的教材? 🤔️</p>
-</blockquote>
-<p>因为公司业务的需要因而要在项目中使用到bpmn.js,但是由于bpmn.js的开发者是国外友人, 因此国内对这方面的教材很少, 也没有详细的文档. 所以很多使用方式很多坑都得自己去找 😅.</p>
-<p>在将其琢磨完之后, 决定写一系列关于它的教材来帮助更多bpmn.js的使用者或者是期于找到一种好的绘制流程图的开发者. 同时也是自己对其的一种巩固.</p>
-<blockquote>
-<p>Q: 教材中的知识我都是从哪里看的? 🤔️</p>
-</blockquote>
-<p>最开始是根据公司业务的需要, 跟着官方给的一些例子 来推敲了解bpmn.js的一些基础知识, 包括一些自定义contextPad、renderer、palette的使用, 然后就写了几篇关于bpmn.js的文章 ✏️.</p>
-<p>之后越来越多读者通过微信与我联系, 他们也会问一些我没有遇到过的问题, 从中互相探索怎样使用, 怎样解决实际问题… 过程里大多都是通过查看bpmn.js的源码, 然后本地测试源码中一些方法和属性的作用.</p>
-<blockquote>
-<p>Q: 本教材还会更新多久? 🤔️</p>
-</blockquote>
-<p>不知道🤷‍♂️… 因为其实现在工作已经没在用bpmn.js了, 我现在更多的把它当成一种兴趣来学习吧…</p>
-<p>而且现在我们也有了自己的一个bpmn.js交流群, 时不时会有一些新的问题抛出来, 所以暂时是与其分不开的 😊.</p>
-<p>我也会在工作之余, 尽量多出一些教材, 包括群里大家抛出的问题, 我也会抽时间将它们整理出来, 方便后面遇到同样问题的小伙伴查看, 所以现在是持续更新的.</p>
-<blockquote>
-<p>Q: 还有什么想说的? 🤔️</p>
-</blockquote>
-<p>求Star 🌟 , 求 Fork 📒</p>
-<p>就像之前我提到过的, 光靠我一个人的力量想要将 bpmn-chinese-document打造成一个真正的bpmn中文文档</p>
-<p>是不可能的…</p>
-<p>精力不够…能力也不够…</p>
-<p>所以我希望有更多的bpmn.js使用者能参与到此项目中来 🎉…</p>
-<p>你可以是写一篇关于某个知识点的文章, 就算是我已经写过的知识点也可以, 因为我知道我写的不一定全面, 如果你有更多可以写的我当然欢迎👏.</p>
-<p>也可以是写一些教材案例, 因为之前就有大佬吐槽说官方给的案例都太过简单了 😂, 可以让我们自己写一些案例出来. (案例中的README要尽量详细哟 😁, 当然有一篇配合着的文档更好啦 😄)</p>
-<p>再或者是一些你平常碰到的坑, 总结之类的文章也很好 😼.</p>
-<blockquote>
-<p>Q: 如何 Fork ? 🤔️</p>
-</blockquote>
-<p>点击项目右上角的Fork, 然后像Fork其它项目一样, 不太会的小伙伴可以查看这篇文章:</p>
-<p>Github上怎么修改别人的项目并且提交给原作者！图文并茂！</p>
-<p>不过在提交的时候, 为避免项目太乱, 可以在根目录下创建一个以你github为名的文件夹(比如我的就是LinDaiDai)然后将你的文章或者案例都放在这个文件夹里面进行提交就可以了🎉 .</p>
-<p>后语<br>如果你也对bpmn.js 感兴趣的话, 欢迎加入我们的bpmn.js交流群, 一起学习, 一起进步💪.</p>
-<p><a href="https://github.com/LinDaiDai/bpmn-chinese-document" target="_blank" rel="noopener">原文地址</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/21/全网最详bpmn-js简介/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS原始值转换算法-toPrimitive" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/16/JS原始值转换算法-toPrimitive/">JS原始值转换算法---toPrimitive()</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/16/JS原始值转换算法-toPrimitive/" class="archive-article-date">
-  	<time datetime="2020-07-16T02:58:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在js中，想要将对象转换成原始值，必然会调用toPrimitive()内部函数，那么它是如何工作的呢？</p>
-<p>该函数形式如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">toPrimitive(input,preferedType?)</span><br></pre></td></tr></table></figure>
-<p>input是输入的值，preferedType是期望转换的类型，他可以是字符串，也可以是数字。</p>
-<p>如果转换的类型是number，会执行以下步骤：</p>
-<ol>
-<li>如果input是原始值，直接返回这个值；</li>
-<li>否则，如果input是对象，调用input.valueOf()，如果结果是原始值，返回结果；</li>
-<li>否则，调用input.toString()。如果结果是原始值，返回结果；</li>
-<li>否则，抛出错误。</li>
-</ol>
-<p>如果转换的类型是String，2和3会交换执行，即先执行toString()方法。</p>
-<p>你也可以省略preferedType，此时，日期会被认为是字符串，而其他的值会被当做Number。</p>
-<p>综上所述，会有以下计算结果：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[]+[]</span><br><span class="line"><span class="string">""</span></span><br></pre></td></tr></table></figure></p>
-<p>加号操作符会将preferedType看成Number，调用ES内部的toPrimitive(input，Number)方法，得到空字符串</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[]+&#123;&#125;</span><br><span class="line"><span class="string">"[object Object]"</span></span><br></pre></td></tr></table></figure>
-<p> 最终会调用双方的toString()方法，再做字符串加法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#125;+[]</span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure></p>
-<p>但是空对象加空数组就不一样了，加号运算符的定义是这样的：如果其中一个是字符串，另一个也会被转换为字符串，否则两个运算数都被转换为数字。而同时，javascript有这样的特性，如果{}既可以被认为是代码块，又可以被认为是对象字面量，那么js会把他当做代码块来看待。</p>
-<p>这就很好解释了，{}被当做了代码块，只有+[]，根据加法的定义，被转换为0，就得到了结果。</p>
-<p>在操作符中，==，排序运算符，加减乘除，在对非原始值进行操作时，都会调用内部的toPrimitive()方法</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/16/JS原始值转换算法-toPrimitive/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PWA-入门-写个非常简单的-PWA-页面" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/13/PWA-入门-写个非常简单的-PWA-页面/">PWA 入门: 写个非常简单的 PWA 页面</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/13/PWA-入门-写个非常简单的-PWA-页面/" class="archive-article-date">
-  	<time datetime="2020-07-13T06:53:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Progressive Web Apps 是 Google 提出的用前沿的 Web 技术为网页提供 App 般使用体验的一系列方案。这篇文章里我们来完成一个非常简单的 PWA 页面。</p>
-<blockquote>
-<p>一个 PWA 应用首先是一个网页, 可以通过 Web 技术编写出一个网页应用. 随后添加上 App Manifest 和 Service Worker 来实现 PWA 的安装和离线等功能。下面的教程基于 <a href="https://link.zhihu.com/?target=https%3A//codelabs.developers.google.com/codelabs/migrate-to-progressive-web-apps/index.html%3F%230" target="_blank" rel="noopener">Migrate your site to a Progressive Web App</a> 和 Google 给出的 <a href="https://link.zhihu.com/?target=https%3A//github.com/GoogleChrome/samples/tree/gh-pages/service-worker/basic" target="_blank" rel="noopener">sample</a> 示例。完整代码访问 <a href="https://link.zhihu.com/?target=https%3A//github.com/yong-chen04/minimal-pwa" target="_blank" rel="noopener">minimal-pwa</a> 查看。</p>
-</blockquote>
-<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>建议安装 <a href="https://link.zhihu.com/?target=https%3A//www.npmjs.com/package/http-server" target="_blank" rel="noopener">http-server</a> 和 <a href="https://link.zhihu.com/?target=https%3A//ngrok.com/" target="_blank" rel="noopener">ngrok</a> 以便调试和查看。</p>
-<p>准备一个 HTML 文件, 以及相应的 CSS 等:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Minimal PWA<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"main.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h3</span>&gt;</span>Revision 1<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main-text"</span>&gt;</span>Minimal PWA, open Console for more~~~<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="添加-manifest-json-文件"><a href="#添加-manifest-json-文件" class="headerlink" title="添加 manifest.json 文件"></a>添加 manifest.json 文件</h4><p>为了让 PWA 应用被添加到主屏幕, 使用 manifest.json 定义应用的名称, 图标等等信息。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"Minimal app to try PWA"</span>,</span><br><span class="line">  <span class="attr">"short_name"</span>: <span class="string">"Minimal PWA"</span>,</span><br><span class="line">  <span class="attr">"display"</span>: <span class="string">"standalone"</span>,</span><br><span class="line">  <span class="attr">"start_url"</span>: <span class="string">"/"</span>,</span><br><span class="line">  <span class="attr">"theme_color"</span>: <span class="string">"#8888ff"</span>,</span><br><span class="line">  <span class="attr">"background_color"</span>: <span class="string">"#aaaaff"</span>,</span><br><span class="line">  <span class="attr">"icons"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"src"</span>: <span class="string">"e.png"</span>,</span><br><span class="line">      <span class="attr">"sizes"</span>: <span class="string">"256x256"</span>,</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"image/png"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后在 HTML 文件当中引入配置:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"manifest"</span> <span class="attr">href</span>=<span class="string">"manifest.json"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="添加-Service-Worker"><a href="#添加-Service-Worker" class="headerlink" title="添加 Service Worker"></a>添加 Service Worker</h4><p>Service Worker 在网页已经关闭的情况下还可以运行, 用来实现页面的缓存和离线, 后台通知等等功能。sw.js 文件需要在 HTML 当中引入:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">if</span> (navigator.serviceWorker != <span class="literal">null</span>) &#123;</span></span><br><span class="line"><span class="javascript">    navigator.serviceWorker.register(<span class="string">'sw.js'</span>)</span></span><br><span class="line"><span class="javascript">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">registration</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">'Registered events at scope: '</span>, registration.scope);</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>后面我们会往 sw.js 文件当中添加逻辑代码。在 Service Worker 当中会用到一些全局变量:</p>
-<ul>
-<li>self: 表示 Service Worker 作用域, 也是全局变量</li>
-<li>caches: 表示缓存</li>
-<li>skipWaiting: 表示强制当前处在 waiting 状态的脚本进入 activate 状态</li>
-<li>clients: 表示 Service Worker 接管的页面</li>
-</ul>
-<h4 id="四级标题处理静态缓存"><a href="#四级标题处理静态缓存" class="headerlink" title="四级标题处理静态缓存"></a>四级标题处理静态缓存</h4><p>首先定义需要缓存的路径, 以及需要缓存的静态文件的列表, 这个列表也可以通过 Webpack 插件生成。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cacheStorageKey = <span class="string">'minimal-pwa-1'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cacheList = [</span><br><span class="line">  <span class="string">'/'</span>,</span><br><span class="line">  <span class="string">"index.html"</span>,</span><br><span class="line">  <span class="string">"main.css"</span>,</span><br><span class="line">  <span class="string">"e.png"</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>借助 Service Worker, 可以在注册完成安装 Service Worker 时, 抓取资源写入缓存:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">self.addEventListener(<span class="string">'install'</span>, e =&gt; &#123;</span><br><span class="line">  e.waitUntil(</span><br><span class="line">    caches.open(cacheStorageKey)</span><br><span class="line">    .then(<span class="function"><span class="params">cache</span> =&gt;</span> cache.addAll(cacheList))</span><br><span class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> self.skipWaiting())</span><br><span class="line">  )</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>调用 self.skipWaiting() 方法是为了在页面更新的过程当中, 新的 Service Worker 脚本能立即激活和生效。</p>
-<h4 id="处理动态缓存"><a href="#处理动态缓存" class="headerlink" title="处理动态缓存"></a>处理动态缓存</h4><p>网页抓取资源的过程中, 在 Service Worker 可以捕获到 fetch 事件, 可以编写代码决定如何响应资源的请求:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">self.addEventListener(<span class="string">'fetch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  e.respondWith(</span><br><span class="line">    caches.match(e.request).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (response != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> response</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> fetch(e.request.url)</span><br><span class="line">    &#125;)</span><br><span class="line">  )</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>真实的项目当中, 可以根据资源的类型, 站点的特点, 可以专门设计复杂的策略。fetch 事件当中甚至可以手动生成 Response 返回给页面。</p>
-<h4 id="更新静态资源"><a href="#更新静态资源" class="headerlink" title="更新静态资源"></a>更新静态资源</h4><p>缓存的资源随着版本的更新会过期, 所以会根据缓存的字符串名称(这里变量为 cacheStorageKey, 值用了 “minimal-pwa-1”)清除旧缓存, 可以遍历所有的缓存名称逐一判断决决定是否清除(备注: 简化的写法, Promise.all 中 return undefined 可能出错, 见评论):<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">self.addEventListener(<span class="string">'activate'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  e.waitUntil(</span><br><span class="line">    <span class="built_in">Promise</span>.all(</span><br><span class="line">      caches.keys().then(<span class="function"><span class="params">cacheNames</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> cacheNames.map(<span class="function"><span class="params">name</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (name !== cacheStorageKey) &#123;</span><br><span class="line">            <span class="keyword">return</span> caches.delete(name)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    ).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> self.clients.claim()</span><br><span class="line">    &#125;)</span><br><span class="line">  )</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>在新安装的 Service Worker 中通过调用 self.clients.claim() 取得页面的控制权, 这样之后打开页面都会使用版本更新的缓存。旧的 Service Worker 脚本不再控制着页面之后会被停止。</p>
-<h4 id="查看-Demo"><a href="#查看-Demo" class="headerlink" title="查看 Demo"></a>查看 Demo</h4><p>执行命令:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http-server -c<span class="number">-1</span> <span class="comment"># 注意设置关闭缓存, 这里用参数 -c-1</span></span><br><span class="line"><span class="comment"># 用另一个终端</span></span><br><span class="line">ngrok http <span class="number">8080</span></span><br></pre></td></tr></table></figure></p>
-<p>桌面浏览器可以直接通过 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> 访问, 从 DevTools 的 Application 标签可以看到 Service Worker。</p>
-<p>由于 Service Worker 限制了使用 HTTPS 地址或者 localhost 地址, 在 Android Chrome 打开需要借助 ngrok 生成的 HTTPS 地址, 这样才能把 demo 添加到首屏。添加到首屏之后, 即便在离线状态下, 页面也可以打开。</p>
-<p><img src="http://blogimage.houjiyi.com/FpwQxFgVNH1q6GvPAwQym352GcuL" alt="image.png"></p>
-<p>从 DevTools 可以看到, 普通页面刷新时, 列表当中的静态资源都是从 Service Worker 获取的:</p>
-<p><img src="http://blogimage.houjiyi.com/Ft4QfH0NL-81HC1jotmd6lqojFdy" alt="image.png"></p>
-<h4 id="更新页面"><a href="#更新页面" class="headerlink" title="更新页面"></a>更新页面</h4><p>页面被缓存之后, 就需要适当处理缓存失效时页面的更新。在这个 Demo 当中, 被缓存的资源是无法发起请求判断是否被更新的, 只有 sw.js 会自动根据 HTTP 缓存的机制尝试去判断应用是否被更新。</p>
-<p>所以当页面发生修改时, 要同时对 sw.js 文件进行一次修改。比如在 HTML 当中更新版本到 2:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>Revision 2<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>同时 sw.js 文件当中也要进行一次修改, 保证文件发生改变, 同时缓存的名称也变改变了:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cacheStorageKey = <span class="string">'minimal-pwa-2'</span></span><br></pre></td></tr></table></figure>
-<p>然后重新打开一次页面, 这个时候渲染的页面依然是旧的, 不过可以从 DevTools 看到 sw.js 被安装和激活。之后关闭页面, 再次打开, 就可以见到网页上的显示版本变成了 2。</p>
-<blockquote>
-<p>注意: Demo 当中如果直接启动 http-server 而不使用 -c-1 关闭缓存, sw.js 可能被缓存住, 导致更新方案失败。这种情况下存在 Caches API 和 HTML caching 两层缓存, 需要进行清理才能完成更新。</p>
-</blockquote>
-<h4 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h4><p>你还可以实现一个 App Shell, 可以用 Service Worker 实现后台通知等功能。</p>
-<p>参考你的首个 <a href="https://link.zhihu.com/?target=https%3A//developers.google.com/web/fundamentals/getting-started/codelabs/your-first-pwapp/%3Fhl%3Dzh-cn%23firebase" target="_blank" rel="noopener">Progressive Web App</a> 了解更加详细的编写 PWA 应用的方式。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PWA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/13/PWA-入门-写个非常简单的-PWA-页面/">展开全文 >></a>
         </p>
       
 
