@@ -166,6 +166,160 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-公共组件库实施" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/07/公共组件库实施/">公共组件库实施</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/07/公共组件库实施/" class="archive-article-date">
+  	<time datetime="2021-05-07T08:35:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="底层原则"><a href="#底层原则" class="headerlink" title="底层原则"></a>底层原则</h2><blockquote>
+<p>随着系统应用越来越多，我们对系统进行了微前端的改造，同时改造带来一个组件复用的问题需要解决，经过调研，最终还是决定使用npm包的形式进行公共组件的开发维护工作</p>
+</blockquote>
+<blockquote>
+<p>npm 包所在位置：<a href="https://www.npmjs.com/package/pms_components" target="_blank" rel="noopener">https://www.npmjs.com/package/pms_components</a></p>
+</blockquote>
+<blockquote>
+<p>源代码所在位置：<a href="http://gitlab.aiforward.cn/fe/pms_components" target="_blank" rel="noopener">http://gitlab.aiforward.cn/fe/pms_components</a></p>
+</blockquote>
+<blockquote>
+<p>组件库组件分两类：业务组件和基础组件</p>
+</blockquote>
+<blockquote>
+<p>为了保证与迁移之前使用方式一致，还对部分组件进行了写法上的调整</p>
+</blockquote>
+<h2 id="组件分类-基础组件-amp-业务组件"><a href="#组件分类-基础组件-amp-业务组件" class="headerlink" title="组件分类:基础组件&amp;业务组件"></a>组件分类:基础组件&amp;业务组件</h2><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i pms_components</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import PmsComponents from <span class="string">'pms_components'</span></span><br><span class="line"></span><br><span class="line">import <span class="string">'pms_components/lib/theme/index.css'</span></span><br><span class="line"></span><br><span class="line">Vue.use(PmsComponents)</span><br></pre></td></tr></table></figure>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vue-virtual-scroller</span><br><span class="line"></span><br><span class="line">v-viewer</span><br><span class="line"></span><br><span class="line">vue-resize-observer  <span class="comment">## 组件的更新及发布</span></span><br></pre></td></tr></table></figure>
+<h2 id="基础组件"><a href="#基础组件" class="headerlink" title="基础组件"></a>基础组件</h2><blockquote>
+<p>基础组件的使用可以直接像上边的方式去用，通过引入pms_components和css即可，也可以进行按需引用<br>基础组件就是不依赖项目环境的组件，他可以放在任意的项目中去使用，使用方法比较简单。</p>
+<p>EmptyLayout  组件–空页面</p>
+<p>ImportModal  组件–导入弹层</p>
+<p>FwAffixTable  组件–表格</p>
+<p>FwBadge  组件–徽章</p>
+<p>FwBreadcrumb  组件–面包屑</p>
+<p>FwFlexCard  组件–卡片展示</p>
+<p>FwRadioTab  组件–标签选项卡</p>
+<p>FwSteps  组件–步骤展示</p>
+<p>InputNumberWithAddon  组件–数字带后缀</p>
+<p>ImageHolder  组件–图片展示</p>
+<p>ImageViewer  组件–图片查看组件</p>
+<p>TitleAndOperate  组件–标题隔离</p>
+<p>LongTextPopover  组件–长文本弹窗</p>
+</blockquote>
+<h2 id="业务组件"><a href="#业务组件" class="headerlink" title="业务组件"></a>业务组件</h2><blockquote>
+<p>业务组件的使用稍微麻烦些，由于它依赖项目的运行环境，这里主要是请求中的token等信息，所以需要在项目中<br>重新定义一下对应的组件，在我们的项目中fpms_app_template有这几个的基本示例代码，我们将业务组件进行<br>简单的二次包装，同时将项目的request方法默认传入组件，这样不同项目请求方式就是统一的了。<br><img src="http://blogimage.houjiyi.com/Fk1kiZGj4AqwHbp1qxarj6NfsS-_" alt="image.png"></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> FwCascader <span class="keyword">from</span> <span class="string">'pms_components/packages/FwCascader/FwCascader.vue'</span></span><br><span class="line"><span class="keyword">import</span> &#123; axios &#125; <span class="keyword">from</span> <span class="string">'@/utils/request'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'FwCascader'</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    FwCascader</span><br><span class="line">  &#125;,</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">const</span> props = &#123; ...this.$attrs &#125;</span><br><span class="line">    props.axios = axios</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;FwCascader props=&#123; props &#125; on=&#123; <span class="keyword">this</span>.$listeners &#125; scopedSlots=&#123; <span class="keyword">this</span>.$scopedSlots &#125;&gt;</span><br><span class="line">        &#123; <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.$slots).map(<span class="function"><span class="params">name</span> =&gt;</span> (&lt;template slot=&#123;name&#125;&gt;&#123;this.$slots[name]&#125;&lt;/template&gt;)) &#125;</span><br><span class="line">      &lt;<span class="regexp">/FwCascader&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里主要作用是把项目的request方法传进组件，使用具体项目的请求方式。</p>
+<p>LocationCascader  组件–位置选择组件</p>
+<p>UnionLocationCascade  组件–组合位置选择</p>
+<p>RegionCascader  组件–地区选择组件</p>
+<p>upload  组件–上传</p>
+<p>FwCascader  组件–房屋选择</p>
+</blockquote>
+<h2 id="组件打包"><a href="#组件打包" class="headerlink" title="组件打包"></a>组件打包</h2><blockquote>
+<p>基础组件会打包，业务组件不打包，业务组件打包时间会很长也是个问题，通过区别基础组件和业务组件的使用方式， 可以避免这一情况</p>
+</blockquote>
+<blockquote>
+<p>打开pms_components项目</p>
+<p>控制台输入npm login,输入帐号和密码即可登录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm run uv <span class="comment"># 增加版本号</span></span><br><span class="line"></span><br><span class="line">npm run lib:cli <span class="comment"># 对项目进行打包</span></span><br><span class="line"></span><br><span class="line">npm publish <span class="comment"># 将包发布到npm仓库</span></span><br></pre></td></tr></table></figure>
+<h2 id="新组件开发及使用"><a href="#新组件开发及使用" class="headerlink" title="新组件开发及使用"></a>新组件开发及使用</h2><blockquote>
+<p>新组件开发完，在fpms_components中增加示例代码</p>
+<p>同时确保在项目fpms_app_template中使用没问题的情况下再发布,可以直接吧libs目录放在fpms_app_template的node_modules对应的包中测试</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/07/公共组件库实施/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-微前端架构下腾讯云K8S的部署方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1141,138 +1295,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/23/JS中call-和apply/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-全网最详bpmn-js简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/21/全网最详bpmn-js简介/">全网最详bpmn.js简介</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/21/全网最详bpmn-js简介/" class="archive-article-date">
-  	<time datetime="2020-07-21T01:51:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>bpmn.js简介<br>bpmn.js是一个BPMN2.0渲染工具包和web建模器.</p>
-<p>它使用JavaScript编写，在不需要后端服务器支持的前提下向现代浏览器内嵌入BPMN2.0流程图.</p>
-<p>简单来说, 就是能使得前端来画流程图, 它可能长成这样:</p>
-<p><img src="http://blogimage.houjiyi.com/Ft_9DmQ7rMIU1jEOm1Ra-6HjCauG" alt="image.png"></p>
-<p>也可能长成这样:</p>
-<p><img src="http://blogimage.houjiyi.com/Foxjmeg_Q7nZBpmuUQ2nbA7v7ZtY" alt="image.png"></p>
-<p>或许你可以亲自试试: <a href="在线绘制bpmn流程图">在线绘制bpmn流程图</a></p>
-<p>全部目录<br><a href="bpmn.js教材目录">bpmn.js教材目录</a></p>
-<p>几个问题</p>
-<blockquote>
-<p>Q: bpmn.js是什么? 🤔️</p>
-</blockquote>
-<p>bpmn.js是一个BPMN2.0渲染工具包和web建模器, 使得画流程图的功能在前端来完成.</p>
-<blockquote>
-<p>Q: 我为什么要写该系列的教材? 🤔️</p>
-</blockquote>
-<p>因为公司业务的需要因而要在项目中使用到bpmn.js,但是由于bpmn.js的开发者是国外友人, 因此国内对这方面的教材很少, 也没有详细的文档. 所以很多使用方式很多坑都得自己去找 😅.</p>
-<p>在将其琢磨完之后, 决定写一系列关于它的教材来帮助更多bpmn.js的使用者或者是期于找到一种好的绘制流程图的开发者. 同时也是自己对其的一种巩固.</p>
-<blockquote>
-<p>Q: 教材中的知识我都是从哪里看的? 🤔️</p>
-</blockquote>
-<p>最开始是根据公司业务的需要, 跟着官方给的一些例子 来推敲了解bpmn.js的一些基础知识, 包括一些自定义contextPad、renderer、palette的使用, 然后就写了几篇关于bpmn.js的文章 ✏️.</p>
-<p>之后越来越多读者通过微信与我联系, 他们也会问一些我没有遇到过的问题, 从中互相探索怎样使用, 怎样解决实际问题… 过程里大多都是通过查看bpmn.js的源码, 然后本地测试源码中一些方法和属性的作用.</p>
-<blockquote>
-<p>Q: 本教材还会更新多久? 🤔️</p>
-</blockquote>
-<p>不知道🤷‍♂️… 因为其实现在工作已经没在用bpmn.js了, 我现在更多的把它当成一种兴趣来学习吧…</p>
-<p>而且现在我们也有了自己的一个bpmn.js交流群, 时不时会有一些新的问题抛出来, 所以暂时是与其分不开的 😊.</p>
-<p>我也会在工作之余, 尽量多出一些教材, 包括群里大家抛出的问题, 我也会抽时间将它们整理出来, 方便后面遇到同样问题的小伙伴查看, 所以现在是持续更新的.</p>
-<blockquote>
-<p>Q: 还有什么想说的? 🤔️</p>
-</blockquote>
-<p>求Star 🌟 , 求 Fork 📒</p>
-<p>就像之前我提到过的, 光靠我一个人的力量想要将 bpmn-chinese-document打造成一个真正的bpmn中文文档</p>
-<p>是不可能的…</p>
-<p>精力不够…能力也不够…</p>
-<p>所以我希望有更多的bpmn.js使用者能参与到此项目中来 🎉…</p>
-<p>你可以是写一篇关于某个知识点的文章, 就算是我已经写过的知识点也可以, 因为我知道我写的不一定全面, 如果你有更多可以写的我当然欢迎👏.</p>
-<p>也可以是写一些教材案例, 因为之前就有大佬吐槽说官方给的案例都太过简单了 😂, 可以让我们自己写一些案例出来. (案例中的README要尽量详细哟 😁, 当然有一篇配合着的文档更好啦 😄)</p>
-<p>再或者是一些你平常碰到的坑, 总结之类的文章也很好 😼.</p>
-<blockquote>
-<p>Q: 如何 Fork ? 🤔️</p>
-</blockquote>
-<p>点击项目右上角的Fork, 然后像Fork其它项目一样, 不太会的小伙伴可以查看这篇文章:</p>
-<p>Github上怎么修改别人的项目并且提交给原作者！图文并茂！</p>
-<p>不过在提交的时候, 为避免项目太乱, 可以在根目录下创建一个以你github为名的文件夹(比如我的就是LinDaiDai)然后将你的文章或者案例都放在这个文件夹里面进行提交就可以了🎉 .</p>
-<p>后语<br>如果你也对bpmn.js 感兴趣的话, 欢迎加入我们的bpmn.js交流群, 一起学习, 一起进步💪.</p>
-<p><a href="https://github.com/LinDaiDai/bpmn-chinese-document" target="_blank" rel="noopener">原文地址</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/21/全网最详bpmn-js简介/">展开全文 >></a>
         </p>
       
 

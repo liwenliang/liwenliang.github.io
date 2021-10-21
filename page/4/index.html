@@ -166,6 +166,138 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-全网最详bpmn-js简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/21/全网最详bpmn-js简介/">全网最详bpmn.js简介</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/21/全网最详bpmn-js简介/" class="archive-article-date">
+  	<time datetime="2020-07-21T01:51:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>bpmn.js简介<br>bpmn.js是一个BPMN2.0渲染工具包和web建模器.</p>
+<p>它使用JavaScript编写，在不需要后端服务器支持的前提下向现代浏览器内嵌入BPMN2.0流程图.</p>
+<p>简单来说, 就是能使得前端来画流程图, 它可能长成这样:</p>
+<p><img src="http://blogimage.houjiyi.com/Ft_9DmQ7rMIU1jEOm1Ra-6HjCauG" alt="image.png"></p>
+<p>也可能长成这样:</p>
+<p><img src="http://blogimage.houjiyi.com/Foxjmeg_Q7nZBpmuUQ2nbA7v7ZtY" alt="image.png"></p>
+<p>或许你可以亲自试试: <a href="在线绘制bpmn流程图">在线绘制bpmn流程图</a></p>
+<p>全部目录<br><a href="bpmn.js教材目录">bpmn.js教材目录</a></p>
+<p>几个问题</p>
+<blockquote>
+<p>Q: bpmn.js是什么? 🤔️</p>
+</blockquote>
+<p>bpmn.js是一个BPMN2.0渲染工具包和web建模器, 使得画流程图的功能在前端来完成.</p>
+<blockquote>
+<p>Q: 我为什么要写该系列的教材? 🤔️</p>
+</blockquote>
+<p>因为公司业务的需要因而要在项目中使用到bpmn.js,但是由于bpmn.js的开发者是国外友人, 因此国内对这方面的教材很少, 也没有详细的文档. 所以很多使用方式很多坑都得自己去找 😅.</p>
+<p>在将其琢磨完之后, 决定写一系列关于它的教材来帮助更多bpmn.js的使用者或者是期于找到一种好的绘制流程图的开发者. 同时也是自己对其的一种巩固.</p>
+<blockquote>
+<p>Q: 教材中的知识我都是从哪里看的? 🤔️</p>
+</blockquote>
+<p>最开始是根据公司业务的需要, 跟着官方给的一些例子 来推敲了解bpmn.js的一些基础知识, 包括一些自定义contextPad、renderer、palette的使用, 然后就写了几篇关于bpmn.js的文章 ✏️.</p>
+<p>之后越来越多读者通过微信与我联系, 他们也会问一些我没有遇到过的问题, 从中互相探索怎样使用, 怎样解决实际问题… 过程里大多都是通过查看bpmn.js的源码, 然后本地测试源码中一些方法和属性的作用.</p>
+<blockquote>
+<p>Q: 本教材还会更新多久? 🤔️</p>
+</blockquote>
+<p>不知道🤷‍♂️… 因为其实现在工作已经没在用bpmn.js了, 我现在更多的把它当成一种兴趣来学习吧…</p>
+<p>而且现在我们也有了自己的一个bpmn.js交流群, 时不时会有一些新的问题抛出来, 所以暂时是与其分不开的 😊.</p>
+<p>我也会在工作之余, 尽量多出一些教材, 包括群里大家抛出的问题, 我也会抽时间将它们整理出来, 方便后面遇到同样问题的小伙伴查看, 所以现在是持续更新的.</p>
+<blockquote>
+<p>Q: 还有什么想说的? 🤔️</p>
+</blockquote>
+<p>求Star 🌟 , 求 Fork 📒</p>
+<p>就像之前我提到过的, 光靠我一个人的力量想要将 bpmn-chinese-document打造成一个真正的bpmn中文文档</p>
+<p>是不可能的…</p>
+<p>精力不够…能力也不够…</p>
+<p>所以我希望有更多的bpmn.js使用者能参与到此项目中来 🎉…</p>
+<p>你可以是写一篇关于某个知识点的文章, 就算是我已经写过的知识点也可以, 因为我知道我写的不一定全面, 如果你有更多可以写的我当然欢迎👏.</p>
+<p>也可以是写一些教材案例, 因为之前就有大佬吐槽说官方给的案例都太过简单了 😂, 可以让我们自己写一些案例出来. (案例中的README要尽量详细哟 😁, 当然有一篇配合着的文档更好啦 😄)</p>
+<p>再或者是一些你平常碰到的坑, 总结之类的文章也很好 😼.</p>
+<blockquote>
+<p>Q: 如何 Fork ? 🤔️</p>
+</blockquote>
+<p>点击项目右上角的Fork, 然后像Fork其它项目一样, 不太会的小伙伴可以查看这篇文章:</p>
+<p>Github上怎么修改别人的项目并且提交给原作者！图文并茂！</p>
+<p>不过在提交的时候, 为避免项目太乱, 可以在根目录下创建一个以你github为名的文件夹(比如我的就是LinDaiDai)然后将你的文章或者案例都放在这个文件夹里面进行提交就可以了🎉 .</p>
+<p>后语<br>如果你也对bpmn.js 感兴趣的话, 欢迎加入我们的bpmn.js交流群, 一起学习, 一起进步💪.</p>
+<p><a href="https://github.com/LinDaiDai/bpmn-chinese-document" target="_blank" rel="noopener">原文地址</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/21/全网最详bpmn-js简介/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JS原始值转换算法-toPrimitive" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -988,106 +1120,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/04/防抖与节流/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-10-分钟理解-BFC-原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/03/10-分钟理解-BFC-原理/">10 分钟理解 BFC 原理</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/03/10-分钟理解-BFC-原理/" class="archive-article-date">
-  	<time datetime="2019-09-03T10:32:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://blogimage.houjiyi.com/FrrAxLwA48BYSAzFn79bOmBnIvUX" alt="image.png"></p>
-<h2 id="一、常见定位方案"><a href="#一、常见定位方案" class="headerlink" title="一、常见定位方案"></a>一、常见定位方案</h2><p>在讲 BFC 之前，我们先来了解一下常见的定位方案，定位方案是控制元素的布局，有三种常见方案:</p>
-<p>普通流 (normal flow)</p>
-<blockquote>
-<p>在普通流中，元素按照其在 HTML 中的先后位置至上而下布局，在这个过程中，行内元素水平排列，直到当行被占满然后换行，块级元素则会被渲染为完整的一个新行，除非另外指定，否则所有元素默认都是普通流定位，也可以说，普通流中元素的位置由该元素在 HTML 文档中的位置决定。</p>
-</blockquote>
-<p>浮动 (float)</p>
-<blockquote>
-<p>在浮动布局中，元素首先按照普通流的位置出现，然后根据浮动的方向尽可能的向左边或右边偏移，其效果与印刷排版中的文本环绕相似。</p>
-</blockquote>
-<p>绝对定位 (absolute positioning)</p>
-<blockquote>
-<p>在绝对定位布局中，元素会整体脱离普通流，因此绝对定位元素不会对其兄弟元素造成影响，而元素具体的位置由绝对定位的坐标决定。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2019/09/03/10-分钟理解-BFC-原理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/03/10-分钟理解-BFC-原理/">展开全文 >></a>
         </p>
       
 

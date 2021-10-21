@@ -6,19 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.houjiyi.com">
-  <title>Archives | 后记忆</title>
+  <title>浅谈Vue中的虚拟DOM | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="健康、生活、工作">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="后记忆">
-<meta property="og:url" content="https://www.houjiyi.com/archives/page/15/index.html">
+  <meta name="description" content="前言Vue2.0引入了虚拟DOM，比Vue1.0的初始渲染速度提升了2～4倍，并大大降低了内存消耗。目前主流的前端框架Vue、React核心技术也都使用了虚拟DOM，你是否好奇为什么要提出虚拟DOM，虚拟DOM是什么，它有什么优势？这一切的问题，都将在本篇揭晓。 为什么要提出虚拟DOM在Web早期，页面的交互比较简单，没有复杂的状态需要管理，也不太需要频繁的操作DOM，随着时代的发展，页面上的功能">
+<meta name="keywords" content="知识点备忘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈Vue中的虚拟DOM">
+<meta property="og:url" content="https://www.houjiyi.com/2021/10/21/浅谈Vue中的虚拟DOM/index.html">
 <meta property="og:site_name" content="后记忆">
-<meta property="og:description" content="健康、生活、工作">
+<meta property="og:description" content="前言Vue2.0引入了虚拟DOM，比Vue1.0的初始渲染速度提升了2～4倍，并大大降低了内存消耗。目前主流的前端框架Vue、React核心技术也都使用了虚拟DOM，你是否好奇为什么要提出虚拟DOM，虚拟DOM是什么，它有什么优势？这一切的问题，都将在本篇揭晓。 为什么要提出虚拟DOM在Web早期，页面的交互比较简单，没有复杂的状态需要管理，也不太需要频繁的操作DOM，随着时代的发展，页面上的功能">
 <meta property="og:locale" content="zh">
+<meta property="og:image" content="https://blogimage.houjiyi.com/Fl12e31OgbTL-xnjXd_Yyr0ofZmW">
+<meta property="og:image" content="https://blogimage.houjiyi.com/FkAtIjsxjASDIO_lxH_aD_ZABlLX">
+<meta property="og:image" content="https://blogimage.houjiyi.com/FhrRWops52b2yTl2OoF52MLf60r3">
+<meta property="og:image" content="https://blogimage.houjiyi.com/Fra1xRvFBjNvLWoOV5ou2TlZMRfA">
+<meta property="og:updated_time" content="2021-10-21T07:24:36.788Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="后记忆">
-<meta name="twitter:description" content="健康、生活、工作">
+<meta name="twitter:title" content="浅谈Vue中的虚拟DOM">
+<meta name="twitter:description" content="前言Vue2.0引入了虚拟DOM，比Vue1.0的初始渲染速度提升了2～4倍，并大大降低了内存消耗。目前主流的前端框架Vue、React核心技术也都使用了虚拟DOM，你是否好奇为什么要提出虚拟DOM，虚拟DOM是什么，它有什么优势？这一切的问题，都将在本篇揭晓。 为什么要提出虚拟DOM在Web早期，页面的交互比较简单，没有复杂的状态需要管理，也不太需要频繁的操作DOM，随着时代的发展，页面上的功能">
+<meta name="twitter:image" content="https://blogimage.houjiyi.com/Fl12e31OgbTL-xnjXd_Yyr0ofZmW">
   
     <link rel="alternative" href="/atom.xml" title="后记忆" type="application/atom+xml">
   
@@ -164,515 +170,248 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-浅谈Vue中的虚拟DOM" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      浅谈Vue中的虚拟DOM
+    </h1>
+  
+
+        
+        <a href="/2021/10/21/浅谈Vue中的虚拟DOM/" class="archive-article-date">
+  	<time datetime="2021-10-21T07:24:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-21</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Vue2.0引入了虚拟DOM，比Vue1.0的初始渲染速度提升了2～4倍，并大大降低了内存消耗。目前主流的前端框架Vue、React核心技术也都使用了虚拟DOM，你是否好奇为什么要提出虚拟DOM，虚拟DOM是什么，它有什么优势？这一切的问题，都将在本篇揭晓。</p>
+<h2 id="为什么要提出虚拟DOM"><a href="#为什么要提出虚拟DOM" class="headerlink" title="为什么要提出虚拟DOM"></a>为什么要提出虚拟DOM</h2><p>在Web早期，页面的交互比较简单，没有复杂的状态需要管理，也不太需要频繁的操作DOM，随着时代的发展，页面上的功能越来越多，我们需要实现的需求也越来越复杂，DOM的操作也越来越频繁。通过js操作DOM的代价很高，因为会引起页面的重排重绘，增加浏览器的性能开销，降低页面渲染速度，既然操作dom的代价很高那么有没有那种方式可以减少对dom的操作？这就是为什么提出虚拟dom一个很重要的原因。</p>
+<h2 id="模版转换成视图的过程"><a href="#模版转换成视图的过程" class="headerlink" title="模版转换成视图的过程"></a>模版转换成视图的过程</h2><p>在正式介绍Virtual DOM之前，我们有必要先了解下模版转换成视图的整个过程(如下图)：</p>
+<ul>
+<li>Vue.js通过编译将模版转换成渲染函数(render)，执行渲染函数就可以得到一个虚拟DOM</li>
+<li>在对模型进行操作的时候，会触发对应的Dep中的Watcher对象。Watcher对象会调用对应的update来修改视图。这个过程主要是将新旧虚拟DOM进行差异对比，然后根据结果进行对比。<br>简单点讲，在Vue的实现上，Vue讲模版编译成虚拟DOM渲染函数。结合Vue自带的响应系统，在状态改变时，Vue能够智能地计算出重新渲染组件的最小代价并应用到DOM操作上。<br><img src="https://blogimage.houjiyi.com/Fl12e31OgbTL-xnjXd_Yyr0ofZmW" alt="image.png"></li>
+</ul>
+<p>我们先对上图几个概念嵌入解释：</p>
+<ul>
+<li>渲染函数：渲染函数是用来生成虚拟DOM的。Vue推荐使用模版来构建我们的应用界面，在实现中Vue布局模版编译成渲染函数，当然我们也可以不写模版，直接写渲染函数，这样子更接近编译后的模版。</li>
+<li>vnode虚拟节点：它可以代表一个真实的DOM节点通过createElement方法能将vnode渲染成DOM节点，简单地说，虚拟节点可以理解成节点描述对象，它描述了应该怎样去创建真实的DOM节点。</li>
+<li>patch(也称为patching算法)：虚拟DOM最核心的部分，它可以将vnode渲染成真实的DOM，这个过程是对比新旧虚拟节点之间有哪些不同，然后根据对比结果找出需要更新的的节点进行更新。这点我们从单词含义就可以看出， patch本身就有补丁、修补的意思，其实际作用是在现有DOM上进行修改来实现更新视图的目的。Vue的Virtual DOM Patching算法是基于Snabbdom的实现，并在些基础上作了很多的调整和改进。</li>
+</ul>
+<h2 id="Virtual-DOM-是什么？"><a href="#Virtual-DOM-是什么？" class="headerlink" title="Virtual DOM 是什么？"></a>Virtual DOM 是什么？</h2><p>Virtual DOM 其实就是一棵以 JavaScript 对象( VNode 节点)作为基础的树，用对象属性来描述节点，实际上它只是一层对真实 DOM 的抽象。最终可以通过一系列操作使这棵树映射到真实环境上。</p>
+<p>  简单来说，可以把Virtual DOM 理解为一个简单的JS对象，并且最少包含标签名( tag)、属性(attrs)和子元素对象( children)三个属性。不同的框架对这三个属性的命名会有点差别。</p>
+<p>对于虚拟DOM，咱们来看一个简单的实例，就是下图所示的这个，详细的阐述了模板 → 渲染函数 → 虚拟DOM树 → 真实DOM的一个过程</p>
+<p><img src="https://blogimage.houjiyi.com/FkAtIjsxjASDIO_lxH_aD_ZABlLX" alt="image.png"></p>
+<h2 id="为什么虚拟DOM可以提高渲染速度"><a href="#为什么虚拟DOM可以提高渲染速度" class="headerlink" title="为什么虚拟DOM可以提高渲染速度"></a>为什么虚拟DOM可以提高渲染速度</h2><p>传统方式用js操作DOM会有很多额外的DOM操作，例如，一个ul标签下有很多个li标签，其中只有一个li有变化，这种情况下如果使用新的ul去替代旧的ul，其实除了那个发生变化的li节点之外，其他节点都不需要重新渲染。由于DOM操作比较慢，所以这些DOM操作在性能上会有一定的浪费，避免这些不必要的DOM操作会提升很大一部分性能(减少重排重绘从而节省浏览器的性能开销)。<br>  为了避免不必要的DOM操作，虚拟DOM在虚拟节点映射到视图的过程中，将虚拟节点与上一次渲染视图所使用的虚拟节点(oldVnode)做对比，找出真正需要更新的节点来进行DOM操作，从而避免操作其他无任何改动的DOM。<br>其实虚拟DOM在Vue.js中主要做了两件事：</p>
+<ul>
+<li>提供与真实DOM节点所对应的虚拟节点vnode</li>
+<li>将虚拟节点vnode和旧虚拟节点oldVnode进行比对，然后更新视图<br>对两个虚拟节点进行对比是虚拟DOM中最核心的算法即patch，patch算法的核心是diff算法，它可以判断出哪些节点发生了变化，从而只对发生了变化的节点进行更新操作。</li>
+</ul>
+<h2 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h2><p><img src="https://blogimage.houjiyi.com/FhrRWops52b2yTl2OoF52MLf60r3" alt="image.png"></p>
+<p>Vue的diff算法是基于snabbdom改造过来的，仅在同级的vnode间做diff，递归地进行同级vnode的diff，最终实现整个DOM树的更新。因为跨层级的操作是非常少的，忽略不计，这样时间复杂度就从O(n3)变成O(n)。</p>
+<p>diff 算法包括几个步骤：</p>
+<ul>
+<li>用 JavaScript 对象结构表示 DOM 树的结构；然后用这个树构建一个真正的 DOM 树，插到文档当中</li>
+<li>当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异</li>
+<li>把所记录的差异应用到所构建的真正的DOM树上，视图就更新了</li>
+</ul>
+<p><img src="https://blogimage.houjiyi.com/Fra1xRvFBjNvLWoOV5ou2TlZMRfA" alt="image.png"></p>
+<h2 id="diff算法的实现过程"><a href="#diff算法的实现过程" class="headerlink" title="diff算法的实现过程"></a>diff算法的实现过程</h2><p>diff 算法本身非常复杂，实现难度很大。本文去繁就简，粗略介绍以下两个核心函数实现流程：<br>patch(container,vnode) :初次渲染的时候，将VDOM渲染成真正的DOM然后插入到容器里面。<br>patch(vnode,newVnode):再次渲染的时候，将新的vnode和旧的vnode相对比，然后之间差异应用到所构建的真正的DOM树上。</p>
+<h2 id="patch-container-vnode"><a href="#patch-container-vnode" class="headerlink" title="patch(container,vnode)"></a>patch(container,vnode)</h2><p>通过这个函数可以让VNode渲染成真正的DOM，我们通过以下模拟代码，可以了解大致过程：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params">vnode</span>) </span>&#123;    </span><br><span class="line">  <span class="keyword">var</span> tag = vnode.tag  </span><br><span class="line">  <span class="keyword">var</span> attrs = vnode.attrs || &#123;&#125;    </span><br><span class="line">  <span class="keyword">var</span> children = vnode.children || []    </span><br><span class="line">  <span class="keyword">if</span> (!tag) &#123;       </span><br><span class="line">   <span class="keyword">return</span> <span class="literal">null</span>  </span><br><span class="line">  &#125;    </span><br><span class="line">  <span class="comment">// 创建真实的 DOM 元素    </span></span><br><span class="line">  <span class="keyword">var</span> elem = <span class="built_in">document</span>.createElement(tag)   </span><br><span class="line">  <span class="comment">// 属性    </span></span><br><span class="line">  <span class="keyword">var</span> attrName    </span><br><span class="line">  <span class="keyword">for</span> (attrName <span class="keyword">in</span> attrs) &#123;    </span><br><span class="line">    <span class="keyword">if</span> (attrs.hasOwnProperty(attrName)) &#123; </span><br><span class="line">           <span class="comment">// 给 elem 添加属性</span></span><br><span class="line">           elem.setAttribute(attrName, attrs[attrName])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 子元素</span></span><br><span class="line">    children.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">childVnode</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 给 elem 添加子元素，如果还有子节点，则递归的生成子节点。</span></span><br><span class="line">        elem.appendChild(createElement(childVnode))  <span class="comment">// 递归</span></span><br><span class="line">    &#125;)    <span class="comment">// 返回真实的 DOM 元素   </span></span><br><span class="line"> <span class="keyword">return</span> elem</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="patch-vnode-newVnode"><a href="#patch-vnode-newVnode" class="headerlink" title="patch(vnode,newVnode)"></a>patch(vnode,newVnode)</h2><p>这里我们只考虑vnode与newVnode如何对比的情况：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateChildren</span>(<span class="params">vnode, newVnode</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> children = vnode.children || []</span><br><span class="line">    <span class="keyword">var</span> newChildren = newVnode.children || []</span><br><span class="line">    <span class="comment">// 遍历现有的children</span></span><br><span class="line">    children.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">childVnode, index</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> newChildVnode = newChildren[index]</span><br><span class="line">        <span class="comment">// 两者tag一样</span></span><br><span class="line">        <span class="keyword">if</span> (childVnode.tag === newChildVnode.tag) &#123;</span><br><span class="line">            <span class="comment">// 深层次对比，递归</span></span><br><span class="line">            updateChildren(childVnode, newChildVnode)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">           <span class="comment">// 两者tag不一样</span></span><br><span class="line">           replaceNode(childVnode, newChildVnode) </span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">)&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Virtual-DOM的优势"><a href="#Virtual-DOM的优势" class="headerlink" title="Virtual DOM的优势"></a>Virtual DOM的优势</h2><ul>
+<li><p>具备跨平台的优势<br>由于 Virtual DOM 是以 JavaScript 对象为基础而不依赖真实平台环境，所以使它具有了跨平台的能力，比如说浏览器平台、Weex、Node 等。</p>
+</li>
+<li><p>操作 DOM 慢，js运行效率高。我们可以将DOM对比操作放在JS层，提高效率。<br>因为DOM操作的执行速度远不如Javascript的运算速度快，因此，把大量的DOM操作搬运到Javascript中，运用patching算法来计算出真正需要更新的节点，最大限度地减少DOM操作，从而显著提高性能。</p>
+</li>
+</ul>
+<p>Virtual DOM 本质上就是在 JS 和 DOM 之间做了一个缓存。可以类比 CPU 和硬盘，既然硬盘这么慢，我们就在它们之间加个缓存：既然 DOM 这么慢，我们就在它们 JS 和 DOM 之间加个缓存。CPU（JS）只操作内存（Virtual DOM），最后的时候再把变更写入硬盘（DOM）</p>
+<ul>
+<li>提升渲染性能<br>Virtual DOM的优势不在于单次的操作，而是在大量、频繁的数据更新下，能够对视图进行合理、高效的更新。</li>
+</ul>
+<blockquote>
+<p>总结：Vue.js通过编译将模版转换成渲染函数(render)，执行渲染函数就可以得到一个虚拟节点树(虚拟DOM)，虚拟节点树(虚拟DOM)提供虚拟节点vnode和对新旧两个vnode进行比对并根据比对结果进行DOM操作来更新视图，达到减少对DOM的目的，从而减少浏览器的开销，提高渲染速度，改善用户体验。</p>
+</blockquote>
+<p>参考文章：<br><a href="https://github.com/ljianshu/Blog/issues/69" target="_blank" rel="noopener">https://github.com/ljianshu/Blog/issues/69</a><br><a href="https://book.douban.com/subject/32581281/" target="_blank" rel="noopener">https://book.douban.com/subject/32581281/</a></p>
+<p>原文地址：<a href="https://www.jianshu.com/p/4dbb3712ced7" target="_blank" rel="noopener">https://www.jianshu.com/p/4dbb3712ced7</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wxpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/02/Rewrite功能的配置（1）/" class="archive-article-date">
-  	<time datetime="2017-09-02T09:21:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/02/Rewrite功能的配置（1）/">Rewrite功能的配置（1）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/后端开发//" class="article-tag-list-link color5">后端开发</a>
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.houjiyi.com/2021/10/21/浅谈Vue中的虚拟DOM/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/02/Nginx后端服务器组配置的5个指令/" class="archive-article-date">
-  	<time datetime="2017-09-02T00:20:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/10/13/VSCode-配置上传与下载/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VSCode 配置上传与下载</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/02/Nginx后端服务器组配置的5个指令/">Nginx后端服务器组配置的5个指令</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端开发//" class="article-tag-list-link color5">后端开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要提出虚拟DOM"><span class="toc-number">2.</span> <span class="toc-text">为什么要提出虚拟DOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模版转换成视图的过程"><span class="toc-number">3.</span> <span class="toc-text">模版转换成视图的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Virtual-DOM-是什么？"><span class="toc-number">4.</span> <span class="toc-text">Virtual DOM 是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么虚拟DOM可以提高渲染速度"><span class="toc-number">5.</span> <span class="toc-text">为什么虚拟DOM可以提高渲染速度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#diff算法"><span class="toc-number">6.</span> <span class="toc-text">diff算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#diff算法的实现过程"><span class="toc-number">7.</span> <span class="toc-text">diff算法的实现过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#patch-container-vnode"><span class="toc-number">8.</span> <span class="toc-text">patch(container,vnode)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#patch-vnode-newVnode"><span class="toc-number">9.</span> <span class="toc-text">patch(vnode,newVnode)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Virtual-DOM的优势"><span class="toc-number">10.</span> <span class="toc-text">Virtual DOM的优势</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/27/设置网站的错误页面/" class="archive-article-date">
-  	<time datetime="2017-08-27T13:59:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/27/设置网站的错误页面/">设置网站的错误页面</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端开发//" class="article-tag-list-link color5">后端开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/27/设置网站的默认首页/" class="archive-article-date">
-  	<time datetime="2017-08-27T13:49:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/27/设置网站的默认首页/">设置网站的默认首页</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端开发//" class="article-tag-list-link color5">后端开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/27/更改location的URI/" class="archive-article-date">
-  	<time datetime="2017-08-27T10:55:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/27/更改location的URI/">更改location的URI</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端开发//" class="article-tag-list-link color5">后端开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/27/配置请求的根目录/" class="archive-article-date">
-  	<time datetime="2017-08-27T10:48:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/27/配置请求的根目录/">配置请求的根目录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端开发//" class="article-tag-list-link color5">后端开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/27/配置location块/" class="archive-article-date">
-  	<time datetime="2017-08-27T01:54:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/27/配置location块/">配置location块</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端开发//" class="article-tag-list-link color5">后端开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/27/自定义服务日志/" class="archive-article-date">
-  	<time datetime="2017-08-27T00:11:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/27/自定义服务日志/">自定义服务日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端开发//" class="article-tag-list-link color5">后端开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/27/配置最大连接数/" class="archive-article-date">
-  	<time datetime="2017-08-27T00:04:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/27/配置最大连接数/">配置最大连接数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端开发//" class="article-tag-list-link color5">后端开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/27/配置允许生成的worker-process数/" class="archive-article-date">
-  	<time datetime="2017-08-26T23:27:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/27/配置允许生成的worker-process数/">配置允许生成的worker process数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端开发//" class="article-tag-list-link color5">后端开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/14/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/13/">13</a><a class="page-number" href="/archives/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/archives/page/16/">16</a><a class="extend next" rel="next" href="/archives/page/16/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -697,8 +436,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

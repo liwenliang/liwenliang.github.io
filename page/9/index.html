@@ -166,6 +166,92 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-将静态资源放到七牛服务器上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/25/将静态资源放到七牛服务器上/">将静态资源放到七牛服务器上</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/25/将静态资源放到七牛服务器上/" class="archive-article-date">
+  	<time datetime="2019-03-25T02:58:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有时候我们需要将一些静态资源放到cdn服务器上，用线上的服务器总是不可控的，那么这里就需要放到自己的七牛服务器上。</p>
+<p>简单区分下目录，element-ui出现点问题，就是字体文件要和index.css文件放在一起,但是字体文件默认不允许跨域访问，这时候设置下请求头，支持csrf即可。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基本知识</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/25/将静态资源放到七牛服务器上/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-全景项目制作步骤" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1005,108 +1091,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/04/11/设置webstorm自动删除行尾分号/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-nginx设置cookie点滴感悟" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/11/nginx设置cookie点滴感悟/">nginx设置cookie点滴感悟</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/11/nginx设置cookie点滴感悟/" class="archive-article-date">
-  	<time datetime="2018-04-11T05:54:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>公司有一个简单需求：利用nginx的ngx_http_auth_request_module模块设计一个鉴权接口，将鉴权接口返回的字符串赋值给$trueValue，设置到cookie的Value中。</p>
-<p>面对这个简单需求，首先，去百度搜索nginx、cookie等相关的关键字，有价值的内容不多，而且写的不够详细，令自己踩了不少坑，所以萌生了写作本文的想法。</p>
-<p>搜索后，我首先利用百度知道 <a href="https://zhidao.baidu.com/question/519658630466299605.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/519658630466299605.html</a> 这篇文章，能成功设置cookie。本地浏览器向nginx发送一个get/post请求，利用chrome开发者工具查看应答报文的头部已包含set_cookie字段，同时，在Resources标签可见已写入库，如下图1所示。但是，仅仅按照这文章这么做的话，Domain、Expires字段均为默认值，显然这不符合最终要求。</p>
-<p>接下来，继续搜索找到 <a href="http://www.iteye.com/problems/60159" target="_blank" rel="noopener">http://www.iteye.com/problems/60159</a> 这篇文章，文中在上篇文章的基础上，设置了自定义的domain、expires等字段。但是，这文章写得太简略了，根本没讲清楚使用原则是什么，无法让人彻底明白每个key应该如何设置，这为我的使用埋下一个坑。当我使用时，原封不动粘贴上面这个链接的add_header指令内容到自己nginx.conf中。经测试，在应答报文中的确包含了set-cookie字段（我们知道，浏览器获知了应答报文的set-cookie字段的信息，即可在本地保留cookie），但是没有入库(即在图1中查询不到任何信息)。</p>
-<p>所以就继续搜索，想解决没有入库的问题。此时，我这边思路出现了问题，错误地做出了如下判断：</p>
-<ol>
-<li>认为使用add_header指令时，我的字段格式有问题，希望通过将如下指令的双引号换成单引号、增加或者删除空格、更改时间格式等方式让cookie入库，结果折腾好长时间宣告失败。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add_header &quot;Set-Cookie&quot; &quot;rec_id=$rec_id;domain=.test1.com;path=/;expires=Mon, 29-Jun-2015 06:11:17 GMT&quot;;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>认为本地chrome浏览器的设置有问题，遂尝试换成IE、Firefox等其他浏览器，看一下能否正常入库，经实验后，均无法正常入库。</li>
-<li>认为add_header指令本身的问题，遂尝试ngx_http_userid_module这个专门用于设置cookie的nginx模块。</li>
-</ol>
-<p>ngx_http_userid_module模块有专门的语句设置path、expires、domain等字段。但是，我通篇阅读了有关这个模块的nginx官网( <a href="http://nginx.org/en/docs/http/ngx_http_userid_module.html" target="_blank" rel="noopener">http://nginx.org/en/docs/http/ngx_http_userid_module.html</a> )文档后，竟然没有找到设置cookie Value的方式。以前也遇到过这种官方文档写作不明确的情况，比如：post_action指令在nginx官方文档找不到任何说明，但是实际上是可以使用的。没办法，只能自己尝试。我感觉既然userid_name指令是用来设置cookie name的，那么如果我用userid_name uid=”myCookieValue”这样，能不能成功呢？实验后，发现的确可以将cookie name设置成uid，cookie Value设置成”myCookieValue”。</p>
-<p>本以为这样就能完成任务了，坑爹的事儿又来了。如果这么用的话，竟然不支持nginx变量！比如，我设置userid_name uid=$trueValue，其中的$trueValue在nginx.conf中已赋值，但浏览器访问nginx后获取的Value值，竟然是$trueValue，而不是$trueValue中存储的值！这就尴尬了，这条路又走不通了。</p>
-<p>走了这么多弯路后，又开始大量搜索相关资料。终于 <a href="https://segmentfault.com/q/1010000006116583" target="_blank" rel="noopener">https://segmentfault.com/q/1010000006116583</a> 中给出了”同源原则”，这简单的四字提示。我突然想到我的add_header指令中的domain字段设置的是.test1.com，而nginx的虚拟主机配置的域名是<a href="http://www.abc.com，这两者是不一致的，很有可能根据同源原则，只有这两者一致后，cookie才能设置成功。最后，经过实验，证明了我的判断是正确的。" target="_blank" rel="noopener">www.abc.com，这两者是不一致的，很有可能根据同源原则，只有这两者一致后，cookie才能设置成功。最后，经过实验，证明了我的判断是正确的。</a></p>
-<p>好了，文章抄到这里作为备忘，自己的设置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen                  80;</span><br><span class="line">        server_name             xxx.xx.com;</span><br><span class="line">        charset                 utf-8;</span><br><span class="line">        add_header Set-Cookie   &apos;client_ip=$proxy_add_x_forwarded_for;domain=xxx.xx.com;path=/;&apos;;</span><br><span class="line"></span><br><span class="line">        index index.html;</span><br><span class="line">        root  /letv/www;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端开发//" class="article-tag-list-link color5">后端开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/11/nginx设置cookie点滴感悟/">展开全文 >></a>
         </p>
       
 
