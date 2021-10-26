@@ -166,6 +166,92 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Cypress执行测试并邮寄发送测试报告" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/17/Cypress执行测试并邮寄发送测试报告/">Cypress执行测试并邮寄发送测试报告</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/17/Cypress执行测试并邮寄发送测试报告/" class="archive-article-date">
+  	<time datetime="2021-09-17T05:36:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言<br>为了高质量的软件交付，组织必须转向自动化流程，手动流程太容易出错，效率低下。对于执行CD和devops的团队来说，自动化变得越来越重要，大家只需要专注在code和review中，其它过程都尽可能的自动化。</p>
+<p>Jenkins执行python脚本运行测试并邮件发送报告<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string"> * Create by dell on 2020/9/16</span></span><br><span class="line"><span class="string"> * Author ：wencheng</span></span><br><span class="line"><span class="string"> * 微信公众 ：自动化测试 To share</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"</span><span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># coding=gbk</span></span><br><span class="line">import mimetypes</span><br><span class="line">import smtplib</span><br><span class="line">from email import encoders</span><br><span class="line">from email.mime.multipart import MIMEMultipart</span><br><span class="line">from email.mime.base import MIMEBase</span><br><span class="line">from email.mime.text import MIMEText</span><br><span class="line">import time</span><br><span class="line">import zipfile</span><br><span class="line">import os</span><br><span class="line">import shutil</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def move_file():</span><br><span class="line">    origin_path = r<span class="string">"D:\workspace\test\cypress\screenshots"</span></span><br><span class="line">    origin_path3 = r<span class="string">"D:\workspace\test\test-report.json"</span></span><br><span class="line">    new_file_name = r<span class="string">"D:\workspace\test\mochawesome-report"</span></span><br><span class="line">    shutil.move(origin_path, new_file_name)</span><br><span class="line">    shutil.move(origin_path3, new_file_name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def npx_bulid():</span><br><span class="line">    <span class="built_in">command</span> = r<span class="string">"cd D:\workspace\test &amp;&amp;</span></span><br><span class="line"><span class="string">                npx mochawesome-merge cypress/results/*.json &gt;</span></span><br><span class="line"><span class="string">                 test-report.json"</span> \</span><br><span class="line">              r<span class="string">"&amp;&amp;npx mochawesome-report-generator </span></span><br><span class="line"><span class="string">              test-report.json"</span></span><br><span class="line">    os.system(<span class="built_in">command</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def clearfile():</span><br><span class="line">    shutil.rmtree(r<span class="string">"D:\workspace\test\cypress\results"</span>)</span><br><span class="line">    shutil.rmtree(r<span class="string">"D:\workspace\test\mochawesome-report"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def file_tozip():</span><br><span class="line">    startdir = <span class="string">"mochawesome-report"</span>  <span class="comment"># 要压缩的文件夹路径</span></span><br><span class="line">    file_news = <span class="string">'mochawesome-report.zip'</span>  <span class="comment"># 压缩后文件夹的名字</span></span><br><span class="line">    z = zipfile.ZipFile(file_news, <span class="string">'w'</span>, zipfile.ZIP_DEFLATED)  <span class="comment"># 参数一：文件夹名</span></span><br><span class="line">    <span class="keyword">for</span> dirpath, dirnames, filenames <span class="keyword">in</span> os.walk(startdir):</span><br><span class="line">        fpath = dirpath.replace(startdir, <span class="string">''</span>)  <span class="comment"># 这一句很重要，不replace的话，就从根目录开始复制</span></span><br><span class="line">        fpath = fpath and fpath + os.sep or <span class="string">''</span>  <span class="comment"># 这句话理解我也点郁闷，实现当前文件夹以及包含的所有文件的压缩</span></span><br><span class="line">        <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">            z.write(os.path.join(dirpath, filename), </span><br><span class="line">            fpath + filename)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'压缩成功'</span>)</span><br><span class="line">    z.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def send_report():</span><br><span class="line">    filepath = <span class="string">"mochawesome-report.zip"</span></span><br><span class="line">    smtp_server = <span class="string">"smtp.exmail.qq.com"</span></span><br><span class="line">    username = <span class="string">"xxxxxxx "</span></span><br><span class="line">    password = <span class="string">"xxxxxxx"</span></span><br><span class="line">    sender = <span class="string">'xxxxxxx'</span></span><br><span class="line">    <span class="comment"># receivers = ["xxxxxxx","xxxxxxx","xxxxxxx"]  # 接收人</span></span><br><span class="line">    receivers = [<span class="string">'xxxxxxx'</span>]</span><br><span class="line">    current_time = time.strftime(<span class="string">'%Y-%m-%d-%H-%M-%S'</span>,</span><br><span class="line">                 time.localtime(time.time()))</span><br><span class="line">    msg = MIMEMultipart()</span><br><span class="line">    <span class="comment"># 邮件正文</span></span><br><span class="line">    msg.attach(MIMEText(<span class="string">"Hi，All："</span></span><br><span class="line">                        <span class="string">"\n  test运营系统的自动化脚本测试工具 &#123;&#125;</span></span><br><span class="line"><span class="string">                        已经完成测试报告见附件"</span></span><br><span class="line">                        <span class="string">"\n  脚本构建地址：http://xx.xx.xxx.xx:xxxx/"</span></span><br><span class="line">                        <span class="string">"\n  账号：admin 密码：123456"</span></span><br><span class="line">                        <span class="string">"\n  目前以实现测试环境xx</span></span><br><span class="line"><span class="string">                        条数,."</span>.format(current_time), <span class="string">'plain'</span>, <span class="string">'utf-8'</span></span><br><span class="line">                        ))</span><br><span class="line">    msg[<span class="string">'From'</span>] = sender</span><br><span class="line">    msg[<span class="string">'To'</span>] = <span class="string">";"</span>.join(receivers)  <span class="comment"># 多个收件人list转str</span></span><br><span class="line"></span><br><span class="line">    subject = <span class="string">"&#123;&#125;的自动化测试报告"</span>.format(current_time)</span><br><span class="line">    msg[<span class="string">'Subject'</span>] = subject</span><br><span class="line"></span><br><span class="line">    data = open(filepath, <span class="string">'rb'</span>)</span><br><span class="line">    ctype, encoding = mimetypes.guess_type(filepath)</span><br><span class="line">    <span class="keyword">if</span> ctype is None or encoding is not None:</span><br><span class="line">        ctype = <span class="string">'application/octet-stream'</span></span><br><span class="line">    maintype, subtype = ctype.split(<span class="string">'/'</span>, 1)</span><br><span class="line">    file_msg = MIMEBase(maintype, subtype)</span><br><span class="line">    file_msg.set_payload(data.read())</span><br><span class="line">    data.close()</span><br><span class="line">    encoders.encode_base64(file_msg)  <span class="comment"># 把附件编码</span></span><br><span class="line">    file_msg.add_header(<span class="string">'Content-Disposition'</span>, <span class="string">'attachment'</span>,</span><br><span class="line">     filename=<span class="string">"test.zip"</span>)  <span class="comment"># 修改邮件头</span></span><br><span class="line">    msg.attach(file_msg)</span><br><span class="line">    try:</span><br><span class="line">        server = smtplib.SMTP(smtp_server, 25)</span><br><span class="line">        server.login(username, password)</span><br><span class="line">        server.sendmail(sender, receivers, msg.as_string())</span><br><span class="line">        server.quit()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"发送成功"</span>)</span><br><span class="line">    except Exception as err:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"发送失败"</span>)</span><br><span class="line">        <span class="built_in">print</span>(err)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    npx_bulid()</span><br><span class="line">    move_file()</span><br><span class="line">    file_tozip()</span><br><span class="line">    send_report()</span><br><span class="line">    clearfile()</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/17/Cypress执行测试并邮寄发送测试报告/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Cypress-获取table内容动态tr和td" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1095,102 +1181,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/06/19/vue单页面项目返回上一页无效，链接变化了，但是页面没有变化/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-当我们遇到一个需求不明确，高度定制化的需求的时候～" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/25/当我们遇到一个需求不明确，高度定制化的需求的时候～/">当我们遇到一个需求不明确，高度定制化的需求的时候～</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/25/当我们遇到一个需求不明确，高度定制化的需求的时候～/" class="archive-article-date">
-  	<time datetime="2021-05-25T03:10:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>这个时候任何框架和模式都不好使，因为你不知道下一个需求是否会推翻前边所有的设计，这个时候我们要做的是使用最基本、高度扩展性的架构和思路来进行开发，避免因为需求变更导致的大量重复性工作。</p>
-</li>
-<li><p>技术最终是服务于业务的，没有最好的技术，只有最合适的技术。</p>
-</li>
-<li><p>剩下的是培养业务感觉和其他～</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">意义</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/25/当我们遇到一个需求不明确，高度定制化的需求的时候～/">展开全文 >></a>
         </p>
       
 
