@@ -166,762 +166,34 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-JS中call-和apply" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Cypress-获取table内容动态tr和td" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/23/JS中call-和apply/">JS中call()和apply()</a>
+      <a class="article-title" href="/2021/09/17/Cypress-获取table内容动态tr和td/">Cypress 获取table内容动态tr和td</a>
     </h1>
   
 
         
-        <a href="/2020/07/23/JS中call-和apply/" class="archive-article-date">
-  	<time datetime="2020-07-23T07:24:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
+        <a href="/2021/09/17/Cypress-获取table内容动态tr和td/" class="archive-article-date">
+  	<time datetime="2021-09-17T05:09:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="每个函数都包含两个非继承而来的方法：call-和apply-；"><a href="#每个函数都包含两个非继承而来的方法：call-和apply-；" class="headerlink" title="每个函数都包含两个非继承而来的方法：call()和apply()；"></a>每个函数都包含两个非继承而来的方法：call()和apply()；</h2><p>在JavaScript中，call和apply作用是一样的，都是为了改变某个函数运行时的上下文（context）而存在的，换句话说，就是为了改变函数体内部this的指向。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fruits</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">        </span><br><span class="line">fruits.prototype = &#123;</span><br><span class="line">    color: <span class="string">"red"</span>,</span><br><span class="line">    say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"My color is "</span> + <span class="keyword">this</span>.color);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> apple = <span class="keyword">new</span> fruits;</span><br><span class="line">apple.say();                <span class="comment">//My color is red</span></span><br></pre></td></tr></table></figure></p>
-<p>当想另外一个对象想使用fruits中的say方法时不用重新写，使用call和apply可以实现“劫持”别人的方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fruits</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">            </span><br><span class="line">fruits.prototype = &#123;</span><br><span class="line">    color: <span class="string">"red"</span>,</span><br><span class="line">    say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"My color is "</span> + <span class="keyword">this</span>.color);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> another = &#123;</span><br><span class="line">    color: <span class="string">"yellow"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> apple = <span class="keyword">new</span> fruits;</span><br><span class="line">apple.say();                <span class="comment">//My color is red</span></span><br><span class="line">apple.say.call(another);    <span class="comment">//My color is yellow</span></span><br><span class="line">apple.say.apply(another);   <span class="comment">//My color is yellow</span></span><br></pre></td></tr></table></figure>
-<h2 id="区别：参数书写方式不同"><a href="#区别：参数书写方式不同" class="headerlink" title="区别：参数书写方式不同"></a>区别：参数书写方式不同</h2><p>call(thisObj, arg1, arg2, arg3, arg4);<br>apply(thisObj, [args]);<br>thisObj：call和apply第一个参数是一样的，该参数将替代Function类里面的this对象。<br>arg1,arg2….：是一个个的参数，<br>args：一个数组或类数组，是一个参数列表。</p>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>改变函数作用域</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"小白"</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">"小红"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sayName.call(<span class="keyword">this</span>));   <span class="comment">//小白</span></span><br><span class="line"><span class="built_in">console</span>.log(sayName.call(obj));    <span class="comment">//小红</span></span><br></pre></td></tr></table></figure>
-<h2 id="实现继承"><a href="#实现继承" class="headerlink" title="实现继承"></a>实现继承</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现js继承</span></span><br><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, height</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.sayInfo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"姓名："</span> + name + <span class="string">", 身高："</span> + height + <span class="string">", 体重："</span> + <span class="keyword">this</span>.weight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Chinese</span>(<span class="params">name, height, weight</span>) </span>&#123;</span><br><span class="line">    Person.call(<span class="keyword">this</span>, name, height);</span><br><span class="line">    <span class="keyword">this</span>.weight = weight;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">this</span>.nation = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"我是中国人"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">America</span>(<span class="params">name, height, weight</span>) </span>&#123;</span><br><span class="line">    Person.apply(<span class="keyword">this</span>, [name, height]);</span><br><span class="line">    <span class="keyword">this</span>.weight = weight;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> chiness = <span class="keyword">new</span> Chinese(<span class="string">"成龙"</span>, <span class="string">"178cm"</span>, <span class="string">"60kg"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(chiness.sayInfo());    <span class="comment">//姓名：成龙, 身高：178cm, 体重：60kg</span></span><br><span class="line"><span class="keyword">let</span> america = <span class="keyword">new</span> America(<span class="string">"jack"</span>, <span class="string">"180cm"</span>, <span class="string">"55kg"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(america.sayInfo());    <span class="comment">//姓名：jack, 身高：180cm, 体重：55kg</span></span><br></pre></td></tr></table></figure>
-<p>作者：书虫和泰迪熊<br>链接：<a href="https://www.jianshu.com/p/aa2eeecd8b4f" target="_blank" rel="noopener">https://www.jianshu.com/p/aa2eeecd8b4f</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/23/JS中call-和apply/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-全网最详bpmn-js简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/21/全网最详bpmn-js简介/">全网最详bpmn.js简介</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/21/全网最详bpmn-js简介/" class="archive-article-date">
-  	<time datetime="2020-07-21T01:51:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>bpmn.js简介<br>bpmn.js是一个BPMN2.0渲染工具包和web建模器.</p>
-<p>它使用JavaScript编写，在不需要后端服务器支持的前提下向现代浏览器内嵌入BPMN2.0流程图.</p>
-<p>简单来说, 就是能使得前端来画流程图, 它可能长成这样:</p>
-<p><img src="http://blogimage.houjiyi.com/Ft_9DmQ7rMIU1jEOm1Ra-6HjCauG" alt="image.png"></p>
-<p>也可能长成这样:</p>
-<p><img src="http://blogimage.houjiyi.com/Foxjmeg_Q7nZBpmuUQ2nbA7v7ZtY" alt="image.png"></p>
-<p>或许你可以亲自试试: <a href="在线绘制bpmn流程图">在线绘制bpmn流程图</a></p>
-<p>全部目录<br><a href="bpmn.js教材目录">bpmn.js教材目录</a></p>
-<p>几个问题</p>
-<blockquote>
-<p>Q: bpmn.js是什么? 🤔️</p>
-</blockquote>
-<p>bpmn.js是一个BPMN2.0渲染工具包和web建模器, 使得画流程图的功能在前端来完成.</p>
-<blockquote>
-<p>Q: 我为什么要写该系列的教材? 🤔️</p>
-</blockquote>
-<p>因为公司业务的需要因而要在项目中使用到bpmn.js,但是由于bpmn.js的开发者是国外友人, 因此国内对这方面的教材很少, 也没有详细的文档. 所以很多使用方式很多坑都得自己去找 😅.</p>
-<p>在将其琢磨完之后, 决定写一系列关于它的教材来帮助更多bpmn.js的使用者或者是期于找到一种好的绘制流程图的开发者. 同时也是自己对其的一种巩固.</p>
-<blockquote>
-<p>Q: 教材中的知识我都是从哪里看的? 🤔️</p>
-</blockquote>
-<p>最开始是根据公司业务的需要, 跟着官方给的一些例子 来推敲了解bpmn.js的一些基础知识, 包括一些自定义contextPad、renderer、palette的使用, 然后就写了几篇关于bpmn.js的文章 ✏️.</p>
-<p>之后越来越多读者通过微信与我联系, 他们也会问一些我没有遇到过的问题, 从中互相探索怎样使用, 怎样解决实际问题… 过程里大多都是通过查看bpmn.js的源码, 然后本地测试源码中一些方法和属性的作用.</p>
-<blockquote>
-<p>Q: 本教材还会更新多久? 🤔️</p>
-</blockquote>
-<p>不知道🤷‍♂️… 因为其实现在工作已经没在用bpmn.js了, 我现在更多的把它当成一种兴趣来学习吧…</p>
-<p>而且现在我们也有了自己的一个bpmn.js交流群, 时不时会有一些新的问题抛出来, 所以暂时是与其分不开的 😊.</p>
-<p>我也会在工作之余, 尽量多出一些教材, 包括群里大家抛出的问题, 我也会抽时间将它们整理出来, 方便后面遇到同样问题的小伙伴查看, 所以现在是持续更新的.</p>
-<blockquote>
-<p>Q: 还有什么想说的? 🤔️</p>
-</blockquote>
-<p>求Star 🌟 , 求 Fork 📒</p>
-<p>就像之前我提到过的, 光靠我一个人的力量想要将 bpmn-chinese-document打造成一个真正的bpmn中文文档</p>
-<p>是不可能的…</p>
-<p>精力不够…能力也不够…</p>
-<p>所以我希望有更多的bpmn.js使用者能参与到此项目中来 🎉…</p>
-<p>你可以是写一篇关于某个知识点的文章, 就算是我已经写过的知识点也可以, 因为我知道我写的不一定全面, 如果你有更多可以写的我当然欢迎👏.</p>
-<p>也可以是写一些教材案例, 因为之前就有大佬吐槽说官方给的案例都太过简单了 😂, 可以让我们自己写一些案例出来. (案例中的README要尽量详细哟 😁, 当然有一篇配合着的文档更好啦 😄)</p>
-<p>再或者是一些你平常碰到的坑, 总结之类的文章也很好 😼.</p>
-<blockquote>
-<p>Q: 如何 Fork ? 🤔️</p>
-</blockquote>
-<p>点击项目右上角的Fork, 然后像Fork其它项目一样, 不太会的小伙伴可以查看这篇文章:</p>
-<p>Github上怎么修改别人的项目并且提交给原作者！图文并茂！</p>
-<p>不过在提交的时候, 为避免项目太乱, 可以在根目录下创建一个以你github为名的文件夹(比如我的就是LinDaiDai)然后将你的文章或者案例都放在这个文件夹里面进行提交就可以了🎉 .</p>
-<p>后语<br>如果你也对bpmn.js 感兴趣的话, 欢迎加入我们的bpmn.js交流群, 一起学习, 一起进步💪.</p>
-<p><a href="https://github.com/LinDaiDai/bpmn-chinese-document" target="_blank" rel="noopener">原文地址</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/21/全网最详bpmn-js简介/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS原始值转换算法-toPrimitive" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/16/JS原始值转换算法-toPrimitive/">JS原始值转换算法---toPrimitive()</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/16/JS原始值转换算法-toPrimitive/" class="archive-article-date">
-  	<time datetime="2020-07-16T02:58:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在js中，想要将对象转换成原始值，必然会调用toPrimitive()内部函数，那么它是如何工作的呢？</p>
-<p>该函数形式如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">toPrimitive(input,preferedType?)</span><br></pre></td></tr></table></figure>
-<p>input是输入的值，preferedType是期望转换的类型，他可以是字符串，也可以是数字。</p>
-<p>如果转换的类型是number，会执行以下步骤：</p>
-<ol>
-<li>如果input是原始值，直接返回这个值；</li>
-<li>否则，如果input是对象，调用input.valueOf()，如果结果是原始值，返回结果；</li>
-<li>否则，调用input.toString()。如果结果是原始值，返回结果；</li>
-<li>否则，抛出错误。</li>
-</ol>
-<p>如果转换的类型是String，2和3会交换执行，即先执行toString()方法。</p>
-<p>你也可以省略preferedType，此时，日期会被认为是字符串，而其他的值会被当做Number。</p>
-<p>综上所述，会有以下计算结果：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[]+[]</span><br><span class="line"><span class="string">""</span></span><br></pre></td></tr></table></figure></p>
-<p>加号操作符会将preferedType看成Number，调用ES内部的toPrimitive(input，Number)方法，得到空字符串</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[]+&#123;&#125;</span><br><span class="line"><span class="string">"[object Object]"</span></span><br></pre></td></tr></table></figure>
-<p> 最终会调用双方的toString()方法，再做字符串加法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#125;+[]</span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure></p>
-<p>但是空对象加空数组就不一样了，加号运算符的定义是这样的：如果其中一个是字符串，另一个也会被转换为字符串，否则两个运算数都被转换为数字。而同时，javascript有这样的特性，如果{}既可以被认为是代码块，又可以被认为是对象字面量，那么js会把他当做代码块来看待。</p>
-<p>这就很好解释了，{}被当做了代码块，只有+[]，根据加法的定义，被转换为0，就得到了结果。</p>
-<p>在操作符中，==，排序运算符，加减乘除，在对非原始值进行操作时，都会调用内部的toPrimitive()方法</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/16/JS原始值转换算法-toPrimitive/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PWA-入门-写个非常简单的-PWA-页面" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/13/PWA-入门-写个非常简单的-PWA-页面/">PWA 入门: 写个非常简单的 PWA 页面</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/13/PWA-入门-写个非常简单的-PWA-页面/" class="archive-article-date">
-  	<time datetime="2020-07-13T06:53:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Progressive Web Apps 是 Google 提出的用前沿的 Web 技术为网页提供 App 般使用体验的一系列方案。这篇文章里我们来完成一个非常简单的 PWA 页面。</p>
-<blockquote>
-<p>一个 PWA 应用首先是一个网页, 可以通过 Web 技术编写出一个网页应用. 随后添加上 App Manifest 和 Service Worker 来实现 PWA 的安装和离线等功能。下面的教程基于 <a href="https://link.zhihu.com/?target=https%3A//codelabs.developers.google.com/codelabs/migrate-to-progressive-web-apps/index.html%3F%230" target="_blank" rel="noopener">Migrate your site to a Progressive Web App</a> 和 Google 给出的 <a href="https://link.zhihu.com/?target=https%3A//github.com/GoogleChrome/samples/tree/gh-pages/service-worker/basic" target="_blank" rel="noopener">sample</a> 示例。完整代码访问 <a href="https://link.zhihu.com/?target=https%3A//github.com/yong-chen04/minimal-pwa" target="_blank" rel="noopener">minimal-pwa</a> 查看。</p>
-</blockquote>
-<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>建议安装 <a href="https://link.zhihu.com/?target=https%3A//www.npmjs.com/package/http-server" target="_blank" rel="noopener">http-server</a> 和 <a href="https://link.zhihu.com/?target=https%3A//ngrok.com/" target="_blank" rel="noopener">ngrok</a> 以便调试和查看。</p>
-<p>准备一个 HTML 文件, 以及相应的 CSS 等:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Minimal PWA<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"main.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h3</span>&gt;</span>Revision 1<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main-text"</span>&gt;</span>Minimal PWA, open Console for more~~~<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="添加-manifest-json-文件"><a href="#添加-manifest-json-文件" class="headerlink" title="添加 manifest.json 文件"></a>添加 manifest.json 文件</h4><p>为了让 PWA 应用被添加到主屏幕, 使用 manifest.json 定义应用的名称, 图标等等信息。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"Minimal app to try PWA"</span>,</span><br><span class="line">  <span class="attr">"short_name"</span>: <span class="string">"Minimal PWA"</span>,</span><br><span class="line">  <span class="attr">"display"</span>: <span class="string">"standalone"</span>,</span><br><span class="line">  <span class="attr">"start_url"</span>: <span class="string">"/"</span>,</span><br><span class="line">  <span class="attr">"theme_color"</span>: <span class="string">"#8888ff"</span>,</span><br><span class="line">  <span class="attr">"background_color"</span>: <span class="string">"#aaaaff"</span>,</span><br><span class="line">  <span class="attr">"icons"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"src"</span>: <span class="string">"e.png"</span>,</span><br><span class="line">      <span class="attr">"sizes"</span>: <span class="string">"256x256"</span>,</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"image/png"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后在 HTML 文件当中引入配置:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"manifest"</span> <span class="attr">href</span>=<span class="string">"manifest.json"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="添加-Service-Worker"><a href="#添加-Service-Worker" class="headerlink" title="添加 Service Worker"></a>添加 Service Worker</h4><p>Service Worker 在网页已经关闭的情况下还可以运行, 用来实现页面的缓存和离线, 后台通知等等功能。sw.js 文件需要在 HTML 当中引入:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">if</span> (navigator.serviceWorker != <span class="literal">null</span>) &#123;</span></span><br><span class="line"><span class="javascript">    navigator.serviceWorker.register(<span class="string">'sw.js'</span>)</span></span><br><span class="line"><span class="javascript">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">registration</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">'Registered events at scope: '</span>, registration.scope);</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>后面我们会往 sw.js 文件当中添加逻辑代码。在 Service Worker 当中会用到一些全局变量:</p>
-<ul>
-<li>self: 表示 Service Worker 作用域, 也是全局变量</li>
-<li>caches: 表示缓存</li>
-<li>skipWaiting: 表示强制当前处在 waiting 状态的脚本进入 activate 状态</li>
-<li>clients: 表示 Service Worker 接管的页面</li>
-</ul>
-<h4 id="四级标题处理静态缓存"><a href="#四级标题处理静态缓存" class="headerlink" title="四级标题处理静态缓存"></a>四级标题处理静态缓存</h4><p>首先定义需要缓存的路径, 以及需要缓存的静态文件的列表, 这个列表也可以通过 Webpack 插件生成。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cacheStorageKey = <span class="string">'minimal-pwa-1'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cacheList = [</span><br><span class="line">  <span class="string">'/'</span>,</span><br><span class="line">  <span class="string">"index.html"</span>,</span><br><span class="line">  <span class="string">"main.css"</span>,</span><br><span class="line">  <span class="string">"e.png"</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>借助 Service Worker, 可以在注册完成安装 Service Worker 时, 抓取资源写入缓存:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">self.addEventListener(<span class="string">'install'</span>, e =&gt; &#123;</span><br><span class="line">  e.waitUntil(</span><br><span class="line">    caches.open(cacheStorageKey)</span><br><span class="line">    .then(<span class="function"><span class="params">cache</span> =&gt;</span> cache.addAll(cacheList))</span><br><span class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> self.skipWaiting())</span><br><span class="line">  )</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>调用 self.skipWaiting() 方法是为了在页面更新的过程当中, 新的 Service Worker 脚本能立即激活和生效。</p>
-<h4 id="处理动态缓存"><a href="#处理动态缓存" class="headerlink" title="处理动态缓存"></a>处理动态缓存</h4><p>网页抓取资源的过程中, 在 Service Worker 可以捕获到 fetch 事件, 可以编写代码决定如何响应资源的请求:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">self.addEventListener(<span class="string">'fetch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  e.respondWith(</span><br><span class="line">    caches.match(e.request).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (response != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> response</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> fetch(e.request.url)</span><br><span class="line">    &#125;)</span><br><span class="line">  )</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>真实的项目当中, 可以根据资源的类型, 站点的特点, 可以专门设计复杂的策略。fetch 事件当中甚至可以手动生成 Response 返回给页面。</p>
-<h4 id="更新静态资源"><a href="#更新静态资源" class="headerlink" title="更新静态资源"></a>更新静态资源</h4><p>缓存的资源随着版本的更新会过期, 所以会根据缓存的字符串名称(这里变量为 cacheStorageKey, 值用了 “minimal-pwa-1”)清除旧缓存, 可以遍历所有的缓存名称逐一判断决决定是否清除(备注: 简化的写法, Promise.all 中 return undefined 可能出错, 见评论):<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">self.addEventListener(<span class="string">'activate'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  e.waitUntil(</span><br><span class="line">    <span class="built_in">Promise</span>.all(</span><br><span class="line">      caches.keys().then(<span class="function"><span class="params">cacheNames</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> cacheNames.map(<span class="function"><span class="params">name</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (name !== cacheStorageKey) &#123;</span><br><span class="line">            <span class="keyword">return</span> caches.delete(name)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    ).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> self.clients.claim()</span><br><span class="line">    &#125;)</span><br><span class="line">  )</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>在新安装的 Service Worker 中通过调用 self.clients.claim() 取得页面的控制权, 这样之后打开页面都会使用版本更新的缓存。旧的 Service Worker 脚本不再控制着页面之后会被停止。</p>
-<h4 id="查看-Demo"><a href="#查看-Demo" class="headerlink" title="查看 Demo"></a>查看 Demo</h4><p>执行命令:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http-server -c<span class="number">-1</span> <span class="comment"># 注意设置关闭缓存, 这里用参数 -c-1</span></span><br><span class="line"><span class="comment"># 用另一个终端</span></span><br><span class="line">ngrok http <span class="number">8080</span></span><br></pre></td></tr></table></figure></p>
-<p>桌面浏览器可以直接通过 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> 访问, 从 DevTools 的 Application 标签可以看到 Service Worker。</p>
-<p>由于 Service Worker 限制了使用 HTTPS 地址或者 localhost 地址, 在 Android Chrome 打开需要借助 ngrok 生成的 HTTPS 地址, 这样才能把 demo 添加到首屏。添加到首屏之后, 即便在离线状态下, 页面也可以打开。</p>
-<p><img src="http://blogimage.houjiyi.com/FpwQxFgVNH1q6GvPAwQym352GcuL" alt="image.png"></p>
-<p>从 DevTools 可以看到, 普通页面刷新时, 列表当中的静态资源都是从 Service Worker 获取的:</p>
-<p><img src="http://blogimage.houjiyi.com/Ft4QfH0NL-81HC1jotmd6lqojFdy" alt="image.png"></p>
-<h4 id="更新页面"><a href="#更新页面" class="headerlink" title="更新页面"></a>更新页面</h4><p>页面被缓存之后, 就需要适当处理缓存失效时页面的更新。在这个 Demo 当中, 被缓存的资源是无法发起请求判断是否被更新的, 只有 sw.js 会自动根据 HTTP 缓存的机制尝试去判断应用是否被更新。</p>
-<p>所以当页面发生修改时, 要同时对 sw.js 文件进行一次修改。比如在 HTML 当中更新版本到 2:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>Revision 2<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>同时 sw.js 文件当中也要进行一次修改, 保证文件发生改变, 同时缓存的名称也变改变了:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cacheStorageKey = <span class="string">'minimal-pwa-2'</span></span><br></pre></td></tr></table></figure>
-<p>然后重新打开一次页面, 这个时候渲染的页面依然是旧的, 不过可以从 DevTools 看到 sw.js 被安装和激活。之后关闭页面, 再次打开, 就可以见到网页上的显示版本变成了 2。</p>
-<blockquote>
-<p>注意: Demo 当中如果直接启动 http-server 而不使用 -c-1 关闭缓存, sw.js 可能被缓存住, 导致更新方案失败。这种情况下存在 Caches API 和 HTML caching 两层缓存, 需要进行清理才能完成更新。</p>
-</blockquote>
-<h4 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h4><p>你还可以实现一个 App Shell, 可以用 Service Worker 实现后台通知等功能。</p>
-<p>参考你的首个 <a href="https://link.zhihu.com/?target=https%3A//developers.google.com/web/fundamentals/getting-started/codelabs/your-first-pwapp/%3Fhl%3Dzh-cn%23firebase" target="_blank" rel="noopener">Progressive Web App</a> 了解更加详细的编写 PWA 应用的方式。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PWA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/13/PWA-入门-写个非常简单的-PWA-页面/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-内建函数-原生函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/13/内建函数-原生函数/">内建函数(原生函数)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/13/内建函数-原生函数/" class="archive-article-date">
-  	<time datetime="2020-07-13T02:56:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>JavaScript 的内建函数（built-in function），也叫原生函数（native function），如 String 和 Number等:</p>
-<p>常用的原生函数有9种(ES6一种)：<br>• String()<br>• Number()<br>• Boolean()<br>• Array()<br>• Object()<br>• Function()<br>• RegExp()<br>• Date()<br>• Error()<br>• Symbol()——ES6 中新加入的！</p>
-<p>实际上，它们就是内建函数。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/13/内建函数-原生函数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS中typeof的用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/10/JS中typeof的用法/">JS中typeof的用法</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/10/JS中typeof的用法/" class="archive-article-date">
-  	<time datetime="2020-07-10T01:50:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>js是一门弱语言，它在声明变量时无需确定变量的类型，js在运行时会自动判断。那么如何判断一个变量的类型呢，js提供了typeof运算符，用来检测一个变量的类型。</p>
-<ol>
-<li>typeof的语法<br>typeof是一个运算符，有2种使用方式：typeof(表达式)和typeof 变量名，第一种是对表达式做运算，第二种是对变量做运算。</li>
-<li>typeof的返回值<br>typeof运算符的返回类型为字符串，值包括如下几种：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'undefined'</span>              --未定义的变量或值</span><br><span class="line"><span class="string">'boolean'</span>                 --布尔类型的变量或值</span><br><span class="line"><span class="string">'string'</span>                     --字符串类型的变量或值</span><br><span class="line"><span class="string">'number'</span>                  --数字类型的变量或值</span><br><span class="line"><span class="string">'object'</span>                    --对象类型的变量或值，或者<span class="literal">null</span>(这个是js历史遗留问题，将<span class="literal">null</span>作为object类型处理)</span><br><span class="line"><span class="string">'function'</span>                 --函数类型的变量或值</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-        
-          <a class="article-more-a" href="/2020/07/10/JS中typeof的用法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/10/JS中typeof的用法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-二分查找" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/17/二分查找/">二分查找</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/17/二分查找/" class="archive-article-date">
-  	<time datetime="2019-12-17T15:09:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 二分查找，也称为折半查找，是指在有序的数组里找出指定的值，返回该值在数组中的索引。查找步骤如下：</span></span><br><span class="line"><span class="comment"> *（1）从有序数组的最中间元素开始查找，如果该元素正好是指定查找的值，则查找过程结束。否则进行下一步;</span></span><br><span class="line"><span class="comment"> *（2）如果指定要查找的元素大于或者小于中间元素，则在数组大于或小于中间元素的那一半区域查找，然后重复第一步的操作;</span></span><br><span class="line"><span class="comment"> *（3）重复以上过程，直到找到目标元素的索引，查找成功;或者直到子数组为空，查找失败。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 优点是比较次数少，查找速度快，平均性能好；其缺点是要求待查表为有序表，且插入删除困难。因此，折半查找方法适用于不经常变动而查找频繁的有序列表。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">binary_search</span>(<span class="params">arr, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> low = <span class="number">0</span></span><br><span class="line">  <span class="keyword">var</span> high = arr.length - <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">    <span class="keyword">var</span> mid = <span class="built_in">parseInt</span>((high + low) / <span class="number">2</span>)</span><br><span class="line">    <span class="comment">// console.log(mid + 'h' + high + 'l' + low)</span></span><br><span class="line">    <span class="keyword">if</span> (target === arr[mid]) &#123;</span><br><span class="line">      <span class="keyword">return</span> mid</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &gt; arr[mid]) &#123;</span><br><span class="line">      low = mid + <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      high = mid - <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 递归的方式实现二分查找</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">arr</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">low</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">high</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">binary_search_dg</span>(<span class="params">arr, low, high, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (low &gt; high) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> mid = <span class="built_in">parseInt</span>((high + low) / <span class="number">2</span>)</span><br><span class="line">  <span class="keyword">if</span> (arr[mid] === target) &#123;</span><br><span class="line">    <span class="keyword">return</span> mid</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (target &gt; arr[mid]) &#123;</span><br><span class="line">      low = mid + <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      high = mid - <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> binary_search_dg(arr, low, high, target)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/17/二分查找/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-浏览器播放RTSP直播流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/03/浏览器播放RTSP直播流/">浏览器播放RTSP直播流</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/03/浏览器播放RTSP直播流/" class="archive-article-date">
-  	<time datetime="2019-12-03T03:50:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近有个需求是将rtsp直播流在浏览器上直接播放，要求低延迟效果好，查并且尝试了一系列的方法，发现目前体验最好的是通过node将直播流转成二进制图片数据，然后在浏览器端绘制，用到的包有jsmpeg、node-rtsp-stream-jsmpeg</p>
-<p>有效的rtsp直播流：rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov</p>
-<p>server端：服务器端需要安装ffmpeg，nodejs，如果是本地的话装在本地就可以了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Stream = <span class="built_in">require</span>(<span class="string">'node-rtsp-stream-jsmpeg'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">  name: <span class="string">'streamName'</span>,</span><br><span class="line">  url: <span class="string">'rtsp://xxxx'</span>,</span><br><span class="line">  wsPort: <span class="number">3333</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">stream = <span class="keyword">new</span> Stream(options)</span><br><span class="line"></span><br><span class="line">stream.start()</span><br></pre></td></tr></table></figure>
-<p>client端：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>DEMO node-rtsp-stream-jsmpeg<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"jsmpeg.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"video-canvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> url = <span class="string">'ws://xxxx:3333'</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'video-canvas'</span>)</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> player = <span class="keyword">new</span> JSMpeg.Player(url, &#123; <span class="attr">canvas</span>: canvas, <span class="attr">videoBufferSize</span>: <span class="number">1024</span>*<span class="number">1024</span> &#125;)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>整体体验效果不错。</p>
+        <p>前言<br>如何获取table内容动态tr和td的dom对象，今天给大家总结了方法。</p>
+<p>获取table中DOM元素方法总结<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">id</span>=<span class="string">"projectstatus"</span> <span class="attr">class</span>=<span class="string">"sortable pane bigtable stripped-odd"</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">tooltip</span>=<span class="string">"上次构建状态"</span> <span class="attr">title</span>=<span class="string">"上次构建状态"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span>S<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">tooltip</span>=<span class="string">"构建晴雨表"</span> <span class="attr">title</span>=<span class="string">"构建晴雨表"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span>W<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">initialsortdir</span>=<span class="string">"down"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span>名称<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span>↓<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span>上次成功<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span>上次失败<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span>上次持续时间<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">width</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span> <span class="attr">id</span>=<span class="string">"job_FCA玛莎拉蒂自动化测试"</span> <span class="attr">class</span>=<span class="string">" job-status-blue"</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/blue.png"</span> <span class="attr">alt</span>=<span class="string">"成功"</span> <span class="attr">tooltip</span>=<span class="string">"成功"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-blue icon-md"</span> <span class="attr">title</span>=<span class="string">"成功"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"100"</span> <span class="attr">class</span>=<span class="string">"healthReport"</span> <span class="attr">onmouseover</span>=<span class="string">"this.className='healthReport hover';return true;</span></span></span><br><span class="line"><span class="tag"><span class="string">        "</span> <span class="attr">onmouseout</span>=<span class="string">"this.className='healthReport';return true;"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/lastBuild"</span> <span class="attr">class</span>=<span class="string">"build-health-link"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/health-80plus.png"</span> <span class="attr">alt</span>=<span class="string">"100%"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-80plus icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"healthReportDetails"</span>&gt;</span><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>W<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>%<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/16x16/health-80plus.png"</span> <span class="attr">style</span>=<span class="string">"width: 16px; height: 16px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-80plus icon-sm"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>构建稳定性: 最近没有失败的构建。<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>100<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-07-17T02:00:14Z"</span>&gt;</span></span><br><span class="line">        2 小时 56 分</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/lastSuccessfulBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#26<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-07-15T01:48:39Z"</span>&gt;</span></span><br><span class="line">        2 天 3 小时</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/lastFailedBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#7<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"1767243"</span>&gt;</span>29 分<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/build?delay=0sec"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/clock.png"</span> <span class="attr">onclick</span>=<span class="string">"return build_id2549(this)"</span> <span class="attr">alt</span>=<span class="string">"Schedule a 构建 for1"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">title</span>=<span class="string">"Schedule a 构建 for FCA玛莎拉蒂自动化测试"</span> <span class="attr">class</span>=<span class="string">"icon-clock icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">build_id2549</span>(<span class="params">img</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">new</span> Ajax.Request(img.parentNode.href);</span></span><br><span class="line"><span class="javascript">                  hoverNotification(<span class="string">'构建 scheduled'</span>, img, <span class="number">-100</span>);</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">                &#125;<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span> <span class="attr">id</span>=<span class="string">"job_2"</span> <span class="attr">class</span>=<span class="string">" job-status-blue"</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/blue.png"</span> <span class="attr">alt</span>=<span class="string">"成功"</span> <span class="attr">tooltip</span>=<span class="string">"成功"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-blue icon-md"</span> <span class="attr">title</span>=<span class="string">"成功"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"40"</span> <span class="attr">class</span>=<span class="string">"healthReport"</span> <span class="attr">onmouseover</span>=<span class="string">"this.className='healthReport hover';return true;</span></span></span><br><span class="line"><span class="tag"><span class="string">        "</span> <span class="attr">onmouseout</span>=<span class="string">"this.className='healthReport';return true;"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/lastBuild"</span> <span class="attr">class</span>=<span class="string">"build-health-link"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/health-20to39.png"</span> <span class="attr">alt</span>=<span class="string">"40%"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-20to39 icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"healthReportDetails"</span>&gt;</span><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>W<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>%<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/16x16/health-20to39.png"</span> <span class="attr">style</span>=<span class="string">"width: 16px; height: 16px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-20to39 icon-sm"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>构建稳定性: 最近 5 次构建中有 3 次失败。<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>40<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-06-12T02:16:03Z"</span>&gt;</span></span><br><span class="line">        1 月 5 天</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/lastSuccessfulBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#16<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-06-12T01:58:43Z"</span>&gt;</span></span><br><span class="line">        1 月 5 天</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/lastFailedBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#14<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"18773"</span>&gt;</span>18 秒<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/build?delay=0sec"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/clock.png"</span> <span class="attr">onclick</span>=<span class="string">"return build_id2550(this)"</span> <span class="attr">alt</span>=<span class="string">"Schedule a 构建 for 一汽数据运营接口"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">title</span>=<span class="string">"Schedule a 构建 for 一2"</span> <span class="attr">class</span>=<span class="string">"icon-clock icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">build_id2550</span>(<span class="params">img</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">new</span> Ajax.Request(img.parentNode.href);</span></span><br><span class="line"><span class="javascript">                  hoverNotification(<span class="string">'构建 scheduled'</span>, img, <span class="number">-100</span>);</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">                &#125;<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span> <span class="attr">id</span>=<span class="string">"job_3"</span> <span class="attr">class</span>=<span class="string">" job-status-blue"</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/blue.png"</span> <span class="attr">alt</span>=<span class="string">"成功"</span> <span class="attr">tooltip</span>=<span class="string">"成功"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-blue icon-md"</span> <span class="attr">title</span>=<span class="string">"成功"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"100"</span> <span class="attr">class</span>=<span class="string">"healthReport"</span> <span class="attr">onmouseover</span>=<span class="string">"this.className='healthReport hover';return true;</span></span></span><br><span class="line"><span class="tag"><span class="string">        "</span> <span class="attr">onmouseout</span>=<span class="string">"this.className='healthReport';return true;"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/lastBuild"</span> <span class="attr">class</span>=<span class="string">"build-health-link"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/health-80plus.png"</span> <span class="attr">alt</span>=<span class="string">"100%"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-80plus icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"healthReportDetails"</span>&gt;</span><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>W<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>%<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/16x16/health-80plus.png"</span> <span class="attr">style</span>=<span class="string">"width: 16px; height: 16px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-80plus icon-sm"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>构建稳定性: 最近没有失败的构建。<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>100<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-07-17T02:30:49Z"</span>&gt;</span></span><br><span class="line">        2 小时 25 分</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/lastSuccessfulBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#55<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-07-14T08:29:55Z"</span>&gt;</span></span><br><span class="line">        2 天 20 小时</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/lastFailedBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#50<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"26883"</span>&gt;</span>26 秒<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/build?delay=0sec"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/clock.png"</span> <span class="attr">onclick</span>=<span class="string">"return build_id2551(this)"</span> <span class="attr">alt</span>=<span class="string">"Schedule a 构建 for 3"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">title</span>=<span class="string">"Schedule a 构建 for3"</span> <span class="attr">class</span>=<span class="string">"icon-clock icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">build_id2551</span>(<span class="params">img</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">new</span> Ajax.Request(img.parentNode.href);</span></span><br><span class="line"><span class="javascript">                  hoverNotification(<span class="string">'构建 scheduled'</span>, img, <span class="number">-100</span>);</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">                &#125;<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="https://blogimage.houjiyi.com/Frp6LrxgnFrDQPbDrjYWfNkruSwW" alt="image.png"><br>1.获取动态tr个数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">'处理table方法总结'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    beforeEach(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> username = <span class="string">"admin"</span></span><br><span class="line">        <span class="keyword">var</span> password = <span class="string">""</span></span><br><span class="line">        <span class="comment">//登陆地址</span></span><br><span class="line">        cy.visit(<span class="string">'http://xx.xx.xxx.xx:xxxx/login?from=%2F'</span>)</span><br><span class="line">        cy.get(<span class="string">'#j_username'</span>).type(username)</span><br><span class="line">        cy.get(<span class="string">'body &gt; div &gt; div &gt; form &gt; div:nth-child(2) &gt; input'</span>).type(password)</span><br><span class="line">        cy.get(<span class="string">'body &gt; div &gt; div &gt; form &gt; div.submit.formRow &gt; input'</span>).click()</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">    it(<span class="string">'动态获取tr'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        cy.get(<span class="string">'#projectstatus &gt; tbody &gt;tr'</span>).then(<span class="function">(<span class="params">$el</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> tr_total = $el.length</span><br><span class="line">            cy.log(tr_total)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://blogimage.houjiyi.com/FilWXH4zt8W2n0a29C72zQb8eJpQ" alt="image.png"><br>2.获取动态tr去断言td内容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">'处理table方法总结'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    beforeEach(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> username = <span class="string">"admin"</span></span><br><span class="line">        <span class="keyword">var</span> password = <span class="string">""</span></span><br><span class="line">        <span class="comment">//登陆地址</span></span><br><span class="line">        cy.visit(<span class="string">'http://xx.xx.xxx.xx:xxxx/login?from=%2F'</span>)</span><br><span class="line">        cy.get(<span class="string">'#j_username'</span>).type(username)</span><br><span class="line">        cy.get(<span class="string">'body &gt; div &gt; div &gt; form &gt; div:nth-child(2) &gt; input'</span>).type(password)</span><br><span class="line">        cy.get(<span class="string">'body &gt; div &gt; div &gt; form &gt; div.submit.formRow &gt; input'</span>).click()</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">    it(<span class="string">'动态获取tr'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        cy.get(<span class="string">'#projectstatus &gt; tbody &gt;tr'</span>).then(<span class="function">(<span class="params">$el</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> tr_total = $el.length</span><br><span class="line">            cy.log(tr_total)</span><br><span class="line">            <span class="keyword">var</span> list =[<span class="string">'29 分'</span>,<span class="string">'18 秒'</span>,<span class="string">"26 秒"</span>]</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; tr_total; i++) &#123;</span><br><span class="line">                cy.get(<span class="string">'#projectstatus &gt; tbody &gt;tr'</span>).eq(i).find(<span class="string">'td:nth-child(6)'</span>)</span><br><span class="line">                    .should(<span class="string">'contain'</span>, list[i<span class="number">-1</span>])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://blogimage.houjiyi.com/Fo_OZgN9gABXL9Ne5UfJd_dk9vuX" alt="image.png"></p>
+<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
+<p>更多文章关注小编公众号：自动化测试 To share</p>
 
       
 
@@ -936,6 +208,581 @@ var _hmt = _hmt || [];
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/17/Cypress-获取table内容动态tr和td/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Cypress-元素定位" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/17/Cypress-元素定位/">Cypress 元素定位</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/17/Cypress-元素定位/" class="archive-article-date">
+  	<time datetime="2021-09-17T04:33:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言<br>Cypress含有多种定位方式我们无需担心因为定位导致测试失败，Cypress有独一无二的定位策略能使你摆脱元素定位的噩梦。</p>
+<p>Cypress专有选择器</p>
+<ul>
+<li>data-cy</li>
+<li>data-test</li>
+<li>data-testid</li>
+</ul>
+<p>举例：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'main'</span> <span class="attr">class</span> = <span class="string">'btn'</span> <span class="attr">data-cy</span> = <span class="string">'submit'</span>&gt;</span>submit<span class="tag">&lt;<span class="name">button</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'main'</span> <span class="attr">class</span> = <span class="string">'btn'</span> <span class="attr">data-test</span>= <span class="string">'submit'</span>&gt;</span>submit<span class="tag">&lt;<span class="name">button</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'main'</span> <span class="attr">class</span> = <span class="string">'btn'</span> <span class="attr">data-testid</span>= <span class="string">'submit'</span>&gt;</span>submit<span class="tag">&lt;<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>获取元素方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'[data-cy=submit]'</span>).click()</span><br><span class="line">cy.get(<span class="string">'[data-test=submit]'</span>).click()</span><br><span class="line">cy.get(<span class="string">'[data-testid=submit]'</span>).click()</span><br></pre></td></tr></table></figure>
+<p>举例：<br><img src="https://blogimage.houjiyi.com/FsKusJefzm2L4lb709CcCjijV4ND" alt="image.png"><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>用户名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"account"</span> <span class="attr">id</span>=<span class="string">"account"</span> <span class="attr">autofocus</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>密码<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"keeplogin"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"checkbox-primary"</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"keepLogin[]"</span> <span class="attr">value</span>=<span class="string">"on"</span> <span class="attr">id</span>=<span class="string">"keepLoginon"</span>&gt;</span> <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"keepLoginon"</span>&gt;</span>保持登录<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"form-actions"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">id</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">data-loading</span>=<span class="string">"稍候..."</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"referer"</span> <span class="attr">id</span>=<span class="string">"referer"</span> <span class="attr">value</span>=<span class="string">"/zentao/"</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"verifyRand"</span> <span class="attr">id</span>=<span class="string">"verifyRand"</span> <span class="attr">value</span>=<span class="string">"1281275466"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/zentao/user-reset.html"</span>&gt;</span>忘记密码<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>#d选择器</li>
+</ul>
+<p>#id选择器通过html元素id属性来获取DMO</p>
+<p>获取用户名input元素方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'#account'</span>).click()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>class类选择器</li>
+</ul>
+<p>类选择器通过html元素class属性来获取DMO</p>
+<p>获取用户名input元素方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'.form-control'</span>).click()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>attributes属性选择器</li>
+</ul>
+<p>类选择器通过html元素class属性来获取DMO</p>
+<p>获取用户名input元素方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'[input[id = "account"]]'</span>).click()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>:nth-child(n)选择器</li>
+</ul>
+<p>:nth-child(n)选择器匹配属于其父元素的第n个子元素，不论元素的类型。</p>
+<p>获取用户名DOM元素方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cy.get(tbody &gt; tr:nth-child(<span class="number">1</span>) &gt; th<span class="string">')</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>Cypress.$定位器</li>
+</ul>
+<p>Cypress可以使用jQuery选择器定位</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cypress.$(<span class="string">'#account'</span>) 等价于 cy.get(<span class="string">'#account'</span>)</span><br></pre></td></tr></table></figure>
+<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/17/Cypress-元素定位/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Cypress-页面元素基本操作方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/17/Cypress-页面元素基本操作方式/">Cypress 页面元素基本操作方式</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/17/Cypress-页面元素基本操作方式/" class="archive-article-date">
+  	<time datetime="2021-09-17T04:27:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取DOM元素基本方式</p>
+<ol>
+<li>.find(selector) 搜索定位元素</li>
+<li>.get(selector) 搜索定位元素</li>
+<li>.contains(selector) 搜索定位元素</li>
+<li>.children() 方法用来获取DON元素的子元素</li>
+<li>.parents() 用来获取DOM元素的所有父元素</li>
+<li>.parent() 用来获取DOM元素第一层元素</li>
+<li>.siblings() 用来获取DOM元素的所有同级元素</li>
+<li>.first() 用来获取指定DOM对象的第一个元素</li>
+<li>.last() 用来获取指定DOM对象的最后一个元素</li>
+<li>.next() 用来匹配DOM对象紧跟着的下一个同级元素</li>
+<li>.nextAll() 用来匹配给定的DOM对象的所有同级元素</li>
+<li>.nextUntil() 用来匹配给定DOM对象之后的所有同级元素直到遇到Until里定义的元素为止</li>
+<li>.prev() 用来匹配给定DOM对象紧跟着的上一个同级元素</li>
+<li>.prevAll() 用来匹配给定的DOM对象之前的所有同级元素</li>
+<li>.prevUntil() 用来匹配给定DOM对象之后的所有同级元素直到遇到Until里定义的元素为止</li>
+<li>.each() 用来遍历数组及其类似结果</li>
+<li>.eq() 用来在元素或者数组中的特定索引处获取DOM元素。类似于Jquery中nth:child()</li>
+</ol>
+<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/17/Cypress-页面元素基本操作方式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Cypress端到端自动化测试学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/17/Cypress端到端自动化测试学习笔记/">Cypress端到端自动化测试学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/17/Cypress端到端自动化测试学习笔记/" class="archive-article-date">
+  	<time datetime="2021-09-17T03:46:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言<br>一直以来，端到端的测试都是前端开发最头疼的事情。如果没有好的测试工具，一旦需求发生改变，就需要手工测试，费时费力，还会有漏网的 bug。最近接触了一款开箱即用的端到端测试工具——Cypress，真心不错，Cypress可以对在浏览器中运行的任何东西进行快速、简单和可靠的测试。</p>
+<p>windows环境安装<br>1.安装node.js<br>官网下载地址：</p>
+<p><a href="https://nodejs.org/en/download/nodejs.org" target="_blank" rel="noopener">https://nodejs.org/en/download/nodejs.org</a></p>
+<p>下载后一路傻瓜式安装，安装完成后，运行cmd，输入node –v查看版本号，然后输入npm -v 出现如下图说明安装成功<br><img src="https://blogimage.houjiyi.com/Fg2xrY3zEEndo1ypZfjZcoyDQUHf" alt="image.png"></p>
+<p>2.安装Cypress<br>自己本地电脑新建一个目录Ui_test，cd 到目录，执行 npm 指令安装</p>
+<p>cd D:\workspace\Ui_test</p>
+<p>npm install cypress  –save-dev (默认安装最新版)</p>
+<p>npm install –save-dev <a href="mailto:cypress@4.5.0" target="_blank" rel="noopener">cypress@4.5.0</a> （指定4.5.0版本）</p>
+<p>这里博主安装的是4.5.0版本，安装会很慢，耐心等待会。</p>
+<p>出现如下说明安装成功了<br><img src="https://blogimage.houjiyi.com/FkrSmBk8N5LFiuv_l6YylCFGi3ZI" alt="image.png"></p>
+<p>启动cypress<br>首先在D:\workspace\UI_test目录下新建一个 package.json 文件配置如下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"cypress:open"</span>: <span class="string">"cypress open"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>现在，您可以在D:\workspace\Ui_test目下用如下命令启动</p>
+<p>npm run cypress:open或者npx cypress open</p>
+<p>启动成功展示：<br><img src="https://blogimage.houjiyi.com/Fj-IVIG9QZONZpNZYavqx8zxHDuR" alt="image.png"></p>
+<p>2.现在我们开始写第一个自动化示例程序：<br>官方文档：</p>
+<p><a href="https://docs.cypress.io/guidesdocs.cypress.io" target="_blank" rel="noopener">https://docs.cypress.io/guidesdocs.cypress.io</a></p>
+<p>先说一下cypress的目录结构。cypress共有七个目录，还有一个cypress.json文件<br><img src="https://blogimage.houjiyi.com/Ft4kgPU-46v5BCH2imu4efP3l4oI" alt="image.png"></p>
+<p>编写测试case<br>脚本实现功能：</p>
+<p>1.输入访问地址</p>
+<p>2.获取元素</p>
+<p>3.输入账号密码</p>
+<p>4.登陆</p>
+<p>5.断言</p>
+<p>在 integration 目录下新建你的工程目录，如demo，下面拿login.js文件为实例<br><img src="https://blogimage.houjiyi.com/FgMS8UpmF9icCA9QDIQJ5pKnZUA8" alt="image.png"></p>
+<p>describe 声明一个测试用例集</p>
+<p>beforeEach 测试用例前置操作，相当于setup</p>
+<p>it声明了一个测试用例</p>
+<p>cy.get 定位元素，用css selector定位选择器</p>
+<p>should 断言控件含有内容</p>
+<p>cy.visit(“/地址”)</p>
+<p>case编写完切换到项目根目录执行命令npm run cypress:open或者npx cypress open<br><img src="https://blogimage.houjiyi.com/FrJBEiXzhuuoWF67h7Jyug20xiaW" alt="image.png"></p>
+<p>运行效果<br><img src="https://blogimage.houjiyi.com/FgnOmLWCz0CwHNI64o7xjuN-dywa" alt="image.png"></p>
+<p>生成测试报告<br>npm安装 npm install –save-dev mocha mochawesome mochawesome-merge mochawesome-report-generator</p>
+<p>在 cypress.json 设置相关参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"env"</span>: &#123;</span><br><span class="line">        <span class="string">"search"</span>:<span class="string">"Cypress e2e"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"reporter"</span>: <span class="string">"mochawesome"</span>,</span><br><span class="line">    <span class="string">"reporterOptions"</span>: &#123;</span><br><span class="line">        <span class="string">"reportDir"</span>: <span class="string">"cypress/results"</span>,</span><br><span class="line">        <span class="string">"overwrite"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">"html"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">"json"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>执行 npx cypress run或者npm run cypress:open</p>
+<p>出现如下图说明执行成功了<br><img src="https://blogimage.houjiyi.com/FooN1XsXEbVup7f2naYlN6rKAa5g" alt="image.png"></p>
+<p>生成html测试报告<br><img src="https://blogimage.houjiyi.com/FvK__kmZnKNn7UKG2M5KUdkR6VPj" alt="image.png"></p>
+<p>生成xxx.mp4视频<br><img src="https://blogimage.houjiyi.com/Fu4jcwq_BXgnOAbZbXu9l6kBbjmx" alt="image.png"></p>
+<p>想转行做自动化测试的朋友们，想追求新技术助力公司成长的朋友们，未来5年弯道超车的机会，也许就在今天！</p>
+<p>推荐几个好的学习素材</p>
+<p><a href="https://github.com/cypress-io/cypressgithub.com" target="_blank" rel="noopener">https://github.com/cypress-io/cypressgithub.com</a></p>
+<p><a href="https://github.com/cypress-io/cypress-example-recipes/github.com" target="_blank" rel="noopener">https://github.com/cypress-io/cypress-example-recipes/github.com</a></p>
+<p><a href="https://github.com/cypress-io/cypress-example-kitchensink/github.com" target="_blank" rel="noopener">https://github.com/cypress-io/cypress-example-kitchensink/github.com</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/17/Cypress端到端自动化测试学习笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-开发排期及开发过程的一些思考" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/06/开发排期及开发过程的一些思考/">开发排期及开发过程的一些思考</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/06/开发排期及开发过程的一些思考/" class="archive-article-date">
+  	<time datetime="2021-09-06T08:35:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>项目经理评审后，大概知道要做什么，如果没有UEUI则可以直接给出工期，即使有也可以大概根据以往经验给一个大致工期；</li>
+<li>如果有UEUI则需要等UEUI给出后，根据交互复杂度和UI复杂度调整工期；</li>
+<li>根据UEUI给的排期结束时间点，结合自身情况给出准确排期；</li>
+<li>联调的长短与合作的后端同事关系重大，不同的后端合作应适当调整联调的工期；</li>
+<li>结合前后端排期相对靠后的时间点给出联调排期；</li>
+<li>无论项目大小，最好能有思维导图对项目细节进行梳理，这时候主要是梳理产品文档中的逻辑细节，做到不遗漏；</li>
+<li>最后通过项目管理工具（推荐OmniPlan）对项目工作点进行分类安排；</li>
+<li>经过上述步骤以后，则可以按照项目管理工具的计划进行项目开发；</li>
+<li>项目开发过程中需与后端进行沟通，尤其重点环节需要沟通技术方案，避免前后端实现思路不一致的问题；</li>
+<li>前端需要求后端尽快提供接口文档（不需要实现），保证前后端对接思路的一致；</li>
+<li>前端通过本地Mock数据，尽可能保证细节完整，保证后续联调能够节省时间。</li>
+<li>开发过程中保持专注很重要，思考可能产生的任何风险，大部分风险都可以在开发过程中发现、提出并交给相应的人解决；</li>
+<li>对于解决不了的技术问题，通过调整产品的设计思路绕过去也是一种不错的方法；</li>
+<li>不提倡使用晚走和加班的方式来提高产出，需要不断总结和提高个人技能来提高工作效率；</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发/项目总结//" class="article-tag-list-link color5">项目总结</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/06/开发排期及开发过程的一些思考/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-老板的话～可以被奉为经典的话" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/14/老板的话～可以被奉为经典的话/">老板的话～可以被奉为经典的话</a>
+    </h1>
+  
+
+        
+        <a href="/2021/07/14/老板的话～可以被奉为经典的话/" class="archive-article-date">
+  	<time datetime="2021-07-14T06:19:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>中国共产党走过了100年 我作为一名党员的时间是19年 在校园时代初入党的我稚气未脱 入党那时给我的感觉更多的是一种青年对比同龄人的自豪 入党让我又多了一些责任感 我成长在军人家庭 性格直率 爱憎分明 直言不讳 我喜欢的工作环境也是希望人人能够坦诚相待 关心彼此 </p>
+</blockquote>
+<blockquote>
+<p>那么多人拥护共产党 党最值得自豪的最成功地方就是让大多数普通党员保持了奉献服务的本色和初心 并且因此产生自豪感荣誉感 感染别人的上进心  党领导集体的另一个优点就是学习 能看到不足 能快速学习 能快速适应 不断进步</p>
+</blockquote>
+<blockquote>
+<p>党走过一些弯路 也有过灰暗的错误经历 最后实践出来一句话 实事求是 遇到事情 刨根问底弄清楚 不道听途说 不轻言轻信 相信每一个人 也直面每个问题 最终能够取得安心</p>
+</blockquote>
+<blockquote>
+<p>己欲立而立人 己欲达而达人 只有自己活明白 觉得自己明白 觉得自己正确 对别人的是非保持漠不关心 或者瞧不起别人就施以鄙视 我觉得都是一样的自私 因为不好的情绪和积极的情绪一样 都会传染 表达了负面情绪 并不会让这个世界变好 也许自己也不会因此舒服多久 正常人的内心都是很柔软的<br>最近公司人多了起来 我也确实听到了一些文化反馈 同件事 我问不同的人 反馈的看法不同 这是挺可怕的 我挺希望相关的同学能够多沟通 而不是彼此不沟通 但是心生疑虑 觉得提出来又恶心 如果你放在心里不舒服 何不把他讲出来 弄明白</p>
+</blockquote>
+<blockquote>
+<p>我前阵子发了一个运营中心成立的邮件 因为在出差途中 我用手机排版 但是忽略了很多人用pc收件 于是出现了落款和换行的不整齐 我发出去后 马上就有人提醒我 跟我说以后要注意 我觉得这就挺好 彼此关心 互相提醒</p>
+</blockquote>
+<blockquote>
+<p>但如果我们都觉得说了也白说 那彼此都不会变好了 </p>
+</blockquote>
+<blockquote>
+<p>每个人做事一定有原因 或者潜意识 如果造成别人不理解 不舒服 自己有责任了解 不舒服的对方也可以问出来你为什么要这样说这样做 问了 可能彼此就多一些了解 我曾经有很多不自觉不自知的缺点 都是在工作中一点点被指出来 我才意识到改进 我们各自的缺点 总是被爱的人纵容 但长久的爱不仅仅是忍耐 还有启示 叫醒他人的迷途 也是爱</p>
+</blockquote>
+<blockquote>
+<p>有话不直说绕弯子 旁敲侧击打听 对没有过错的人扣帽子 拿公司或者其他领导的话上纲上线的施压 用一些所谓的招数给别人使绊子 这些都是很差劲的行为 对于这些行为 在我这里不能包容 </p>
+</blockquote>
+<blockquote>
+<p>有疑问直接问 觉得不明白跟当事人或者负责人指出来 一件事情推动到底 推不动了可以坚持 比如去找彼此的上级讲明原因取得共识 不能被说服的事发起会议讨论 给我或者合伙人邮件或者微信 我们有许多方法让彼此晚上睡觉踏实 不要成为他人的毒药 尽可能温暖善良<br>党的一百年 酸甜苦辣都尝遍 这背后有许多付出和牺牲 有今天的发展成就和信心 也不是任何一两个人的单打独斗 这是集体主义的胜利 不需要每个人每天都是英雄 但是大家都尊重英雄 做好自己 都心向正念 日常累积善举 危难之际有人挺身而出而不会四顾无人…<br>总而言之 希望同行的同学 能够坚持善良 敢为 有所为</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">意义</a>
         		</li>
       		
 		</ul>
@@ -956,7 +803,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/03/浏览器播放RTSP直播流/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/07/14/老板的话～可以被奉为经典的话/">展开全文 >></a>
         </p>
       
 
@@ -986,93 +833,37 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-从零开始开发一个vue组件打包并发布到npm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-如何通过容器创建镜像-创建符合需求的打包镜像" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/15/从零开始开发一个vue组件打包并发布到npm/">从零开始开发一个vue组件打包并发布到npm</a>
+      <a class="article-title" href="/2021/07/14/如何通过容器创建镜像-创建符合需求的打包镜像/">如何通过容器创建镜像,创建符合需求的打包镜像</a>
     </h1>
   
 
         
-        <a href="/2019/11/15/从零开始开发一个vue组件打包并发布到npm/" class="archive-article-date">
-  	<time datetime="2019-11-15T12:50:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-15</time>
+        <a href="/2021/07/14/如何通过容器创建镜像-创建符合需求的打包镜像/" class="archive-article-date">
+  	<time datetime="2021-07-14T06:06:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://www.cnblogs.com/yalong/p/10388384.html" target="_blank" rel="noopener">原文地址</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/15/从零开始开发一个vue组件打包并发布到npm/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-利用gitlab-ci将前端项目在gitlab上持续集成" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/07/利用gitlab-ci将前端项目在gitlab上持续集成/">利用gitlab-ci将前端项目在gitlab上持续集成</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/07/利用gitlab-ci将前端项目在gitlab上持续集成/" class="archive-article-date">
-  	<time datetime="2019-11-07T03:29:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这个需求是这样的，希望代码提交以后能够对应的自动在服务器上拉取新代码，然后打包部署，并支持不同的环境，前端代码我们放在gitlab上，部署在centos7服务器上，具体步骤如下：</p>
-        
-          <a class="article-more-a" href="/2019/11/07/利用gitlab-ci将前端项目在gitlab上持续集成/#more">more >></a>
-        
+        <blockquote>
+<p>docker的基本操作不做赘述，随用随查即可，常用到的是如何创建打包镜像，这个镜像是用来打包的，可能需要调整镜像的一些配置：</p>
+</blockquote>
+<blockquote>
+<p>commit： 提交一个具有新配置的容器成为镜像，后面跟容器的name 或者容器Id ，最后是生成新镜像的名字<br><img src="http://blogimage.houjiyi.com/Fjuw_k4eD8_zW-EGJOnCjt_c8wof" alt="image.png"></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit trusting_kare ccr.ccs.tencentyun.com/aiforward_saas_fe/fe_fpms_build:202107141358</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>打包成容器以后，就可以推送到镜像仓库：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push ccr.ccs.tencentyun.com/aiforward_saas_fe/fe_fpms_build:202107141358</span><br></pre></td></tr></table></figure>
       
 
       
@@ -1085,11 +876,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发调试</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
         		</li>
       		
 		</ul>
@@ -1110,7 +897,300 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/07/利用gitlab-ci将前端项目在gitlab上持续集成/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/07/14/如何通过容器创建镜像-创建符合需求的打包镜像/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-useless-files-webpack-plugin删除多余项目文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/01/useless-files-webpack-plugin删除多余项目文件/">useless-files-webpack-plugin删除多余项目文件</a>
+    </h1>
+  
+
+        
+        <a href="/2021/07/01/useless-files-webpack-plugin删除多余项目文件/" class="archive-article-date">
+  	<time datetime="2021-07-01T03:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>随着项目开发的进行会经历一个混乱到整齐划一的过程，这个过程中会产生一系列冗余代码，这时候通过useless-files-webpack-plugin这个插件，可以帮助我们删除项目中无用的文件；</p>
+<blockquote>
+<p>大多数项目随着时间的推移,经常会摒弃掉一部分功能, 但大多数只是入口关闭, 或注释掉功能代码块, 依赖的文件如果没删除掉,项目其他成员一般不会去处&gt;理. 在日常开发中, 通过webpack 生成的 stats 文件实现了去除多余文件的插件useless-files-webpack-plugin</p>
+</blockquote>
+<blockquote>
+<p>插件用法如下:</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> UselessFile = <span class="built_in">require</span>(<span class="string">'useless-files-webpack-plugin'</span>)</span><br><span class="line"> </span><br><span class="line">plugins: [</span><br><span class="line">  <span class="keyword">new</span> UselessFile(&#123;</span><br><span class="line">    root: <span class="string">'./src'</span>, <span class="comment">// 项目目录</span></span><br><span class="line">    out?: <span class="string">'./fileList.json'</span>, <span class="comment">// 输出文件列表</span></span><br><span class="line">    out?: <span class="function">(<span class="params">files</span>) =&gt;</span> deal(files), <span class="comment">// 或者回调处理</span></span><br><span class="line">    clean?: <span class="literal">false</span> <span class="comment">// 删除文件,</span></span><br><span class="line">    exclude?: path <span class="comment">// 排除文件列表, 格式为文件路径数组</span></span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>转载于:<a href="https://juejin.im/post/5ae8930751882567244dc72f" target="_blank" rel="noopener">https://juejin.im/post/5ae8930751882567244dc72f</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/07/01/useless-files-webpack-plugin删除多余项目文件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vue单页面项目返回上一页无效，链接变化了，但是页面没有变化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/19/vue单页面项目返回上一页无效，链接变化了，但是页面没有变化/">vue单页面项目返回上一页无效，链接变化了，但是页面没有变化</a>
+    </h1>
+  
+
+        
+        <a href="/2021/06/19/vue单页面项目返回上一页无效，链接变化了，但是页面没有变化/" class="archive-article-date">
+  	<time datetime="2021-06-19T14:55:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在最近的项目中，返回上一页没有效果，经过好久的排查才发现问题，是路由守卫写法不规范导致。</p>
+<p>在项目中用路由守卫做了登录拦截，没登录的跳转到登录页面。页面跳转和拦截都没问题，但是返回上一页就不行了，也没有报错。</p>
+<p>代码贴上来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;  </span><br><span class="line">  <span class="keyword">if</span> (to.meta.loginCheck) &#123;     <span class="comment">//登录判断，如果登录了则正常跳转，如没有登录，则先登录</span></span><br><span class="line">    <span class="keyword">let</span> gesToken =localStorage.getItem(<span class="string">'gesToken'</span>);</span><br><span class="line">    <span class="keyword">if</span>(gesToken)&#123; </span><br><span class="line">      next();</span><br><span class="line">    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">      router.replace(&#123;<span class="attr">path</span>:<span class="string">'/login'</span>&#125;);</span><br><span class="line">　　　 next();　　<span class="comment">//这行是重点，bug的原因就在这</span></span><br><span class="line">&#125;; &#125; <span class="keyword">else</span> &#123; next(); &#125;; &#125;);</span><br></pre></td></tr></table></figure>
+<p>本来以为next()的作用就是下一步跳转页面，后来发现，不能正常返回上一页，就是因为我使用完router.replace()之后，没有再使用next();</p>
+<p>next()无论什么情况都是必须写的！！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/06/19/vue单页面项目返回上一页无效，链接变化了，但是页面没有变化/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-当我们遇到一个需求不明确，高度定制化的需求的时候～" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/25/当我们遇到一个需求不明确，高度定制化的需求的时候～/">当我们遇到一个需求不明确，高度定制化的需求的时候～</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/25/当我们遇到一个需求不明确，高度定制化的需求的时候～/" class="archive-article-date">
+  	<time datetime="2021-05-25T03:10:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>这个时候任何框架和模式都不好使，因为你不知道下一个需求是否会推翻前边所有的设计，这个时候我们要做的是使用最基本、高度扩展性的架构和思路来进行开发，避免因为需求变更导致的大量重复性工作。</p>
+</li>
+<li><p>技术最终是服务于业务的，没有最好的技术，只有最合适的技术。</p>
+</li>
+<li><p>剩下的是培养业务感觉和其他～</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">意义</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/25/当我们遇到一个需求不明确，高度定制化的需求的时候～/">展开全文 >></a>
         </p>
       
 
@@ -1142,7 +1222,7 @@ var _hmt = _hmt || [];
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 
@@ -1155,7 +1235,7 @@ var _hmt = _hmt || [];
     <div id="footer-info">
     	<div class="footer-left">
 			<span>京ICP备15061159号-1</span>
-    		&copy; 2021 80后
+    		&copy; 2022 80后
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1246,11 +1326,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">apicloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">计划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1262,19 +1338,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计划</a>
+                <a href="javascript:void(0)" class="js-tag color4">apicloud</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1282,11 +1350,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">域名</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1298,10 +1382,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">域名</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PWA</a>
               </li>
              
@@ -1310,11 +1390,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1327,6 +1411,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vagrant</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">prettire</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
               </li>
              
               <li class="article-tag-list-item">

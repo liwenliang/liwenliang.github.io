@@ -9,7 +9,7 @@
   <title>公共组件库实施 | 后记忆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="底层原则 随着系统应用越来越多，我们对系统进行了微前端的改造，同时改造带来一个组件复用的问题需要解决，经过调研，最终还是决定使用npm包的形式进行公共组件的开发维护工作   npm 包所在位置：https://www.npmjs.com/package/pms_components   源代码所在位置：http://gitlab.aiforward.cn/fe/pms_components   组">
-<meta name="keywords" content="知识点备忘,vue,javascript,微前端">
+<meta name="keywords" content="知识点备忘,javascript,vue,微前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="公共组件库实施">
 <meta property="og:url" content="https://www.houjiyi.com/2021/05/07/公共组件库实施/index.html">
@@ -224,7 +224,7 @@ var _hmt = _hmt || [];
 <h2 id="业务组件"><a href="#业务组件" class="headerlink" title="业务组件"></a>业务组件</h2><blockquote>
 <p>业务组件的使用稍微麻烦些，由于它依赖项目的运行环境，这里主要是请求中的token等信息，所以需要在项目中<br>重新定义一下对应的组件，在我们的项目中fpms_app_template有这几个的基本示例代码，我们将业务组件进行<br>简单的二次包装，同时将项目的request方法默认传入组件，这样不同项目请求方式就是统一的了。<br><img src="http://blogimage.houjiyi.com/Fk1kiZGj4AqwHbp1qxarj6NfsS-_" alt="image.png"></p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> FwCascader <span class="keyword">from</span> <span class="string">'pms_components/packages/FwCascader/FwCascader.vue'</span></span><br><span class="line"><span class="keyword">import</span> &#123; axios &#125; <span class="keyword">from</span> <span class="string">'@/utils/request'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'FwCascader'</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    FwCascader</span><br><span class="line">  &#125;,</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">const</span> props = &#123; ...this.$attrs &#125;</span><br><span class="line">    props.axios = axios</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;FwCascader props=&#123; props &#125; on=&#123; <span class="keyword">this</span>.$listeners &#125; scopedSlots=&#123; <span class="keyword">this</span>.$scopedSlots &#125;&gt;</span><br><span class="line">        &#123; <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.$slots).map(<span class="function"><span class="params">name</span> =&gt;</span> (&lt;template slot=&#123;name&#125;&gt;&#123;this.$slots[name]&#125;&lt;/template&gt;)) &#125;</span><br><span class="line">      &lt;<span class="regexp">/FwCascader&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> FwCascader <span class="keyword">from</span> <span class="string">'pms_components/packages/FwCascader/FwCascader.vue'</span></span><br><span class="line"><span class="keyword">import</span> &#123; axios &#125; <span class="keyword">from</span> <span class="string">'@/utils/request'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'FwCascader'</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    FwCascader</span><br><span class="line">  &#125;,</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">const</span> props = &#123; ...this.$attrs &#125;</span><br><span class="line">    props.axios = axios</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;FwCascader props=&#123; props &#125; on=&#123; <span class="keyword">this</span>.$listeners &#125; scopedSlots=&#123; <span class="keyword">this</span>.$scopedSlots &#125;&gt;</span><br><span class="line">        &#123; <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.$slots).map(<span class="function"><span class="params">name</span> =&gt;</span> (<span class="xml"><span class="tag">&lt;<span class="name">template</span> <span class="attr">slot</span>=<span class="string">&#123;name&#125;</span>&gt;</span>&#123;this.$slots[name]&#125;<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span>)) &#125;</span><br><span class="line">      &lt;<span class="regexp">/FwCascader&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>这里主要作用是把项目的request方法传进组件，使用具体项目的请求方式。</p>
 <p>LocationCascader  组件–位置选择组件</p>
@@ -293,11 +293,11 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -450,7 +450,7 @@ var _hmt = _hmt || [];
     <div id="footer-info">
     	<div class="footer-left">
 			<span>京ICP备15061159号-1</span>
-    		&copy; 2021 80后
+    		&copy; 2022 80后
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -541,11 +541,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">apicloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">计划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,19 +553,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计划</a>
+                <a href="javascript:void(0)" class="js-tag color4">apicloud</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -577,11 +565,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">域名</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,10 +597,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">域名</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PWA</a>
               </li>
              
@@ -605,11 +605,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,6 +626,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vagrant</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">prettire</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
               </li>
              
               <li class="article-tag-list-item">

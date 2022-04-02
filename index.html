@@ -166,167 +166,79 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-解决Electron-安装慢问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-macOS-第三方输入法使用-caps-lock-切换中英文和大小写" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/26/解决Electron-安装慢问题/">解决Electron 安装慢问题</a>
+      <a class="article-title" href="/2022/04/02/macOS-第三方输入法使用-caps-lock-切换中英文和大小写/">macOS 第三方输入法使用 caps_lock 切换中英文和大小写</a>
     </h1>
   
 
         
-        <a href="/2021/10/26/解决Electron-安装慢问题/" class="archive-article-date">
-  	<time datetime="2021-10-26T11:00:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-26</time>
+        <a href="/2022/04/02/macOS-第三方输入法使用-caps-lock-切换中英文和大小写/" class="archive-article-date">
+  	<time datetime="2022-04-02T03:51:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>安装Electron时会判断缓存中是否有要下载的zip包，如果没有的话就去下载这个zip包。但是往往下载这个zip包时非常慢，总是下载不成功。下面给出我的解决办法：</p>
-<p>首先要知道缓存位置在哪，根据 electron-download的描述 缓存的位置取决于操作系统 默认值为：</p>
-<blockquote>
-<p>Linux：$XDG_CACHE_HOME或~/.cache/electron/<br>苹果系统：~/Library/Caches/electron/<br>Windows：$LOCALAPPDATA/electron/Cache或~/AppData/Local/electron/Cache/</p>
-</blockquote>
-<p>然后，<a href="https://npm.taobao.org/mirrors/electron" target="_blank" rel="noopener">下载</a>需要的zip版本的包,放到上面提到的缓存地址中。</p>
-<p>最后，在命令窗口中执行npm install electron -g,执行成功</p>
-<p><img src="https://blogimage.houjiyi.com/Fh0vqiZD8HtNUziLZRNzjMc_EhYQ" alt="image.png"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发调试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/26/解决Electron-安装慢问题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-浅谈Vue中的虚拟DOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/21/浅谈Vue中的虚拟DOM/">浅谈Vue中的虚拟DOM</a>
-    </h1>
-  
-
-        
-        <a href="/2021/10/21/浅谈Vue中的虚拟DOM/" class="archive-article-date">
-  	<time datetime="2021-10-21T07:24:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Vue2.0引入了虚拟DOM，比Vue1.0的初始渲染速度提升了2～4倍，并大大降低了内存消耗。目前主流的前端框架Vue、React核心技术也都使用了虚拟DOM，你是否好奇为什么要提出虚拟DOM，虚拟DOM是什么，它有什么优势？这一切的问题，都将在本篇揭晓。</p>
-<h2 id="为什么要提出虚拟DOM"><a href="#为什么要提出虚拟DOM" class="headerlink" title="为什么要提出虚拟DOM"></a>为什么要提出虚拟DOM</h2><p>在Web早期，页面的交互比较简单，没有复杂的状态需要管理，也不太需要频繁的操作DOM，随着时代的发展，页面上的功能越来越多，我们需要实现的需求也越来越复杂，DOM的操作也越来越频繁。通过js操作DOM的代价很高，因为会引起页面的重排重绘，增加浏览器的性能开销，降低页面渲染速度，既然操作dom的代价很高那么有没有那种方式可以减少对dom的操作？这就是为什么提出虚拟dom一个很重要的原因。</p>
-<h2 id="模版转换成视图的过程"><a href="#模版转换成视图的过程" class="headerlink" title="模版转换成视图的过程"></a>模版转换成视图的过程</h2><p>在正式介绍Virtual DOM之前，我们有必要先了解下模版转换成视图的整个过程(如下图)：</p>
-<ul>
-<li>Vue.js通过编译将模版转换成渲染函数(render)，执行渲染函数就可以得到一个虚拟DOM</li>
-<li>在对模型进行操作的时候，会触发对应的Dep中的Watcher对象。Watcher对象会调用对应的update来修改视图。这个过程主要是将新旧虚拟DOM进行差异对比，然后根据结果进行对比。<br>简单点讲，在Vue的实现上，Vue讲模版编译成虚拟DOM渲染函数。结合Vue自带的响应系统，在状态改变时，Vue能够智能地计算出重新渲染组件的最小代价并应用到DOM操作上。<br><img src="https://blogimage.houjiyi.com/Fl12e31OgbTL-xnjXd_Yyr0ofZmW" alt="image.png"></li>
-</ul>
-<p>我们先对上图几个概念嵌入解释：</p>
-<ul>
-<li>渲染函数：渲染函数是用来生成虚拟DOM的。Vue推荐使用模版来构建我们的应用界面，在实现中Vue布局模版编译成渲染函数，当然我们也可以不写模版，直接写渲染函数，这样子更接近编译后的模版。</li>
-<li>vnode虚拟节点：它可以代表一个真实的DOM节点通过createElement方法能将vnode渲染成DOM节点，简单地说，虚拟节点可以理解成节点描述对象，它描述了应该怎样去创建真实的DOM节点。</li>
-<li>patch(也称为patching算法)：虚拟DOM最核心的部分，它可以将vnode渲染成真实的DOM，这个过程是对比新旧虚拟节点之间有哪些不同，然后根据对比结果找出需要更新的的节点进行更新。这点我们从单词含义就可以看出， patch本身就有补丁、修补的意思，其实际作用是在现有DOM上进行修改来实现更新视图的目的。Vue的Virtual DOM Patching算法是基于Snabbdom的实现，并在些基础上作了很多的调整和改进。</li>
-</ul>
-<h2 id="Virtual-DOM-是什么？"><a href="#Virtual-DOM-是什么？" class="headerlink" title="Virtual DOM 是什么？"></a>Virtual DOM 是什么？</h2><p>Virtual DOM 其实就是一棵以 JavaScript 对象( VNode 节点)作为基础的树，用对象属性来描述节点，实际上它只是一层对真实 DOM 的抽象。最终可以通过一系列操作使这棵树映射到真实环境上。</p>
-<p>  简单来说，可以把Virtual DOM 理解为一个简单的JS对象，并且最少包含标签名( tag)、属性(attrs)和子元素对象( children)三个属性。不同的框架对这三个属性的命名会有点差别。</p>
-<p>对于虚拟DOM，咱们来看一个简单的实例，就是下图所示的这个，详细的阐述了模板 → 渲染函数 → 虚拟DOM树 → 真实DOM的一个过程</p>
-<p><img src="https://blogimage.houjiyi.com/FkAtIjsxjASDIO_lxH_aD_ZABlLX" alt="image.png"></p>
-<h2 id="为什么虚拟DOM可以提高渲染速度"><a href="#为什么虚拟DOM可以提高渲染速度" class="headerlink" title="为什么虚拟DOM可以提高渲染速度"></a>为什么虚拟DOM可以提高渲染速度</h2><p>传统方式用js操作DOM会有很多额外的DOM操作，例如，一个ul标签下有很多个li标签，其中只有一个li有变化，这种情况下如果使用新的ul去替代旧的ul，其实除了那个发生变化的li节点之外，其他节点都不需要重新渲染。由于DOM操作比较慢，所以这些DOM操作在性能上会有一定的浪费，避免这些不必要的DOM操作会提升很大一部分性能(减少重排重绘从而节省浏览器的性能开销)。<br>  为了避免不必要的DOM操作，虚拟DOM在虚拟节点映射到视图的过程中，将虚拟节点与上一次渲染视图所使用的虚拟节点(oldVnode)做对比，找出真正需要更新的节点来进行DOM操作，从而避免操作其他无任何改动的DOM。<br>其实虚拟DOM在Vue.js中主要做了两件事：</p>
-<ul>
-<li>提供与真实DOM节点所对应的虚拟节点vnode</li>
-<li>将虚拟节点vnode和旧虚拟节点oldVnode进行比对，然后更新视图<br>对两个虚拟节点进行对比是虚拟DOM中最核心的算法即patch，patch算法的核心是diff算法，它可以判断出哪些节点发生了变化，从而只对发生了变化的节点进行更新操作。</li>
-</ul>
-<h2 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h2><p><img src="https://blogimage.houjiyi.com/FhrRWops52b2yTl2OoF52MLf60r3" alt="image.png"></p>
-<p>Vue的diff算法是基于snabbdom改造过来的，仅在同级的vnode间做diff，递归地进行同级vnode的diff，最终实现整个DOM树的更新。因为跨层级的操作是非常少的，忽略不计，这样时间复杂度就从O(n3)变成O(n)。</p>
-<p>diff 算法包括几个步骤：</p>
-<ul>
-<li>用 JavaScript 对象结构表示 DOM 树的结构；然后用这个树构建一个真正的 DOM 树，插到文档当中</li>
-<li>当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异</li>
-<li>把所记录的差异应用到所构建的真正的DOM树上，视图就更新了</li>
-</ul>
-<p><img src="https://blogimage.houjiyi.com/Fra1xRvFBjNvLWoOV5ou2TlZMRfA" alt="image.png"></p>
-<h2 id="diff算法的实现过程"><a href="#diff算法的实现过程" class="headerlink" title="diff算法的实现过程"></a>diff算法的实现过程</h2><p>diff 算法本身非常复杂，实现难度很大。本文去繁就简，粗略介绍以下两个核心函数实现流程：<br>patch(container,vnode) :初次渲染的时候，将VDOM渲染成真正的DOM然后插入到容器里面。<br>patch(vnode,newVnode):再次渲染的时候，将新的vnode和旧的vnode相对比，然后之间差异应用到所构建的真正的DOM树上。</p>
-<h2 id="patch-container-vnode"><a href="#patch-container-vnode" class="headerlink" title="patch(container,vnode)"></a>patch(container,vnode)</h2><p>通过这个函数可以让VNode渲染成真正的DOM，我们通过以下模拟代码，可以了解大致过程：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params">vnode</span>) </span>&#123;    </span><br><span class="line">  <span class="keyword">var</span> tag = vnode.tag  </span><br><span class="line">  <span class="keyword">var</span> attrs = vnode.attrs || &#123;&#125;    </span><br><span class="line">  <span class="keyword">var</span> children = vnode.children || []    </span><br><span class="line">  <span class="keyword">if</span> (!tag) &#123;       </span><br><span class="line">   <span class="keyword">return</span> <span class="literal">null</span>  </span><br><span class="line">  &#125;    </span><br><span class="line">  <span class="comment">// 创建真实的 DOM 元素    </span></span><br><span class="line">  <span class="keyword">var</span> elem = <span class="built_in">document</span>.createElement(tag)   </span><br><span class="line">  <span class="comment">// 属性    </span></span><br><span class="line">  <span class="keyword">var</span> attrName    </span><br><span class="line">  <span class="keyword">for</span> (attrName <span class="keyword">in</span> attrs) &#123;    </span><br><span class="line">    <span class="keyword">if</span> (attrs.hasOwnProperty(attrName)) &#123; </span><br><span class="line">           <span class="comment">// 给 elem 添加属性</span></span><br><span class="line">           elem.setAttribute(attrName, attrs[attrName])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 子元素</span></span><br><span class="line">    children.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">childVnode</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 给 elem 添加子元素，如果还有子节点，则递归的生成子节点。</span></span><br><span class="line">        elem.appendChild(createElement(childVnode))  <span class="comment">// 递归</span></span><br><span class="line">    &#125;)    <span class="comment">// 返回真实的 DOM 元素   </span></span><br><span class="line"> <span class="keyword">return</span> elem</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="patch-vnode-newVnode"><a href="#patch-vnode-newVnode" class="headerlink" title="patch(vnode,newVnode)"></a>patch(vnode,newVnode)</h2><p>这里我们只考虑vnode与newVnode如何对比的情况：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateChildren</span>(<span class="params">vnode, newVnode</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> children = vnode.children || []</span><br><span class="line">    <span class="keyword">var</span> newChildren = newVnode.children || []</span><br><span class="line">    <span class="comment">// 遍历现有的children</span></span><br><span class="line">    children.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">childVnode, index</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> newChildVnode = newChildren[index]</span><br><span class="line">        <span class="comment">// 两者tag一样</span></span><br><span class="line">        <span class="keyword">if</span> (childVnode.tag === newChildVnode.tag) &#123;</span><br><span class="line">            <span class="comment">// 深层次对比，递归</span></span><br><span class="line">            updateChildren(childVnode, newChildVnode)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">           <span class="comment">// 两者tag不一样</span></span><br><span class="line">           replaceNode(childVnode, newChildVnode) </span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">)&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Virtual-DOM的优势"><a href="#Virtual-DOM的优势" class="headerlink" title="Virtual DOM的优势"></a>Virtual DOM的优势</h2><ul>
-<li><p>具备跨平台的优势<br>由于 Virtual DOM 是以 JavaScript 对象为基础而不依赖真实平台环境，所以使它具有了跨平台的能力，比如说浏览器平台、Weex、Node 等。</p>
-</li>
-<li><p>操作 DOM 慢，js运行效率高。我们可以将DOM对比操作放在JS层，提高效率。<br>因为DOM操作的执行速度远不如Javascript的运算速度快，因此，把大量的DOM操作搬运到Javascript中，运用patching算法来计算出真正需要更新的节点，最大限度地减少DOM操作，从而显著提高性能。</p>
-</li>
-</ul>
-<p>Virtual DOM 本质上就是在 JS 和 DOM 之间做了一个缓存。可以类比 CPU 和硬盘，既然硬盘这么慢，我们就在它们之间加个缓存：既然 DOM 这么慢，我们就在它们 JS 和 DOM 之间加个缓存。CPU（JS）只操作内存（Virtual DOM），最后的时候再把变更写入硬盘（DOM）</p>
-<ul>
-<li>提升渲染性能<br>Virtual DOM的优势不在于单次的操作，而是在大量、频繁的数据更新下，能够对视图进行合理、高效的更新。</li>
-</ul>
-<blockquote>
-<p>总结：Vue.js通过编译将模版转换成渲染函数(render)，执行渲染函数就可以得到一个虚拟节点树(虚拟DOM)，虚拟节点树(虚拟DOM)提供虚拟节点vnode和对新旧两个vnode进行比对并根据比对结果进行DOM操作来更新视图，达到减少对DOM的目的，从而减少浏览器的开销，提高渲染速度，改善用户体验。</p>
-</blockquote>
-<p>参考文章：<br><a href="https://github.com/ljianshu/Blog/issues/69" target="_blank" rel="noopener">https://github.com/ljianshu/Blog/issues/69</a><br><a href="https://book.douban.com/subject/32581281/" target="_blank" rel="noopener">https://book.douban.com/subject/32581281/</a></p>
-<p>原文地址：<a href="https://www.jianshu.com/p/4dbb3712ced7" target="_blank" rel="noopener">https://www.jianshu.com/p/4dbb3712ced7</a></p>
+        <h1 id="macOS-第三方输入法使用-caps-lock-切换中英文和大小写"><a href="#macOS-第三方输入法使用-caps-lock-切换中英文和大小写" class="headerlink" title="macOS 第三方输入法使用 caps_lock 切换中英文和大小写"></a>macOS 第三方输入法使用 caps_lock 切换中英文和大小写</h1><p>我使用的系统是 macOS Catalina，系统自带的输入法是使用 <strong>caps_lock</strong> 单一按键来切换中英文和大小写的。前提是在系统偏好设置中勾选上“<strong>使用中/英键切换“ABC”输入模式</strong>“。</p>
+<p><img src="https://blogimage.houjiyi.com/FvA3d7aNfdgj6bRg6UNgLGU7WKDw" alt="image.png"></p>
+<p>这种自带切换方法效果是这样：</p>
+<ol>
+<li>单击一下 <strong>caps_lock</strong> 键则切换中英文输入法。</li>
+<li>长按 <strong>caps_lock</strong> 键则触发大写锁定，同时亮起 <strong>caps_lock</strong> 灯。</li>
+<li>当已经处于大写锁定状态下时，再次单击 <strong>caps_lock</strong> 键则会退出大写锁定状态，同时灭掉 <strong>caps_lock</strong> 灯。</li>
+</ol>
+<p>我个人是比较喜欢自带的切换方法的，用 <strong>caps_lock</strong> 键切换中英文要比用 <strong>ctrl+空格键</strong> 方便得多，而且还能通过长按的方式兼顾大小写的转换，用一个按键搞定所有输入法切换的问题，还是很优雅的。</p>
+<p>唯一的问题就是：苹果自带的拼音输入法很不好用，而如果使用了第三方输入法的话（比如搜狗输入法），在输入法选项中就会失去 “<strong>使用中/英键切换“ABC”输入模式</strong>“ 这一个选项，而只能使用 “<strong>ctrl+空格键</strong>” 之类的快捷键来切换中英文。</p>
+<p><img src="https://blogimage.houjiyi.com/FhNYsogdUiDgvMme5gXVoA4sdDQh" alt="image.png"></p>
+<p>好在我发现了一种方法能即使用第三方输入法，又能使用单一的 caps_lock 键来切换中英文和大小写。</p>
+<p>需要使用的软件是 <strong><a href="https://link.zhihu.com/?target=https%3A//pqrs.org/osx/karabiner/" target="_blank" rel="noopener">karabiner elements</a></strong>。</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//pqrs.org/osx/karabiner/" target="_blank" rel="noopener">karabiner elements​pqrs.org/osx/karabiner/</a></p>
+<p>首先安装软件 <strong><a href="https://link.zhihu.com/?target=https%3A//pqrs.org/osx/karabiner/" target="_blank" rel="noopener">karabiner elements</a></strong>，此软件免费。</p>
+<p>然后确认当前切换输入法的快捷键是 【control+空格】：</p>
+<p>进入 系统偏好设置 -&gt; 键盘 -&gt; 快捷键，设置成如下：</p>
+<p><img src="https://blogimage.houjiyi.com/Fqpo7IARbigAnZHTTYNqTXRxaxz_" alt="image.png"></p>
+<p>以上两步完成之后则需要导入规则文件，有两种方法：一种是自建规则文件。此外，为了方便大家使用，我已将写好规则文件上传到软件的官网上，因此还可使用网上导入的方法自动导入规则文件。下面分别介绍一下：</p>
+<h2 id="方法一：官网自动导入规则文件（推荐）"><a href="#方法一：官网自动导入规则文件（推荐）" class="headerlink" title="方法一：官网自动导入规则文件（推荐）"></a>方法一：官网自动导入规则文件（推荐）</h2><ol>
+<li>访问： <a href="https://link.zhihu.com/?target=https%3A//ke-complex-modifications.pqrs.org/%3Fq%3Dchinese" target="_blank" rel="noopener">https://ke-complex-modifications.pqrs.org/</a></li>
+<li>搜索 【Chinese】</li>
+<li>在结果中找到【Toggle Chinese English With caps_lock】，点击后面的 【Import】</li>
+</ol>
+<p><img src="https://blogimage.houjiyi.com/FvOAJfWLXotNgGbQZmWGieMYZhOK" alt="image.png"></p>
+<p>4. 在弹出的对话框中完成导入，在软件界面点击列表中【Toggle Chinese English With caps_lock】后面的 【Enable】即可。</p>
+<p><img src="https://blogimage.houjiyi.com/FnmkGapSit_hJzV6vnGPZu5deSc2" alt="image.png"></p>
+<hr>
+<p>如果官方网站搜索不到或者打不开官方网站的话，就使用下面的自建规则文件方法：</p>
+<h2 id="方法二：-自建规则文件"><a href="#方法二：-自建规则文件" class="headerlink" title="方法二： 自建规则文件"></a><strong>方法二： 自建规则文件</strong></h2><ol>
+<li><strong>新建规则文件：</strong></li>
+</ol>
+<p>新建一个文本文件，并命名为 <strong>caps_lock_toggle_chinese_english.json</strong> ，并在文件中加入如下代码：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"title"</span>: <span class="string">"Toggle Chinese English With caps_lock"</span>,</span><br><span class="line">  <span class="attr">"rules"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"description"</span>: <span class="string">"caps_lock 切换中英文，长按锁定大写，短按恢复小写"</span>,</span><br><span class="line">      <span class="attr">"manipulators"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"type"</span>: <span class="string">"basic"</span>,</span><br><span class="line">          <span class="attr">"from"</span>: &#123;</span><br><span class="line">            <span class="attr">"key_code"</span>: <span class="string">"caps_lock"</span>,</span><br><span class="line">            <span class="attr">"modifiers"</span>: &#123;</span><br><span class="line">              <span class="attr">"optional"</span>: [</span><br><span class="line">                <span class="string">"left_control"</span></span><br><span class="line">              ]</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="attr">"to_if_alone"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="attr">"key_code"</span>: <span class="string">"spacebar"</span>,</span><br><span class="line">              <span class="attr">"modifiers"</span>: [</span><br><span class="line">                <span class="string">"left_control"</span></span><br><span class="line">              ]</span><br><span class="line">            &#125;</span><br><span class="line">          ],</span><br><span class="line">          <span class="attr">"to_if_held_down"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="attr">"key_code"</span>: <span class="string">"caps_lock"</span></span><br><span class="line">            &#125;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2. 放置到正确的文件夹下：</strong></p>
+<p>将此文件移动到 <strong>/Users/你的名字/.config/karabiner/assets/complex_modifications/</strong> 文件夹下，如果没有这个文件夹则创建一个。</p>
+<p><img src="https://blogimage.houjiyi.com/FqlPUOXKjalyUNKmoWaw9E_c2ibt" alt="image.png"></p>
+<p>注意 <strong>.config</strong> 是一个隐藏文件夹，访达app 中显示隐藏文件夹的快捷键是 <strong>Shift+Command+.</strong></p>
+<p><strong>3. 激活此条规则：</strong></p>
+<p>打开 karabiner elements 软件，并依次点击如下按钮：<br>Complex modifications -&gt; Rules -&gt; Add rule</p>
+<p><img src="https://blogimage.houjiyi.com/FtygfNv9-7AbkHei1jM9kRUYDXc-" alt="image.png"></p>
+<p>找到 【Toggle Chinese English With caps_lock】这条规则，并点击后面的 enable 按键。</p>
+<p><img src="https://blogimage.houjiyi.com/Fh3G-qzF0fBHaZgGrI1b-XpmdUqH" alt="image.png"></p>
+<hr>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><p>这样就能使用原生的单一 <strong>caps_lock</strong> 切换方式切换搜狗拼音等第三方输入法了。若要取消这条规则，则在 <strong>Complex modifications -&gt; Rules</strong> 中找到这条规则，并点击 <strong>remove</strong> 即可。</p>
+<h2 id="小建议"><a href="#小建议" class="headerlink" title="小建议"></a>小建议</h2><p>长按 caps_lock 触发大写锁定会有一个小问题，那就是没有一个明显的反馈来指示是否触发成功，不好拿捏需要长按多久，这时候需要一个在屏幕上指示大小写锁定状态的软件就可以了。我使用的是 <a href="https://link.zhihu.com/?target=http%3A//captin.mystrikingly.com/" target="_blank" rel="noopener">captin</a> 这款小软件来解决这个问题，下面是它的运行截图。</p>
+<p><a href="https://link.zhihu.com/?target=http%3A//captin.mystrikingly.com/" target="_blank" rel="noopener">Captin on Strikingly​captin.mystrikingly.com/<img src="https://pic3.zhimg.com/v2-6a4ce874c3bcad1cf569cd7c3a6eea1a_ipico.jpg" alt></a></p>
+<p><img src="https://blogimage.houjiyi.com/FsZDYBQPsQSweYHPXlPImh4UuTiE" alt="image.png"></p>
+<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>为什么我觉得自带的拼音输入法不好用：</p>
+<p>主要是在设定一些快捷键时，当处于原生中文输入法状态下时，一些英文符号按键就会输入成中文符号，导致此时快捷键失效。而搜狗、百度等第三方中文输入法都不会有此问题。如果解决了这个问题，对我而言自带的中文输入法也是够用的。</p>
+<h2 id="其它问题"><a href="#其它问题" class="headerlink" title="其它问题"></a>其它问题</h2><ol>
+<li>如果希望更改 【control + 空格】 快捷键为其它的，则需要同步修改配置文件中的【to_if_alone】字段。</li>
+</ol>
 
       
 
@@ -361,7 +273,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/21/浅谈Vue中的虚拟DOM/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/04/02/macOS-第三方输入法使用-caps-lock-切换中英文和大小写/">展开全文 >></a>
         </p>
       
 
@@ -391,27 +303,49 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-VSCode-配置上传与下载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-允许跨域资源共享（CORS）携带-Cookie" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/13/VSCode-配置上传与下载/">VSCode 配置上传与下载</a>
+      <a class="article-title" href="/2022/04/02/允许跨域资源共享（CORS）携带-Cookie/">允许跨域资源共享（CORS）携带 Cookie</a>
     </h1>
   
 
         
-        <a href="/2021/10/13/VSCode-配置上传与下载/" class="archive-article-date">
-  	<time datetime="2021-10-13T06:44:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-13</time>
+        <a href="/2022/04/02/允许跨域资源共享（CORS）携带-Cookie/" class="archive-article-date">
+  	<time datetime="2022-04-02T03:33:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">上传：shift+option+U</span><br><span class="line">下载：shift+option+D</span><br></pre></td></tr></table></figure>
+        <p>CORS 是一个 W3C 标准，全称是“跨域资源共享”（Cross-origin resource sharing）。</p>
+<p>默认浏览器为了安全，遵循“同源策略”，不允许 Ajax 跨域访问资源，而为了允许这种操作，服务器端和客户端都要遵循一些约定。</p>
+<p>服务器端需设置以下响应头：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: &lt;origin&gt; | * // 授权的访问源</span><br><span class="line">Access-Control-Max-Age: &lt;delta-seconds&gt; // 预检授权的有效期，单位：秒</span><br><span class="line">Access-Control-Allow-Credentials: true | false // 是否允许携带 Cookie</span><br><span class="line">Access-Control-Allow-Methods: &lt;method&gt;[, &lt;method&gt;]* // 允许的请求动词</span><br><span class="line">Access-Control-Allow-Headers: &lt;field-name&gt;[, &lt;field-name&gt;]* // 额外允许携带的请求头</span><br><span class="line">Access-Control-Expose-Headers: &lt;field-name&gt;[, &lt;field-name&gt;]* // 额外允许访问的响应头</span><br></pre></td></tr></table></figure>
+<p>我们看到，Access-Control-Allow-Credentials 响应头会使浏览器允许在 Ajax 访问时携带 Cookie，但我们仍然需要对 XMLHttpRequest 设置其 withCredentials 参数，才能实现携带 Cookie 的目标。</p>
+<p>示例代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.withCredentials = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<p>注意，为了安全，标准里不允许 Access-Control-Allow-Origin: *，必须指定明确的、与请求网页一致的域名。同时，Cookie 依然遵循“同源策略”，只有用目标服务器域名设置的 Cookie 才会上传，而且使用 document.cookie 也无法读取目标服务器域名下的 Cookie。</p>
+<p>下面简单普及一下 CORS 的有关知识。</p>
+<p>浏览器对待 CORS 有两种规则，一种只有一次请求，一种要多发送一次“预检查”请求。</p>
+<p>简单 CORS<br>同时满足以下条件：</p>
+<p>HEAD<br>GET<br>POST<br>请求头限制，只允许出现：</p>
+<p>Accept<br>Accept-Language<br>Content-Language<br>Last-Event-ID<br>Content-Type 且只允许是：<br>application/x-www-form-urlencoded<br>multipart/form-data<br>text/plain<br>简单请求浏览器会直接发送该请求，并附加 Origin 头，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Origin: localhost:8080</span><br></pre></td></tr></table></figure>
+<p>服务器会返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: http://localhost:8080</span><br><span class="line">Access-Control-Max-Age: 600</span><br><span class="line">Access-Control-Allow-Credentials: true</span><br><span class="line">Access-Control-Expose-Headers: X-Custom-Header</span><br></pre></td></tr></table></figure>
+<p>浏览器在收到服务器返回时，先检查是否允许访问，不允许则直接报错（可用 XMLHttpRequest.onerror 捕获）。</p>
+<p>带预检查的 CORS<br>不满足简单 CORS 要求的请求，在正式请求前，浏览器会发送一次 OPTIONS 动词的请求。</p>
+<p>例如欲请求 PUT /xxx，想额外发送 X-Custom-Header 头，则会先发送：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">OPTIONS /xxx HTTP/1.1</span><br><span class="line">Origin: http://api.bob.com</span><br><span class="line">Access-Control-Request-Method: PUT</span><br><span class="line">Access-Control-Request-Headers: X-Custom-Header</span><br><span class="line">Host: localhost:8080</span><br></pre></td></tr></table></figure>
+<p>服务器返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Access-Control-Allow-Credentials: true</span><br><span class="line">Access-Control-Allow-Headers: X-Custom-Header</span><br><span class="line">Access-Control-Allow-Methods: PUT</span><br><span class="line">Access-Control-Allow-Origin: http://localhost:8080</span><br><span class="line">Access-Control-Max-Age:600</span><br><span class="line">Allow: GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, PATCH</span><br><span class="line">Vary: Origin</span><br></pre></td></tr></table></figure>
+<p>浏览器检查完，一切顺利，才发送真正的请求。</p>
 
       
 
@@ -446,7 +380,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/13/VSCode-配置上传与下载/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/04/02/允许跨域资源共享（CORS）携带-Cookie/">展开全文 >></a>
         </p>
       
 
@@ -476,27 +410,354 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-通过scp上传文件-文件夹到服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-本地项目切换origin地址" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/29/通过scp上传文件-文件夹到服务器/">通过scp上传文件/文件夹到服务器</a>
+      <a class="article-title" href="/2022/04/02/本地项目切换origin地址/">本地项目切换origin地址</a>
     </h1>
   
 
         
-        <a href="/2021/09/29/通过scp上传文件-文件夹到服务器/" class="archive-article-date">
-  	<time datetime="2021-09-29T05:56:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-29</time>
+        <a href="/2022/04/02/本地项目切换origin地址/" class="archive-article-date">
+  	<time datetime="2022-04-02T03:28:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 上传</span><br><span class="line">scp 文件 username@ip:/目录</span><br><span class="line">scp -r 文件夹 username@ip:/目录</span><br><span class="line"></span><br><span class="line">// 下载</span><br><span class="line">scp username@ip:/目录  本地目录</span><br><span class="line"></span><br><span class="line">通过ssh username@ip 可连接服务器查看</span><br></pre></td></tr></table></figure>
+        <p>通过这种方式，我可以同步两个或多个地方的仓库代码，比如我在gitte上和github上同时维护着一个仓库，通过这种方式，我只需要在提交的时候或想到的时候切换下仓库地址，就可以把之前的修改记录同步到另一个仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="built_in">set</span>-url origin https://xxxx.git</span><br></pre></td></tr></table></figure>
+<p>好方法记录一下,再加上之前的一篇文章，像代码迁移的操作基本不用慌了：Git仓库完全迁移，包括所有的分支和标签，当然也包括日志</p>
+<p>两篇文章都用到了git的set-url方法，所以需要特意看下set-url的作用：</p>
+<p>git：更改远程仓库指向 remote url</p>
+<p>更改仓库指向：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="built_in">set</span>-url origin git@github.com:<span class="built_in">test</span>/thinkphp.git</span><br></pre></td></tr></table></figure>
+<p>当然，还有一种方法哦，那就是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -e</span><br></pre></td></tr></table></figure>
+<p>直接编辑其中origin的url就行了，退出时记得保存</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">        repositoryformatversion = 0</span><br><span class="line">        filemode = <span class="literal">false</span></span><br><span class="line">        bare = <span class="literal">false</span></span><br><span class="line">        logallrefupdates = <span class="literal">true</span></span><br><span class="line">        symlinks = <span class="literal">false</span></span><br><span class="line">        ignorecase = <span class="literal">true</span></span><br><span class="line">        hideDotFiles = dotGitOnly</span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">        fetch = +refs/heads/*:refs/remotes/origin/*</span><br><span class="line">        url = https://github.com/x/thinkphp.git</span><br><span class="line">[branch <span class="string">"master"</span>]</span><br><span class="line">        remote = origin</span><br><span class="line">        merge = refs/heads/master</span><br></pre></td></tr></table></figure>
+<p>因此我理解这个方法的作用就是，将本地一个仓库，当然包括各种操作和日志记录指向另一个地方，如果新的地方是一个空仓库，则创建同步本地仓库信息，如果新仓库已有仓库，那么应该是会合并记录，当然，如果记录有冲突，估计会出问题，至于出什么问题我也不打算去尝试 😄。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">git迁移</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/项目总结//" class="article-tag-list-link color5">项目总结</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/项目总结/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/02/本地项目切换origin地址/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vscode上关于stylelint与prettier的格式化风格统一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/02/vscode上关于stylelint与prettier的格式化风格统一/">vscode上关于stylelint与prettier的格式化风格统一</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/02/vscode上关于stylelint与prettier的格式化风格统一/" class="archive-article-date">
+  	<time datetime="2022-04-02T03:24:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>我们开发的时候会用到eslint与prettier，同样在样式层面，也需要一个规范，这时候我们就需要用到stylelint，可以帮我们写出更好更规范的css样式。</p>
+</blockquote>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a><a href="https://www.houjiyi.com/#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE" title="创建项目"></a>创建项目</h2><p><code>vue create demo</code></p>
+<p><img src="https://blogimage.houjiyi.com/FshPYw0RSWLxENmTBzrcNAdXkMac" alt="image.png"></p>
+<p>这里使用的是vue3.x+sass创建的项目</p>
+<h2 id="清点配置"><a href="#清点配置" class="headerlink" title="清点配置"></a><a href="https://www.houjiyi.com/#%E6%B8%85%E7%82%B9%E9%85%8D%E7%BD%AE" title="清点配置"></a>清点配置</h2><h3 id="需要安装的依赖"><a href="#需要安装的依赖" class="headerlink" title="需要安装的依赖"></a><a href="https://www.houjiyi.com/#%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84%E4%BE%9D%E8%B5%96" title="需要安装的依赖"></a>需要安装的依赖</h3><p>将下边这些依赖放在package.json的devDependencies里边，然后在执行一遍<code>yarn install</code>把依赖给装上。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">"prettier": "^2.2.1",  </span><br><span class="line">"stylelint": "^13.12.0",  </span><br><span class="line">"stylelint-config-prettier": "^9.0.3",  </span><br><span class="line">"stylelint-config-rational-order": "^0.1.2",  </span><br><span class="line">"stylelint-config-standard": "^22.0.0",</span><br></pre></td></tr></table></figure>
+<h3 id="vscode需要安装的插件"><a href="#vscode需要安装的插件" class="headerlink" title="vscode需要安装的插件"></a><a href="https://www.houjiyi.com/#vscode%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84%E6%8F%92%E4%BB%B6" title="vscode需要安装的插件"></a>vscode需要安装的插件</h3><p>我们需要给vscode安装一个stylelint-plus插件，之所以装这个插件是因为它支持保存即格式化的配置。</p>
+<p><img src="https://blogimage.houjiyi.com/FsBMH7bTGhhykichM4KVosFF_vQb" alt="image.png"></p>
+<h3 id="调整项目settings-json配置"><a href="#调整项目settings-json配置" class="headerlink" title="调整项目settings.json配置"></a><a href="https://www.houjiyi.com/#%E8%B0%83%E6%95%B4%E9%A1%B9%E7%9B%AEsettings-json%E9%85%8D%E7%BD%AE" title="调整项目settings.json配置"></a>调整项目settings.json配置</h3><p>在项目根目录下增加<code>.vscode/settings.json</code>配置文件，它编辑器针对项目的配置；<br>你可以根据自己的习惯进行修改，比较重要的就是保存格式化，保存后应用的格式化里有stylelint；</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;  </span><br><span class="line"> <span class="comment">// 文件：文件自动保存，只要暂停输入  </span></span><br><span class="line"> <span class="attr">"files.autoSave"</span>: <span class="string">"afterDelay"</span>,  </span><br><span class="line"> <span class="comment">// 文件：文件保存机制：暂停输入3000毫秒即保存  </span></span><br><span class="line"> <span class="attr">"files.autoSaveDelay"</span>: <span class="number">3000</span>,  </span><br><span class="line"> <span class="comment">// stylelint保存即格式化  </span></span><br><span class="line"> <span class="attr">"stylelint.autoFixOnSave"</span>: <span class="literal">true</span>,  </span><br><span class="line"> <span class="attr">"prettier.endOfLine"</span>: <span class="string">"auto"</span>  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="增加stylelint配置文件"><a href="#增加stylelint配置文件" class="headerlink" title="增加stylelint配置文件"></a><a href="https://www.houjiyi.com/#%E5%A2%9E%E5%8A%A0stylelint%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6" title="增加stylelint配置文件"></a>增加stylelint配置文件</h3><p>在项目根目录下放置文件<code>stylelint.config.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;  </span><br><span class="line"> root: <span class="literal">true</span>,  </span><br><span class="line"> extends: [  </span><br><span class="line"> <span class="string">"stylelint-config-standard"</span>,  </span><br><span class="line"> <span class="string">"stylelint-config-rational-order"</span>,  </span><br><span class="line"> <span class="string">"stylelint-config-prettier"</span>,  </span><br><span class="line"> ],  </span><br><span class="line"> <span class="comment">// https://stylelint.docschina.org/user-guide/rules/  </span></span><br><span class="line"> rules: &#123;  </span><br><span class="line"> <span class="comment">// 允许嵌套的深度最多 5 层  </span></span><br><span class="line"> <span class="string">"max-nesting-depth"</span>: <span class="number">5</span>,  </span><br><span class="line"> <span class="comment">// 防止::deep报错  </span></span><br><span class="line"> <span class="string">"selector-pseudo-element-no-unknown"</span>: <span class="literal">null</span>,  </span><br><span class="line"> <span class="comment">// 防止类似@mixin报错  </span></span><br><span class="line"> <span class="string">"at-rule-no-unknown"</span>: <span class="literal">null</span>,  </span><br><span class="line"> &#125;,  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a><a href="https://www.houjiyi.com/#%E6%95%88%E6%9E%9C" title="效果"></a>效果</h2><p>完成上边的步骤以后，代码中不符合规范的地方会报错，保存文件后会格式化</p>
+<p><img src="https://blogimage.houjiyi.com/Fpe9XnrrXEfCaAvsihU-MxZM8nLs" alt="image.png"></p>
+<p>保存后变为：</p>
+<p><img src="https://blogimage.houjiyi.com/FrSB-M9bNlM7hR93rFiRIk_ohAZ_" alt="image.png"></p>
+<p>这里是调整了css属性的先后顺序</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><a href="https://www.houjiyi.com/#%E6%80%BB%E7%BB%93" title="总结"></a>总结</h2><p>该配置在不同的项目上做过实验，比如less、sass,都是支持的，我们使用的是推荐配置，基本是能满足我们的需要的，我们的目的就是统一格式化样式，通过工具规范不要写出糟糕的代码，这样目的就达到了。如果在使用中发现规则不满足团队需要，改写stylelint.config.js的rules即可。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/02/vscode上关于stylelint与prettier的格式化风格统一/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vscode上关于eslint与prettier的格式化风格统一（Vue3-x-ts）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/02/vscode上关于eslint与prettier的格式化风格统一（Vue3-x-ts）/">vscode上关于eslint与prettier的格式化风格统一（Vue3.x+ts）</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/02/vscode上关于eslint与prettier的格式化风格统一（Vue3-x-ts）/" class="archive-article-date">
+  	<time datetime="2022-04-02T03:18:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>我们使用vue2.x+js的时候会用到eslint与prettier，同样在vue3.x里也会用到，只是我们观察业内主流项目发现，配置与2.x还是有些区别的，这里主要对vue3.x+ts的开发环境进行eslint+prettier的安装与使用方式进行说明</p>
+</blockquote>
+<h2 id="创建新的vue3-x-ts项目"><a href="#创建新的vue3-x-ts项目" class="headerlink" title="创建新的vue3.x+ts项目"></a><a href="https://www.houjiyi.com/#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84vue3-x-ts%E9%A1%B9%E7%9B%AE" title="创建新的vue3.x+ts项目"></a>创建新的vue3.x+ts项目</h2><p><img src="https://blogimage.houjiyi.com/Fss2apJzpTUV65oiPKWVPhcYnrhE" alt="image.png"></p>
+<p><img src="https://blogimage.houjiyi.com/FgBkuyoL4F53FpdzcVHip91ZcEy8" alt="image.png"></p>
+<p><img src="https://blogimage.houjiyi.com/FkysG4EOBHIeSHuqVa1oDQ7HWsW5" alt="image.png"></p>
+<h2 id="清点配置"><a href="#清点配置" class="headerlink" title="清点配置"></a><a href="https://www.houjiyi.com/#%E6%B8%85%E7%82%B9%E9%85%8D%E7%BD%AE" title="清点配置"></a>清点配置</h2><h3 id="需要安装的依赖"><a href="#需要安装的依赖" class="headerlink" title="需要安装的依赖"></a><a href="https://www.houjiyi.com/#%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84%E4%BE%9D%E8%B5%96" title="需要安装的依赖"></a>需要安装的依赖</h3><p>安装需要的依赖  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add -D eslint-plugin-vue@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest eslint@^7.12.1 prettier@^2.2.1 @vue/cli-plugin-eslint@~4.5.0 @vue/eslint-config-prettier@^6.0.0 @vue/eslint-config-typescript@^7.0.0 eslint-plugin-prettier@^3.3.1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"eslint-plugin-vue@latest"</span>   </span><br><span class="line"><span class="string">"@typescript-eslint/eslint-plugin@latest"</span>,  </span><br><span class="line"><span class="string">"@typescript-eslint/parser@latest"</span>,  </span><br><span class="line"><span class="string">"eslint@^7.12.1"</span>,  </span><br><span class="line"><span class="string">"prettier@^2.2.1"</span>,  </span><br><span class="line"><span class="string">"@vue/cli-plugin-eslint@~4.5.0"</span>,  </span><br><span class="line"><span class="string">"@vue/eslint-config-prettier@^6.0.0"</span>,  </span><br><span class="line"><span class="string">"@vue/eslint-config-typescript@^7.0.0"</span>,  </span><br><span class="line"><span class="string">"eslint-plugin-prettier@^3.3.1"</span>,</span><br></pre></td></tr></table></figure>
+<h3 id="vscode需要安装的插件"><a href="#vscode需要安装的插件" class="headerlink" title="vscode需要安装的插件"></a><a href="https://www.houjiyi.com/#vscode%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84%E6%8F%92%E4%BB%B6" title="vscode需要安装的插件"></a>vscode需要安装的插件</h3><p>我们需要给vscode安装插件：”dbaeumer.vscode-eslint” “esbenp.prettier-vscode”</p>
+<h3 id="调整项目settings-json配置"><a href="#调整项目settings-json配置" class="headerlink" title="调整项目settings.json配置"></a><a href="https://www.houjiyi.com/#%E8%B0%83%E6%95%B4%E9%A1%B9%E7%9B%AEsettings-json%E9%85%8D%E7%BD%AE" title="调整项目settings.json配置"></a>调整项目settings.json配置</h3><p>在项目根目录下增加<code>.vscode/settings.json</code>配置文件，它编辑器针对项目的配置；</p>
+<p>你可以根据自己的习惯进行修改，比较重要的就是保存格式化，保存后应用的格式化里有eslint；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;  </span><br><span class="line"> <span class="comment">// 文件：文件自动保存，只要暂停输入  </span></span><br><span class="line"> <span class="string">"files.autoSave"</span>: <span class="string">"afterDelay"</span>,  </span><br><span class="line"> <span class="comment">// 文件：文件保存机制：暂停输入3000毫秒即保存  </span></span><br><span class="line"> <span class="string">"files.autoSaveDelay"</span>: <span class="number">3000</span>,  </span><br><span class="line"> <span class="comment">// 编辑器：保存即格式化  </span></span><br><span class="line"> <span class="string">"editor.formatOnSave"</span>: <span class="literal">true</span>,  </span><br><span class="line"> <span class="comment">// 关闭编辑器对 js 文件的格式化，交给 ESLint 来做格式化，否则会格式化两次  </span></span><br><span class="line"> <span class="string">"\[javascript\]"</span>: &#123;  </span><br><span class="line"> <span class="string">"editor.formatOnSave"</span>: <span class="literal">false</span>  </span><br><span class="line"> &#125;,  </span><br><span class="line"> <span class="string">"prettier.endOfLine"</span>: <span class="string">"auto"</span>,  </span><br><span class="line"> <span class="comment">// 编辑器：设置默认格式化工具 有了这个就不用每个类型的文件都设置一个格式化工具，大部分用prettier，只有特殊情况需要单独设置  </span></span><br><span class="line"> <span class="string">"editor.defaultFormatter"</span>: <span class="string">"esbenp.prettier-vscode"</span>,  </span><br><span class="line"> <span class="comment">// 编辑器：保存时候的动作  </span></span><br><span class="line"> <span class="string">"editor.codeActionsOnSave"</span>: &#123;  </span><br><span class="line"> <span class="comment">// 保存的时候执行一次eslint校验  </span></span><br><span class="line"> <span class="string">"source.fixAll.eslint"</span>: <span class="literal">true</span>,  </span><br><span class="line"> <span class="comment">// 保存的时候调整import顺序，按引入包字母顺序  </span></span><br><span class="line"> <span class="string">"source.organizeImports"</span>: <span class="literal">true</span>  </span><br><span class="line"> &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="添加配置文件到项目根目录"><a href="#添加配置文件到项目根目录" class="headerlink" title="添加配置文件到项目根目录"></a><a href="https://www.houjiyi.com/#%E6%B7%BB%E5%8A%A0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%88%B0%E9%A1%B9%E7%9B%AE%E6%A0%B9%E7%9B%AE%E5%BD%95" title="添加配置文件到项目根目录"></a>添加配置文件到项目根目录</h3><p><code>.eslintrc.js</code> 文件规定了eslint的规范  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;  </span><br><span class="line"> root: <span class="literal">true</span>,  </span><br><span class="line"> env: &#123;  </span><br><span class="line"> node: <span class="literal">true</span>,  </span><br><span class="line"> &#125;,  </span><br><span class="line"> extends: [  </span><br><span class="line"> <span class="string">"plugin:vue/vue3-essential"</span>,  </span><br><span class="line"> <span class="string">"eslint:recommended"</span>,  </span><br><span class="line"> <span class="string">"@vue/typescript/recommended"</span>,  </span><br><span class="line"> <span class="string">"@vue/prettier"</span>,  </span><br><span class="line"> <span class="string">"@vue/prettier/@typescript-eslint"</span>,  </span><br><span class="line"> ],  </span><br><span class="line"> parserOptions: &#123;  </span><br><span class="line"> ecmaVersion: <span class="number">2020</span>,  </span><br><span class="line"> &#125;,  </span><br><span class="line"> rules: &#123;  </span><br><span class="line"> <span class="string">"no-console"</span>: process.env.NODE_ENV === <span class="string">"production"</span> ? <span class="string">"warn"</span> : <span class="string">"off"</span>,  </span><br><span class="line"> <span class="string">"no-debugger"</span>: process.env.NODE_ENV === <span class="string">"production"</span> ? <span class="string">"warn"</span> : <span class="string">"off"</span>,  </span><br><span class="line"> <span class="string">"vue/multi-word-component-names"</span>: <span class="number">0</span>,  </span><br><span class="line"> &#125;,  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>prettier.config.js</code>与<code>.prettierrc.js</code>文件规定了prettier的规范，增加endOfLine是为了兼容windows环境</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;  </span><br><span class="line"> endOfLine: <span class="string">"auto"</span>, <span class="comment">// 结尾是 \\n \\r \\n\\r auto  </span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="完成效果"><a href="#完成效果" class="headerlink" title="完成效果"></a><a href="https://www.houjiyi.com/#%E5%AE%8C%E6%88%90%E6%95%88%E6%9E%9C" title="完成效果"></a>完成效果</h3><p>安装完以后会发现项目中一些文件开始有警告了，这时候ctrl+s保存文件即可以将文件格式化成我们想要的样子；<br><img src="https://blogimage.houjiyi.com/FjPo8u6-9zz2jKhKgIUkM7-wg7FW" alt="image.png"></p>
+<p>保存格式化后：<br><img src="https://blogimage.houjiyi.com/Fn1IE_uM2WihVWkC-ocdqTqphivk" alt="image.png"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><a href="https://www.houjiyi.com/#%E6%80%BB%E7%BB%93" title="总结"></a>总结</h3><p>vue3.x+ts与2.x的区别主要在于单双引号，以及对象最后一个属性后的逗号，还有单行代码后的分号；我们尽量使用官方推荐配置，因此你看到eslint会比2.x更简单，实际上使用的是默认配置；在项目中如果有哪些地方不符合团队习惯，可以单独在eslint配置文件中增加或修改。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/02/vscode上关于eslint与prettier的格式化风格统一（Vue3-x-ts）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-electron-ipcRenderer引用方式引发的报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/08/electron-ipcRenderer引用方式引发的报错/">electron ipcRenderer引用方式引发的报错</a>
+    </h1>
+  
+
+        
+        <a href="/2022/02/08/electron-ipcRenderer引用方式引发的报错/" class="archive-article-date">
+  	<time datetime="2022-02-08T07:03:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>通过<code>import { ipcRenderer } from &#39;electron&#39;;</code>这种方式引用会报错如下<code>TypeError: path.join is not a function</code>：</p>
+<p><img src="https://blogimage.houjiyi.com/Fhh9uMGzklsPsWoFMwPXDyi-9S3a" alt="image.png"></p>
+<p>修改引用方式为：<code>const { ipcRenderer } = window.require(&#39;electron&#39;);</code>即可；</p>
+
       
 
       
@@ -513,7 +774,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">electron</a>
         		</li>
       		
 		</ul>
@@ -534,7 +795,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/29/通过scp上传文件-文件夹到服务器/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/02/08/electron-ipcRenderer引用方式引发的报错/">展开全文 >></a>
         </p>
       
 
@@ -564,43 +825,27 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-cypress-自动化测试（文件上传）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-EditThisCookie" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/17/cypress-自动化测试（文件上传）/">cypress 自动化测试（文件上传）</a>
+      <a class="article-title" href="/2022/01/19/EditThisCookie/">EditThisCookie</a>
     </h1>
   
 
         
-        <a href="/2021/09/17/cypress-自动化测试（文件上传）/" class="archive-article-date">
-  	<time datetime="2021-09-17T06:52:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
+        <a href="/2022/01/19/EditThisCookie/" class="archive-article-date">
+  	<time datetime="2022-01-19T06:47:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前言<br>cypress-file-upload插件使得文件上传测试变得简单。这个包添加了一个定制的Cypress命令，允许您对如何通过HTML控件上传文件进行抽象，并将重点放在测试用户工作流上。</p>
-<p>1.官方地址<br>下载地址:</p>
-<p> <a href="https://github.com/abramenal/cypress-file-upload" target="_blank" rel="noopener">https://github.com/abramenal/cypress-file-upload</a> </p>
-<p>插件使用详情可查考：</p>
-<p><a href="https://www.npmjs.com/package/cypress-file-upload#it-isnt-working-what-else-can-i-try" target="_blank" rel="noopener">https://www.npmjs.com/package/cypress-file-upload#it-isnt-working-what-else-can-i-try</a></p>
-<p>2.安装插件<br>npm<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev cypress-file-upload</span><br></pre></td></tr></table></figure></p>
-<p>3.导入插件<br>您需要将其添加<code>cypress/support/commands.js</code>如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'cypress-file-upload'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>然后，确保将commands.js导入<code>cypress/support/index.js</code>（可能会被注释）：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  <span class="string">'./commands'</span> ;</span><br></pre></td></tr></table></figure></p>
-<p>4.使用方法<br>通常的做法是将Cypress测试所需的所有文件放在<code>Cypress/fixtures</code>文件夹中。</p>
-<p>例如:新建test.txt文件</p>
-<p>测试demo<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create by dell on 2021/3/20</span></span><br><span class="line"><span class="comment"> * Author ：wencheng</span></span><br><span class="line"><span class="comment"> * 微信公众 ：自动化测试 To share</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"></span><br><span class="line">describe(<span class="string">'file_upload_test'</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    beforeEach(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        cy.login_auto()</span><br><span class="line">    &#125;)</span><br><span class="line">    it(<span class="string">'upload'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">/* ==== Generated with Cypress Studio ==== */</span></span><br><span class="line">        cy.visit(<span class="string">'/zentao/qa/'</span>);</span><br><span class="line">        cy.get(<span class="string">'[data-id="bug"] &gt; a'</span>).click();</span><br><span class="line">        cy.get(<span class="string">'p &gt; .btn'</span>).click();</span><br><span class="line">        <span class="comment">/* ==== End Cypress Studio ==== */</span></span><br><span class="line">        cy.get(<span class="string">"input[type='file']"</span>).attachFile(<span class="string">'test.txt'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>运行结果上传成功<br><img src="https://blogimage.houjiyi.com/Fp23dAS_B3cGKYKTDm9X0B1AgVyo" alt="image.png"></p>
-<p>5.注意事项<br>1.定位上传文件的dom<br>切记定位的是 `input[type=’file’]<br><img src="https://blogimage.houjiyi.com/Fp0NLcvG_-mmCFta1wZ67BvrgukW" alt="image.png"></p>
-<p>2.上传文件内容不能为空<br>当上传文件内容为空时，文件上传失败我们通过debug看下。<br><img src="https://blogimage.houjiyi.com/Fqg_9-1t-yOSY-En31giVhmatAmN" alt="image.png"></p>
-<p>未触发文件上传<br><img src="https://blogimage.houjiyi.com/FnU3iJoTDn5l90PBKA8pFWRsN7SX" alt="image.png"></p>
-<p>触发文件上传会预加载file内容<br><img src="https://blogimage.houjiyi.com/FuG6gDoBMYMgFP-WPIlhmyQuiVx3" alt="image.png"></p>
-<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值.</p>
+        <h3 id="发现一个不错的chrome插件，可以方便的管理浏览器cookie，对于localhost环境需要使用线上cookie的情况，可以很方便。"><a href="#发现一个不错的chrome插件，可以方便的管理浏览器cookie，对于localhost环境需要使用线上cookie的情况，可以很方便。" class="headerlink" title="发现一个不错的chrome插件，可以方便的管理浏览器cookie，对于localhost环境需要使用线上cookie的情况，可以很方便。"></a>发现一个不错的chrome插件，可以方便的管理浏览器cookie，对于localhost环境需要使用线上cookie的情况，可以很方便。</h3><p><img src="https://blogimage.houjiyi.com/FkpX5luHblTMJT4HI6ZTR7jFpCZJ" alt="image.png"></p>
 
       
 
@@ -614,7 +859,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
         		</li>
       		
 		</ul>
@@ -626,7 +871,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
         		</li>
       		
 		</ul>
@@ -635,7 +880,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/17/cypress-自动化测试（文件上传）/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/01/19/EditThisCookie/">展开全文 >></a>
         </p>
       
 
@@ -665,50 +910,235 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Cypress录制自动化脚本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-放假通知" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/17/Cypress录制自动化脚本/">Cypress录制自动化脚本</a>
+      <a class="article-title" href="/2022/01/18/放假通知/">放假通知</a>
     </h1>
   
 
         
-        <a href="/2021/09/17/Cypress录制自动化脚本/" class="archive-article-date">
-  	<time datetime="2021-09-17T06:37:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
+        <a href="/2022/01/18/放假通知/" class="archive-article-date">
+  	<time datetime="2022-01-18T03:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>Cypress Studio提供了一种在测试运行程序中生成测试的可视化方法，通过记录与被测应用程序的交互。支持.click（）、.type（）、.check（）、.uncheck（）和.select（）Cypress命令，这些命令将在与Cypress Studio内部的DOM交互时生成测试代码。</p>
-<h1 id="2-使用Cypress-Studio"><a href="#2-使用Cypress-Studio" class="headerlink" title="2. 使用Cypress Studio"></a>2. 使用Cypress Studio</h1><p>Cypress Studio是一个实验性功能，可以通过向配置文件添加experimentalStudio属性来启用(塞浦路斯.json默认情况下）。<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"experimentalStudio"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>我们以登录案例，以演示Cypress测试方法、模式和工作流的真实使用。它将用于演示下面Cypress Studio的功能。</p>
-<h1 id="3-扩展测试"><a href="#3-扩展测试" class="headerlink" title="3.扩展测试"></a>3.扩展测试</h1><p>您可以扩展任何先前存在的测试，也可以使用以下测试支架在您的默认情况下<code>integrationFolder</code>（<code>cypress/integration</code>在默认情况下）创建一个新测试来开始。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">'第一个录制脚本从禅道登录开始'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    beforeEach(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        cy.visit(<span class="string">'http://localhost:8080/zentao/user-login.html'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    it(<span class="string">"登录输入框功能"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h2 id="1-运行规范"><a href="#1-运行规范" class="headerlink" title="1. 运行规范"></a>1. 运行规范</h2><p>我们将使用Cypress Studio执行“新事务”用户旅程。首先，启动测试运行程序并运行在上一步中创建的规范。<br><img src="https://blogimage.houjiyi.com/FsuEGRfK4OXzF8LWcJCH3xd93O8w" alt="image.png"></p>
-<p>测试完成运行后，将鼠标悬停在命令日志中的测试上方，以显示“将命令添加到测试”按钮。单击“添加要测试的命令”将启动Cypress Studio。<br><img src="https://blogimage.houjiyi.com/FvmapFIa7x1YhSDOpAIlYtH9sVQU" alt="image.png"></p>
-<h2 id="2-启动Cypress-Studio"><a href="#2-启动Cypress-Studio" class="headerlink" title="2. 启动Cypress Studio"></a>2. 启动Cypress Studio</h2><p><img src="https://blogimage.houjiyi.com/FkhCu1daUFlpDuVabCFJV5JNNxOA" alt="image.png"><br>现在，我们可以开始更新测试以在用户之间创建新事务。</p>
-<h2 id="3-应用程式互动"><a href="#3-应用程式互动" class="headerlink" title="3.应用程式互动"></a>3.应用程式互动</h2><p>要记录操作，请开始与应用程序进行交互。在这里，我们将单击账号密码输入框，结果将看到单击记录在命令日志中。<br><img src="https://blogimage.houjiyi.com/FmIfiFLXAaRQMwNFaxxo2HaUlZab" alt="image.png"></p>
-<p>要放弃交互，请单击“取消”按钮退出Cypress Studio。如果对与应用程序的交互感到满意，请单击“保存命令”，测试代码将保存到spec文件中。</p>
-<h2 id="4-生成的测试代码"><a href="#4-生成的测试代码" class="headerlink" title="4. 生成的测试代码"></a>4. 生成的测试代码</h2><p>查看我们的测试代码，我们可以看到单击“ Save Commands”（保存命令）后更新了测试，并使用了我们在Cypress Studio中记录的操作。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">'第一个录制脚本从禅道登录开始'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    it(<span class="string">"登录输入框功能"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        cy.visit(<span class="string">'http://localhost:8080/zentao/user-login.html'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* ==== Generated with Cypress Studio ==== */</span></span><br><span class="line">        cy.get(<span class="string">'#account'</span>).type(<span class="string">'admin'</span>);</span><br><span class="line">        cy.get(<span class="string">'.col-8'</span>).click();</span><br><span class="line">        cy.get(<span class="string">':nth-child(2) &gt; td &gt; .form-control'</span>).type(<span class="string">'longshi@2020'</span>);</span><br><span class="line">        cy.get(<span class="string">'.form-actions'</span>).click();</span><br><span class="line">        cy.get(<span class="string">'#submit'</span>).click();</span><br><span class="line">        <span class="comment">/* ==== End Cypress Studio ==== */</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="5-添加新测试"><a href="#5-添加新测试" class="headerlink" title="5. 添加新测试"></a>5. 添加新测试</h2><p>您可以通过在我们定义的块上单击“添加新测试”，将新测试添加到任何现有describe或块中。context<code></code>describe<br><img src="https://blogimage.houjiyi.com/Fl5x0MTiuC2GeZ4OeMVS1KGWIBEp" alt="image.png"></p>
-<p>保存后，该文件将在cypress中再次运行。<br><img src="https://blogimage.houjiyi.com/FiPk98lQwZvtFWVkCqaIZa6AgioG" alt="image.png"></p>
-<p>最后，查看我们的测试代码，我们可以看到单击“ Save Commands”（保存命令）后更新了测试，并使用了我们在Cypress Studio中记录的操作。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">'第一个录制脚本从禅道登录开始'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    it(<span class="string">"登录输入框功能"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        cy.visit(<span class="string">'http://localhost:8080/zentao/user-login.html'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* ==== Generated with Cypress Studio ==== */</span></span><br><span class="line">        cy.get(<span class="string">'#account'</span>).type(<span class="string">'admin'</span>);</span><br><span class="line">        cy.get(<span class="string">'.col-8'</span>).click();</span><br><span class="line">        cy.get(<span class="string">':nth-child(2) &gt; td &gt; .form-control'</span>).type(<span class="string">'longshi@2020'</span>);</span><br><span class="line">        cy.get(<span class="string">'.form-actions'</span>).click();</span><br><span class="line">        cy.get(<span class="string">'#submit'</span>).click();</span><br><span class="line">        <span class="comment">/* ==== End Cypress Studio ==== */</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* === Test Created with Cypress Studio === */</span></span><br><span class="line">    it(<span class="string">'TestDemo'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">/* ==== Generated with Cypress Studio ==== */</span></span><br><span class="line">        cy.visit(<span class="string">'http://localhost：8080/zentao/user-login.html'</span>);</span><br><span class="line">        cy.get(<span class="string">'#account'</span>).type(<span class="string">'admin'</span>);</span><br><span class="line">        cy.get(<span class="string">'#login'</span>).click();</span><br><span class="line">        cy.get(<span class="string">':nth-child(2) &gt; td &gt; .form-control'</span>).type(<span class="string">'longshi@2020'</span>);</span><br><span class="line">        cy.get(<span class="string">'#submit'</span>).click();</span><br><span class="line">        cy.get(<span class="string">'[data-id="product"] &gt; a'</span>).click();</span><br><span class="line">        <span class="comment">/* ==== End Cypress Studio ==== */</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="4-插件Cypress-Recorder"><a href="#4-插件Cypress-Recorder" class="headerlink" title="4. 插件Cypress Recorder"></a>4. 插件Cypress Recorder</h2><p>通过Cypress Recorder也可以实现录制脚本<br>百度网盘下载：</p>
+        <p><img src="https://blogimage.houjiyi.com/Fi34ztJduj-x0zEBKD0rMzx-Y2PN" alt="image.png"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/生活玩乐//" class="article-tag-list-link color5">生活玩乐</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/18/放假通知/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-node-sass安装报错，排查第一步～" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/18/node-sass安装报错，排查第一步～/">node-sass安装报错，排查第一步～</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/18/node-sass安装报错，排查第一步～/" class="archive-article-date">
+  	<time datetime="2022-01-18T03:19:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>关于node-sass的安装经常会遇到报错问题，第一步先对齐node版本，node-sass不同版本对应的node版本都不一样，这是个坑，先把这个坑跳过去，其他的再根据提示百度：</p>
+<p><a href="https://github.com/sass/node-sass/releases" target="_blank" rel="noopener">node-sass版本对应node版本及系统要求</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/18/node-sass安装报错，排查第一步～/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-inquirer-js-——-一个用户与命令行交互的工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/18/inquirer-js-——-一个用户与命令行交互的工具/">inquirer.js —— 一个用户与命令行交互的工具</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/18/inquirer-js-——-一个用户与命令行交互的工具/" class="archive-article-date">
+  	<time datetime="2022-01-18T02:40:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="写在前面："><a href="#写在前面：" class="headerlink" title="写在前面："></a>写在前面：</h2><p>开始通过npm init 创建package.json的时候就有大量与用户的交互(当然也可以通过参数来忽略输入)；而现在大多数工程都是通过脚手架来创建的，使用脚手架的时候最明显的就是与命令行的交互，如果想自己做一个脚手架或者在某些时候要与用户进行交互，这个时候就不得不提到inquirer.js了。</p>
+<h2 id="零-介绍"><a href="#零-介绍" class="headerlink" title="零. 介绍"></a>零. 介绍</h2><p>由于交互的问题种类不同，inquirer为每个问题提供很多参数：</p>
+<ul>
+<li>type：表示提问的类型，包括：input, confirm, list, rawlist, expand, checkbox, password, editor；</li>
+<li>name: 存储当前问题回答的变量；</li>
+<li>message：问题的描述；</li>
+<li>default：默认值；</li>
+<li>choices：列表选项，在某些type下可用，并且包含一个分隔符(separator)；</li>
+<li>validate：对用户的回答进行校验；</li>
+<li>filter：对用户的回答进行过滤处理，返回处理后的值；</li>
+<li>transformer：对用户回答的显示效果进行处理(如：修改回答的字体或背景颜色)，但不会影响最终的答案的内容；</li>
+<li>when：根据前面问题的回答，判断当前问题是否需要被回答；</li>
+<li>pageSize：修改某些type类型下的渲染行数；</li>
+<li>prefix：修改message默认前缀；</li>
+<li>suffix：修改message默认后缀。</li>
+</ul>
 <blockquote>
-<p>链接: <a href="https://pan.baidu.com/s/1_e-Js8vEugsmNiajOySvXg" target="_blank" rel="noopener">https://pan.baidu.com/s/1_e-Js8vEugsmNiajOySvXg</a><br>提取码: 5mse </p>
+<p>上面的属性(除transformer外)在下面都有对应使用。</p>
 </blockquote>
-<h3 id="1-Cypress-Recorder安装"><a href="#1-Cypress-Recorder安装" class="headerlink" title="1. Cypress Recorder安装"></a>1. Cypress Recorder安装</h3><p>将下载的zip解压本地，加入到chrome浏览器扩展程序中<br><img src="https://blogimage.houjiyi.com/Fmeh_C7RTAK2zYaVj3QOw3TQ-6FV" alt="image.png"></p>
-<h3 id="2-启动Cypress-Recorder"><a href="#2-启动Cypress-Recorder" class="headerlink" title="2.启动Cypress Recorder"></a>2.启动Cypress Recorder</h3><p><img src="https://blogimage.houjiyi.com/Fnl69j3WCagkMALTwDt4AII6cY38" alt="image.png"></p>
-<h3 id="3-点击-Start-Recording"><a href="#3-点击-Start-Recording" class="headerlink" title="3.点击 Start Recording"></a>3.点击 Start Recording</h3><p><img src="https://blogimage.houjiyi.com/FukM0wMgFKRvzi2yX1H1U6hvxTor" alt="image.png"></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cy.visit(<span class="string">'https://www.baidu.com/'</span>);</span><br><span class="line">cy.get(<span class="string">'#lg'</span>).click();</span><br><span class="line">cy.get(<span class="string">'#kw'</span>).click();</span><br><span class="line">cy.get(<span class="string">'#kw'</span>).type(<span class="string">'博客园'</span>);</span><br><span class="line">cy.get(<span class="string">'#su'</span>).click();</span><br><span class="line">cy.get(<span class="string">'#form'</span>).submit();</span><br></pre></td></tr></table></figure>
-<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
+<h2 id="一-使用"><a href="#一-使用" class="headerlink" title="一. 使用"></a>一. 使用</h2><h3 id="0-语法结构"><a href="#0-语法结构" class="headerlink" title="0. 语法结构"></a>0. 语法结构</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> inquirer = <span class="built_in">require</span>(<span class="string">'inquirer'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> promptList = [</span><br><span class="line">    <span class="comment">// 具体交互内容</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">inquirer.prompt(promptList).then(<span class="function"><span class="params">answers</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(answers); <span class="comment">// 返回的结果</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>效果：<br><img src="https://blogimage.houjiyi.com/FpCKD8ILrREeyTTFXny-oyrHeKDZ" alt="image.png"></p>
+<h3 id="1-input"><a href="#1-input" class="headerlink" title="1. input"></a>1. input</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">'input'</span>,</span><br><span class="line">    message: <span class="string">'设置一个用户名:'</span>,</span><br><span class="line">    name: <span class="string">'name'</span>,</span><br><span class="line">    <span class="keyword">default</span>: <span class="string">"test_user"</span> <span class="comment">// 默认值</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">    type: <span class="string">'input'</span>,</span><br><span class="line">    message: <span class="string">'请输入手机号:'</span>,</span><br><span class="line">    name: <span class="string">'phone'</span>,</span><br><span class="line">    validate: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(val.match(<span class="regexp">/\d&#123;11&#125;/g</span>)) &#123; <span class="comment">// 校验位数</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"请输入11位数字"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>效果：<br><img src="https://blogimage.houjiyi.com/FpCKD8ILrREeyTTFXny-oyrHeKDZ" alt="image.png"></p>
+<h3 id="2-confirm"><a href="#2-confirm" class="headerlink" title="2. confirm"></a>2. confirm</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">"confirm"</span>,</span><br><span class="line">    message: <span class="string">"是否使用监听？"</span>,</span><br><span class="line">    name: <span class="string">"watch"</span>,</span><br><span class="line">    prefix: <span class="string">"前缀"</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">    type: <span class="string">"confirm"</span>,</span><br><span class="line">    message: <span class="string">"是否进行文件过滤？"</span>,</span><br><span class="line">    name: <span class="string">"filter"</span>,</span><br><span class="line">    suffix: <span class="string">"后缀"</span>,</span><br><span class="line">    when: <span class="function"><span class="keyword">function</span>(<span class="params">answers</span>) </span>&#123; <span class="comment">// 当watch为true的时候才会提问当前问题</span></span><br><span class="line">        <span class="keyword">return</span> answers.watch</span><br><span class="line">    &#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>效果：<br><img src="https://blogimage.houjiyi.com/Fi3aKc05lrwNw9GcyPOwQY4EMyCf" alt="image.png"></p>
+<p><img src="https://blogimage.houjiyi.com/FhRJQBDhImOxinB1o8cCZzy4twph" alt="image.png"></p>
+<h3 id="3-list"><a href="#3-list" class="headerlink" title="3. list"></a>3. list</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">'list'</span>,</span><br><span class="line">    message: <span class="string">'请选择一种水果:'</span>,</span><br><span class="line">    name: <span class="string">'fruit'</span>,</span><br><span class="line">    choices: [</span><br><span class="line">        <span class="string">"Apple"</span>,</span><br><span class="line">        <span class="string">"Pear"</span>,</span><br><span class="line">        <span class="string">"Banana"</span></span><br><span class="line">    ],</span><br><span class="line">    filter: <span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123; <span class="comment">// 使用filter将回答变为小写</span></span><br><span class="line">        <span class="keyword">return</span> val.toLowerCase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="https://blogimage.houjiyi.com/FlAakepYOGFZRnpCbQAQHMMyKGJD" alt="image.png"></p>
+<p><img src="https://blogimage.houjiyi.com/Fp7NWFvC268cc-YRvikaAcW3mCjF" alt="image.png"></p>
+<h3 id="4-rawlist"><a href="#4-rawlist" class="headerlink" title="4. rawlist"></a>4. rawlist</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">'rawlist'</span>,</span><br><span class="line">    message: <span class="string">'请选择一种水果:'</span>,</span><br><span class="line">    name: <span class="string">'fruit'</span>,</span><br><span class="line">    choices: [</span><br><span class="line">        <span class="string">"Apple"</span>,</span><br><span class="line">        <span class="string">"Pear"</span>,</span><br><span class="line">        <span class="string">"Banana"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="https://blogimage.houjiyi.com/FuRun4P5FKDtg-qk-JBpnEWkUuXq" alt="image.png"></p>
+<h3 id="5-expand"><a href="#5-expand" class="headerlink" title="5. expand"></a>5. expand</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">"expand"</span>,</span><br><span class="line">    message: <span class="string">"请选择一种水果："</span>,</span><br><span class="line">    name: <span class="string">"fruit"</span>,</span><br><span class="line">    choices: [</span><br><span class="line">        &#123;</span><br><span class="line">            key: <span class="string">"a"</span>,</span><br><span class="line">            name: <span class="string">"Apple"</span>,</span><br><span class="line">            value: <span class="string">"apple"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            key: <span class="string">"O"</span>,</span><br><span class="line">            name: <span class="string">"Orange"</span>,</span><br><span class="line">            value: <span class="string">"orange"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            key: <span class="string">"p"</span>,</span><br><span class="line">            name: <span class="string">"Pear"</span>,</span><br><span class="line">            value: <span class="string">"pear"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="https://blogimage.houjiyi.com/FmiD_gtEsgL1x-YX2mLs5uQTUftj" alt="image.png"></p>
+<p><img src="https://blogimage.houjiyi.com/FlSVA9H_Gqb6wUqo2zwaz5stIR5p" alt="image.png"></p>
+<h3 id="6-checkbox"><a href="#6-checkbox" class="headerlink" title="6. checkbox"></a>6. checkbox</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">"checkbox"</span>,</span><br><span class="line">    message: <span class="string">"选择颜色:"</span>,</span><br><span class="line">    name: <span class="string">"color"</span>,</span><br><span class="line">    choices: [</span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">"red"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">new</span> inquirer.Separator(), <span class="comment">// 添加分隔符</span></span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">"blur"</span>,</span><br><span class="line">            checked: <span class="literal">true</span> <span class="comment">// 默认选中</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">"green"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">new</span> inquirer.Separator(<span class="string">"--- 分隔符 ---"</span>), <span class="comment">// 自定义分隔符</span></span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">"yellow"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 或者下面这样</span></span><br><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">"checkbox"</span>,</span><br><span class="line">    message: <span class="string">"选择颜色:"</span>,</span><br><span class="line">    name: <span class="string">"color"</span>,</span><br><span class="line">    choices: [</span><br><span class="line">        <span class="string">"red"</span>,</span><br><span class="line">        <span class="string">"blur"</span>,</span><br><span class="line">        <span class="string">"green"</span>,</span><br><span class="line">        <span class="string">"yellow"</span></span><br><span class="line">    ],</span><br><span class="line">    pageSize: <span class="number">2</span> <span class="comment">// 设置行数</span></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="https://blogimage.houjiyi.com/FlQEg1neWZurjgb5W23IuDrc282x" alt="image.png"></p>
+<p><img src="https://blogimage.houjiyi.com/FsF6jt2iLdoYcmBhuplrp9gZEDRI" alt="image.png"></p>
+<h3 id="7-password"><a href="#7-password" class="headerlink" title="7. password"></a>7. password</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">"password"</span>, <span class="comment">// 密码为密文输入</span></span><br><span class="line">    message: <span class="string">"请输入密码："</span>,</span><br><span class="line">    name: <span class="string">"pwd"</span></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="https://blogimage.houjiyi.com/FqzRGPJO6VB7qd7Zehfc4I7vyrqF" alt="image.png"></p>
+<h3 id="8-editor"><a href="#8-editor" class="headerlink" title="8. editor"></a>8. editor</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">"editor"</span>,</span><br><span class="line">    message: <span class="string">"请输入备注："</span>,</span><br><span class="line">    name: <span class="string">"editor"</span></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>效果：<br><img src="https://blogimage.houjiyi.com/FusoJTvhhZmNfExF4nS7dhgusNtn" alt="image.png"></p>
+<p><img src="https://blogimage.houjiyi.com/FnEnsojR969ChOohJ4clHzKdW-w8" alt="image.png"></p>
+<p>写在后面：<br>Everything will be ok in the end, if it’s not ok, it’s not the end.</p>
+<p>原文地址：<a href="https://blog.csdn.net/qq_26733915/article/details/80461257" target="_blank" rel="noopener">原文链接</a></p>
 
       
 
@@ -722,7 +1152,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">nodejs</a>
         		</li>
       		
 		</ul>
@@ -734,7 +1164,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
         		</li>
       		
 		</ul>
@@ -743,530 +1173,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/17/Cypress录制自动化脚本/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Cypress测试用例的编写学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/17/Cypress测试用例的编写学习笔记/">Cypress测试用例的编写学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/17/Cypress测试用例的编写学习笔记/" class="archive-article-date">
-  	<time datetime="2021-09-17T06:29:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>cypress 底层依赖于很多优秀的开源框架，其中包含Mocha。mocha是一个适用于Node.js和浏览器的测试框架。它使用异步测试变得简单、灵活和有趣。</p>
-</blockquote>
-<h2 id="在Cypress中基于mocha提供的如下基本功能模块"><a href="#在Cypress中基于mocha提供的如下基本功能模块" class="headerlink" title="在Cypress中基于mocha提供的如下基本功能模块"></a>在Cypress中基于mocha提供的如下基本功能模块</h2><ul>
-<li>describe()</li>
-<li>context()</li>
-<li>in()</li>
-<li>before()</li>
-<li>beforeEach()</li>
-<li>afterEach()</li>
-<li>after()</li>
-<li>.only()</li>
-<li>.skip()</li>
-</ul>
-<h2 id="下面我们来说下每个函数"><a href="#下面我们来说下每个函数" class="headerlink" title="下面我们来说下每个函数"></a>下面我们来说下每个函数</h2><ul>
-<li><p>describe()<br>describe(name, function(){}) 可以理解为一个模块，在模块内可以下嵌套多个it() 参数name为字符串可以理解为测试用例集描述，function（）用于执行步骤。</p>
-</li>
-<li><p>it()<br>用于声明一个测试用例，describe()套件中必须至少含有一个it()。</p>
-</li>
-</ul>
-<h2 id="钩子函数用法"><a href="#钩子函数用法" class="headerlink" title="钩子函数用法"></a>钩子函数用法</h2><ul>
-<li>before(）初始化执行所有用例之前运行，执行一次</li>
-<li>beforeEach() 每条用例执行之前都执行</li>
-<li>afterEach() 每条用例执行之后都执行</li>
-<li>after() 初始化执行所有用例完之后运行，执行一次</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create by dell on 2020/6/6</span></span><br><span class="line"><span class="comment"> * 作者 ：wencheng</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">describe(<span class="string">'登陆web网站案列'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	before(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">//初始化执行所有用例之前运行，执行一次</span></span><br><span class="line">		cy.log(<span class="string">"我是before"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	after(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">//初始化执行所有用例完之后运行，执行一次</span></span><br><span class="line">		cy.log(<span class="string">"我是after"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	beforeEach(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">//每条用例执行之前都执行</span></span><br><span class="line">		cy.log(<span class="string">"我是beforeEach"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	afterEach(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">//每条用例执行之后都执行</span></span><br><span class="line">		cy.log(<span class="string">"我是afterEach"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	it(<span class="string">'钩子函数测试01'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		cy.log(<span class="string">"hello cypress"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	it(<span class="string">'钩子函数测试02'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		cy.log(<span class="string">"hello cypress"</span>)</span><br><span class="line">		</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行结果：</p>
-<p><img src="https://blogimage.houjiyi.com/FvXUrth1k_niae2GG6KNFYw1WJ29" alt="image.png"></p>
-<h2 id="skip-用于跳过不需要执行的测试集合describe-或者测试用例it"><a href="#skip-用于跳过不需要执行的测试集合describe-或者测试用例it" class="headerlink" title=".skip()用于跳过不需要执行的测试集合describe()或者测试用例it()"></a>.skip()用于跳过不需要执行的测试集合describe()或者测试用例it()</h2><p>跳过describe()</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create by dell on 2020/6/6</span></span><br><span class="line"><span class="comment"> * 作者 ：wencheng</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">describe.skip(<span class="string">'skip1'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	it(<span class="string">'skip函数测试01'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		cy.log(<span class="string">"hello cypress"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">describe(<span class="string">'skip12'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	it(<span class="string">'skip函数测试01'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		cy.log(<span class="string">"hello cypress"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行结果可以看出第一个describe()被忽略了</p>
-<p><img src="https://blogimage.houjiyi.com/FnF47D1mfNmvaeWBL18vZrEWHzPk" alt="image.png"></p>
-<p>跳过it()</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create by dell on 2020/6/6</span></span><br><span class="line"><span class="comment"> * 作者 ：wencheng</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"></span><br><span class="line">describe(<span class="string">'skip3'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	it.skip(<span class="string">'skip函数测试01'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		cy.log(<span class="string">"hello cypress"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	it(<span class="string">'skip函数测试02'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		cy.log(<span class="string">"hello cypress"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行结果可以看出第一个it()被忽略了</p>
-<p>.only指定要运行的测试模块describe()和测试用例it()</p>
-<p>指定要执行的测试模块describe.only()</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create by dell on 2020/6/6</span></span><br><span class="line"><span class="comment"> * 作者 ：wencheng</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">describe.only(<span class="string">'only1'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	it(<span class="string">'only函数测试01'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		cy.log(<span class="string">"hello cypress"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">describe(<span class="string">'only2'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	it(<span class="string">'only函数测试02'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		cy.log(<span class="string">"hello cypress"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行结果可以看到只有第一个测试用例集被执行了，第二个没执行。<br><img src="https://blogimage.houjiyi.com/Fv0IQJ2pMHTzzPG3oQuF5TGhthzx" alt="image.png"></p>
-<p>指定要执行的测试用例it().only()</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create by dell on 2020/6/6</span></span><br><span class="line"><span class="comment"> * 作者 ：wencheng</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">describe(<span class="string">'only3'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	it.only(<span class="string">'only函数测试01'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		cy.log(<span class="string">"hello cypress"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	it(<span class="string">'only函数测试02'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		cy.log(<span class="string">"hello cypress"</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行结果可以看到只有第一个测试用例被执行了，第二个没执行。</p>
-<p><img src="https://blogimage.houjiyi.com/FgYKvlEHDZgUpmIJPQVWJHs9NhvE" alt="image.png"></p>
-<ul>
-<li>动态使用.skip函数跳过用例</li>
-</ul>
-<p>根据判断来进行</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create by dell on 2020/6/6</span></span><br><span class="line"><span class="comment"> * 作者 ：wencheng</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">describe(<span class="string">'skip_Dynamic'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> a = <span class="number">1</span></span><br><span class="line">	it(<span class="string">'skip函数测试'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (a == <span class="number">1</span>) &#123;</span><br><span class="line">			cy.log(<span class="string">"hello cypress"</span>)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			cy.log(<span class="string">"skip cypress"</span>)</span><br><span class="line">			<span class="keyword">this</span>.skip()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	it(<span class="string">'skip函数测试'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (a == <span class="number">0</span>) &#123;</span><br><span class="line">			cy.log(<span class="string">"hello cypress"</span>)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			cy.log(<span class="string">"skip cypress"</span>)</span><br><span class="line">			<span class="keyword">this</span>.skip()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行结果<br><img src="https://blogimage.houjiyi.com/FsoBcB0m7YJdCJ3LXNsPXkwJiPgU" alt="image.png"></p>
-<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/17/Cypress测试用例的编写学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Cypress测试断言的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/17/Cypress测试断言的使用/">Cypress测试断言的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/17/Cypress测试断言的使用/" class="archive-article-date">
-  	<time datetime="2021-09-17T06:12:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>断言是测用例的必要组成部分，Cypress支持多种断言，其中包括BDD（expect/should）和TDD（assert）格式断言。</p>
-<h3 id="常见的断言方式"><a href="#常见的断言方式" class="headerlink" title="常见的断言方式"></a>常见的断言方式</h3><ul>
-<li><p>针对长度（length）的断言</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重试,直到找到3个匹配的&lt;li.selected&gt;</span></span><br><span class="line">cy.get(<span class="string">'li.selected'</span>).should(<span class="string">'have.length'</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>针对对类（Class）的断言</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重试,直到input元素没有类被disabled为止（或者超时为止）</span></span><br><span class="line">cy.get(<span class="string">'from'</span>).fijd(<span class="string">'input'</span>).should(<span class="string">'not.have.class'</span>,<span class="string">'disabled'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>针对值（Value）断言</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重试,直到textarea的值为‘iTesting’</span></span><br><span class="line">cy.get(<span class="string">'textarea'</span>).should(<span class="string">'have.value'</span>,<span class="string">'iTesting'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>针对文本内容（Text Content）的断言</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重试,直到这个span不包含“click me”字样</span></span><br><span class="line">cy.get(<span class="string">'a'</span>).parent(<span class="string">'span.help'</span>).should(<span class="string">'not.contain'</span>,<span class="string">'click me'</span>)</span><br><span class="line"><span class="comment">//重试,直到这个span包含“click me”字样</span></span><br><span class="line">cy.get(<span class="string">'a'</span>).parent(<span class="string">'span.help'</span>).should(<span class="string">'contain'</span>,<span class="string">'click me'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>针对元素可见与否（Visibility）的断言</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重试,直到这个button是可为止</span></span><br><span class="line">cy.get(<span class="string">'button'</span>).should(<span class="string">'be.visible'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>针对元素存在与否（Existence）的断言</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重试,直到id为loading的spinner不在存在</span></span><br><span class="line">cy.get(<span class="string">'#loading'</span>).should(<span class="string">'not.exist'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>针对元素状态的（State）的断言</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重试,直到这个radio button是选中状态</span></span><br><span class="line">cy.get(<span class="string">'：radio'</span>).should(<span class="string">'be.checked'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>针对CSS的断言</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重试,直到completed这个类有匹配的css为止</span></span><br><span class="line">cy.get(<span class="string">'.completed'</span>).should(<span class="string">'have.css'</span>,<span class="string">'text-decoration'</span>,<span class="string">'line-through'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>更多的断言库及其用法，请参考如下网站：</p>
-<p><a href="https://github.com/chaijs/chai​github.com" target="_blank" rel="noopener">https://github.com/chaijs/chai​github.com</a></p>
-<p><a href="https://github.com/domenic/sinon-chai​github.com" target="_blank" rel="noopener">https://github.com/domenic/sinon-chai​github.com</a></p>
-<p><a href="https://github.com/chaijs/chai-jquery​github.com" target="_blank" rel="noopener">https://github.com/chaijs/chai-jquery​github.com</a></p>
-<p>Assert - Chai​<a href="http://www.chaijs.com" target="_blank" rel="noopener">www.chaijs.com</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/17/Cypress测试断言的使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Cypress-可操作事件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/17/Cypress-可操作事件/">Cypress 可操作事件</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/17/Cypress-可操作事件/" class="archive-article-date">
-  	<time datetime="2021-09-17T05:57:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>click()<br><img src="https://blogimage.houjiyi.com/FnGC0_r2pbgwf072BWHK8xhoYvjJ" alt="image.png"></li>
-</ul>
-<p>单击DOM元素语法如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'.action-btn'</span>).click()</span><br><span class="line"><span class="comment">// clicking in the center of the element is the default</span></span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click()</span><br><span class="line"></span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'topLeft'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'top'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'topRight'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'left'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'right'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'bottomLeft'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'bottom'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'bottomRight'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// .click() accepts a an x and y coordinate</span></span><br><span class="line"><span class="comment">// that controls where the click occurs :)</span></span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>)</span><br><span class="line">  .click(<span class="number">80</span>, <span class="number">75</span>)</span><br><span class="line">  .click(<span class="number">170</span>, <span class="number">75</span>)</span><br><span class="line">  .click(<span class="number">80</span>, <span class="number">165</span>)</span><br><span class="line">  .click(<span class="number">100</span>, <span class="number">185</span>)</span><br><span class="line">  .click(<span class="number">125</span>, <span class="number">190</span>)</span><br><span class="line">  .click(<span class="number">150</span>, <span class="number">185</span>)</span><br><span class="line">  .click(<span class="number">170</span>, <span class="number">165</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// click multiple elements by passing multiple: true</span></span><br><span class="line">cy.get(<span class="string">'.action-labels&gt;.label'</span>).click(&#123; <span class="attr">multiple</span>: <span class="literal">true</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Ignore error checking prior to clicking</span></span><br><span class="line">cy.get(<span class="string">'.action-opacity&gt;.btn'</span>).click(&#123; <span class="attr">force</span>: <span class="literal">true</span> &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>dblclick()<br>双击DoM元素语法如下:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//双击DoM元素</span></span><br><span class="line">dblclick()</span><br><span class="line"><span class="comment">//带参数的双击</span></span><br><span class="line">dblclick(options)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>带参数跟上面click完全一致</p>
-<ul>
-<li>rightclick()<br>右击DoM元素语法如下:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//右击DoM元素</span></span><br><span class="line">rightclick()</span><br><span class="line"><span class="comment">//带参数的双击</span></span><br><span class="line">rightclick(options)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>带参数跟上面click完全一致</p>
-<ul>
-<li>type()</li>
-</ul>
-<p>往DOM元素中输入</p>
-<p>type()语法如下:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入文本</span></span><br><span class="line">type(text)</span><br><span class="line"><span class="comment">//输入文本带参数的</span></span><br><span class="line">rightclick(text,options)</span><br></pre></td></tr></table></figure>
-<p>text参数支持的其他如下字符如下：</p>
-<ol>
-<li>{backspace} ：删除光标左侧的字符</li>
-<li>{det} : 删除光标右侧的字符</li>
-<li>{downarrow} : 向下移动光标</li>
-<li>{end} : 将光标移到行尾</li>
-<li>{enter} ：按enter建</li>
-<li>{esc} : 按esc建</li>
-<li>{home} ： 将光标移到行首</li>
-<li>{insert} ：在光标右侧插入字符</li>
-<li>{leftarrow} ：向左移动光标</li>
-<li>{pagedowm} ：向下滚动</li>
-<li>{pageup} ：向下滚动</li>
-<li>{rigtharrow} ：向右移动光标</li>
-<li>{selectall} ：通过选择范围来选择所有文本</li>
-<li>{uparrow} ：向上移动光标</li>
-</ol>
-<ul>
-<li><p>clear()<br>clear()清除输入或文本区域的值，语法如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//清除</span></span><br><span class="line">cy.get().clear()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>check()<br>针对\&lt;input>类型的输入框（radio button） 或者复选框（check box）Cypree提供了check和uncheck方法直接操作。语法如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//选中</span></span><br><span class="line">.check()</span><br><span class="line"><span class="comment">//选中一个选项，值value</span></span><br><span class="line">.check(value)</span><br><span class="line"><span class="comment">//选中多个选项</span></span><br><span class="line">.check(values)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>uncheck()</p>
-</li>
-</ul>
-<p>uncheck()和check用法相反用于取消单选框或者复选框语法参考check()</p>
-<ul>
-<li><p>.selelct()<br>select()用来在\&lt;select>中选中一个\&lt;option>。语法如下</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.select(value)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>.trigger()<br>用来在DOM元素上触发事件。用法如下：</p>
-</li>
-</ul>
-<p>.trigger(evenName)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按下光标</span></span><br><span class="line">cy.button().trigger(<span class="string">'mousedown'</span>)</span><br><span class="line"><span class="comment">//移动光标到元素之上</span></span><br><span class="line">cy.button().trigger(<span class="string">'mouseover'</span>)</span><br><span class="line"><span class="comment">//抬起光标</span></span><br><span class="line">cy.button().trigger(<span class="string">'mouseleave'</span>)</span><br></pre></td></tr></table></figure>
-<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/17/Cypress-可操作事件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Cypress-常见操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/17/Cypress-常见操作/">Cypress 常见操作</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/17/Cypress-常见操作/" class="archive-article-date">
-  	<time datetime="2021-09-17T05:52:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>访问某个link</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//访问百度</span></span><br><span class="line">cy.visit(<span class="string">'httpf://www.baidu.com)</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取当前页面URL</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取页面地址</span></span><br><span class="line">cy.url()</span><br><span class="line">cy.url().should(<span class="string">'contain'</span>,<span class="string">'link'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>刷新页面</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 等同于F5</span></span><br><span class="line">cy.reaload()</span><br><span class="line"><span class="comment">// 等同于ctrl+F5强制刷新</span></span><br><span class="line">cy.radload(<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置窗口</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在cypress.json中添加</span></span><br><span class="line">&#123; </span><br><span class="line">   <span class="string">'viewportWidth'</span>:<span class="string">'1000'</span>,</span><br><span class="line">   <span class="string">'viewportHeight'</span>:<span class="string">'600'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//运行中设置</span></span><br><span class="line">cy.viewpoint(<span class="number">1024</span>,<span class="number">768</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>前进后退</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//后退</span></span><br><span class="line">cy.go(<span class="string">'back)</span></span><br><span class="line"><span class="string">cy.go(-1)</span></span><br><span class="line"><span class="string">//前进</span></span><br><span class="line"><span class="string">cy.go('</span>forward)</span><br><span class="line">cy.go(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>判断元素是否存在</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断check-box是否可见</span></span><br><span class="line">cy.get(<span class="string">'.check-box).should('</span>be.visible<span class="string">')</span></span><br><span class="line"><span class="string">//判断元素存在</span></span><br><span class="line"><span class="string">cy.get('</span>.check-box).should(<span class="string">'exist'</span>)</span><br><span class="line"><span class="comment">//判断元素不存在</span></span><br><span class="line">cy.get(<span class="string">'.check-box).should('</span>no exist<span class="string">')</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>条件判断</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用jquery来判断元素是否存在</span></span><br><span class="line"><span class="keyword">const</span> btn = <span class="string">'#btn'</span></span><br><span class="line">Cypress.$(btn).length&gt;<span class="number">0</span>&#123;</span><br><span class="line"> cy.get(btn).click()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取元素属性值</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取元素btn的文本</span></span><br><span class="line">cy.get(<span class="string">'#btn'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">const</span> btnTxt = $btn.text()</span><br><span class="line">   cy.log(btnTxt)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>清除文本</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//清除input输入的值</span></span><br><span class="line">cy.get(<span class="string">'div&gt;a'</span>).clear()</span><br><span class="line">cycy.get(<span class="string">'div&gt;a'</span>).clear().type()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>操作单选/多选按钮</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//选中</span></span><br><span class="line">cy.get(<span class="string">'radio'</span>).check(<span class="string">'us)</span></span><br><span class="line"><span class="string">//取消选中</span></span><br><span class="line"><span class="string">cy.get('</span>radio<span class="string">').uncheck('</span>us)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>操作下拉菜单</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'select'</span>).select(<span class="string">'下拉选项的值'</span>)</span><br><span class="line">cy.get(<span class="string">'li'</span>).eq(<span class="number">0</span>).click()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>操作弹出框</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'iframe'</span>)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">$iframe</span>)</span>&#123;</span><br><span class="line">     <span class="comment">//定义要查找的元素</span></span><br><span class="line">     <span class="keyword">const</span> $body = $iframe.contents().find(<span class="string">'body'</span>)</span><br><span class="line">     <span class="comment">//在查找到的元素中查找btn并单击</span></span><br><span class="line">     cy.wrap($body).find(<span class="string">'#bin'</span>).click()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>操作被覆盖带元素</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'#btn'</span>).click(&#123;<span class="attr">force</span>:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>模拟键盘操作</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'input'</span>).type(<span class="string">'111'</span>)</span><br><span class="line">cy.get(<span class="string">'input'</span>).type(<span class="string">'&#123;enter&#125;'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/17/Cypress-常见操作/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/01/18/inquirer-js-——-一个用户与命令行交互的工具/">展开全文 >></a>
         </p>
       
 
@@ -1298,7 +1205,7 @@ var _hmt = _hmt || [];
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1311,7 +1218,7 @@ var _hmt = _hmt || [];
     <div id="footer-info">
     	<div class="footer-left">
 			<span>京ICP备15061159号-1</span>
-    		&copy; 2021 80后
+    		&copy; 2022 80后
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1402,11 +1309,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">apicloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">计划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1418,19 +1321,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计划</a>
+                <a href="javascript:void(0)" class="js-tag color4">apicloud</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1438,11 +1333,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">域名</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1454,10 +1365,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">域名</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PWA</a>
               </li>
              
@@ -1466,11 +1373,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1483,6 +1394,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vagrant</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">prettire</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
               </li>
              
               <li class="article-tag-list-item">

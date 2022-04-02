@@ -166,695 +166,30 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Cypress执行测试并邮寄发送测试报告" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-我为什么要写vscode代码风格统一的文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/17/Cypress执行测试并邮寄发送测试报告/">Cypress执行测试并邮寄发送测试报告</a>
+      <a class="article-title" href="/2022/01/12/我为什么要写vscode代码风格统一的文章/">我为什么要写vscode代码风格统一的文章</a>
     </h1>
   
 
         
-        <a href="/2021/09/17/Cypress执行测试并邮寄发送测试报告/" class="archive-article-date">
-  	<time datetime="2021-09-17T05:36:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
+        <a href="/2022/01/12/我为什么要写vscode代码风格统一的文章/" class="archive-article-date">
+  	<time datetime="2022-01-12T07:15:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前言<br>为了高质量的软件交付，组织必须转向自动化流程，手动流程太容易出错，效率低下。对于执行CD和devops的团队来说，自动化变得越来越重要，大家只需要专注在code和review中，其它过程都尽可能的自动化。</p>
-<p>Jenkins执行python脚本运行测试并邮件发送报告<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string"> * Create by dell on 2020/9/16</span></span><br><span class="line"><span class="string"> * Author ：wencheng</span></span><br><span class="line"><span class="string"> * 微信公众 ：自动化测试 To share</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"</span><span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># coding=gbk</span></span><br><span class="line">import mimetypes</span><br><span class="line">import smtplib</span><br><span class="line">from email import encoders</span><br><span class="line">from email.mime.multipart import MIMEMultipart</span><br><span class="line">from email.mime.base import MIMEBase</span><br><span class="line">from email.mime.text import MIMEText</span><br><span class="line">import time</span><br><span class="line">import zipfile</span><br><span class="line">import os</span><br><span class="line">import shutil</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def move_file():</span><br><span class="line">    origin_path = r<span class="string">"D:\workspace\test\cypress\screenshots"</span></span><br><span class="line">    origin_path3 = r<span class="string">"D:\workspace\test\test-report.json"</span></span><br><span class="line">    new_file_name = r<span class="string">"D:\workspace\test\mochawesome-report"</span></span><br><span class="line">    shutil.move(origin_path, new_file_name)</span><br><span class="line">    shutil.move(origin_path3, new_file_name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def npx_bulid():</span><br><span class="line">    <span class="built_in">command</span> = r<span class="string">"cd D:\workspace\test &amp;&amp;</span></span><br><span class="line"><span class="string">                npx mochawesome-merge cypress/results/*.json &gt;</span></span><br><span class="line"><span class="string">                 test-report.json"</span> \</span><br><span class="line">              r<span class="string">"&amp;&amp;npx mochawesome-report-generator </span></span><br><span class="line"><span class="string">              test-report.json"</span></span><br><span class="line">    os.system(<span class="built_in">command</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def clearfile():</span><br><span class="line">    shutil.rmtree(r<span class="string">"D:\workspace\test\cypress\results"</span>)</span><br><span class="line">    shutil.rmtree(r<span class="string">"D:\workspace\test\mochawesome-report"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def file_tozip():</span><br><span class="line">    startdir = <span class="string">"mochawesome-report"</span>  <span class="comment"># 要压缩的文件夹路径</span></span><br><span class="line">    file_news = <span class="string">'mochawesome-report.zip'</span>  <span class="comment"># 压缩后文件夹的名字</span></span><br><span class="line">    z = zipfile.ZipFile(file_news, <span class="string">'w'</span>, zipfile.ZIP_DEFLATED)  <span class="comment"># 参数一：文件夹名</span></span><br><span class="line">    <span class="keyword">for</span> dirpath, dirnames, filenames <span class="keyword">in</span> os.walk(startdir):</span><br><span class="line">        fpath = dirpath.replace(startdir, <span class="string">''</span>)  <span class="comment"># 这一句很重要，不replace的话，就从根目录开始复制</span></span><br><span class="line">        fpath = fpath and fpath + os.sep or <span class="string">''</span>  <span class="comment"># 这句话理解我也点郁闷，实现当前文件夹以及包含的所有文件的压缩</span></span><br><span class="line">        <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">            z.write(os.path.join(dirpath, filename), </span><br><span class="line">            fpath + filename)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'压缩成功'</span>)</span><br><span class="line">    z.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def send_report():</span><br><span class="line">    filepath = <span class="string">"mochawesome-report.zip"</span></span><br><span class="line">    smtp_server = <span class="string">"smtp.exmail.qq.com"</span></span><br><span class="line">    username = <span class="string">"xxxxxxx "</span></span><br><span class="line">    password = <span class="string">"xxxxxxx"</span></span><br><span class="line">    sender = <span class="string">'xxxxxxx'</span></span><br><span class="line">    <span class="comment"># receivers = ["xxxxxxx","xxxxxxx","xxxxxxx"]  # 接收人</span></span><br><span class="line">    receivers = [<span class="string">'xxxxxxx'</span>]</span><br><span class="line">    current_time = time.strftime(<span class="string">'%Y-%m-%d-%H-%M-%S'</span>,</span><br><span class="line">                 time.localtime(time.time()))</span><br><span class="line">    msg = MIMEMultipart()</span><br><span class="line">    <span class="comment"># 邮件正文</span></span><br><span class="line">    msg.attach(MIMEText(<span class="string">"Hi，All："</span></span><br><span class="line">                        <span class="string">"\n  test运营系统的自动化脚本测试工具 &#123;&#125;</span></span><br><span class="line"><span class="string">                        已经完成测试报告见附件"</span></span><br><span class="line">                        <span class="string">"\n  脚本构建地址：http://xx.xx.xxx.xx:xxxx/"</span></span><br><span class="line">                        <span class="string">"\n  账号：admin 密码：123456"</span></span><br><span class="line">                        <span class="string">"\n  目前以实现测试环境xx</span></span><br><span class="line"><span class="string">                        条数,."</span>.format(current_time), <span class="string">'plain'</span>, <span class="string">'utf-8'</span></span><br><span class="line">                        ))</span><br><span class="line">    msg[<span class="string">'From'</span>] = sender</span><br><span class="line">    msg[<span class="string">'To'</span>] = <span class="string">";"</span>.join(receivers)  <span class="comment"># 多个收件人list转str</span></span><br><span class="line"></span><br><span class="line">    subject = <span class="string">"&#123;&#125;的自动化测试报告"</span>.format(current_time)</span><br><span class="line">    msg[<span class="string">'Subject'</span>] = subject</span><br><span class="line"></span><br><span class="line">    data = open(filepath, <span class="string">'rb'</span>)</span><br><span class="line">    ctype, encoding = mimetypes.guess_type(filepath)</span><br><span class="line">    <span class="keyword">if</span> ctype is None or encoding is not None:</span><br><span class="line">        ctype = <span class="string">'application/octet-stream'</span></span><br><span class="line">    maintype, subtype = ctype.split(<span class="string">'/'</span>, 1)</span><br><span class="line">    file_msg = MIMEBase(maintype, subtype)</span><br><span class="line">    file_msg.set_payload(data.read())</span><br><span class="line">    data.close()</span><br><span class="line">    encoders.encode_base64(file_msg)  <span class="comment"># 把附件编码</span></span><br><span class="line">    file_msg.add_header(<span class="string">'Content-Disposition'</span>, <span class="string">'attachment'</span>,</span><br><span class="line">     filename=<span class="string">"test.zip"</span>)  <span class="comment"># 修改邮件头</span></span><br><span class="line">    msg.attach(file_msg)</span><br><span class="line">    try:</span><br><span class="line">        server = smtplib.SMTP(smtp_server, 25)</span><br><span class="line">        server.login(username, password)</span><br><span class="line">        server.sendmail(sender, receivers, msg.as_string())</span><br><span class="line">        server.quit()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"发送成功"</span>)</span><br><span class="line">    except Exception as err:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"发送失败"</span>)</span><br><span class="line">        <span class="built_in">print</span>(err)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    npx_bulid()</span><br><span class="line">    move_file()</span><br><span class="line">    file_tozip()</span><br><span class="line">    send_report()</span><br><span class="line">    clearfile()</span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/17/Cypress执行测试并邮寄发送测试报告/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Cypress-获取table内容动态tr和td" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/17/Cypress-获取table内容动态tr和td/">Cypress 获取table内容动态tr和td</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/17/Cypress-获取table内容动态tr和td/" class="archive-article-date">
-  	<time datetime="2021-09-17T05:09:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前言<br>如何获取table内容动态tr和td的dom对象，今天给大家总结了方法。</p>
-<p>获取table中DOM元素方法总结<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">id</span>=<span class="string">"projectstatus"</span> <span class="attr">class</span>=<span class="string">"sortable pane bigtable stripped-odd"</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">tooltip</span>=<span class="string">"上次构建状态"</span> <span class="attr">title</span>=<span class="string">"上次构建状态"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span>S<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">tooltip</span>=<span class="string">"构建晴雨表"</span> <span class="attr">title</span>=<span class="string">"构建晴雨表"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span>W<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">initialsortdir</span>=<span class="string">"down"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span>名称<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span>↓<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span>上次成功<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span>上次失败<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span>上次持续时间<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">width</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"sortheader"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sortarrow"</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span> <span class="attr">id</span>=<span class="string">"job_FCA玛莎拉蒂自动化测试"</span> <span class="attr">class</span>=<span class="string">" job-status-blue"</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/blue.png"</span> <span class="attr">alt</span>=<span class="string">"成功"</span> <span class="attr">tooltip</span>=<span class="string">"成功"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-blue icon-md"</span> <span class="attr">title</span>=<span class="string">"成功"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"100"</span> <span class="attr">class</span>=<span class="string">"healthReport"</span> <span class="attr">onmouseover</span>=<span class="string">"this.className='healthReport hover';return true;</span></span></span><br><span class="line"><span class="tag"><span class="string">        "</span> <span class="attr">onmouseout</span>=<span class="string">"this.className='healthReport';return true;"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/lastBuild"</span> <span class="attr">class</span>=<span class="string">"build-health-link"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/health-80plus.png"</span> <span class="attr">alt</span>=<span class="string">"100%"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-80plus icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"healthReportDetails"</span>&gt;</span><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>W<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>%<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/16x16/health-80plus.png"</span> <span class="attr">style</span>=<span class="string">"width: 16px; height: 16px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-80plus icon-sm"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>构建稳定性: 最近没有失败的构建。<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>100<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-07-17T02:00:14Z"</span>&gt;</span></span><br><span class="line">        2 小时 56 分</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/lastSuccessfulBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#26<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-07-15T01:48:39Z"</span>&gt;</span></span><br><span class="line">        2 天 3 小时</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/lastFailedBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#7<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"1767243"</span>&gt;</span>29 分<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/FCA%E7%8E%9B%E8%8E%8E%E6%8B%89%E8%92%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/build?delay=0sec"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/clock.png"</span> <span class="attr">onclick</span>=<span class="string">"return build_id2549(this)"</span> <span class="attr">alt</span>=<span class="string">"Schedule a 构建 for1"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">title</span>=<span class="string">"Schedule a 构建 for FCA玛莎拉蒂自动化测试"</span> <span class="attr">class</span>=<span class="string">"icon-clock icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">build_id2549</span>(<span class="params">img</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">new</span> Ajax.Request(img.parentNode.href);</span></span><br><span class="line"><span class="javascript">                  hoverNotification(<span class="string">'构建 scheduled'</span>, img, <span class="number">-100</span>);</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">                &#125;<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span> <span class="attr">id</span>=<span class="string">"job_2"</span> <span class="attr">class</span>=<span class="string">" job-status-blue"</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/blue.png"</span> <span class="attr">alt</span>=<span class="string">"成功"</span> <span class="attr">tooltip</span>=<span class="string">"成功"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-blue icon-md"</span> <span class="attr">title</span>=<span class="string">"成功"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"40"</span> <span class="attr">class</span>=<span class="string">"healthReport"</span> <span class="attr">onmouseover</span>=<span class="string">"this.className='healthReport hover';return true;</span></span></span><br><span class="line"><span class="tag"><span class="string">        "</span> <span class="attr">onmouseout</span>=<span class="string">"this.className='healthReport';return true;"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/lastBuild"</span> <span class="attr">class</span>=<span class="string">"build-health-link"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/health-20to39.png"</span> <span class="attr">alt</span>=<span class="string">"40%"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-20to39 icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"healthReportDetails"</span>&gt;</span><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>W<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>%<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/16x16/health-20to39.png"</span> <span class="attr">style</span>=<span class="string">"width: 16px; height: 16px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-20to39 icon-sm"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>构建稳定性: 最近 5 次构建中有 3 次失败。<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>40<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-06-12T02:16:03Z"</span>&gt;</span></span><br><span class="line">        1 月 5 天</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/lastSuccessfulBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#16<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-06-12T01:58:43Z"</span>&gt;</span></span><br><span class="line">        1 月 5 天</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/lastFailedBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#14<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"18773"</span>&gt;</span>18 秒<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E4%B8%80%E6%B1%BD%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5%E6%8E%A5%E5%8F%A3/build?delay=0sec"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/clock.png"</span> <span class="attr">onclick</span>=<span class="string">"return build_id2550(this)"</span> <span class="attr">alt</span>=<span class="string">"Schedule a 构建 for 一汽数据运营接口"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">title</span>=<span class="string">"Schedule a 构建 for 一2"</span> <span class="attr">class</span>=<span class="string">"icon-clock icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">build_id2550</span>(<span class="params">img</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">new</span> Ajax.Request(img.parentNode.href);</span></span><br><span class="line"><span class="javascript">                  hoverNotification(<span class="string">'构建 scheduled'</span>, img, <span class="number">-100</span>);</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">                &#125;<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span> <span class="attr">id</span>=<span class="string">"job_3"</span> <span class="attr">class</span>=<span class="string">" job-status-blue"</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/blue.png"</span> <span class="attr">alt</span>=<span class="string">"成功"</span> <span class="attr">tooltip</span>=<span class="string">"成功"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-blue icon-md"</span> <span class="attr">title</span>=<span class="string">"成功"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"100"</span> <span class="attr">class</span>=<span class="string">"healthReport"</span> <span class="attr">onmouseover</span>=<span class="string">"this.className='healthReport hover';return true;</span></span></span><br><span class="line"><span class="tag"><span class="string">        "</span> <span class="attr">onmouseout</span>=<span class="string">"this.className='healthReport';return true;"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/lastBuild"</span> <span class="attr">class</span>=<span class="string">"build-health-link"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/health-80plus.png"</span> <span class="attr">alt</span>=<span class="string">"100%"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-80plus icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"healthReportDetails"</span>&gt;</span><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>W<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>%<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">thead</span>&gt;</span><span class="tag">&lt;<span class="name">tbody</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/16x16/health-80plus.png"</span> <span class="attr">style</span>=<span class="string">"width: 16px; height: 16px; "</span> <span class="attr">class</span>=<span class="string">"icon-health-80plus icon-sm"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>构建稳定性: 最近没有失败的构建。<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>100<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-07-17T02:30:49Z"</span>&gt;</span></span><br><span class="line">        2 小时 25 分</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/lastSuccessfulBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#55<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"2020-07-14T08:29:55Z"</span>&gt;</span></span><br><span class="line">        2 天 20 小时</span><br><span class="line">        - <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/lastFailedBuild/"</span> <span class="attr">class</span>=<span class="string">"model-link inside"</span>&gt;</span>#50<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">data</span>=<span class="string">"26883"</span>&gt;</span>26 秒<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"job/%E9%95%BF%E5%9F%8E%E8%BD%A6%E4%B8%BB%E5%8D%A1%E4%B8%8A%E6%8A%A5%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3/build?delay=0sec"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/ecc2f937/images/24x24/clock.png"</span> <span class="attr">onclick</span>=<span class="string">"return build_id2551(this)"</span> <span class="attr">alt</span>=<span class="string">"Schedule a 构建 for 3"</span> <span class="attr">style</span>=<span class="string">"width: 24px; height: 24px; "</span> <span class="attr">title</span>=<span class="string">"Schedule a 构建 for3"</span> <span class="attr">class</span>=<span class="string">"icon-clock icon-md"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">build_id2551</span>(<span class="params">img</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">new</span> Ajax.Request(img.parentNode.href);</span></span><br><span class="line"><span class="javascript">                  hoverNotification(<span class="string">'构建 scheduled'</span>, img, <span class="number">-100</span>);</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">                &#125;<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p><img src="https://blogimage.houjiyi.com/Frp6LrxgnFrDQPbDrjYWfNkruSwW" alt="image.png"><br>1.获取动态tr个数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">'处理table方法总结'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    beforeEach(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> username = <span class="string">"admin"</span></span><br><span class="line">        <span class="keyword">var</span> password = <span class="string">""</span></span><br><span class="line">        <span class="comment">//登陆地址</span></span><br><span class="line">        cy.visit(<span class="string">'http://xx.xx.xxx.xx:xxxx/login?from=%2F'</span>)</span><br><span class="line">        cy.get(<span class="string">'#j_username'</span>).type(username)</span><br><span class="line">        cy.get(<span class="string">'body &gt; div &gt; div &gt; form &gt; div:nth-child(2) &gt; input'</span>).type(password)</span><br><span class="line">        cy.get(<span class="string">'body &gt; div &gt; div &gt; form &gt; div.submit.formRow &gt; input'</span>).click()</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">    it(<span class="string">'动态获取tr'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        cy.get(<span class="string">'#projectstatus &gt; tbody &gt;tr'</span>).then(<span class="function">(<span class="params">$el</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> tr_total = $el.length</span><br><span class="line">            cy.log(tr_total)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);&#125;)</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://blogimage.houjiyi.com/FilWXH4zt8W2n0a29C72zQb8eJpQ" alt="image.png"><br>2.获取动态tr去断言td内容</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">'处理table方法总结'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    beforeEach(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> username = <span class="string">"admin"</span></span><br><span class="line">        <span class="keyword">var</span> password = <span class="string">""</span></span><br><span class="line">        <span class="comment">//登陆地址</span></span><br><span class="line">        cy.visit(<span class="string">'http://xx.xx.xxx.xx:xxxx/login?from=%2F'</span>)</span><br><span class="line">        cy.get(<span class="string">'#j_username'</span>).type(username)</span><br><span class="line">        cy.get(<span class="string">'body &gt; div &gt; div &gt; form &gt; div:nth-child(2) &gt; input'</span>).type(password)</span><br><span class="line">        cy.get(<span class="string">'body &gt; div &gt; div &gt; form &gt; div.submit.formRow &gt; input'</span>).click()</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">    it(<span class="string">'动态获取tr'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        cy.get(<span class="string">'#projectstatus &gt; tbody &gt;tr'</span>).then(<span class="function">(<span class="params">$el</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> tr_total = $el.length</span><br><span class="line">            cy.log(tr_total)</span><br><span class="line">            <span class="keyword">var</span> list =[<span class="string">'29 分'</span>,<span class="string">'18 秒'</span>,<span class="string">"26 秒"</span>]</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; tr_total; i++) &#123;</span><br><span class="line">                cy.get(<span class="string">'#projectstatus &gt; tbody &gt;tr'</span>).eq(i).find(<span class="string">'td:nth-child(6)'</span>)</span><br><span class="line">                    .should(<span class="string">'contain'</span>, list[i<span class="number">-1</span>])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);&#125;)</span><br></pre></td></tr></table></figure>
-<p><img src="https://blogimage.houjiyi.com/Fo_OZgN9gABXL9Ne5UfJd_dk9vuX" alt="image.png"></p>
-<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
-<p>更多文章关注小编公众号：自动化测试 To share</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/17/Cypress-获取table内容动态tr和td/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Cypress-元素定位" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/17/Cypress-元素定位/">Cypress 元素定位</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/17/Cypress-元素定位/" class="archive-article-date">
-  	<time datetime="2021-09-17T04:33:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前言<br>Cypress含有多种定位方式我们无需担心因为定位导致测试失败，Cypress有独一无二的定位策略能使你摆脱元素定位的噩梦。</p>
-<p>Cypress专有选择器</p>
-<ul>
-<li>data-cy</li>
-<li>data-test</li>
-<li>data-testid</li>
-</ul>
-<p>举例：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'main'</span> <span class="attr">class</span> = <span class="string">'btn'</span> <span class="attr">data-cy</span> = <span class="string">'submit'</span>&gt;</span>submit<span class="tag">&lt;<span class="name">button</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'main'</span> <span class="attr">class</span> = <span class="string">'btn'</span> <span class="attr">data-test</span>= <span class="string">'submit'</span>&gt;</span>submit<span class="tag">&lt;<span class="name">button</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'main'</span> <span class="attr">class</span> = <span class="string">'btn'</span> <span class="attr">data-testid</span>= <span class="string">'submit'</span>&gt;</span>submit<span class="tag">&lt;<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>获取元素方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'[data-cy=submit]'</span>).click()</span><br><span class="line">cy.get(<span class="string">'[data-test=submit]'</span>).click()</span><br><span class="line">cy.get(<span class="string">'[data-testid=submit]'</span>).click()</span><br></pre></td></tr></table></figure>
-<p>举例：<br><img src="https://blogimage.houjiyi.com/FsKusJefzm2L4lb709CcCjijV4ND" alt="image.png"><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>用户名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"account"</span> <span class="attr">id</span>=<span class="string">"account"</span> <span class="attr">autofocus</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>密码<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"keeplogin"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"checkbox-primary"</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"keepLogin[]"</span> <span class="attr">value</span>=<span class="string">"on"</span> <span class="attr">id</span>=<span class="string">"keepLoginon"</span>&gt;</span> <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"keepLoginon"</span>&gt;</span>保持登录<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"form-actions"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">id</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">data-loading</span>=<span class="string">"稍候..."</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"referer"</span> <span class="attr">id</span>=<span class="string">"referer"</span> <span class="attr">value</span>=<span class="string">"/zentao/"</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"verifyRand"</span> <span class="attr">id</span>=<span class="string">"verifyRand"</span> <span class="attr">value</span>=<span class="string">"1281275466"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/zentao/user-reset.html"</span>&gt;</span>忘记密码<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>#d选择器</li>
-</ul>
-<p>#id选择器通过html元素id属性来获取DMO</p>
-<p>获取用户名input元素方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'#account'</span>).click()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>class类选择器</li>
-</ul>
-<p>类选择器通过html元素class属性来获取DMO</p>
-<p>获取用户名input元素方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'.form-control'</span>).click()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>attributes属性选择器</li>
-</ul>
-<p>类选择器通过html元素class属性来获取DMO</p>
-<p>获取用户名input元素方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'[input[id = "account"]]'</span>).click()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>:nth-child(n)选择器</li>
-</ul>
-<p>:nth-child(n)选择器匹配属于其父元素的第n个子元素，不论元素的类型。</p>
-<p>获取用户名DOM元素方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cy.get(tbody &gt; tr:nth-child(<span class="number">1</span>) &gt; th<span class="string">')</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>Cypress.$定位器</li>
-</ul>
-<p>Cypress可以使用jQuery选择器定位</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cypress.$(<span class="string">'#account'</span>) 等价于 cy.get(<span class="string">'#account'</span>)</span><br></pre></td></tr></table></figure>
-<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/17/Cypress-元素定位/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Cypress-页面元素基本操作方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/17/Cypress-页面元素基本操作方式/">Cypress 页面元素基本操作方式</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/17/Cypress-页面元素基本操作方式/" class="archive-article-date">
-  	<time datetime="2021-09-17T04:27:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>获取DOM元素基本方式</p>
-<ol>
-<li>.find(selector) 搜索定位元素</li>
-<li>.get(selector) 搜索定位元素</li>
-<li>.contains(selector) 搜索定位元素</li>
-<li>.children() 方法用来获取DON元素的子元素</li>
-<li>.parents() 用来获取DOM元素的所有父元素</li>
-<li>.parent() 用来获取DOM元素第一层元素</li>
-<li>.siblings() 用来获取DOM元素的所有同级元素</li>
-<li>.first() 用来获取指定DOM对象的第一个元素</li>
-<li>.last() 用来获取指定DOM对象的最后一个元素</li>
-<li>.next() 用来匹配DOM对象紧跟着的下一个同级元素</li>
-<li>.nextAll() 用来匹配给定的DOM对象的所有同级元素</li>
-<li>.nextUntil() 用来匹配给定DOM对象之后的所有同级元素直到遇到Until里定义的元素为止</li>
-<li>.prev() 用来匹配给定DOM对象紧跟着的上一个同级元素</li>
-<li>.prevAll() 用来匹配给定的DOM对象之前的所有同级元素</li>
-<li>.prevUntil() 用来匹配给定DOM对象之后的所有同级元素直到遇到Until里定义的元素为止</li>
-<li>.each() 用来遍历数组及其类似结果</li>
-<li>.eq() 用来在元素或者数组中的特定索引处获取DOM元素。类似于Jquery中nth:child()</li>
-</ol>
-<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/17/Cypress-页面元素基本操作方式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Cypress端到端自动化测试学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/17/Cypress端到端自动化测试学习笔记/">Cypress端到端自动化测试学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/17/Cypress端到端自动化测试学习笔记/" class="archive-article-date">
-  	<time datetime="2021-09-17T03:46:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前言<br>一直以来，端到端的测试都是前端开发最头疼的事情。如果没有好的测试工具，一旦需求发生改变，就需要手工测试，费时费力，还会有漏网的 bug。最近接触了一款开箱即用的端到端测试工具——Cypress，真心不错，Cypress可以对在浏览器中运行的任何东西进行快速、简单和可靠的测试。</p>
-<p>windows环境安装<br>1.安装node.js<br>官网下载地址：</p>
-<p><a href="https://nodejs.org/en/download/nodejs.org" target="_blank" rel="noopener">https://nodejs.org/en/download/nodejs.org</a></p>
-<p>下载后一路傻瓜式安装，安装完成后，运行cmd，输入node –v查看版本号，然后输入npm -v 出现如下图说明安装成功<br><img src="https://blogimage.houjiyi.com/Fg2xrY3zEEndo1ypZfjZcoyDQUHf" alt="image.png"></p>
-<p>2.安装Cypress<br>自己本地电脑新建一个目录Ui_test，cd 到目录，执行 npm 指令安装</p>
-<p>cd D:\workspace\Ui_test</p>
-<p>npm install cypress  –save-dev (默认安装最新版)</p>
-<p>npm install –save-dev <a href="mailto:cypress@4.5.0" target="_blank" rel="noopener">cypress@4.5.0</a> （指定4.5.0版本）</p>
-<p>这里博主安装的是4.5.0版本，安装会很慢，耐心等待会。</p>
-<p>出现如下说明安装成功了<br><img src="https://blogimage.houjiyi.com/FkrSmBk8N5LFiuv_l6YylCFGi3ZI" alt="image.png"></p>
-<p>启动cypress<br>首先在D:\workspace\UI_test目录下新建一个 package.json 文件配置如下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"cypress:open"</span>: <span class="string">"cypress open"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>现在，您可以在D:\workspace\Ui_test目下用如下命令启动</p>
-<p>npm run cypress:open或者npx cypress open</p>
-<p>启动成功展示：<br><img src="https://blogimage.houjiyi.com/Fj-IVIG9QZONZpNZYavqx8zxHDuR" alt="image.png"></p>
-<p>2.现在我们开始写第一个自动化示例程序：<br>官方文档：</p>
-<p><a href="https://docs.cypress.io/guidesdocs.cypress.io" target="_blank" rel="noopener">https://docs.cypress.io/guidesdocs.cypress.io</a></p>
-<p>先说一下cypress的目录结构。cypress共有七个目录，还有一个cypress.json文件<br><img src="https://blogimage.houjiyi.com/Ft4kgPU-46v5BCH2imu4efP3l4oI" alt="image.png"></p>
-<p>编写测试case<br>脚本实现功能：</p>
-<p>1.输入访问地址</p>
-<p>2.获取元素</p>
-<p>3.输入账号密码</p>
-<p>4.登陆</p>
-<p>5.断言</p>
-<p>在 integration 目录下新建你的工程目录，如demo，下面拿login.js文件为实例<br><img src="https://blogimage.houjiyi.com/FgMS8UpmF9icCA9QDIQJ5pKnZUA8" alt="image.png"></p>
-<p>describe 声明一个测试用例集</p>
-<p>beforeEach 测试用例前置操作，相当于setup</p>
-<p>it声明了一个测试用例</p>
-<p>cy.get 定位元素，用css selector定位选择器</p>
-<p>should 断言控件含有内容</p>
-<p>cy.visit(“/地址”)</p>
-<p>case编写完切换到项目根目录执行命令npm run cypress:open或者npx cypress open<br><img src="https://blogimage.houjiyi.com/FrJBEiXzhuuoWF67h7Jyug20xiaW" alt="image.png"></p>
-<p>运行效果<br><img src="https://blogimage.houjiyi.com/FgnOmLWCz0CwHNI64o7xjuN-dywa" alt="image.png"></p>
-<p>生成测试报告<br>npm安装 npm install –save-dev mocha mochawesome mochawesome-merge mochawesome-report-generator</p>
-<p>在 cypress.json 设置相关参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"env"</span>: &#123;</span><br><span class="line">        <span class="string">"search"</span>:<span class="string">"Cypress e2e"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"reporter"</span>: <span class="string">"mochawesome"</span>,</span><br><span class="line">    <span class="string">"reporterOptions"</span>: &#123;</span><br><span class="line">        <span class="string">"reportDir"</span>: <span class="string">"cypress/results"</span>,</span><br><span class="line">        <span class="string">"overwrite"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">"html"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">"json"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>执行 npx cypress run或者npm run cypress:open</p>
-<p>出现如下图说明执行成功了<br><img src="https://blogimage.houjiyi.com/FooN1XsXEbVup7f2naYlN6rKAa5g" alt="image.png"></p>
-<p>生成html测试报告<br><img src="https://blogimage.houjiyi.com/FvK__kmZnKNn7UKG2M5KUdkR6VPj" alt="image.png"></p>
-<p>生成xxx.mp4视频<br><img src="https://blogimage.houjiyi.com/Fu4jcwq_BXgnOAbZbXu9l6kBbjmx" alt="image.png"></p>
-<p>想转行做自动化测试的朋友们，想追求新技术助力公司成长的朋友们，未来5年弯道超车的机会，也许就在今天！</p>
-<p>推荐几个好的学习素材</p>
-<p><a href="https://github.com/cypress-io/cypressgithub.com" target="_blank" rel="noopener">https://github.com/cypress-io/cypressgithub.com</a></p>
-<p><a href="https://github.com/cypress-io/cypress-example-recipes/github.com" target="_blank" rel="noopener">https://github.com/cypress-io/cypress-example-recipes/github.com</a></p>
-<p><a href="https://github.com/cypress-io/cypress-example-kitchensink/github.com" target="_blank" rel="noopener">https://github.com/cypress-io/cypress-example-kitchensink/github.com</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/17/Cypress端到端自动化测试学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-开发排期及开发过程的一些思考" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/06/开发排期及开发过程的一些思考/">开发排期及开发过程的一些思考</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/06/开发排期及开发过程的一些思考/" class="archive-article-date">
-  	<time datetime="2021-09-06T08:35:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>项目经理评审后，大概知道要做什么，如果没有UEUI则可以直接给出工期，即使有也可以大概根据以往经验给一个大致工期；</li>
-<li>如果有UEUI则需要等UEUI给出后，根据交互复杂度和UI复杂度调整工期；</li>
-<li>根据UEUI给的排期结束时间点，结合自身情况给出准确排期；</li>
-<li>联调的长短与合作的后端同事关系重大，不同的后端合作应适当调整联调的工期；</li>
-<li>结合前后端排期相对靠后的时间点给出联调排期；</li>
-<li>无论项目大小，最好能有思维导图对项目细节进行梳理，这时候主要是梳理产品文档中的逻辑细节，做到不遗漏；</li>
-<li>最后通过项目管理工具（推荐OmniPlan）对项目工作点进行分类安排；</li>
-<li>经过上述步骤以后，则可以按照项目管理工具的计划进行项目开发；</li>
-<li>项目开发过程中需与后端进行沟通，尤其重点环节需要沟通技术方案，避免前后端实现思路不一致的问题；</li>
-<li>前端需要求后端尽快提供接口文档（不需要实现），保证前后端对接思路的一致；</li>
-<li>前端通过本地Mock数据，尽可能保证细节完整，保证后续联调能够节省时间。</li>
-<li>开发过程中保持专注很重要，思考可能产生的任何风险，大部分风险都可以在开发过程中发现、提出并交给相应的人解决；</li>
-<li>对于解决不了的技术问题，通过调整产品的设计思路绕过去也是一种不错的方法；</li>
-<li>不提倡使用晚走和加班的方式来提高产出，需要不断总结和提高个人技能来提高工作效率；</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发/项目总结//" class="article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/06/开发排期及开发过程的一些思考/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-老板的话～可以被奉为经典的话" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/14/老板的话～可以被奉为经典的话/">老板的话～可以被奉为经典的话</a>
-    </h1>
-  
-
-        
-        <a href="/2021/07/14/老板的话～可以被奉为经典的话/" class="archive-article-date">
-  	<time datetime="2021-07-14T06:19:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>中国共产党走过了100年 我作为一名党员的时间是19年 在校园时代初入党的我稚气未脱 入党那时给我的感觉更多的是一种青年对比同龄人的自豪 入党让我又多了一些责任感 我成长在军人家庭 性格直率 爱憎分明 直言不讳 我喜欢的工作环境也是希望人人能够坦诚相待 关心彼此 </p>
-</blockquote>
-<blockquote>
-<p>那么多人拥护共产党 党最值得自豪的最成功地方就是让大多数普通党员保持了奉献服务的本色和初心 并且因此产生自豪感荣誉感 感染别人的上进心  党领导集体的另一个优点就是学习 能看到不足 能快速学习 能快速适应 不断进步</p>
-</blockquote>
-<blockquote>
-<p>党走过一些弯路 也有过灰暗的错误经历 最后实践出来一句话 实事求是 遇到事情 刨根问底弄清楚 不道听途说 不轻言轻信 相信每一个人 也直面每个问题 最终能够取得安心</p>
-</blockquote>
-<blockquote>
-<p>己欲立而立人 己欲达而达人 只有自己活明白 觉得自己明白 觉得自己正确 对别人的是非保持漠不关心 或者瞧不起别人就施以鄙视 我觉得都是一样的自私 因为不好的情绪和积极的情绪一样 都会传染 表达了负面情绪 并不会让这个世界变好 也许自己也不会因此舒服多久 正常人的内心都是很柔软的<br>最近公司人多了起来 我也确实听到了一些文化反馈 同件事 我问不同的人 反馈的看法不同 这是挺可怕的 我挺希望相关的同学能够多沟通 而不是彼此不沟通 但是心生疑虑 觉得提出来又恶心 如果你放在心里不舒服 何不把他讲出来 弄明白</p>
-</blockquote>
-<blockquote>
-<p>我前阵子发了一个运营中心成立的邮件 因为在出差途中 我用手机排版 但是忽略了很多人用pc收件 于是出现了落款和换行的不整齐 我发出去后 马上就有人提醒我 跟我说以后要注意 我觉得这就挺好 彼此关心 互相提醒</p>
-</blockquote>
-<blockquote>
-<p>但如果我们都觉得说了也白说 那彼此都不会变好了 </p>
-</blockquote>
-<blockquote>
-<p>每个人做事一定有原因 或者潜意识 如果造成别人不理解 不舒服 自己有责任了解 不舒服的对方也可以问出来你为什么要这样说这样做 问了 可能彼此就多一些了解 我曾经有很多不自觉不自知的缺点 都是在工作中一点点被指出来 我才意识到改进 我们各自的缺点 总是被爱的人纵容 但长久的爱不仅仅是忍耐 还有启示 叫醒他人的迷途 也是爱</p>
-</blockquote>
-<blockquote>
-<p>有话不直说绕弯子 旁敲侧击打听 对没有过错的人扣帽子 拿公司或者其他领导的话上纲上线的施压 用一些所谓的招数给别人使绊子 这些都是很差劲的行为 对于这些行为 在我这里不能包容 </p>
-</blockquote>
-<blockquote>
-<p>有疑问直接问 觉得不明白跟当事人或者负责人指出来 一件事情推动到底 推不动了可以坚持 比如去找彼此的上级讲明原因取得共识 不能被说服的事发起会议讨论 给我或者合伙人邮件或者微信 我们有许多方法让彼此晚上睡觉踏实 不要成为他人的毒药 尽可能温暖善良<br>党的一百年 酸甜苦辣都尝遍 这背后有许多付出和牺牲 有今天的发展成就和信心 也不是任何一两个人的单打独斗 这是集体主义的胜利 不需要每个人每天都是英雄 但是大家都尊重英雄 做好自己 都心向正念 日常累积善举 危难之际有人挺身而出而不会四顾无人…<br>总而言之 希望同行的同学 能够坚持善良 敢为 有所为</p>
-</blockquote>
+        <p><img src="https://blogimage.houjiyi.com/FtrWLj-2qjMM5O4LE86UFPUtiP_h" alt="image.png"></p>
+<p>原因还是有的，这并不是一个任务还是什么，我是webstorm的重度用户，从开始干前端一直使用webstorm，各种快捷键，各种使用方法都融汇贯通，不过最近发现一个问题，总使用盗版的也不合适，还有被人发现的风险，索性直接使用vscode，因此遇到一系列各种各样的问题，我把这些记录下来，就当是祭奠webstorm和迎接vscode的一个仪式吧～</p>
+<p><img src="https://blogimage.houjiyi.com/FqYorlledUmfXCTXivuQIPbrLYxR" alt="image.png"></p>
+<p>webstorm将逐渐随风远去，接下来由vscode伴我继续前行～</p>
 
       
 
@@ -880,7 +215,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/项目总结//" class="article-tag-list-link color5">项目总结</a>
+        			<a href="/categories/生活玩乐//" class="article-tag-list-link color5">生活玩乐</a>
         		</li>
       		
 		</ul>
@@ -889,7 +224,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/14/老板的话～可以被奉为经典的话/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/01/12/我为什么要写vscode代码风格统一的文章/">展开全文 >></a>
         </p>
       
 
@@ -919,20 +254,20 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-如何通过容器创建镜像-创建符合需求的打包镜像" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-vscode上关于eslint与prettier的格式化风格统一（Vue2-0-js）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/14/如何通过容器创建镜像-创建符合需求的打包镜像/">如何通过容器创建镜像,创建符合需求的打包镜像</a>
+      <a class="article-title" href="/2022/01/11/vscode上关于eslint与prettier的格式化风格统一（Vue2-0-js）/">vscode上关于eslint与prettier的格式化风格统一（Vue2.0+js）</a>
     </h1>
   
 
         
-        <a href="/2021/07/14/如何通过容器创建镜像-创建符合需求的打包镜像/" class="archive-article-date">
-  	<time datetime="2021-07-14T06:06:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-14</time>
+        <a href="/2022/01/11/vscode上关于eslint与prettier的格式化风格统一（Vue2-0-js）/" class="archive-article-date">
+  	<time datetime="2022-01-11T07:18:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-11</time>
 </a>
         
       </header>
@@ -940,16 +275,48 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>docker的基本操作不做赘述，随用随查即可，常用到的是如何创建打包镜像，这个镜像是用来打包的，可能需要调整镜像的一些配置：</p>
+<p>通常我们使用VsCode编辑器进行软件开发的时候都会安装prettier和eslint两个插件，插件的作用是为了我们编写出更规范和一致的代码，方便我们后续的开发和维护，但是，有时候我们发现即便是同一个项目下的同学，使用这些插件的方法也是有差异的，这就造成不同的人开发出的代码规范不同，不能说谁对谁错，但这在团队合作中造成了不必要的麻烦，我们有必要遵循一种编码规范，进而避免这种情况的产生，于是我们对现有的规范和成熟的项目进行了梳理对比，总结出一套自认为还算合适的配置，希望能够在项目中帮助到其他人；</p>
+</blockquote>
+<h2 id="创建vue项目"><a href="#创建vue项目" class="headerlink" title="创建vue项目"></a>创建vue项目</h2><p>我们这里使用相对规范的方式创建一个vue空项目，尽量避免已有项目对我们的干扰</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create demo</span><br></pre></td></tr></table></figure>
+<p>默认项目会帮我们创建babel和eslint，不过我们需要一个没有eslint的环境，因此我们选择<code>Manually select features</code><br><img src="https://blogimage.houjiyi.com/FsfqImUeJ4ZpnDcRx21qHpISpwwz" alt="image.png"></p>
+<p>我们这里只保留了，Babel，至于Router、Vuex以及其他配置对于我们这里的实例没有影响，可以根据项目需要进行选择，只要保证<code>Linter / Formatter</code>没有勾选即可，因为我们后边还会对项目进行Eslint的初始化，这里选上会干扰我们使用。<br><img src="https://blogimage.houjiyi.com/Fpj_1Ay1G8yjYM282l9G6W6xpVaI" alt="image.png"></p>
+<p>然后是vue版本，我们使用2.x<br><img src="https://blogimage.houjiyi.com/FrC9e69c9RSlODK5Nt6FmkNzWfGf" alt="image.png"></p>
+<p>剩下的使用默认配置按回车，然后等待项目初始化完成<br><img src="https://blogimage.houjiyi.com/FgH1rtghdVpoYrO7dscCVMIcDH0-" alt="image.png"></p>
+<h2 id="esLint初始化"><a href="#esLint初始化" class="headerlink" title="esLint初始化"></a>esLint初始化</h2><p>首先这里我们全局安装一下eslint，方便我们使用eslint工具进行初始化<code>npm install eslint -g</code><br><img src="https://blogimage.houjiyi.com/FgnO6MlpVmgOtOSl6mT9UZfu7MZO" alt="image.png"></p>
+<p>然后进到项目根目录，项目初始结构是这样的，这里可以关注下依赖的包：<br><img src="https://blogimage.houjiyi.com/FkT8FGdr_TaWCrPzT2V_-66_Q-YD" alt="image.png"></p>
+<p>然后我们执行<code>eslint --init</code>，会让我们做一些基础配置，下边是过程中配置非默认的一些截图：<br><img src="https://blogimage.houjiyi.com/Fkq4BaIHtrODfYRay179-bntLqHu" alt="image.png"><br><img src="https://blogimage.houjiyi.com/FpmZsZWWESftSQgeFqdiEjz2_BIS" alt="image.png"><br><img src="https://blogimage.houjiyi.com/Fj4BpPmWj9P55n10ICCPl6gNNUEW" alt="image.png"></p>
+<p>初始化过程中，他安装了一些依赖，这些是初始化项目里没有的；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"eslint"</span>: <span class="string">"^7.32.0"</span>,</span><br><span class="line"><span class="string">"eslint-config-standard"</span>: <span class="string">"^16.0.3"</span>,</span><br><span class="line"><span class="string">"eslint-plugin-import"</span>: <span class="string">"^2.25.4"</span>,</span><br><span class="line"><span class="string">"eslint-plugin-node"</span>: <span class="string">"^11.1.0"</span>,</span><br><span class="line"><span class="string">"eslint-plugin-promise"</span>: <span class="string">"^5.2.0"</span>,</span><br><span class="line"><span class="string">"eslint-plugin-vue"</span>: <span class="string">"^8.2.0"</span>,</span><br></pre></td></tr></table></figure></p>
+<p>同时，增加了<code>.eslintrc.js</code>文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  env: &#123;</span><br><span class="line">    browser: <span class="literal">true</span>,</span><br><span class="line">    es2021: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  extends: [<span class="string">'plugin:vue/essential'</span>, <span class="string">'standard'</span>],</span><br><span class="line">  parserOptions: &#123;</span><br><span class="line">    ecmaVersion: <span class="number">13</span>,</span><br><span class="line">    sourceType: <span class="string">'module'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [<span class="string">'vue'</span>],</span><br><span class="line">  rules: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>至此，eslint的安装就结束了，安装完成以后package.json大概是这个样子：<br><img src="https://blogimage.houjiyi.com/FtjtSZn_seL3loNaJ3Mpg5v9Idwg" alt="image.png"><br>后边对项目的改造主要是对.eslintrc.js以及安装它的依赖，以达到我们项目开发规范化的目的；</p>
+<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2><p>准备好我们配置好的文件<code>.eslintrc.js</code> <code>prettier.config.js</code> <code>settings.json</code></p>
+<p><code>.eslintrc.js</code>和<code>prettier.config.js</code>分别是eslint和prettier的配置文件；</p>
+<p><code>setting.json</code>则是vscode编辑器的配置，这里只需要把里边的配置增加到自己的settings.json配置文件里即可，不需要全部覆盖，因为settings.json还有一些我们自己的个性化配置，这里的配置主要是一些跟代码格式化相关的通用配置；</p>
+<p>.eslintrc.js文件：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* eslint-disable */</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  root: <span class="literal">true</span>,</span><br><span class="line">  env: &#123;</span><br><span class="line">    browser: <span class="literal">true</span>,</span><br><span class="line">    node: <span class="literal">true</span>,</span><br><span class="line">    es6: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  extends: [<span class="string">'plugin:vue/recommended'</span>, <span class="string">'standard'</span>],</span><br><span class="line">  parserOptions: &#123;</span><br><span class="line">    parser: <span class="string">'@babel/eslint-parser'</span>,</span><br><span class="line">    sourceType: <span class="string">'module'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 自定义规则，当与基础规则发生冲突时，覆盖基础规则</span></span><br><span class="line">  <span class="comment">// "off" 或 0 - 关闭规则;</span></span><br><span class="line">  <span class="comment">// "warn" 或 1 - 开启规则，使用警告级别的错误;</span></span><br><span class="line">  <span class="comment">// "error" 或 2 - 开启规则，使用错误级别的错误</span></span><br><span class="line">  rules: &#123;</span><br><span class="line">    <span class="comment">// 每行最大属性个数，如果是多行，每行最多一个属性</span></span><br><span class="line">    <span class="string">'vue/max-attributes-per-line'</span>: [</span><br><span class="line">      <span class="string">'error'</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        singleline: <span class="number">10</span>,</span><br><span class="line">        multiline: &#123;</span><br><span class="line">          max: <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 忽略html标签自闭合 vue中html自终止标签是否写‘/’</span></span><br><span class="line">    <span class="string">'vue/html-self-closing'</span>: <span class="string">'off'</span>,</span><br><span class="line">    <span class="comment">// 单行html元素内容在新的一行</span></span><br><span class="line">    <span class="string">'vue/singleline-html-element-content-newline'</span>: <span class="string">'off'</span>,</span><br><span class="line">    <span class="comment">// 多行html元素内容在新的一行</span></span><br><span class="line">    <span class="string">'vue/multiline-html-element-content-newline'</span>: <span class="string">'off'</span>,</span><br><span class="line">    <span class="comment">// 关闭v-html的校验，因为我们可能会用到富文本编辑器</span></span><br><span class="line">    <span class="string">'vue/no-v-html'</span>: <span class="string">'off'</span>,</span><br><span class="line">    <span class="comment">// 一行内容最长有多少字符</span></span><br><span class="line">    <span class="string">'max-len'</span>: [<span class="string">'error'</span>, &#123; <span class="attr">code</span>: <span class="number">200</span> &#125;],</span><br><span class="line">    <span class="comment">// 函数名称或function关键字与开始参数之间允许有空格:关 默认为开 与prettier冲突</span></span><br><span class="line">    <span class="string">'space-before-function-paren'</span>: [<span class="string">'error'</span>, <span class="string">'never'</span>],</span><br><span class="line">    <span class="comment">// 语句末尾不允许有';'：开</span></span><br><span class="line">    semi: [<span class="string">'error'</span>, <span class="string">'never'</span>],</span><br><span class="line">    <span class="comment">// 不允许使用var</span></span><br><span class="line">    <span class="string">'no-var'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="comment">// 是否允许promise中 reject()内无内容</span></span><br><span class="line">    <span class="string">'prefer-promise-reject-errors'</span>: [<span class="string">'error'</span>, &#123; <span class="attr">allowEmptyReject</span>: <span class="literal">true</span> &#125;]</span><br><span class="line">    <span class="comment">// 不允许对象嵌套对象的大括号之间有空格 例如：&#123; query: &#123; id: row.id &#125;[这里]&#125;</span></span><br><span class="line">    <span class="comment">// 某些框架下会使用下边的配置，比如elementUI-admin</span></span><br><span class="line">    <span class="comment">// 'object-curly-spacing': [</span></span><br><span class="line">    <span class="comment">//   2,</span></span><br><span class="line">    <span class="comment">//   'always',</span></span><br><span class="line">    <span class="comment">//   &#123;</span></span><br><span class="line">    <span class="comment">//     objectsInObjects: false</span></span><br><span class="line">    <span class="comment">//   &#125;</span></span><br><span class="line">    <span class="comment">// ]</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>prettier.config.js文件：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  printWidth: <span class="number">200</span>, <span class="comment">// 设置prettier单行输出（不折行）的（最大）长度</span></span><br><span class="line"></span><br><span class="line">  tabWidth: <span class="number">2</span>, <span class="comment">// 设置工具每一个水平缩进的空格数</span></span><br><span class="line"></span><br><span class="line">  useTabs: <span class="literal">false</span>, <span class="comment">// 使用tab（制表位）缩进而非空格</span></span><br><span class="line"></span><br><span class="line">  semi: <span class="literal">false</span>, <span class="comment">// 在语句末尾添加分号</span></span><br><span class="line"></span><br><span class="line">  singleQuote: <span class="literal">true</span>, <span class="comment">// 使用单引号而非双引号</span></span><br><span class="line"></span><br><span class="line">  jsxSingleQuote: <span class="literal">false</span>, <span class="comment">// jsx 不使用单引号，而使用双引号</span></span><br><span class="line"></span><br><span class="line">  trailingComma: <span class="string">'none'</span>, <span class="comment">// 在任何可能的多行中输入尾逗号</span></span><br><span class="line"></span><br><span class="line">  bracketSpacing: <span class="literal">true</span>, <span class="comment">// 在对象字面量声明所使用的的花括号后（&#123;）和前（&#125;）输出空格</span></span><br><span class="line"></span><br><span class="line">  jsxBracketSameLine: <span class="literal">true</span>, <span class="comment">// 在多行JSX元素最后一行的末尾添加 &gt; 而使 &gt; 单独一行（不适用于自闭和元素）</span></span><br><span class="line"></span><br><span class="line">  arrowParens: <span class="string">'always'</span>, <span class="comment">// 为单行箭头函数的参数添加圆括号，参数个数为1时可以省略圆括号</span></span><br><span class="line"></span><br><span class="line">  rangeStart: <span class="number">0</span>, <span class="comment">// 只格式化某个文件的一部分</span></span><br><span class="line"></span><br><span class="line">  rangeEnd: <span class="literal">Infinity</span>, <span class="comment">// 只格式化某个文件的一部分</span></span><br><span class="line"></span><br><span class="line">  filepath: <span class="string">'none'</span>, <span class="comment">// 指定文件的输入路径，这将被用于解析器参照</span></span><br><span class="line"></span><br><span class="line">  requirePragma: <span class="literal">false</span>, <span class="comment">// (v1.7.0+) Prettier可以严格按照按照文件顶部的一些特殊的注释格式化代码，这些注释称为“require pragma”(必须杂注)</span></span><br><span class="line"></span><br><span class="line">  insertPragma: <span class="literal">false</span>, <span class="comment">//  (v1.8.0+) Prettier可以在文件的顶部插入一个 @format的特殊注释，以表明改文件已经被Prettier格式化过了。</span></span><br><span class="line"></span><br><span class="line">  proseWrap: <span class="string">'preserve'</span> <span class="comment">// (v1.8.2+)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>setting.json文件部分配置：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件：文件自动保存，只要暂停输入</span></span><br><span class="line">  "files.autoSave": "afterDelay",</span><br><span class="line">  <span class="comment">// 文件：文件保存机制：暂停输入3000毫秒即保存</span></span><br><span class="line">  "files.autoSaveDelay": 3000,</span><br><span class="line">  <span class="comment">// 编辑器：这个属性是用来设置建议值的，就是我们在输入co时，编辑器提示我们const这个功能。推荐设置为first——即每次默认选中推荐值第一个，比如你输入co，推荐值为const和constant（按顺序），那么就会选择const。</span></span><br><span class="line">  <span class="comment">// 当然，也推荐设置为recentlyUsedByPrefix，即上次你选择或者输入过什么，这次就默认选中什么，比如你输入co，推荐值为const和constant（按顺序），上次你选择了constant，这次就还是默认选中cosntant</span></span><br><span class="line">  "editor.suggestSelection": "recentlyUsedByPrefix",</span><br><span class="line">  <span class="comment">// 编辑器：保存即格式化</span></span><br><span class="line">  <span class="comment">// "editor.formatOnSave": true,</span></span><br><span class="line">  <span class="comment">// 编辑器：设置默认格式化工具 有了这个就不用每个类型的文件都设置一个格式化工具，大部分用prettier，只有特殊情况需要单独设置</span></span><br><span class="line">  "editor.defaultFormatter": "esbenp.prettier-vscode",</span><br><span class="line">  <span class="comment">// 编辑器：设置编辑器字体16号</span></span><br><span class="line">  "editor.fontSize": 16,</span><br><span class="line">  <span class="comment">// 编辑器：保存时候的动作</span></span><br><span class="line">  "editor.codeActionsOnSave": &#123;</span><br><span class="line">    <span class="comment">// 保存的时候执行一次eslint校验</span></span><br><span class="line">    "source.fixAll.eslint": true,</span><br><span class="line">    <span class="comment">// 保存的时候调整import顺序，按引入包字母顺序</span></span><br><span class="line">    "source.organizeImports": true</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>把这两个文件放到项目根目录，同时把setting.json的配置放到编辑器里边，入口可以参考下图<br><img src="https://blogimage.houjiyi.com/Fvz_n3_tDUbbbJocKvviGvfVRDVa" alt="image.png"></p>
+<p>然后是我本地的完整的配置，仅供参考：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 文件：文件自动保存，只要暂停输入</span></span><br><span class="line">  <span class="attr">"files.autoSave"</span>: <span class="string">"afterDelay"</span>,</span><br><span class="line">  <span class="comment">// 文件：文件保存机制：暂停输入3000毫秒即保存</span></span><br><span class="line">  <span class="attr">"files.autoSaveDelay"</span>: <span class="number">3000</span>,</span><br><span class="line">  <span class="comment">// 编辑器：这个属性是用来设置建议值的，就是我们在输入co时，编辑器提示我们const这个功能。推荐设置为first——即每次默认选中推荐值第一个，比如你输入co，推荐值为const和constant（按顺序），那么就会选择const。</span></span><br><span class="line">  <span class="comment">// 当然，也推荐设置为recentlyUsedByPrefix，即上次你选择或者输入过什么，这次就默认选中什么，比如你输入co，推荐值为const和constant（按顺序），上次你选择了constant，这次就还是默认选中cosntant</span></span><br><span class="line">  <span class="attr">"editor.suggestSelection"</span>: <span class="string">"recentlyUsedByPrefix"</span>,</span><br><span class="line">  <span class="comment">// 编辑器：保存即格式化</span></span><br><span class="line">  <span class="comment">// "editor.formatOnSave": true,</span></span><br><span class="line">  <span class="comment">// 编辑器：设置默认格式化工具 有了这个就不用每个类型的文件都设置一个格式化工具，大部分用prettier，只有特殊情况需要单独设置</span></span><br><span class="line">  <span class="attr">"editor.defaultFormatter"</span>: <span class="string">"esbenp.prettier-vscode"</span>,</span><br><span class="line">  <span class="comment">// 编辑器：设置编辑器字体16号</span></span><br><span class="line">  <span class="attr">"editor.fontSize"</span>: <span class="number">16</span>,</span><br><span class="line">  <span class="comment">// 编辑器：保存时候的动作</span></span><br><span class="line">  <span class="attr">"editor.codeActionsOnSave"</span>: &#123;</span><br><span class="line">    <span class="comment">// 保存的时候执行一次eslint校验</span></span><br><span class="line">    <span class="attr">"source.fixAll.eslint"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 保存的时候调整import顺序，按引入包字母顺序</span></span><br><span class="line">    <span class="attr">"source.organizeImports"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 编辑器：指定换行缩进空格数为2个空格</span></span><br><span class="line">  <span class="attr">"editor.tabSize"</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">"workbench.iconTheme"</span>: <span class="string">"vscode-icons"</span>,</span><br><span class="line">  <span class="attr">"workbench.startupEditor"</span>: <span class="string">"newUntitledFile"</span>,</span><br><span class="line">  <span class="attr">"vsintellicode.modify.editor.suggestSelection"</span>: <span class="string">"automaticallyOverrodeDefaultValue"</span>,</span><br><span class="line">  <span class="attr">"i18n-ally.displayLanguage"</span>: <span class="string">"en"</span>,</span><br><span class="line">  <span class="attr">"debug.console.fontSize"</span>: <span class="number">16</span>,</span><br><span class="line">  <span class="attr">"terminal.integrated.fontSize"</span>: <span class="number">16</span>,</span><br><span class="line">  <span class="attr">"explorer.confirmDragAndDrop"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"explorer.confirmDelete"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"vsicons.dontShowNewVersionMessage"</span>: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// vetue的一些配置</span></span><br><span class="line">  <span class="attr">"vetur.useWorkspaceDependencies"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"vetur.validation.template"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 忽略项目警告，比如：vetur can't find 'tsconfig.json' or 'jsconfig.json'</span></span><br><span class="line">  <span class="attr">"vetur.ignoreProjectWarning"</span>: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">  <span class="attr">"prettier.tabWidth"</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">"prettier.singleQuote"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 指定每行代码的最佳长度， 如果超出长度则换行。</span></span><br><span class="line">  <span class="comment">// 有了prettier.config.js文件则应用文件配置</span></span><br><span class="line">  <span class="attr">"prettier.printWidth"</span>: <span class="number">200</span>,</span><br><span class="line">  <span class="attr">"prettier.useEditorConfig"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"prettier.semi"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"prettier.trailingComma"</span>: <span class="string">"none"</span>,</span><br><span class="line"></span><br><span class="line">  <span class="attr">"eslint.alwaysShowStatus"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>有了这些配置还不够，还需要安装个依赖，否则你在使用eslint格式化的时候，会报错：<br><img src="https://blogimage.houjiyi.com/FlGgAHGSzXJGozXCnK48wP4QMJ6o" alt="image.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"@babel/eslint-parser"</span>: <span class="string">"^7.12.16"</span></span><br></pre></td></tr></table></figure>
+<p>安装完成以后再使用eslint的格式化可以将一些不规范的地方规范，同时与自动保存使用的prettire也不会冲突。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>格式化快捷键：ctrl+option+L<br><img src="https://blogimage.houjiyi.com/FmTFJJt0cZlPHVtQxPJ7IEapMgx4" alt="image.png"></p>
+<p>eslint格式化快捷键：ctrl+option+;<br><img src="https://blogimage.houjiyi.com/Flsf2ZXVLpMpbKR9i2kKByLqOdxG" alt="image.png"></p>
+<p>我本地的环境：<br>操作系统：MacBook Pro (15-inch, 2017)<br>nodejs版本：v16.9.0<br>npm版本：7.21.1<br>yarn版本：1.22.17<br>vue-cli版本：@vue/cli 5.0.0-rc.1</p>
+<p>当然，我们在项目中配置了保存即格式化，实际上也能解决大部分问题，当遇到两种格式化不一样的时候，我们可以使用prettier来适配eslint，因为eslint对应的vue项目插件格式化还是比较通用的。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p>关于eslint的配置及其说明可以看<a href="https://cloud.tencent.com/developer/section/1135587" target="_blank" rel="noopener">腾讯文档</a></p>
 </blockquote>
 <blockquote>
-<p>commit： 提交一个具有新配置的容器成为镜像，后面跟容器的name 或者容器Id ，最后是生成新镜像的名字<br><img src="http://blogimage.houjiyi.com/Fjuw_k4eD8_zW-EGJOnCjt_c8wof" alt="image.png"></p>
+<p>eslint <a href="https://cn.eslint.org/docs/rules/" target="_blank" rel="noopener">中文官方文档</a></p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit trusting_kare ccr.ccs.tencentyun.com/aiforward_saas_fe/fe_fpms_build:202107141358</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>打包成容器以后，就可以推送到镜像仓库：</p>
+<p>关于prettier的配置及其说明可以看<a href="https://www.prettier.cn/docs/options.html" target="_blank" rel="noopener">官方文档</a></p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push ccr.ccs.tencentyun.com/aiforward_saas_fe/fe_fpms_build:202107141358</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://eslint.vuejs.org/rules/max-attributes-per-line.html" target="_blank" rel="noopener">eslint-plugin-vue</a> 这里是一些关于vue的格式化配置，可以通过这个文档了解vue格式化的思路</p>
+</blockquote>
+
       
 
       
@@ -962,7 +329,19 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">prettire</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">eslint</a>
         		</li>
       		
 		</ul>
@@ -983,7 +362,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/14/如何通过容器创建镜像-创建符合需求的打包镜像/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/01/11/vscode上关于eslint与prettier的格式化风格统一（Vue2-0-js）/">展开全文 >></a>
         </p>
       
 
@@ -1013,37 +392,42 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-useless-files-webpack-plugin删除多余项目文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Vue3-script-setup-Typescript-使用手册" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/01/useless-files-webpack-plugin删除多余项目文件/">useless-files-webpack-plugin删除多余项目文件</a>
+      <a class="article-title" href="/2022/01/06/Vue3-script-setup-Typescript-使用手册/">Vue3 + &lt;script setup&gt; + Typescript 使用手册</a>
     </h1>
   
 
         
-        <a href="/2021/07/01/useless-files-webpack-plugin删除多余项目文件/" class="archive-article-date">
-  	<time datetime="2021-07-01T03:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-01</time>
+        <a href="/2022/01/06/Vue3-script-setup-Typescript-使用手册/" class="archive-article-date">
+  	<time datetime="2022-01-06T12:04:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>随着项目开发的进行会经历一个混乱到整齐划一的过程，这个过程中会产生一系列冗余代码，这时候通过useless-files-webpack-plugin这个插件，可以帮助我们删除项目中无用的文件；</p>
-<blockquote>
-<p>大多数项目随着时间的推移,经常会摒弃掉一部分功能, 但大多数只是入口关闭, 或注释掉功能代码块, 依赖的文件如果没删除掉,项目其他成员一般不会去处&gt;理. 在日常开发中, 通过webpack 生成的 stats 文件实现了去除多余文件的插件useless-files-webpack-plugin</p>
-</blockquote>
-<blockquote>
-<p>插件用法如下:</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> UselessFile = <span class="built_in">require</span>(<span class="string">'useless-files-webpack-plugin'</span>)</span><br><span class="line"> </span><br><span class="line">plugins: [</span><br><span class="line">  <span class="keyword">new</span> UselessFile(&#123;</span><br><span class="line">    root: <span class="string">'./src'</span>, <span class="comment">// 项目目录</span></span><br><span class="line">    out?: <span class="string">'./fileList.json'</span>, <span class="comment">// 输出文件列表</span></span><br><span class="line">    out?: <span class="function">(<span class="params">files</span>) =&gt;</span> deal(files), <span class="comment">// 或者回调处理</span></span><br><span class="line">    clean?: <span class="literal">false</span> <span class="comment">// 删除文件,</span></span><br><span class="line">    exclude?: path <span class="comment">// 排除文件列表, 格式为文件路径数组</span></span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>转载于:<a href="https://juejin.im/post/5ae8930751882567244dc72f" target="_blank" rel="noopener">https://juejin.im/post/5ae8930751882567244dc72f</a></p>
-</blockquote>
+        <p><img src="https://blogimage.houjiyi.com/FhSlsNqzkvmtYg06KBFkblIfvwQ3" alt="image.png"></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>相信看到这面文章的你对新技术一定充满好奇，并且已经对 vue3 提供的 script setup 的写法爱不释手，但目前该写法尚在完善中，所以还是有许多坑需要踩的，文档暂时也不全，本文主要列举一下 Vue3 + Vite + script setup 在 Typescript 中的使用，希望能帮你愉快的使用好它。</p>
+<h2 id="name-组件名字"><a href="#name-组件名字" class="headerlink" title="name 组件名字"></a>name 组件名字</h2><p>给组件命名可以方便在 devtool 调试工具中更快定位组件</p>
+<h3 id="方法1：多写一个-script-标签"><a href="#方法1：多写一个-script-标签" class="headerlink" title="方法1：多写一个 script 标签"></a>方法1：多写一个 script 标签</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang=<span class="string">"ts"</span>&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123; name: <span class="string">'MyComponent'</span> &#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;script setup lang="ts"&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 组件内容</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="方法2：vue-文件命名"><a href="#方法2：vue-文件命名" class="headerlink" title="方法2：vue 文件命名"></a>方法2：vue 文件命名</h3><p>如：MyComponent.vue</p>
+<h2 id="data-ref-reactive-computed"><a href="#data-ref-reactive-computed" class="headerlink" title="data( ref / reactive / computed )"></a>data( ref / reactive / computed )</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup lang=<span class="string">"ts"</span>&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; computed, reactive, ref &#125; <span class="keyword">from</span> <span class="string">'@vue/runtime-core'</span>;</span><br><span class="line"><span class="keyword">type</span> User = &#123; name: <span class="built_in">string</span>; password: <span class="built_in">string</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ref</span></span><br><span class="line"><span class="keyword">const</span> msg = ref(<span class="string">''</span>); <span class="comment">//  会默认约束成 string 类型</span></span><br><span class="line"><span class="keyword">const</span> msg2 = ref&lt;<span class="built_in">string</span>&gt;(<span class="string">''</span>); <span class="comment">//  可以通过范型约束类型</span></span><br><span class="line"><span class="keyword">const</span> user = ref(&#123;&#125; <span class="keyword">as</span> User); <span class="comment">// 自定义类型强制转化 通过 user.value. 访问</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// reactive</span></span><br><span class="line"><span class="keyword">const</span> obj = reactive(&#123;&#125;);</span><br><span class="line"><span class="keyword">const</span> user2 = reactive&lt;User&gt;(&#123;name: <span class="string">''</span>, password: <span class="string">''</span>&#125;);</span><br><span class="line"><span class="keyword">const</span> user3 = reactive(&#123;&#125; <span class="keyword">as</span> User); <span class="comment">// 自定义类型强制转化</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// computed</span></span><br><span class="line"><span class="keyword">const</span> str3 = computed(<span class="function"><span class="params">()</span> =&gt;</span> <span class="string">''</span>); <span class="comment">// 会默认约束成 string 类型</span></span><br><span class="line"><span class="keyword">const</span> user5 = computed&lt;User&gt;<span class="function">(<span class="params">(<span class="params"></span>) =&gt; &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">  <span class="keyword">return</span> &#123; name: '', password: '' &#125;;</span></span></span><br><span class="line"><span class="function"><span class="params">&#125;</span>);</span></span><br><span class="line"><span class="function">&lt;/<span class="params">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="props"><a href="#props" class="headerlink" title="props"></a>props</h2><p>使用 defineProps 以及 as PropType 定义 typescript类型</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup lang=<span class="string">"ts"</span>&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; defineProps &#125; <span class="keyword">from</span> <span class="string">'@vue/runtime-core'</span>;</span><br><span class="line"><span class="comment">// 特别注意：接口类型需要使用 import type 否则编译出错</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">type</span> &#123; PropType &#125; <span class="keyword">from</span> <span class="string">'@vue/runtime-core'</span>; </span><br><span class="line"><span class="keyword">type</span> User = &#123; name: <span class="built_in">string</span>; password: <span class="built_in">string</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> props = defineProps(&#123;</span><br><span class="line">  str: &#123;</span><br><span class="line">    <span class="keyword">type</span>: <span class="built_in">String</span> <span class="keyword">as</span> PropType&lt;<span class="built_in">string</span>&gt;,</span><br><span class="line">    <span class="comment">// string 首字母小写为 typescript 对应 js 中的基础类型</span></span><br><span class="line">    <span class="keyword">default</span>: <span class="string">''</span></span><br><span class="line">  &#125;,</span><br><span class="line">  user: &#123;</span><br><span class="line">    <span class="keyword">type</span>: <span class="built_in">Object</span> <span class="keyword">as</span> PropType&lt;User&gt;,</span><br><span class="line">    <span class="keyword">default</span>() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Template-Refs"><a href="#Template-Refs" class="headerlink" title="Template Refs"></a>Template Refs</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">"divRef"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">:ref</span>=<span class="string">"(el) =&gt; setItemRef"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup lang=<span class="string">"ts"</span>&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; ref, useContext &#125; <span class="keyword">from</span> <span class="string">'@vue/runtime-core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// const divRef = ref&lt;HTMLElement&gt;(&#123;&#125; as HTMLElement); // 新版本已支持如下写法</span></span><br><span class="line"><span class="keyword">const</span> divRef = ref(&#123;&#125; <span class="keyword">as</span> HTMLElement);</span><br><span class="line"><span class="keyword">const</span> itemRefs = ref([] <span class="keyword">as</span> <span class="built_in">Array</span>&lt;HTMLElement&gt;);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setItemRef</span>(<span class="params">el: HTMLElement</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (el) &#123;</span><br><span class="line">    itemRefs.value.push(el);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Component-组件化"><a href="#Component-组件化" class="headerlink" title="Component 组件化"></a>Component 组件化</h2><p>使用 Typescript 可以更好的提示组件方法。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- components/Dialog.vue --&gt;</span><br><span class="line">&lt;template&gt;...&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp">&lt;script setup lang="ts"&gt;</span></span><br><span class="line"><span class="regexp">import &#123; useContext &#125; from '@vue/</span>runtime-core<span class="string">';</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">function open() &#123;</span></span><br><span class="line"><span class="string">  console.log('</span>open dialog<span class="string">');</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">function close() &#123;</span></span><br><span class="line"><span class="string">  console.log('</span>close dialog<span class="string">');</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">// 需要手动 expose 需要暴露给外部的方法</span></span><br><span class="line"><span class="string">useContext().expose(&#123;</span></span><br><span class="line"><span class="string">  open,</span></span><br><span class="line"><span class="string">  close,</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/components/dialog.d.ts 添加额外接口信息</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> IDialog &#123;</span><br><span class="line">  open: <span class="built_in">Function</span>;</span><br><span class="line">  close: <span class="built_in">Function</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;Dialog ref=<span class="string">"dialogRef"</span>&gt;&lt;<span class="regexp">/Dialog&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=<span class="string">"ts"</span>&gt;</span><br><span class="line"><span class="comment">// @ts-ignore</span></span><br><span class="line"><span class="keyword">import</span> Dialog <span class="keyword">from</span> <span class="string">'@/components/Dialog.vue'</span>; <span class="comment">// 引入组件</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">type</span> &#123; IDialog &#125; <span class="keyword">from</span> <span class="string">'@/components/dialog'</span>; <span class="comment">// 引入类型信息</span></span><br><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">'@vue/reactivity'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dialogRef = ref(&#123;&#125; <span class="keyword">as</span> IDialog); <span class="comment">// 将组件绑定接口信息</span></span><br><span class="line">dialogRef.value.open(); <span class="comment">// 这样在输入dialogRef.value. 时就会提示出已暴露的方法了</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://blogimage.houjiyi.com/FjrtqnrfwOHVM9HxuRcbc6PWK1K7" alt="image.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>虽然在使用 script setup 的时候经常无迹可寻，但这种写法真的非常简洁，未来可期。希望早日完善，也希望这篇文章能够帮到路过的你~</p>
 
       
 
@@ -1058,10 +442,6 @@ var _hmt = _hmt || [];
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
         		</li>
       		
 		</ul>
@@ -1082,7 +462,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/01/useless-files-webpack-plugin删除多余项目文件/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/01/06/Vue3-script-setup-Typescript-使用手册/">展开全文 >></a>
         </p>
       
 
@@ -1112,32 +492,28 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-vue单页面项目返回上一页无效，链接变化了，但是页面没有变化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-vue中的type类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/19/vue单页面项目返回上一页无效，链接变化了，但是页面没有变化/">vue单页面项目返回上一页无效，链接变化了，但是页面没有变化</a>
+      <a class="article-title" href="/2022/01/06/vue中的type类型/">vue中的type类型</a>
     </h1>
   
 
         
-        <a href="/2021/06/19/vue单页面项目返回上一页无效，链接变化了，但是页面没有变化/" class="archive-article-date">
-  	<time datetime="2021-06-19T14:55:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-19</time>
+        <a href="/2022/01/06/vue中的type类型/" class="archive-article-date">
+  	<time datetime="2022-01-06T01:54:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在最近的项目中，返回上一页没有效果，经过好久的排查才发现问题，是路由守卫写法不规范导致。</p>
-<p>在项目中用路由守卫做了登录拦截，没登录的跳转到登录页面。页面跳转和拦截都没问题，但是返回上一页就不行了，也没有报错。</p>
-<p>代码贴上来</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;  </span><br><span class="line">  <span class="keyword">if</span> (to.meta.loginCheck) &#123;     <span class="comment">//登录判断，如果登录了则正常跳转，如没有登录，则先登录</span></span><br><span class="line">    <span class="keyword">let</span> gesToken =localStorage.getItem(<span class="string">'gesToken'</span>);</span><br><span class="line">    <span class="keyword">if</span>(gesToken)&#123; </span><br><span class="line">      next();</span><br><span class="line">    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">      router.replace(&#123;<span class="attr">path</span>:<span class="string">'/login'</span>&#125;);</span><br><span class="line">　　　 next();　　<span class="comment">//这行是重点，bug的原因就在这</span></span><br><span class="line">&#125;; &#125; <span class="keyword">else</span> &#123; next(); &#125;; &#125;);</span><br></pre></td></tr></table></figure>
-<p>本来以为next()的作用就是下一步跳转页面，后来发现，不能正常返回上一页，就是因为我使用完router.replace()之后，没有再使用next();</p>
-<p>next()无论什么情况都是必须写的！！</p>
+        <p>在vue中写ts代码，会遇到类型问题，我们这时候需要在顶部引入vue里的type，比如App类型<br><img src="https://blogimage.houjiyi.com/FiLMMcaD8oYXK7LPwh9T-X8GZz1y" alt="image.png"></p>
+<p>写成下边这样就可以了<code>import type {xxx} from &#39;vue&#39;</code><br><img src="https://blogimage.houjiyi.com/FmEFJ6Ex3TGKFmfLh5rIqCu0JI3W" alt="image.png"></p>
 
       
 
@@ -1152,14 +528,6 @@ var _hmt = _hmt || [];
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微前端</a>
         		</li>
       		
 		</ul>
@@ -1180,7 +548,894 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/19/vue单页面项目返回上一页无效，链接变化了，但是页面没有变化/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/01/06/vue中的type类型/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-找不到模块-“path“-或其相对应的类型声明" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/05/找不到模块-“path“-或其相对应的类型声明/">找不到模块 “path“ 或其相对应的类型声明</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/05/找不到模块-“path“-或其相对应的类型声明/" class="archive-article-date">
+  	<time datetime="2022-01-05T07:57:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用 npm init @vitejs/app 创建项目添加别名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> “path”;</span><br></pre></td></tr></table></figure>
+<p>有这个错误提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">找不到模块 ‘path’ 或其相对应的类型声明</span><br><span class="line">找不到名称&quot;__dirname&quot;</span><br></pre></td></tr></table></figure>
+<p>解决方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @types/node --save-dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">'vite'</span></span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">'@vitejs/plugin-vue'</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">'path'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. defineConfig: 不用 jsdoc 注解也可以获取类型提示</span></span><br><span class="line"><span class="comment">// 2. 找不到模块“path”或其相应的类型声明 或者 找不到名称“__dirname 安装 @types/node</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> resolve = <span class="function">(<span class="params">dir: string</span>) =&gt;</span> path.join(__dirname, dir)</span><br><span class="line"></span><br><span class="line"><span class="comment">// https://vitejs.dev/config/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineConfig(&#123;</span><br><span class="line">  plugins: [vue()],</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    alias: &#123;</span><br><span class="line">      <span class="string">'@'</span>: resolve(<span class="string">'src'</span>),</span><br><span class="line">      <span class="string">'comps'</span>: resolve(<span class="string">'src/components'</span>),</span><br><span class="line">      <span class="string">'apis'</span>: resolve(<span class="string">'src/apis'</span>),</span><br><span class="line">      <span class="string">'views'</span>: resolve(<span class="string">'src/views'</span>),</span><br><span class="line">      <span class="string">'utils'</span>: resolve(<span class="string">'src/utils'</span>),</span><br><span class="line">      <span class="string">'routes'</span>: resolve(<span class="string">'src/routes'</span>),</span><br><span class="line">      <span class="string">'styles'</span>: resolve(<span class="string">'src/styles'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/05/找不到模块-“path“-或其相对应的类型声明/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dart-中在实例化-new-关键字可以省略不写" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/03/dart-中在实例化-new-关键字可以省略不写/">dart 中在实例化 new 关键字可以省略不写</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/03/dart-中在实例化-new-关键字可以省略不写/" class="archive-article-date">
+  	<time datetime="2022-01-03T00:59:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>dart 中在实例化 new 关键字可以省略不写</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="built_in">String</span> name;</span><br><span class="line">  <span class="built_in">int</span> age;</span><br><span class="line">  <span class="built_in">String</span> sex;</span><br><span class="line">  Person(<span class="keyword">this</span>.name, <span class="keyword">this</span>.age, <span class="keyword">this</span>.sex);</span><br><span class="line">  info() &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>"</span>);</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span>"</span>);</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">$&#123;<span class="keyword">this</span>.sex&#125;</span>"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- 这里没有省略关键字<span class="keyword">new</span> --&gt;</span><br><span class="line">main() &#123;</span><br><span class="line">  <span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">'张三'</span>, <span class="number">20</span>, <span class="string">'女'</span>);</span><br><span class="line">  p.info();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- 这里省略了关键字<span class="keyword">new</span> --&gt;</span><br><span class="line">main() &#123;</span><br><span class="line">  <span class="keyword">var</span> p = Person(<span class="string">'张三'</span>, <span class="number">20</span>, <span class="string">'女'</span>);</span><br><span class="line">  p.info();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Flutter</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/移动开发//" class="article-tag-list-link color5">移动开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/03/dart-中在实例化-new-关键字可以省略不写/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ES新提案：双问号操作符" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/29/ES新提案：双问号操作符/">ES新提案：双问号操作符</a>
+    </h1>
+  
+
+        
+        <a href="/2021/12/29/ES新提案：双问号操作符/" class="archive-article-date">
+  	<time datetime="2021-12-29T10:51:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文主要讲Gabriel Isenberg撰写的ES提案“Nullish coalescing for JavaScript”。 它提出?? 替换||的运算符,并提供默认值。这里先把这相提案叫作双问号操作符，如果你有好的叫法，欢迎留言讨论。</p>
+<h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p>双问号 ?? 的操作符跟 || 类似，如果给定变量值为 null 或者 undefined，刚使用双问号后的默认值，否则使用该变量值。</p>
+<p>如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="literal">undefined</span> ?? <span class="string">'default'</span></span><br><span class="line"><span class="string">'default'</span></span><br><span class="line">&gt; <span class="literal">null</span> ?? <span class="string">'default'</span></span><br><span class="line"><span class="string">'default'</span></span><br><span class="line">&gt; <span class="literal">false</span> ?? <span class="string">'default'</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line">&gt; <span class="string">''</span> ?? <span class="string">'default'</span></span><br><span class="line"><span class="string">''</span></span><br><span class="line">&gt; <span class="number">0</span> ?? <span class="string">'default'</span></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-早期的-运算符号"><a href="#2-早期的-运算符号" class="headerlink" title="2. 早期的 || 运算符号"></a>2. 早期的 || 运算符号</h2><p>直接来个例子来演示一下 || 运算，下面两个等式是等价的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a || b</span><br><span class="line">a ? a : b</span><br></pre></td></tr></table></figure></p>
+<p>如果 a 是 truthy 值，则返回 a, 否则返回 b。</p>
+<p>这使得使用||指定一个默认值成为可能，如果实际值是假的，那么将使用这个默认值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = actualValue || defaultValue;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTitle</span>(<span class="params">fileDesc</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> fileDesc.title || <span class="string">'(Untitled)'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> files = [</span><br><span class="line">  &#123;<span class="attr">path</span>: <span class="string">'index.html'</span>, <span class="attr">title</span>: <span class="string">'Home'</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">path</span>: <span class="string">'tmp.html'</span>&#125;,</span><br><span class="line">];</span><br><span class="line">assert.deepEqual(</span><br><span class="line">  files.map(<span class="function"><span class="params">f</span> =&gt;</span> getTitle(f)),</span><br><span class="line">  [<span class="string">'Home'</span>, <span class="string">'(Untitled)'</span>]);</span><br></pre></td></tr></table></figure>
+<p>请注意，基本只有在实际值undefined或为null时才应使用默认值，这是有效的，因为undefined和null都是假(虚值)的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="literal">undefined</span> || <span class="string">'default'</span></span><br><span class="line"><span class="string">'default'</span></span><br><span class="line">&gt; <span class="literal">null</span> || <span class="string">'default'</span></span><br><span class="line"><span class="string">'default'</span></span><br></pre></td></tr></table></figure>
+<p>遗憾的是，如果实际值是其他的虚值，也会使用默认值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="literal">false</span> || <span class="string">'default'</span></span><br><span class="line"><span class="string">'default'</span></span><br><span class="line">&gt; <span class="string">''</span> || <span class="string">'default'</span></span><br><span class="line"><span class="string">'default'</span></span><br><span class="line">&gt; <span class="number">0</span> || <span class="string">'default'</span></span><br><span class="line"><span class="string">'default'</span></span><br></pre></td></tr></table></figure>
+<p>因此，这个getTitle()并不总能正常工作：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">assert.equal(</span><br><span class="line">  getTitle(&#123;<span class="attr">path</span>: <span class="string">'empty.html'</span>, <span class="attr">title</span>: <span class="string">''</span>&#125;),</span><br><span class="line">  <span class="string">'(Untitled)'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="3-使用双问号操作符来解决-运算的问题"><a href="#3-使用双问号操作符来解决-运算的问题" class="headerlink" title="3. 使用双问号操作符来解决 || 运算的问题"></a>3. 使用双问号操作符来解决 || 运算的问题</h2><p>?? 主要是用来解决 || 操作符号的一些问题，以下两个表达式是等价的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a ?? b</span><br><span class="line">a !== <span class="literal">undefined</span> &amp;&amp; a !== <span class="literal">null</span> ? a : b</span><br></pre></td></tr></table></figure>
+<p>默认值是这样提供的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = actualValue ?? defaultValue;</span><br></pre></td></tr></table></figure>
+<p>对于undefined和null， ??操作符的工作原理与||操作符相同</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="literal">undefined</span> ?? <span class="string">'default'</span></span><br><span class="line"><span class="string">'default'</span></span><br><span class="line">&gt; <span class="literal">null</span> ?? <span class="string">'default'</span></span><br><span class="line"><span class="string">'default'</span></span><br></pre></td></tr></table></figure>
+<p>除了 undefined 和 null的其它虚值，?? 不会返回默认值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="literal">false</span> ?? <span class="string">'default'</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line">&gt; <span class="string">''</span> ?? <span class="string">'default'</span></span><br><span class="line"><span class="string">''</span></span><br><span class="line">&gt; <span class="number">0</span> ?? <span class="string">'default'</span></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>使用 ?? 来重写 getTitle():</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTitle</span>(<span class="params">fileDesc</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> fileDesc.title ?? <span class="string">'(Untitled)'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在使用fileDesc调用它，它的.title是空字符串，仍然可以按符合咱们的预期工作：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">assert.equal(</span><br><span class="line">  getTitle(&#123;<span class="attr">path</span>: <span class="string">'empty.html'</span>, <span class="attr">title</span>: <span class="string">''</span>&#125;),</span><br><span class="line">  <span class="string">''</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-通过解构给定默认值"><a href="#3-1-通过解构给定默认值" class="headerlink" title="3.1 通过解构给定默认值"></a>3.1 通过解构给定默认值</h3><p>除了使用 ?? 给getTitle添加默认值，咱们也可以通过解构方式来给定默认值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTitle</span>(<span class="params">&#123;title = <span class="string">'(Untitled)'</span>&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> title;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-使用-操作符号的实际例子"><a href="#3-2-使用-操作符号的实际例子" class="headerlink" title="3.2 使用 ?? 操作符号的实际例子"></a>3.2 使用 ?? 操作符号的实际例子</h3><p>作为一个现实的例子，咱们使用??来简化下面的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countMatches</span>(<span class="params">regex, str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!regex.global) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Regular expression must have flag /g: '</span> + regex);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> matchResult = str.match(regex); <span class="comment">// null or Array</span></span><br><span class="line">  <span class="keyword">if</span> (matchResult === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> matchResult.length;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">assert.equal(</span><br><span class="line">  countMatches(<span class="regexp">/a/g</span>, <span class="string">'ababa'</span>), <span class="number">3</span>);</span><br><span class="line">assert.equal(</span><br><span class="line">  countMatches(<span class="regexp">/b/g</span>, <span class="string">'ababa'</span>), <span class="number">2</span>);</span><br><span class="line">assert.equal(</span><br><span class="line">  countMatches(<span class="regexp">/x/g</span>, <span class="string">'ababa'</span>), <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Flag /g is missing</span></span><br><span class="line">assert.throws(</span><br><span class="line">  () =&gt; countMatches(<span class="regexp">/a/</span>, <span class="string">'ababa'</span>), <span class="built_in">Error</span>);</span><br></pre></td></tr></table></figure>
+<p>使用 ?? 操作符号后，简化如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countMatches</span>(<span class="params">regex, str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!regex.global) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Regular expression must have flag /g: '</span> + regex);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (str.match(regex) ?? []).length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-双问号-操作符与可选链"><a href="#3-3-双问号-操作符与可选链" class="headerlink" title="3.3 双问号(??)操作符与可选链(?)"></a>3.3 双问号(??)操作符与可选链(?)</h3><p>双问号(??)的提出是为了补充可选链(?)，来看看这两兄弟结合使用的场景（第A行）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> persons = [</span><br><span class="line">  &#123;</span><br><span class="line">    surname: <span class="string">'Zoe'</span>,</span><br><span class="line">    address: &#123;</span><br><span class="line">      street: &#123;</span><br><span class="line">        name: <span class="string">'Sesame Street'</span>,</span><br><span class="line">        number: <span class="string">'123'</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    surname: <span class="string">'Mariner'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    surname: <span class="string">'Carmen'</span>,</span><br><span class="line">    address: &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> streetNames = persons.map(</span><br><span class="line">  p =&gt; p.address?.street?.name ?? <span class="string">'(no name)'</span>); <span class="comment">// (A)</span></span><br><span class="line">assert.deepEqual(</span><br><span class="line">  streetNames, [<span class="string">'Sesame Street'</span>, <span class="string">'(no name)'</span>, <span class="string">'(no name)'</span>]</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="4-兼容性"><a href="#4-兼容性" class="headerlink" title="4. 兼容性"></a>4. 兼容性</h2><p>可以通过ECMAScript Next compatibility table 查看 ?? 支持情况。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基本知识</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/12/29/ES新提案：双问号操作符/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-设置一个npm的别名" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/27/设置一个npm的别名/">设置一个npm的别名</a>
+    </h1>
+  
+
+        
+        <a href="/2021/12/27/设置一个npm的别名/" class="archive-article-date">
+  	<time datetime="2021-12-27T09:20:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>设置jnpm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> jnpm=<span class="string">"npm --registry=http://registry.m.jd.com \</span></span><br><span class="line"><span class="string">--cache=<span class="variable">$HOME</span>/.npm/.cache/jnpm \</span></span><br><span class="line"><span class="string">--disturl=https://npmmirror.com/dist \</span></span><br><span class="line"><span class="string">--userconfig=<span class="variable">$HOME</span>/.jnpmrc"</span></span><br></pre></td></tr></table></figure>
+<p>设置cnpm<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> cnpm=<span class="string">"npm --registry=https://registry.npmmirror.com \</span></span><br><span class="line"><span class="string">--cache=<span class="variable">$HOME</span>/.npm/.cache/cnpm \</span></span><br><span class="line"><span class="string">--disturl=https://npmmirror.com/dist \</span></span><br><span class="line"><span class="string">--userconfig=<span class="variable">$HOME</span>/.cnpmrc"</span></span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/NodeJS//" class="article-tag-list-link color2">NodeJS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/NodeJS/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/12/27/设置一个npm的别名/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-端到端自动化测试框架Cypress简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/22/端到端自动化测试框架Cypress简介/">端到端自动化测试框架Cypress简介</a>
+    </h1>
+  
+
+        
+        <a href="/2021/12/22/端到端自动化测试框架Cypress简介/" class="archive-article-date">
+  	<time datetime="2021-12-22T06:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="总揽"><a href="#总揽" class="headerlink" title="总揽"></a>总揽</h2><blockquote>
+<p>当我看到Cypress的时候，有一种当初看到vue的时候的感觉：恰好是我需要的，恰好能做到我需要的所有事情，同时也是渐进式无侵入性的。</p>
+</blockquote>
+<p>Cypress有一系列的目标：</p>
+<ol>
+<li>web已经升级更新了，测试也同样需要升级更新</li>
+<li>Cypress是一款能够快速、简单、稳定的测试所有运行在浏览器上的内容的端到端测试工具</li>
+<li>Cypress是一个完整的端到端测试体验框架，他不需要安装其他额外的依赖包</li>
+<li>安装Cypress是非常简单的，没有依赖、额外下载同时不需要修改你的代码</li>
+<li>测试你的代码而非你的耐心：Cypress是一个新的针对开发人员与QA工程师定制的标准的端到端测试框架</li>
+</ol>
+<h2 id="测试金字塔模型"><a href="#测试金字塔模型" class="headerlink" title="测试金字塔模型"></a>测试金字塔模型</h2><p><img src="https://blogimage.houjiyi.com/FlN8l4aLzLawvltNQGAN0jkDJwQC" alt="image.png"></p>
+<h2 id="UI自动化测试"><a href="#UI自动化测试" class="headerlink" title="UI自动化测试"></a>UI自动化测试</h2><p>UI测试的主要目的是从软件使用者的角度来检验软件的质量，而UI自动化测试则是以自动化的方式来代替人工执行测试。在测试金字塔模型中，UI层测试是各种测试中投入最大、收益最低、运行最慢的一种。</p>
+<p>而Cypress的出现实际可以在某种程度上打破这种局面</p>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><h3 id="单元测试有这样一段描述很有意思："><a href="#单元测试有这样一段描述很有意思：" class="headerlink" title="单元测试有这样一段描述很有意思："></a>单元测试有这样一段描述很有意思：</h3><p><img src="https://blogimage.houjiyi.com/Fi3i_V5lomsSicoZ1dAV0Pe4UbLn" alt="image.png"></p>
+<h3 id="单元测试的价值"><a href="#单元测试的价值" class="headerlink" title="单元测试的价值"></a>单元测试的价值</h3><p><img src="https://blogimage.houjiyi.com/FhtuMLiTAYzZl6aJjrFqrTeKoUPK" alt="image.png"></p>
+<h2 id="Cypress简介"><a href="#Cypress简介" class="headerlink" title="Cypress简介"></a>Cypress简介</h2><ul>
+<li>Cypress是为现代网络打造的，基于JavaScript的下一代前端测试工具。他可以对浏览器中运行的任何内容进行快速，简单和可靠的测试。</li>
+<li>Cypress是自集成的，它提供了一套完整的端到端测试体验。无须借助其他外部工具，在简单安装后即可允许用户快速的创建、编写、运行、测试用例，并且针对每一步操作均支持回看。</li>
+<li>不同于其他只能测试UI层的前端测试工具，Cypress允许你编写所有类型的测试，覆盖了测试金字塔模型涉及的所有测试类型：端到端测试；集成测试；单元测试；</li>
+</ul>
+<h2 id="Cypress优点"><a href="#Cypress优点" class="headerlink" title="Cypress优点"></a>Cypress优点</h2><ul>
+<li>界面美观友好。</li>
+<li>支持手机模拟。</li>
+<li>测试的每一步都有对应的截图。</li>
+<li>全程都会有录屏。</li>
+<li>支持debug调试，随时暂停。</li>
+<li>自动等待ui更新，减少异步代码。</li>
+</ul>
+<h2 id="Cypress带来的改变"><a href="#Cypress带来的改变" class="headerlink" title="Cypress带来的改变"></a>Cypress带来的改变</h2><p>有了Cypress，配置测试框架不再是一件看起来非常繁琐的事情，它有你所有想要的功能：<br><img src="https://blogimage.houjiyi.com/FofEllCW9pr0mE68iI_9FiG36iHI" alt="image.png"></p>
+<h2 id="Cypress与其他测试框架的比较"><a href="#Cypress与其他测试框架的比较" class="headerlink" title="Cypress与其他测试框架的比较"></a>Cypress与其他测试框架的比较</h2><table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>Cypress</th>
+<th>Selenium/WebDriver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>框架完备</td>
+<td>是</td>
+<td>否（仅是Library）</td>
+</tr>
+<tr>
+<td>开箱即用</td>
+<td>是</td>
+<td>否（无法直接工作）</td>
+</tr>
+<tr>
+<td>自带断言库</td>
+<td>是</td>
+<td>否（需自行添加）</td>
+</tr>
+<tr>
+<td>自带Mock</td>
+<td>是</td>
+<td>否（需自行添加）</td>
+</tr>
+<tr>
+<td>自带测试运行器（Test Runner）</td>
+<td>是</td>
+<td>否（需自行添加）</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>Cypress</th>
+<th>Karma</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>框架完备</td>
+<td>是</td>
+<td>否（仅是Test Runner）</td>
+</tr>
+<tr>
+<td>开箱即用</td>
+<td>是</td>
+<td>否（无法直接工作）</td>
+</tr>
+<tr>
+<td>自带断言库</td>
+<td>是</td>
+<td>否（无法直接工作）</td>
+</tr>
+<tr>
+<td>自带Mock</td>
+<td>是</td>
+<td>否（无法直接工作）</td>
+</tr>
+<tr>
+<td>自带测试运行器（Test Runner）</td>
+<td>是</td>
+<td>否（无法直接工作）</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>Cypress</th>
+<th>Nightwatch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>框架完备</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>开箱即用</td>
+<td>是</td>
+<td>是（安装，配置繁琐）</td>
+</tr>
+<tr>
+<td>底层框架</td>
+<td>自主研发，运行快</td>
+<td>基于WebDriver，运行慢</td>
+</tr>
+<tr>
+<td>适用范围</td>
+<td>UI,API,UnitTest均支持</td>
+<td>仅用于UI测试</td>
+</tr>
+<tr>
+<td>脚本易维护</td>
+<td>是</td>
+<td>否（难以维护）</td>
+</tr>
+<tr>
+<td>回放测试执行情况</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>多浏览器支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>Cypress</th>
+<th>Protractor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>框架完备</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>开箱即用</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>底层框架</td>
+<td>自主研发，运行快</td>
+<td>基于WebdriverJS，运行慢</td>
+</tr>
+<tr>
+<td>单元测试框架</td>
+<td>底层使用Mocha，不可替换</td>
+<td>默认使用Jasmine，允许替换</td>
+</tr>
+<tr>
+<td>适用范围</td>
+<td>多种语言开发的程序均可进行测试</td>
+<td>主要应用于Angular的程序</td>
+</tr>
+<tr>
+<td>回放测试执行情况</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>多浏览器支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>Cypress</th>
+<th>TestCafe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>框架完备</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>开箱即用</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>底层框架</td>
+<td>自主研发，运行快</td>
+<td>自主研发，通过Proxy Server工作</td>
+</tr>
+<tr>
+<td>测试用例组织便捷度</td>
+<td>基于Mocha，组织、编写简单</td>
+<td>测试用例写法异于常规（fixture），学习成本高</td>
+</tr>
+<tr>
+<td>自带测试运行器</td>
+<td>是</td>
+<td>是（也仅仅是TestRunner）</td>
+</tr>
+<tr>
+<td>回放测试执行情况</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>多浏览器支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>测试运行</td>
+<td>测试运行在浏览器中</td>
+<td>测试运行在Node.js中，便于设置和清除数据库fixtures</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>Cypress</th>
+<th>Puppeteer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>框架完备</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>是否有IDE</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>适用范围</td>
+<td>e2e的完美解决方案</td>
+<td>主要用于爬虫和开展快速测试</td>
+</tr>
+<tr>
+<td>自带断言库</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>回放测试执行情况</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>多浏览器支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Cypress的局限"><a href="#Cypress的局限" class="headerlink" title="Cypress的局限"></a>Cypress的局限</h2><h3 id="长期权衡"><a href="#长期权衡" class="headerlink" title="长期权衡"></a>长期权衡</h3><ul>
+<li>不建议使用Cypress用于网络爬虫，性能测试之目的。</li>
+<li>Cypress永远不会支持多标签测试。</li>
+<li>Cypress不支持同时打开两个及以上的浏览器。</li>
+<li>每个Cypress测试用例应遵守同源策略<h3 id="短期折中"><a href="#短期折中" class="headerlink" title="短期折中"></a>短期折中</h3></li>
+<li>目前浏览器支持Chrome，Firefox，Microsoft Edge和Electron</li>
+<li>不支持测试移动端应用</li>
+<li>针对iframe的支持有限</li>
+<li>不能在window.fetch上使用cy.route()</li>
+<li>没有影子DOM支持。<h3 id="Cypress作为一款优秀的开源软件，其提供的多个免费功能已经能够满足绝大多数团队和个人的需求。"><a href="#Cypress作为一款优秀的开源软件，其提供的多个免费功能已经能够满足绝大多数团队和个人的需求。" class="headerlink" title="Cypress作为一款优秀的开源软件，其提供的多个免费功能已经能够满足绝大多数团队和个人的需求。"></a>Cypress作为一款优秀的开源软件，其提供的多个免费功能已经能够满足绝大多数团队和个人的需求。</h3></li>
+</ul>
+<h2 id="安装Cypress"><a href="#安装Cypress" class="headerlink" title="安装Cypress"></a>安装Cypress</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cypress --save-dev</span><br></pre></td></tr></table></figure>
+<p>or<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add cypress --dev</span><br></pre></td></tr></table></figure></p>
+<p>then<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx cypress open</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://blogimage.houjiyi.com/FsuauSfkHCmao-NsUtfVl_r39f7s" alt="image.png"></p>
+<h2 id="Cypress元素定位"><a href="#Cypress元素定位" class="headerlink" title="Cypress元素定位"></a>Cypress元素定位</h2><p><img src="https://blogimage.houjiyi.com/FnDj-Ojn9N-mZ8qYUq3iE1NMorcI" alt="image.png"></p>
+<h2 id="Cypress页面元素基本操作方式"><a href="#Cypress页面元素基本操作方式" class="headerlink" title="Cypress页面元素基本操作方式"></a>Cypress页面元素基本操作方式</h2><p><img src="https://blogimage.houjiyi.com/FvT4HRxbt2LJh57y4JyoQTHMjYrk" alt="image.png"></p>
+<h2 id="Cypress常见操作"><a href="#Cypress常见操作" class="headerlink" title="Cypress常见操作"></a>Cypress常见操作</h2><p><img src="https://blogimage.houjiyi.com/FjcSIqQUiBSNFQ-YAObdVtDNkKVY" alt="image.png"></p>
+<h2 id="cypress可操作事件"><a href="#cypress可操作事件" class="headerlink" title="cypress可操作事件"></a>cypress可操作事件</h2><p><img src="https://blogimage.houjiyi.com/FkWe5GW7nXZoxTiM_EgFJdDK6U1T" alt="image.png"></p>
+<h2 id="Cypress上传文件或图片"><a href="#Cypress上传文件或图片" class="headerlink" title="Cypress上传文件或图片"></a>Cypress上传文件或图片</h2><p>Cypress的文件或图片上传可以使用这个插件，使用起来还是很方便的：<a href="https://github.com/abramenal/cypress-file-upload" target="_blank" rel="noopener">https://github.com/abramenal/cypress-file-upload</a></p>
+<p><img src="https://blogimage.houjiyi.com/FnJxwy9FeoGmwMRU8NYZsU1JXi1H" alt="image.png"></p>
+<p><img src="https://blogimage.houjiyi.com/FmZBLX7TlmsbAOZAS283aEPa8Cd8" alt="image.png"></p>
+<h2 id="使用Cypress界面获取要选择的元素"><a href="#使用Cypress界面获取要选择的元素" class="headerlink" title="使用Cypress界面获取要选择的元素"></a>使用Cypress界面获取要选择的元素</h2><p>Cypress界面获取元素方式与控制台定位元素方式很像：<br><img src="https://blogimage.houjiyi.com/FiD_mu7irr4OP-9HLmzdt5QmDTaS" alt="image.png"></p>
+<h2 id="使用Cypress录制测试脚本"><a href="#使用Cypress录制测试脚本" class="headerlink" title="使用Cypress录制测试脚本"></a>使用Cypress录制测试脚本</h2><p>通过使用Cypress的界面，可以方便的创建测试用例和录制测试脚本，但实际上我们的场景可能会比较复杂，这时候录制的脚本可能达不到我们的需求，因此这里了解即可，实际情况更多还是需要手动去写一些代码。</p>
+<h2 id="Vue项目中单元测试-组件测试"><a href="#Vue项目中单元测试-组件测试" class="headerlink" title="Vue项目中单元测试-组件测试"></a>Vue项目中单元测试-组件测试</h2><p>在vue项目中使用组件测试可以查看 <a href="@cypress/vuehttps://www.npmjs.com/package/@cypress/vue">@cypress/vue</a> 这个插件以及<a href="https://docs.cypress.io/guides/component-testing/framework-configuration#Vue-2-Vue-CLI" target="_blank" rel="noopener">官方文档</a>。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>cypress给我们前端开发工程师一个非常友好的方式进行端到端的测试，测试用例使用javascript编写，对于前端开发来说还是非常友好的，这里介绍了cypress的一些功能，实际上上手也并不复杂，同时官网相关的视频资源也很丰富，希望感兴趣的同学能够动手尝试。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/12/22/端到端自动化测试框架Cypress简介/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-解决Electron-安装慢问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/26/解决Electron-安装慢问题/">解决Electron 安装慢问题</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/26/解决Electron-安装慢问题/" class="archive-article-date">
+  	<time datetime="2021-10-26T11:00:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装Electron时会判断缓存中是否有要下载的zip包，如果没有的话就去下载这个zip包。但是往往下载这个zip包时非常慢，总是下载不成功。下面给出我的解决办法：</p>
+<p>首先要知道缓存位置在哪，根据 electron-download的描述 缓存的位置取决于操作系统 默认值为：</p>
+<blockquote>
+<p>Linux：$XDG_CACHE_HOME或~/.cache/electron/<br>苹果系统：~/Library/Caches/electron/<br>Windows：$LOCALAPPDATA/electron/Cache或~/AppData/Local/electron/Cache/</p>
+</blockquote>
+<p>然后，<a href="https://npm.taobao.org/mirrors/electron" target="_blank" rel="noopener">下载</a>需要的zip版本的包,放到上面提到的缓存地址中。</p>
+<p>最后，在命令窗口中执行npm install electron -g,执行成功</p>
+<p><img src="https://blogimage.houjiyi.com/Fh0vqiZD8HtNUziLZRNzjMc_EhYQ" alt="image.png"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发调试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/26/解决Electron-安装慢问题/">展开全文 >></a>
         </p>
       
 
@@ -1212,7 +1467,7 @@ var _hmt = _hmt || [];
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1225,7 +1480,7 @@ var _hmt = _hmt || [];
     <div id="footer-info">
     	<div class="footer-left">
 			<span>京ICP备15061159号-1</span>
-    		&copy; 2021 80后
+    		&copy; 2022 80后
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1316,11 +1571,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">apicloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">计划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1332,19 +1583,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计划</a>
+                <a href="javascript:void(0)" class="js-tag color4">apicloud</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1352,11 +1595,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">域名</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1368,10 +1627,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">域名</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PWA</a>
               </li>
              
@@ -1380,11 +1635,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1397,6 +1656,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vagrant</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">prettire</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
               </li>
              
               <li class="article-tag-list-item">
