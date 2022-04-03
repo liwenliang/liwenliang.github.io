@@ -166,6 +166,102 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-当我们遇到一个需求不明确，高度定制化的需求的时候～" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/25/当我们遇到一个需求不明确，高度定制化的需求的时候～/">当我们遇到一个需求不明确，高度定制化的需求的时候～</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/25/当我们遇到一个需求不明确，高度定制化的需求的时候～/" class="archive-article-date">
+  	<time datetime="2021-05-25T03:10:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>这个时候任何框架和模式都不好使，因为你不知道下一个需求是否会推翻前边所有的设计，这个时候我们要做的是使用最基本、高度扩展性的架构和思路来进行开发，避免因为需求变更导致的大量重复性工作。</p>
+</li>
+<li><p>技术最终是服务于业务的，没有最好的技术，只有最合适的技术。</p>
+</li>
+<li><p>剩下的是培养业务感觉和其他～</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">意义</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/25/当我们遇到一个需求不明确，高度定制化的需求的时候～/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-公共组件库实施" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1232,98 +1328,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-JS中call-和apply" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/23/JS中call-和apply/">JS中call()和apply()</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/23/JS中call-和apply/" class="archive-article-date">
-  	<time datetime="2020-07-23T07:24:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="每个函数都包含两个非继承而来的方法：call-和apply-；"><a href="#每个函数都包含两个非继承而来的方法：call-和apply-；" class="headerlink" title="每个函数都包含两个非继承而来的方法：call()和apply()；"></a>每个函数都包含两个非继承而来的方法：call()和apply()；</h2><p>在JavaScript中，call和apply作用是一样的，都是为了改变某个函数运行时的上下文（context）而存在的，换句话说，就是为了改变函数体内部this的指向。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fruits</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">        </span><br><span class="line">fruits.prototype = &#123;</span><br><span class="line">    color: <span class="string">"red"</span>,</span><br><span class="line">    say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"My color is "</span> + <span class="keyword">this</span>.color);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> apple = <span class="keyword">new</span> fruits;</span><br><span class="line">apple.say();                <span class="comment">//My color is red</span></span><br></pre></td></tr></table></figure></p>
-<p>当想另外一个对象想使用fruits中的say方法时不用重新写，使用call和apply可以实现“劫持”别人的方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fruits</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">            </span><br><span class="line">fruits.prototype = &#123;</span><br><span class="line">    color: <span class="string">"red"</span>,</span><br><span class="line">    say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"My color is "</span> + <span class="keyword">this</span>.color);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> another = &#123;</span><br><span class="line">    color: <span class="string">"yellow"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> apple = <span class="keyword">new</span> fruits;</span><br><span class="line">apple.say();                <span class="comment">//My color is red</span></span><br><span class="line">apple.say.call(another);    <span class="comment">//My color is yellow</span></span><br><span class="line">apple.say.apply(another);   <span class="comment">//My color is yellow</span></span><br></pre></td></tr></table></figure>
-<h2 id="区别：参数书写方式不同"><a href="#区别：参数书写方式不同" class="headerlink" title="区别：参数书写方式不同"></a>区别：参数书写方式不同</h2><p>call(thisObj, arg1, arg2, arg3, arg4);<br>apply(thisObj, [args]);<br>thisObj：call和apply第一个参数是一样的，该参数将替代Function类里面的this对象。<br>arg1,arg2….：是一个个的参数，<br>args：一个数组或类数组，是一个参数列表。</p>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>改变函数作用域</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"小白"</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">"小红"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sayName.call(<span class="keyword">this</span>));   <span class="comment">//小白</span></span><br><span class="line"><span class="built_in">console</span>.log(sayName.call(obj));    <span class="comment">//小红</span></span><br></pre></td></tr></table></figure>
-<h2 id="实现继承"><a href="#实现继承" class="headerlink" title="实现继承"></a>实现继承</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现js继承</span></span><br><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, height</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.sayInfo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"姓名："</span> + name + <span class="string">", 身高："</span> + height + <span class="string">", 体重："</span> + <span class="keyword">this</span>.weight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Chinese</span>(<span class="params">name, height, weight</span>) </span>&#123;</span><br><span class="line">    Person.call(<span class="keyword">this</span>, name, height);</span><br><span class="line">    <span class="keyword">this</span>.weight = weight;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">this</span>.nation = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"我是中国人"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">America</span>(<span class="params">name, height, weight</span>) </span>&#123;</span><br><span class="line">    Person.apply(<span class="keyword">this</span>, [name, height]);</span><br><span class="line">    <span class="keyword">this</span>.weight = weight;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> chiness = <span class="keyword">new</span> Chinese(<span class="string">"成龙"</span>, <span class="string">"178cm"</span>, <span class="string">"60kg"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(chiness.sayInfo());    <span class="comment">//姓名：成龙, 身高：178cm, 体重：60kg</span></span><br><span class="line"><span class="keyword">let</span> america = <span class="keyword">new</span> America(<span class="string">"jack"</span>, <span class="string">"180cm"</span>, <span class="string">"55kg"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(america.sayInfo());    <span class="comment">//姓名：jack, 身高：180cm, 体重：55kg</span></span><br></pre></td></tr></table></figure>
-<p>作者：书虫和泰迪熊<br>链接：<a href="https://www.jianshu.com/p/aa2eeecd8b4f" target="_blank" rel="noopener">https://www.jianshu.com/p/aa2eeecd8b4f</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/23/JS中call-和apply/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -1426,11 +1430,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">计划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计划</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1454,19 +1458,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">广告</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1474,11 +1470,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">域名</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">域名</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1490,15 +1494,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">

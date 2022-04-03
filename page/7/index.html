@@ -166,6 +166,107 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-防抖与节流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/04/防抖与节流/">防抖与节流</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/04/防抖与节流/" class="archive-article-date">
+  	<time datetime="2019-09-04T03:48:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="防抖与节流的应用"><a href="#防抖与节流的应用" class="headerlink" title="防抖与节流的应用"></a>防抖与节流的应用</h2><p>首先这是一道面试题，我对面试题不感兴趣，但我对面试题的应用比较感兴趣，这两个词听着高大上，其实在业务应用中用的还是很多的，举两个例子更好理解：</p>
+<ol>
+<li>防抖应用 </li>
+</ol>
+<p>后端防抖：一个token两个小时内没有新的请求则失效</p>
+<blockquote>
+<p>token经常存在redis缓存里，有失效时间，如果两个小时没有新请求自动失效，如果有新的请求，调整这个token失效时间</p>
+</blockquote>
+<ol start="2">
+<li>节流应用 </li>
+</ol>
+<p>前端节流：浏览器的resize触发事件控制执行频率</p>
+<blockquote>
+<p>不解释</p>
+</blockquote>
+<p>防抖：debounce<br>debounce time 去抖动时间</p>
+<p>节流：throttle<br>n. 节流阀；[车辆] 风门；喉咙<br>vt. 压制，扼杀；使……窒息；使……节流<br>vi. 节流，减速；窒息</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/04/防抖与节流/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-10-分钟理解-BFC-原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -980,95 +1081,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-NGINX-SSH-Tunnel-把本地开发环境公布到互联网上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/26/NGINX-SSH-Tunnel-把本地开发环境公布到互联网上/">NGINX + SSH Tunnel 把本地开发环境公布到互联网上</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/26/NGINX-SSH-Tunnel-把本地开发环境公布到互联网上/" class="archive-article-date">
-  	<time datetime="2019-07-26T03:09:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在调试一些接口的时候，你的网站应用要跟其它的一些外部服务进行交流，你发给它一点数据，它也会返回给你一点数据。但是如果是在本地开发环境上调试，你只能发送给外部服务数据，而外部服务返回来的数据你的本地环境是收不到的。因为你的本地环境并没有一个固定的公网 IP 地址。</p>
-<p>我不想直接在服务器上去调试，因为复杂而且不方便，忽然想到了之前用过的 BrowserSync 工具，有一个 Tunnel 选项，可以把在本地创建的服务器公布到互联网上。我又想到了 SSH 有个 Tunnel 功能，原来用它作为本地电脑的代理用，我想大概可以用它，让我的在公网上的一台服务器接待请求，再把请求转到我的本地开发环境上，然后就去搜索关键词 NGINX，SSH，Tunnel ，找到了答案。</p>
-<p>用 SSH 在本地电脑与公网服务器之间打开一个通道，配置公网服务器的 NGINX，把收到的请求转到本地电脑与公网服务器的这个通道上。</p>
-        
-          <a class="article-more-a" href="/2019/07/26/NGINX-SSH-Tunnel-把本地开发环境公布到互联网上/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/26/NGINX-SSH-Tunnel-把本地开发环境公布到互联网上/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
@@ -1171,11 +1183,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">计划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计划</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1199,19 +1211,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">广告</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1219,11 +1223,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">域名</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">域名</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1235,15 +1247,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">

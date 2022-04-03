@@ -166,6 +166,95 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vue中slot插槽子组件向父组件传值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/03/vue中slot插槽子组件向父组件传值/">vue中slot插槽子组件向父组件传值</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/03/vue中slot插槽子组件向父组件传值/" class="archive-article-date">
+  	<time datetime="2022-04-03T08:54:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>slot 插槽要实现子组件向父组件传值，则需要运用 <strong>作用域插槽</strong></p>
+<p>1、父组件中用 标签加上 slot-scoped 的属性，属性值随性。（旧版本是scope,vue新版本必须用slot-scope)</p>
+<p>2、子组件中给 加上一个自定义属性，在父组件中的slot-scope就能接收这个自定义属性的值</p>
+<p><code>父组件</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">slot-scope</span>=<span class="string">"props"</span> <span class="attr">slot</span>=<span class="string">"append-operate"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; props.msg &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><code>子组件</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"append-operate"</span> <span class="attr">msg</span>=<span class="string">"我是子组件的内容"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/03/vue中slot插槽子组件向父组件传值/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-macOS-第三方输入法使用-caps-lock-切换中英文和大小写" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1070,139 +1159,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-inquirer-js-——-一个用户与命令行交互的工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/18/inquirer-js-——-一个用户与命令行交互的工具/">inquirer.js —— 一个用户与命令行交互的工具</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/18/inquirer-js-——-一个用户与命令行交互的工具/" class="archive-article-date">
-  	<time datetime="2022-01-18T02:40:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="写在前面："><a href="#写在前面：" class="headerlink" title="写在前面："></a>写在前面：</h2><p>开始通过npm init 创建package.json的时候就有大量与用户的交互(当然也可以通过参数来忽略输入)；而现在大多数工程都是通过脚手架来创建的，使用脚手架的时候最明显的就是与命令行的交互，如果想自己做一个脚手架或者在某些时候要与用户进行交互，这个时候就不得不提到inquirer.js了。</p>
-<h2 id="零-介绍"><a href="#零-介绍" class="headerlink" title="零. 介绍"></a>零. 介绍</h2><p>由于交互的问题种类不同，inquirer为每个问题提供很多参数：</p>
-<ul>
-<li>type：表示提问的类型，包括：input, confirm, list, rawlist, expand, checkbox, password, editor；</li>
-<li>name: 存储当前问题回答的变量；</li>
-<li>message：问题的描述；</li>
-<li>default：默认值；</li>
-<li>choices：列表选项，在某些type下可用，并且包含一个分隔符(separator)；</li>
-<li>validate：对用户的回答进行校验；</li>
-<li>filter：对用户的回答进行过滤处理，返回处理后的值；</li>
-<li>transformer：对用户回答的显示效果进行处理(如：修改回答的字体或背景颜色)，但不会影响最终的答案的内容；</li>
-<li>when：根据前面问题的回答，判断当前问题是否需要被回答；</li>
-<li>pageSize：修改某些type类型下的渲染行数；</li>
-<li>prefix：修改message默认前缀；</li>
-<li>suffix：修改message默认后缀。</li>
-</ul>
-<blockquote>
-<p>上面的属性(除transformer外)在下面都有对应使用。</p>
-</blockquote>
-<h2 id="一-使用"><a href="#一-使用" class="headerlink" title="一. 使用"></a>一. 使用</h2><h3 id="0-语法结构"><a href="#0-语法结构" class="headerlink" title="0. 语法结构"></a>0. 语法结构</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> inquirer = <span class="built_in">require</span>(<span class="string">'inquirer'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> promptList = [</span><br><span class="line">    <span class="comment">// 具体交互内容</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">inquirer.prompt(promptList).then(<span class="function"><span class="params">answers</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(answers); <span class="comment">// 返回的结果</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>效果：<br><img src="https://blogimage.houjiyi.com/FpCKD8ILrREeyTTFXny-oyrHeKDZ" alt="image.png"></p>
-<h3 id="1-input"><a href="#1-input" class="headerlink" title="1. input"></a>1. input</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">'input'</span>,</span><br><span class="line">    message: <span class="string">'设置一个用户名:'</span>,</span><br><span class="line">    name: <span class="string">'name'</span>,</span><br><span class="line">    <span class="keyword">default</span>: <span class="string">"test_user"</span> <span class="comment">// 默认值</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">    type: <span class="string">'input'</span>,</span><br><span class="line">    message: <span class="string">'请输入手机号:'</span>,</span><br><span class="line">    name: <span class="string">'phone'</span>,</span><br><span class="line">    validate: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(val.match(<span class="regexp">/\d&#123;11&#125;/g</span>)) &#123; <span class="comment">// 校验位数</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"请输入11位数字"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<p>效果：<br><img src="https://blogimage.houjiyi.com/FpCKD8ILrREeyTTFXny-oyrHeKDZ" alt="image.png"></p>
-<h3 id="2-confirm"><a href="#2-confirm" class="headerlink" title="2. confirm"></a>2. confirm</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">"confirm"</span>,</span><br><span class="line">    message: <span class="string">"是否使用监听？"</span>,</span><br><span class="line">    name: <span class="string">"watch"</span>,</span><br><span class="line">    prefix: <span class="string">"前缀"</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">    type: <span class="string">"confirm"</span>,</span><br><span class="line">    message: <span class="string">"是否进行文件过滤？"</span>,</span><br><span class="line">    name: <span class="string">"filter"</span>,</span><br><span class="line">    suffix: <span class="string">"后缀"</span>,</span><br><span class="line">    when: <span class="function"><span class="keyword">function</span>(<span class="params">answers</span>) </span>&#123; <span class="comment">// 当watch为true的时候才会提问当前问题</span></span><br><span class="line">        <span class="keyword">return</span> answers.watch</span><br><span class="line">    &#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<p>效果：<br><img src="https://blogimage.houjiyi.com/Fi3aKc05lrwNw9GcyPOwQY4EMyCf" alt="image.png"></p>
-<p><img src="https://blogimage.houjiyi.com/FhRJQBDhImOxinB1o8cCZzy4twph" alt="image.png"></p>
-<h3 id="3-list"><a href="#3-list" class="headerlink" title="3. list"></a>3. list</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">'list'</span>,</span><br><span class="line">    message: <span class="string">'请选择一种水果:'</span>,</span><br><span class="line">    name: <span class="string">'fruit'</span>,</span><br><span class="line">    choices: [</span><br><span class="line">        <span class="string">"Apple"</span>,</span><br><span class="line">        <span class="string">"Pear"</span>,</span><br><span class="line">        <span class="string">"Banana"</span></span><br><span class="line">    ],</span><br><span class="line">    filter: <span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123; <span class="comment">// 使用filter将回答变为小写</span></span><br><span class="line">        <span class="keyword">return</span> val.toLowerCase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<p><img src="https://blogimage.houjiyi.com/FlAakepYOGFZRnpCbQAQHMMyKGJD" alt="image.png"></p>
-<p><img src="https://blogimage.houjiyi.com/Fp7NWFvC268cc-YRvikaAcW3mCjF" alt="image.png"></p>
-<h3 id="4-rawlist"><a href="#4-rawlist" class="headerlink" title="4. rawlist"></a>4. rawlist</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">'rawlist'</span>,</span><br><span class="line">    message: <span class="string">'请选择一种水果:'</span>,</span><br><span class="line">    name: <span class="string">'fruit'</span>,</span><br><span class="line">    choices: [</span><br><span class="line">        <span class="string">"Apple"</span>,</span><br><span class="line">        <span class="string">"Pear"</span>,</span><br><span class="line">        <span class="string">"Banana"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<p><img src="https://blogimage.houjiyi.com/FuRun4P5FKDtg-qk-JBpnEWkUuXq" alt="image.png"></p>
-<h3 id="5-expand"><a href="#5-expand" class="headerlink" title="5. expand"></a>5. expand</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">"expand"</span>,</span><br><span class="line">    message: <span class="string">"请选择一种水果："</span>,</span><br><span class="line">    name: <span class="string">"fruit"</span>,</span><br><span class="line">    choices: [</span><br><span class="line">        &#123;</span><br><span class="line">            key: <span class="string">"a"</span>,</span><br><span class="line">            name: <span class="string">"Apple"</span>,</span><br><span class="line">            value: <span class="string">"apple"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            key: <span class="string">"O"</span>,</span><br><span class="line">            name: <span class="string">"Orange"</span>,</span><br><span class="line">            value: <span class="string">"orange"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            key: <span class="string">"p"</span>,</span><br><span class="line">            name: <span class="string">"Pear"</span>,</span><br><span class="line">            value: <span class="string">"pear"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<p><img src="https://blogimage.houjiyi.com/FmiD_gtEsgL1x-YX2mLs5uQTUftj" alt="image.png"></p>
-<p><img src="https://blogimage.houjiyi.com/FlSVA9H_Gqb6wUqo2zwaz5stIR5p" alt="image.png"></p>
-<h3 id="6-checkbox"><a href="#6-checkbox" class="headerlink" title="6. checkbox"></a>6. checkbox</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">"checkbox"</span>,</span><br><span class="line">    message: <span class="string">"选择颜色:"</span>,</span><br><span class="line">    name: <span class="string">"color"</span>,</span><br><span class="line">    choices: [</span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">"red"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">new</span> inquirer.Separator(), <span class="comment">// 添加分隔符</span></span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">"blur"</span>,</span><br><span class="line">            checked: <span class="literal">true</span> <span class="comment">// 默认选中</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">"green"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">new</span> inquirer.Separator(<span class="string">"--- 分隔符 ---"</span>), <span class="comment">// 自定义分隔符</span></span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">"yellow"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;];</span><br><span class="line"><span class="comment">// 或者下面这样</span></span><br><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">"checkbox"</span>,</span><br><span class="line">    message: <span class="string">"选择颜色:"</span>,</span><br><span class="line">    name: <span class="string">"color"</span>,</span><br><span class="line">    choices: [</span><br><span class="line">        <span class="string">"red"</span>,</span><br><span class="line">        <span class="string">"blur"</span>,</span><br><span class="line">        <span class="string">"green"</span>,</span><br><span class="line">        <span class="string">"yellow"</span></span><br><span class="line">    ],</span><br><span class="line">    pageSize: <span class="number">2</span> <span class="comment">// 设置行数</span></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<p><img src="https://blogimage.houjiyi.com/FlQEg1neWZurjgb5W23IuDrc282x" alt="image.png"></p>
-<p><img src="https://blogimage.houjiyi.com/FsF6jt2iLdoYcmBhuplrp9gZEDRI" alt="image.png"></p>
-<h3 id="7-password"><a href="#7-password" class="headerlink" title="7. password"></a>7. password</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">"password"</span>, <span class="comment">// 密码为密文输入</span></span><br><span class="line">    message: <span class="string">"请输入密码："</span>,</span><br><span class="line">    name: <span class="string">"pwd"</span></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<p><img src="https://blogimage.houjiyi.com/FqzRGPJO6VB7qd7Zehfc4I7vyrqF" alt="image.png"></p>
-<h3 id="8-editor"><a href="#8-editor" class="headerlink" title="8. editor"></a>8. editor</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promptList = [&#123;</span><br><span class="line">    type: <span class="string">"editor"</span>,</span><br><span class="line">    message: <span class="string">"请输入备注："</span>,</span><br><span class="line">    name: <span class="string">"editor"</span></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<p>效果：<br><img src="https://blogimage.houjiyi.com/FusoJTvhhZmNfExF4nS7dhgusNtn" alt="image.png"></p>
-<p><img src="https://blogimage.houjiyi.com/FnEnsojR969ChOohJ4clHzKdW-w8" alt="image.png"></p>
-<p>写在后面：<br>Everything will be ok in the end, if it’s not ok, it’s not the end.</p>
-<p>原文地址：<a href="https://blog.csdn.net/qq_26733915/article/details/80461257" target="_blank" rel="noopener">原文链接</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">nodejs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/18/inquirer-js-——-一个用户与命令行交互的工具/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1305,11 +1261,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">计划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计划</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1333,19 +1289,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">广告</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1353,11 +1301,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">域名</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">域名</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1369,15 +1325,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
