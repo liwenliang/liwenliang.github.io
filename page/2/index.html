@@ -166,6 +166,92 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-node-sass安装报错，排查第一步～" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/18/node-sass安装报错，排查第一步～/">node-sass安装报错，排查第一步～</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/18/node-sass安装报错，排查第一步～/" class="archive-article-date">
+  	<time datetime="2022-01-18T03:19:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>关于node-sass的安装经常会遇到报错问题，第一步先对齐node版本，node-sass不同版本对应的node版本都不一样，这是个坑，先把这个坑跳过去，其他的再根据提示百度：</p>
+<p><a href="https://github.com/sass/node-sass/releases" target="_blank" rel="noopener">node-sass版本对应node版本及系统要求</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/18/node-sass安装报错，排查第一步～/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-inquirer-js-——-一个用户与命令行交互的工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1110,402 +1196,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-端到端自动化测试框架Cypress简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/22/端到端自动化测试框架Cypress简介/">端到端自动化测试框架Cypress简介</a>
-    </h1>
-  
-
-        
-        <a href="/2021/12/22/端到端自动化测试框架Cypress简介/" class="archive-article-date">
-  	<time datetime="2021-12-22T06:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="总揽"><a href="#总揽" class="headerlink" title="总揽"></a>总揽</h2><blockquote>
-<p>当我看到Cypress的时候，有一种当初看到vue的时候的感觉：恰好是我需要的，恰好能做到我需要的所有事情，同时也是渐进式无侵入性的。</p>
-</blockquote>
-<p>Cypress有一系列的目标：</p>
-<ol>
-<li>web已经升级更新了，测试也同样需要升级更新</li>
-<li>Cypress是一款能够快速、简单、稳定的测试所有运行在浏览器上的内容的端到端测试工具</li>
-<li>Cypress是一个完整的端到端测试体验框架，他不需要安装其他额外的依赖包</li>
-<li>安装Cypress是非常简单的，没有依赖、额外下载同时不需要修改你的代码</li>
-<li>测试你的代码而非你的耐心：Cypress是一个新的针对开发人员与QA工程师定制的标准的端到端测试框架</li>
-</ol>
-<h2 id="测试金字塔模型"><a href="#测试金字塔模型" class="headerlink" title="测试金字塔模型"></a>测试金字塔模型</h2><p><img src="https://blogimage.houjiyi.com/FlN8l4aLzLawvltNQGAN0jkDJwQC" alt="image.png"></p>
-<h2 id="UI自动化测试"><a href="#UI自动化测试" class="headerlink" title="UI自动化测试"></a>UI自动化测试</h2><p>UI测试的主要目的是从软件使用者的角度来检验软件的质量，而UI自动化测试则是以自动化的方式来代替人工执行测试。在测试金字塔模型中，UI层测试是各种测试中投入最大、收益最低、运行最慢的一种。</p>
-<p>而Cypress的出现实际可以在某种程度上打破这种局面</p>
-<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><h3 id="单元测试有这样一段描述很有意思："><a href="#单元测试有这样一段描述很有意思：" class="headerlink" title="单元测试有这样一段描述很有意思："></a>单元测试有这样一段描述很有意思：</h3><p><img src="https://blogimage.houjiyi.com/Fi3i_V5lomsSicoZ1dAV0Pe4UbLn" alt="image.png"></p>
-<h3 id="单元测试的价值"><a href="#单元测试的价值" class="headerlink" title="单元测试的价值"></a>单元测试的价值</h3><p><img src="https://blogimage.houjiyi.com/FhtuMLiTAYzZl6aJjrFqrTeKoUPK" alt="image.png"></p>
-<h2 id="Cypress简介"><a href="#Cypress简介" class="headerlink" title="Cypress简介"></a>Cypress简介</h2><ul>
-<li>Cypress是为现代网络打造的，基于JavaScript的下一代前端测试工具。他可以对浏览器中运行的任何内容进行快速，简单和可靠的测试。</li>
-<li>Cypress是自集成的，它提供了一套完整的端到端测试体验。无须借助其他外部工具，在简单安装后即可允许用户快速的创建、编写、运行、测试用例，并且针对每一步操作均支持回看。</li>
-<li>不同于其他只能测试UI层的前端测试工具，Cypress允许你编写所有类型的测试，覆盖了测试金字塔模型涉及的所有测试类型：端到端测试；集成测试；单元测试；</li>
-</ul>
-<h2 id="Cypress优点"><a href="#Cypress优点" class="headerlink" title="Cypress优点"></a>Cypress优点</h2><ul>
-<li>界面美观友好。</li>
-<li>支持手机模拟。</li>
-<li>测试的每一步都有对应的截图。</li>
-<li>全程都会有录屏。</li>
-<li>支持debug调试，随时暂停。</li>
-<li>自动等待ui更新，减少异步代码。</li>
-</ul>
-<h2 id="Cypress带来的改变"><a href="#Cypress带来的改变" class="headerlink" title="Cypress带来的改变"></a>Cypress带来的改变</h2><p>有了Cypress，配置测试框架不再是一件看起来非常繁琐的事情，它有你所有想要的功能：<br><img src="https://blogimage.houjiyi.com/FofEllCW9pr0mE68iI_9FiG36iHI" alt="image.png"></p>
-<h2 id="Cypress与其他测试框架的比较"><a href="#Cypress与其他测试框架的比较" class="headerlink" title="Cypress与其他测试框架的比较"></a>Cypress与其他测试框架的比较</h2><table>
-<thead>
-<tr>
-<th>对比维度</th>
-<th>Cypress</th>
-<th>Selenium/WebDriver</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>框架完备</td>
-<td>是</td>
-<td>否（仅是Library）</td>
-</tr>
-<tr>
-<td>开箱即用</td>
-<td>是</td>
-<td>否（无法直接工作）</td>
-</tr>
-<tr>
-<td>自带断言库</td>
-<td>是</td>
-<td>否（需自行添加）</td>
-</tr>
-<tr>
-<td>自带Mock</td>
-<td>是</td>
-<td>否（需自行添加）</td>
-</tr>
-<tr>
-<td>自带测试运行器（Test Runner）</td>
-<td>是</td>
-<td>否（需自行添加）</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>对比维度</th>
-<th>Cypress</th>
-<th>Karma</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>框架完备</td>
-<td>是</td>
-<td>否（仅是Test Runner）</td>
-</tr>
-<tr>
-<td>开箱即用</td>
-<td>是</td>
-<td>否（无法直接工作）</td>
-</tr>
-<tr>
-<td>自带断言库</td>
-<td>是</td>
-<td>否（无法直接工作）</td>
-</tr>
-<tr>
-<td>自带Mock</td>
-<td>是</td>
-<td>否（无法直接工作）</td>
-</tr>
-<tr>
-<td>自带测试运行器（Test Runner）</td>
-<td>是</td>
-<td>否（无法直接工作）</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>对比维度</th>
-<th>Cypress</th>
-<th>Nightwatch</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>框架完备</td>
-<td>是</td>
-<td>是</td>
-</tr>
-<tr>
-<td>开箱即用</td>
-<td>是</td>
-<td>是（安装，配置繁琐）</td>
-</tr>
-<tr>
-<td>底层框架</td>
-<td>自主研发，运行快</td>
-<td>基于WebDriver，运行慢</td>
-</tr>
-<tr>
-<td>适用范围</td>
-<td>UI,API,UnitTest均支持</td>
-<td>仅用于UI测试</td>
-</tr>
-<tr>
-<td>脚本易维护</td>
-<td>是</td>
-<td>否（难以维护）</td>
-</tr>
-<tr>
-<td>回放测试执行情况</td>
-<td>是</td>
-<td>否</td>
-</tr>
-<tr>
-<td>多浏览器支持</td>
-<td>支持</td>
-<td>支持</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>对比维度</th>
-<th>Cypress</th>
-<th>Protractor</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>框架完备</td>
-<td>是</td>
-<td>是</td>
-</tr>
-<tr>
-<td>开箱即用</td>
-<td>是</td>
-<td>是</td>
-</tr>
-<tr>
-<td>底层框架</td>
-<td>自主研发，运行快</td>
-<td>基于WebdriverJS，运行慢</td>
-</tr>
-<tr>
-<td>单元测试框架</td>
-<td>底层使用Mocha，不可替换</td>
-<td>默认使用Jasmine，允许替换</td>
-</tr>
-<tr>
-<td>适用范围</td>
-<td>多种语言开发的程序均可进行测试</td>
-<td>主要应用于Angular的程序</td>
-</tr>
-<tr>
-<td>回放测试执行情况</td>
-<td>是</td>
-<td>否</td>
-</tr>
-<tr>
-<td>多浏览器支持</td>
-<td>支持</td>
-<td>支持</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>对比维度</th>
-<th>Cypress</th>
-<th>TestCafe</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>框架完备</td>
-<td>是</td>
-<td>是</td>
-</tr>
-<tr>
-<td>开箱即用</td>
-<td>是</td>
-<td>是</td>
-</tr>
-<tr>
-<td>底层框架</td>
-<td>自主研发，运行快</td>
-<td>自主研发，通过Proxy Server工作</td>
-</tr>
-<tr>
-<td>测试用例组织便捷度</td>
-<td>基于Mocha，组织、编写简单</td>
-<td>测试用例写法异于常规（fixture），学习成本高</td>
-</tr>
-<tr>
-<td>自带测试运行器</td>
-<td>是</td>
-<td>是（也仅仅是TestRunner）</td>
-</tr>
-<tr>
-<td>回放测试执行情况</td>
-<td>是</td>
-<td>否</td>
-</tr>
-<tr>
-<td>多浏览器支持</td>
-<td>支持</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>测试运行</td>
-<td>测试运行在浏览器中</td>
-<td>测试运行在Node.js中，便于设置和清除数据库fixtures</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>对比维度</th>
-<th>Cypress</th>
-<th>Puppeteer</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>框架完备</td>
-<td>是</td>
-<td>是</td>
-</tr>
-<tr>
-<td>是否有IDE</td>
-<td>是</td>
-<td>否</td>
-</tr>
-<tr>
-<td>适用范围</td>
-<td>e2e的完美解决方案</td>
-<td>主要用于爬虫和开展快速测试</td>
-</tr>
-<tr>
-<td>自带断言库</td>
-<td>是</td>
-<td>否</td>
-</tr>
-<tr>
-<td>回放测试执行情况</td>
-<td>是</td>
-<td>否</td>
-</tr>
-<tr>
-<td>多浏览器支持</td>
-<td>支持</td>
-<td>支持</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Cypress的局限"><a href="#Cypress的局限" class="headerlink" title="Cypress的局限"></a>Cypress的局限</h2><h3 id="长期权衡"><a href="#长期权衡" class="headerlink" title="长期权衡"></a>长期权衡</h3><ul>
-<li>不建议使用Cypress用于网络爬虫，性能测试之目的。</li>
-<li>Cypress永远不会支持多标签测试。</li>
-<li>Cypress不支持同时打开两个及以上的浏览器。</li>
-<li>每个Cypress测试用例应遵守同源策略<h3 id="短期折中"><a href="#短期折中" class="headerlink" title="短期折中"></a>短期折中</h3></li>
-<li>目前浏览器支持Chrome，Firefox，Microsoft Edge和Electron</li>
-<li>不支持测试移动端应用</li>
-<li>针对iframe的支持有限</li>
-<li>不能在window.fetch上使用cy.route()</li>
-<li>没有影子DOM支持。<h3 id="Cypress作为一款优秀的开源软件，其提供的多个免费功能已经能够满足绝大多数团队和个人的需求。"><a href="#Cypress作为一款优秀的开源软件，其提供的多个免费功能已经能够满足绝大多数团队和个人的需求。" class="headerlink" title="Cypress作为一款优秀的开源软件，其提供的多个免费功能已经能够满足绝大多数团队和个人的需求。"></a>Cypress作为一款优秀的开源软件，其提供的多个免费功能已经能够满足绝大多数团队和个人的需求。</h3></li>
-</ul>
-<h2 id="安装Cypress"><a href="#安装Cypress" class="headerlink" title="安装Cypress"></a>安装Cypress</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cypress --save-dev</span><br></pre></td></tr></table></figure>
-<p>or<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add cypress --dev</span><br></pre></td></tr></table></figure></p>
-<p>then<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx cypress open</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://blogimage.houjiyi.com/FsuauSfkHCmao-NsUtfVl_r39f7s" alt="image.png"></p>
-<h2 id="Cypress元素定位"><a href="#Cypress元素定位" class="headerlink" title="Cypress元素定位"></a>Cypress元素定位</h2><p><img src="https://blogimage.houjiyi.com/FnDj-Ojn9N-mZ8qYUq3iE1NMorcI" alt="image.png"></p>
-<h2 id="Cypress页面元素基本操作方式"><a href="#Cypress页面元素基本操作方式" class="headerlink" title="Cypress页面元素基本操作方式"></a>Cypress页面元素基本操作方式</h2><p><img src="https://blogimage.houjiyi.com/FvT4HRxbt2LJh57y4JyoQTHMjYrk" alt="image.png"></p>
-<h2 id="Cypress常见操作"><a href="#Cypress常见操作" class="headerlink" title="Cypress常见操作"></a>Cypress常见操作</h2><p><img src="https://blogimage.houjiyi.com/FjcSIqQUiBSNFQ-YAObdVtDNkKVY" alt="image.png"></p>
-<h2 id="cypress可操作事件"><a href="#cypress可操作事件" class="headerlink" title="cypress可操作事件"></a>cypress可操作事件</h2><p><img src="https://blogimage.houjiyi.com/FkWe5GW7nXZoxTiM_EgFJdDK6U1T" alt="image.png"></p>
-<h2 id="Cypress上传文件或图片"><a href="#Cypress上传文件或图片" class="headerlink" title="Cypress上传文件或图片"></a>Cypress上传文件或图片</h2><p>Cypress的文件或图片上传可以使用这个插件，使用起来还是很方便的：<a href="https://github.com/abramenal/cypress-file-upload" target="_blank" rel="noopener">https://github.com/abramenal/cypress-file-upload</a></p>
-<p><img src="https://blogimage.houjiyi.com/FnJxwy9FeoGmwMRU8NYZsU1JXi1H" alt="image.png"></p>
-<p><img src="https://blogimage.houjiyi.com/FmZBLX7TlmsbAOZAS283aEPa8Cd8" alt="image.png"></p>
-<h2 id="使用Cypress界面获取要选择的元素"><a href="#使用Cypress界面获取要选择的元素" class="headerlink" title="使用Cypress界面获取要选择的元素"></a>使用Cypress界面获取要选择的元素</h2><p>Cypress界面获取元素方式与控制台定位元素方式很像：<br><img src="https://blogimage.houjiyi.com/FiD_mu7irr4OP-9HLmzdt5QmDTaS" alt="image.png"></p>
-<h2 id="使用Cypress录制测试脚本"><a href="#使用Cypress录制测试脚本" class="headerlink" title="使用Cypress录制测试脚本"></a>使用Cypress录制测试脚本</h2><p>通过使用Cypress的界面，可以方便的创建测试用例和录制测试脚本，但实际上我们的场景可能会比较复杂，这时候录制的脚本可能达不到我们的需求，因此这里了解即可，实际情况更多还是需要手动去写一些代码。</p>
-<h2 id="Vue项目中单元测试-组件测试"><a href="#Vue项目中单元测试-组件测试" class="headerlink" title="Vue项目中单元测试-组件测试"></a>Vue项目中单元测试-组件测试</h2><p>在vue项目中使用组件测试可以查看 <a href="@cypress/vuehttps://www.npmjs.com/package/@cypress/vue">@cypress/vue</a> 这个插件以及<a href="https://docs.cypress.io/guides/component-testing/framework-configuration#Vue-2-Vue-CLI" target="_blank" rel="noopener">官方文档</a>。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>cypress给我们前端开发工程师一个非常友好的方式进行端到端的测试，测试用例使用javascript编写，对于前端开发来说还是非常友好的，这里介绍了cypress的一些功能，实际上上手也并不复杂，同时官网相关的视频资源也很丰富，希望感兴趣的同学能够动手尝试。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/22/端到端自动化测试框架Cypress简介/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1612,15 +1302,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Web开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1636,11 +1326,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运维</a>
+                <a href="javascript:void(0)" class="js-tag color3">广告</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">广告</a>
+                <a href="javascript:void(0)" class="js-tag color3">运维</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1648,19 +1338,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">微前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">域名</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1672,11 +1362,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
