@@ -166,6 +166,149 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Cypress-可操作事件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/17/Cypress-可操作事件/">Cypress 可操作事件</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/17/Cypress-可操作事件/" class="archive-article-date">
+  	<time datetime="2021-09-17T05:57:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>click()<br><img src="https://blogimage.houjiyi.com/FnGC0_r2pbgwf072BWHK8xhoYvjJ" alt="image.png"></li>
+</ul>
+<p>单击DOM元素语法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">cy.get(<span class="string">'.action-btn'</span>).click()</span><br><span class="line"><span class="comment">// clicking in the center of the element is the default</span></span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click()</span><br><span class="line"></span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'topLeft'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'top'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'topRight'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'left'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'right'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'bottomLeft'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'bottom'</span>)</span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>).click(<span class="string">'bottomRight'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// .click() accepts a an x and y coordinate</span></span><br><span class="line"><span class="comment">// that controls where the click occurs :)</span></span><br><span class="line">cy.get(<span class="string">'#action-canvas'</span>)</span><br><span class="line">  .click(<span class="number">80</span>, <span class="number">75</span>)</span><br><span class="line">  .click(<span class="number">170</span>, <span class="number">75</span>)</span><br><span class="line">  .click(<span class="number">80</span>, <span class="number">165</span>)</span><br><span class="line">  .click(<span class="number">100</span>, <span class="number">185</span>)</span><br><span class="line">  .click(<span class="number">125</span>, <span class="number">190</span>)</span><br><span class="line">  .click(<span class="number">150</span>, <span class="number">185</span>)</span><br><span class="line">  .click(<span class="number">170</span>, <span class="number">165</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// click multiple elements by passing multiple: true</span></span><br><span class="line">cy.get(<span class="string">'.action-labels&gt;.label'</span>).click(&#123; <span class="attr">multiple</span>: <span class="literal">true</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Ignore error checking prior to clicking</span></span><br><span class="line">cy.get(<span class="string">'.action-opacity&gt;.btn'</span>).click(&#123; <span class="attr">force</span>: <span class="literal">true</span> &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>dblclick()<br>双击DoM元素语法如下:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//双击DoM元素</span></span><br><span class="line">dblclick()</span><br><span class="line"><span class="comment">//带参数的双击</span></span><br><span class="line">dblclick(options)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>带参数跟上面click完全一致</p>
+<ul>
+<li>rightclick()<br>右击DoM元素语法如下:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//右击DoM元素</span></span><br><span class="line">rightclick()</span><br><span class="line"><span class="comment">//带参数的双击</span></span><br><span class="line">rightclick(options)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>带参数跟上面click完全一致</p>
+<ul>
+<li>type()</li>
+</ul>
+<p>往DOM元素中输入</p>
+<p>type()语法如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入文本</span></span><br><span class="line">type(text)</span><br><span class="line"><span class="comment">//输入文本带参数的</span></span><br><span class="line">rightclick(text,options)</span><br></pre></td></tr></table></figure>
+<p>text参数支持的其他如下字符如下：</p>
+<ol>
+<li>{backspace} ：删除光标左侧的字符</li>
+<li>{det} : 删除光标右侧的字符</li>
+<li>{downarrow} : 向下移动光标</li>
+<li>{end} : 将光标移到行尾</li>
+<li>{enter} ：按enter建</li>
+<li>{esc} : 按esc建</li>
+<li>{home} ： 将光标移到行首</li>
+<li>{insert} ：在光标右侧插入字符</li>
+<li>{leftarrow} ：向左移动光标</li>
+<li>{pagedowm} ：向下滚动</li>
+<li>{pageup} ：向下滚动</li>
+<li>{rigtharrow} ：向右移动光标</li>
+<li>{selectall} ：通过选择范围来选择所有文本</li>
+<li>{uparrow} ：向上移动光标</li>
+</ol>
+<ul>
+<li><p>clear()<br>clear()清除输入或文本区域的值，语法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//清除</span></span><br><span class="line">cy.get().clear()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>check()<br>针对\&lt;input>类型的输入框（radio button） 或者复选框（check box）Cypree提供了check和uncheck方法直接操作。语法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//选中</span></span><br><span class="line">.check()</span><br><span class="line"><span class="comment">//选中一个选项，值value</span></span><br><span class="line">.check(value)</span><br><span class="line"><span class="comment">//选中多个选项</span></span><br><span class="line">.check(values)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>uncheck()</p>
+</li>
+</ul>
+<p>uncheck()和check用法相反用于取消单选框或者复选框语法参考check()</p>
+<ul>
+<li><p>.selelct()<br>select()用来在\&lt;select>中选中一个\&lt;option>。语法如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.select(value)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>.trigger()<br>用来在DOM元素上触发事件。用法如下：</p>
+</li>
+</ul>
+<p>.trigger(evenName)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按下光标</span></span><br><span class="line">cy.button().trigger(<span class="string">'mousedown'</span>)</span><br><span class="line"><span class="comment">//移动光标到元素之上</span></span><br><span class="line">cy.button().trigger(<span class="string">'mouseover'</span>)</span><br><span class="line"><span class="comment">//抬起光标</span></span><br><span class="line">cy.button().trigger(<span class="string">'mouseleave'</span>)</span><br></pre></td></tr></table></figure>
+<p>以上就是这篇文章的全部内容了，希望本文的内容对大家的学习或者工作具有一定的参考学习价值，如果有疑问大家可以留言交流，谢谢大家的支持。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/17/Cypress-可操作事件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Cypress-常见操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1142,105 +1285,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-useless-files-webpack-plugin删除多余项目文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/01/useless-files-webpack-plugin删除多余项目文件/">useless-files-webpack-plugin删除多余项目文件</a>
-    </h1>
-  
-
-        
-        <a href="/2021/07/01/useless-files-webpack-plugin删除多余项目文件/" class="archive-article-date">
-  	<time datetime="2021-07-01T03:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>随着项目开发的进行会经历一个混乱到整齐划一的过程，这个过程中会产生一系列冗余代码，这时候通过useless-files-webpack-plugin这个插件，可以帮助我们删除项目中无用的文件；</p>
-<blockquote>
-<p>大多数项目随着时间的推移,经常会摒弃掉一部分功能, 但大多数只是入口关闭, 或注释掉功能代码块, 依赖的文件如果没删除掉,项目其他成员一般不会去处&gt;理. 在日常开发中, 通过webpack 生成的 stats 文件实现了去除多余文件的插件useless-files-webpack-plugin</p>
-</blockquote>
-<blockquote>
-<p>插件用法如下:</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> UselessFile = <span class="built_in">require</span>(<span class="string">'useless-files-webpack-plugin'</span>)</span><br><span class="line"> </span><br><span class="line">plugins: [</span><br><span class="line">  <span class="keyword">new</span> UselessFile(&#123;</span><br><span class="line">    root: <span class="string">'./src'</span>, <span class="comment">// 项目目录</span></span><br><span class="line">    out?: <span class="string">'./fileList.json'</span>, <span class="comment">// 输出文件列表</span></span><br><span class="line">    out?: <span class="function">(<span class="params">files</span>) =&gt;</span> deal(files), <span class="comment">// 或者回调处理</span></span><br><span class="line">    clean?: <span class="literal">false</span> <span class="comment">// 删除文件,</span></span><br><span class="line">    exclude?: path <span class="comment">// 排除文件列表, 格式为文件路径数组</span></span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>转载于:<a href="https://juejin.im/post/5ae8930751882567244dc72f" target="_blank" rel="noopener">https://juejin.im/post/5ae8930751882567244dc72f</a></p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">知识点备忘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web开发//" class="article-tag-list-link color1">Web开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/01/useless-files-webpack-plugin删除多余项目文件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1343,6 +1387,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">计划</a>
               </li>
              
@@ -1355,7 +1403,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color5">基本知识</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1367,10 +1415,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基本知识</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">广告</a>
               </li>
              
@@ -1379,11 +1423,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
+                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微前端</a>
+                <a href="javascript:void(0)" class="js-tag color1">git迁移</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1419,11 +1463,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color4">electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">electron</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
